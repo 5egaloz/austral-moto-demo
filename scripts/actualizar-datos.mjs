@@ -1,7 +1,7 @@
 // Baja de OpenStreetMap los lugares útiles para motoqueros en Aysén (y la provincia de Palena),
 // busca fotos libres en Wikimedia Commons para los atractivos y escribe data/lugares.json.
 // Uso: node scripts/actualizar-datos.mjs
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
@@ -54,8 +54,14 @@ async function consulta(cuerpo) {
 
 async function overpass() {
   const todo = [];
+  // Cada parte se guarda en data/.cache: si el proceso se corta, al volver a correrlo sigue donde quedó
+  const cache = new URL('../data/.cache/', import.meta.url);
+  await mkdir(cache, { recursive: true });
   for (const [i, p] of PARTES.entries()) {
-    const els = await consulta(p);
+    const archivo = new URL('parte-' + (i + 1) + '.json', cache);
+    let els;
+    try { els = JSON.parse(await readFile(archivo, 'utf8')); console.log('Parte', i + 1, 'desde caché'); }
+    catch { els = await consulta(p); await writeFile(archivo, JSON.stringify(els)); }
     console.log('Parte', i + 1, 'de', PARTES.length + ':', els.length, 'elementos');
     todo.push(...els);
   }

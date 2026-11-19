@@ -450,7 +450,7 @@ const PUEBLOS = [
   {n:'Chaitén', km:0, bencina:true, lat:-42.915, lng:-72.709},
   {n:'Villa Santa Lucía', km:76, lat:-43.413, lng:-72.364},
   {n:'La Junta', km:150, bencina:true, lat:-43.973, lng:-72.403},
-  {n:'Puyuhuapi', km:196, bencina:true, lat:-44.326, lng:-72.557},
+  {n:'Puyuhuapi', km:196, diesel:true, lat:-44.326, lng:-72.557},
   {n:'Villa Amengual', km:270, lat:-44.746, lng:-72.208},
   {n:'Villa Mañihuales', km:335, bencina:true, lat:-45.172, lng:-72.149},
   {n:'Coyhaique', km:420, bencina:true, lat:-45.571, lng:-72.068},
@@ -470,7 +470,7 @@ const OTROS = [
 
 const TRAMOS = [
   {n:'Chaitén a La Junta', km:150, ripio:5, sinB:150, dif:'facil', temp:'Nov a abril', ojo:['Pavimento casi completo, con desvíos por obras','Lluvia frecuente: el asfalto mojado resbala en las curvas del bosque']},
-  {n:'La Junta a Coyhaique', km:270, ripio:20, sinB:139, dif:'media', temp:'Nov a abril', ojo:['Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando','Puyuhuapi es buena parada para dormir']},
+  {n:'La Junta a Coyhaique', km:270, ripio:20, sinB:185, dif:'media', temp:'Nov a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando','Puyuhuapi es buena parada para dormir']},
   {n:'Coyhaique a Puerto Río Tranquilo', km:220, ripio:45, sinB:125, dif:'media', temp:'Dic a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo con nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio']},
   {n:'Río Tranquilo a Cochrane', km:110, ripio:95, sinB:110, dif:'media', temp:'Dic a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
   {n:"Cochrane a Villa O'Higgins", km:230, ripio:100, sinB:230, dif:'dura', temp:'Dic a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa gratuita de Puerto Yungay a Río Bravo, pocos cruces al día','Camino angosto y con barro después de lluvia']},
@@ -500,7 +500,7 @@ const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',
     const cls = p.bencina ? 'bencina' : (p.balsa ? 'balsa' : '');
     html += '<div class="parada '+pos+'" style="left:'+x(p.km)+'px">'
       + '<span class="palito"></span><span class="punto '+cls+'"></span>'
-      + '<button data-loc="'+esc(p.n)+'"><span class="nombre">'+esc(p.n)+'</span><span class="km">km '+p.km+(p.bencina?', bencina':'')+(p.balsa?', balsa':'')+'</span></button></div>';
+      + '<button data-loc="'+esc(p.n)+'"><span class="nombre">'+esc(p.n)+'</span><span class="km">km '+p.km+(p.bencina?', bencina':'')+(p.diesel?', solo diésel':'')+(p.balsa?', balsa':'')+'</span></button></div>';
   });
   el.innerHTML = html;
   el.addEventListener('click', e => {
