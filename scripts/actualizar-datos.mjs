@@ -4,6 +4,7 @@
 import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { aplicarCorrecciones } from './aplicar-correcciones.mjs';
 
 const UA = 'Ruta7Moto/0.1 (demo web Carretera Austral; github.com/5egaloz/austral-moto-demo)';
 const OVERPASS = [
@@ -18,11 +19,23 @@ const WIKIDATA = 'https://www.wikidata.org/w/api.php';
 
 // Polígono aproximado del lado chileno: provincia de Palena + Región de Aysén (lat lng).
 // Se usa en vez de buscar la región por nombre porque algunos servidores no tienen ese índice.
-const POLY = [
-  [-42.55,-74.9],[-42.55,-72.05],[-43.0,-71.72],[-43.6,-71.72],[-44.1,-71.68],[-44.5,-71.45],
+// El borde oeste del norte va por el golfo de Ancud para dejar fuera Chiloé.
+const POLY_PTS = [
+  [-42.55,-73.2],[-42.55,-72.05],[-43.0,-71.72],[-43.6,-71.72],[-44.1,-71.68],[-44.5,-71.45],
   [-45.0,-71.33],[-45.6,-71.33],[-46.0,-71.6],[-46.3,-71.66],[-46.7,-71.68],[-47.0,-71.9],
-  [-47.3,-71.95],[-47.7,-72.25],[-48.1,-72.35],[-48.6,-72.5],[-49.25,-73.1],[-49.25,-75.9],[-46.5,-75.9],
-].map(p => p.join(' ')).join(' ');
+  [-47.3,-71.95],[-47.7,-72.25],[-48.1,-72.35],[-48.6,-72.5],[-49.25,-73.1],[-49.25,-75.9],[-46.5,-75.9],[-43.6,-75.0],[-43.6,-73.2],
+];
+const POLY = POLY_PTS.map(p => p.join(' ')).join(' ');
+
+// Punto dentro del polígono (sirve también para filtrar lo que ya está en caché)
+function dentro(lat, lng) {
+  let ok = false;
+  for (let i = 0, j = POLY_PTS.length - 1; i < POLY_PTS.length; j = i++) {
+    const [yi, xi] = POLY_PTS[i], [yj, xj] = POLY_PTS[j];
+    if ((yi > lat) !== (yj > lat) && lng < (xj - xi) * (lat - yi) / (yj - yi) + xi) ok = !ok;
+  }
+  return ok;
+}
 
 // Consultas chicas por separado: los servidores públicos rechazan una sola consulta grande
 const PARTES = [
@@ -70,12 +83,15 @@ async function overpass() {
 
 async function api(base, params) {
   const u = base + '?' + new URLSearchParams({ format: 'json', origin: '*', ...params });
-  for (let i = 0; i < 3; i++) {
-    const r = await fetch(u, { headers: { 'User-Agent': UA } });
-    if (r.ok) return r.json();
-    await espera(3000 * (i + 1));
+  for (let i = 0; i < 5; i++) {
+    try {
+      const r = await fetch(u, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(60_000) });
+      if (r.ok) return await r.json();
+    } catch { /* corte de red: se reintenta */ }
+    await espera(10000 * (i + 1));
   }
-  throw new Error('Falló ' + u);
+  console.log('   sin respuesta de', base.split('/')[2], '- se salta');
+  return {};
 }
 
 // Distancia en km entre dos puntos
@@ -133,7 +149,7 @@ async function infoArchivos(titulos) {
         fuente: ii.descriptionurl,
       };
     }
-    await espera(300);
+    await espera(1000);
   }
   return out;
 }
@@ -150,7 +166,7 @@ async function fotos(atractivos) {
       const f = j.entities?.[a._wd]?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
       if (f) titulo.set(a.id, 'File:' + f);
     }
-    await espera(300);
+    await espera(1000);
   }
 
   // 2. Etiqueta wikimedia_commons o image apuntando a Commons
@@ -176,7 +192,7 @@ async function fotos(atractivos) {
     const j = await api(COMMONS, { action: 'query', list: 'geosearch', gscoord: a.lat + '|' + a.lng, gsradius: '2000', gsnamespace: '6', gslimit: '30' });
     const f = (j.query?.geosearch || []).find(g => /\.(jpe?g|png|webp)$/i.test(g.title) && palabras.some(w => norm(g.title).includes(w)));
     if (f) titulo.set(a.id, f.title);
-    await espera(250);
+    await espera(1200);
   }
 
   const info = await infoArchivos([...new Set(titulo.values())]);
@@ -189,7 +205,7 @@ async function fotos(atractivos) {
 }
 
 // --- Principal -----------------------------------------------------------
-const els = await overpass();
+const els = (await overpass()).filter(e => { const lat = e.lat ?? e.center?.lat, lng = e.lon ?? e.center?.lon; return lat != null && dentro(lat, lng); });
 console.log('Elementos OSM:', els.length);
 
 const pueblos = els
@@ -243,6 +259,9 @@ const atractivos = lugares.filter(l => l.cat === 'atractivo');
 console.log('Buscando fotos para', atractivos.length, 'atractivos...');
 const conFoto = await fotos(atractivos);
 for (const a of atractivos) { delete a._wd; delete a._commons; delete a._image; }
+
+const corr = JSON.parse(await readFile(new URL('../data/correcciones.json', import.meta.url), 'utf8'));
+console.log('Correcciones aplicadas:', aplicarCorrecciones(lugares, corr));
 
 const resumen = {};
 lugares.forEach(l => resumen[l.cat] = (resumen[l.cat] || 0) + 1);
