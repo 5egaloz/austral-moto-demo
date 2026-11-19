@@ -192,6 +192,29 @@ section{padding:72px 0;scroll-margin-top:64px}
 .plan .precio small{font:500 1rem var(--body);color:var(--tinta-suave)}
 .plan ul{padding-left:20px;margin:0 0 20px}
 
+/* Qué ver */
+.ver{padding-top:24px}
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:34px 26px;margin-top:8px}
+.foto{margin:0;display:flex;flex-direction:column}
+.foto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;background:var(--linea);display:block}
+.foto h3{font-size:1.4rem;margin-top:12px}
+.foto .donde{font-size:.95rem;color:var(--tinta-suave);margin:2px 0 6px}
+.foto .credito{font-size:.78rem;color:var(--tinta-suave);margin:0 0 8px;line-height:1.35}
+.foto .credito a{color:var(--tinta-suave)}
+.link-mapa{align-self:flex-start;background:none;border:0;padding:0;font:700 1.02rem var(--cond);color:var(--lenga);text-decoration:underline;text-underline-offset:3px;cursor:pointer;text-align:left}
+.link-mapa:hover{color:var(--tinta)}
+.mas{margin:30px auto 0;display:block}
+.sin-foto{margin-top:40px;border-top:3px solid var(--tinta)}
+.sin-foto summary{cursor:pointer;padding:14px 0;font:700 1.3rem var(--cond)}
+.sin-foto ul{columns:3 240px;padding:0;margin:0 0 10px;list-style:none}
+.sin-foto li{break-inside:avoid;padding:4px 0}
+.sin-foto li span{color:var(--tinta-suave);font-size:.9rem}
+.buscar{font:400 1rem var(--body);padding:9px 12px;border:2px solid var(--tinta);border-radius:3px;min-width:200px;flex:1;max-width:320px}
+.cuenta{font:600 1.05rem var(--cond);color:var(--tinta-suave);margin:-8px 0 8px}
+.d-item .tel{font-size:.95rem}
+.d-item .link-mapa{font-size:.95rem;margin-top:2px}
+.leaflet-popup-content img{width:220px;height:150px;object-fit:cover;border-radius:3px;display:block;margin-bottom:6px}
+.leaflet-popup-content{font-family:var(--body)}
 footer{background:var(--asfalto);color:#aeb4ba;padding:40px 0;font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer .marca{color:#fff}
@@ -205,6 +228,7 @@ footer .marca{color:#fff}
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
     <nav id="nav">
       <a href="#tramos">Tramos</a>
+      <a href="#ver">Qué ver</a>
       <a href="#servicios">Bencina y talleres</a>
       <a href="#antes">Antes de venir</a>
       <a href="#comunidad">Comunidad</a>
@@ -248,20 +272,34 @@ footer .marca{color:#fff}
   </div>
 </section>
 
+<section class="ver" id="ver">
+  <div class="wrap">
+    <h2>Qué ver en el camino</h2>
+    <p class="intro">Miradores, cascadas, glaciares, termas y parques de Aysén. Toca "Ver en el mapa" para ubicarlo en la ruta.</p>
+    <div class="filtros" id="filtrosVer" role="group" aria-label="Filtrar lugares"></div>
+    <div class="galeria" id="galeria"><p class="vacio">Cargando lugares…</p></div>
+    <button class="btn btn-oscuro mas" id="masVer" hidden>Mostrar más lugares</button>
+    <details class="sin-foto" id="sinFoto" hidden><summary></summary><ul></ul></details>
+  </div>
+</section>
+
 <section class="servicios" id="servicios">
   <div class="wrap">
     <h2>Bencina, talleres y dónde dormir</h2>
-    <p class="intro">Lo que necesitas a lo largo de la ruta. Los alojamientos marcados tienen techo o patio cerrado para la moto.</p>
+    <p class="intro">Lo que necesitas a lo largo de la ruta. Bencineras, talleres, alojamientos y balsas de toda la región.</p>
     <div class="filtros" role="group" aria-label="Filtrar servicios">
       <button class="chip" data-tipo="todos" aria-pressed="true">Todo</button>
       <button class="chip" data-tipo="bencina" aria-pressed="false">Bencina</button>
       <button class="chip" data-tipo="taller" aria-pressed="false">Talleres y gomerías</button>
       <button class="chip" data-tipo="alojamiento" aria-pressed="false">Alojamiento</button>
       <button class="chip" data-tipo="balsa" aria-pressed="false">Balsas</button>
+      <input class="buscar" id="buscar" type="search" placeholder="Buscar por nombre" aria-label="Buscar servicio">
       <select id="selLocalidad" aria-label="Localidad"><option value="">Todas las localidades</option></select>
     </div>
-    <div class="dir" id="dir"></div>
-    <p class="nota" style="margin-top:22px">Datos de ejemplo para esta versión de prueba. Antes de publicar se verifica cada servicio.</p>
+    <p class="cuenta" id="cuenta" aria-live="polite"></p>
+    <div class="dir" id="dir"><p class="vacio">Cargando servicios…</p></div>
+    <button class="btn btn-oscuro mas" id="masDir" hidden>Mostrar más</button>
+    <p class="nota" style="margin-top:22px">Los horarios y teléfonos pueden cambiar: confirma antes de ir. ¿Falta tu negocio? <a href="#anuncia">Agrégalo gratis</a>.</p>
   </div>
 </section>
 
@@ -398,6 +436,7 @@ footer .marca{color:#fff}
   <div class="wrap">
     <div><a class="marca" href="#inicio"><span class="hito">7</span> Ruta 7 Moto</a><p style="margin-top:12px">Región de Aysén, Patagonia chilena.</p></div>
     <div><p>Coyhaique, Chile<br><a href="#consulta">Escríbenos</a></p></div>
+    <p style="flex-basis:100%;margin:8px 0 0;font-size:.85rem">Lugares: © colaboradores de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL). Fotos: <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, con su autor y licencia bajo cada una. <span id="actualizado"></span></p>
   </div>
 </footer>
 
@@ -438,26 +477,6 @@ const TRAMOS = [
   {n:'Puerto Ibáñez a Chile Chico (balsa)', km:0, ripio:0, sinB:0, dif:'facil', temp:'Todo el año', ojo:['Cruce del Lago General Carrera en barcaza, unas 2 horas y media','Reserva con anticipación en verano','Chile Chico es paso fronterizo a Los Antiguos, Argentina']},
 ];
 
-const SERVICIOS = [
-  {t:'bencina', n:'Bencinera de Chaitén', l:'Chaitén', d:'93, 95 y diésel. Cierra temprano los domingos.'},
-  {t:'bencina', n:'Bencinera de La Junta', l:'La Junta', d:'Abierta todos los días hasta las 21:00.'},
-  {t:'bencina', n:'Surtidor de Puyuhuapi', l:'Puyuhuapi', d:'Solo 93. Puede quedarse sin stock en enero.'},
-  {t:'bencina', n:'Bencinera de Coyhaique', l:'Coyhaique', d:'Varias en la ciudad. Último lugar seguro antes de Río Tranquilo.'},
-  {t:'bencina', n:'Bencinera de Río Tranquilo', l:'Puerto Río Tranquilo', d:'Una sola. Llega camión día por medio.'},
-  {t:'bencina', n:'Bencinera de Cochrane', l:'Cochrane', d:'Carga lleno y bidón: siguen 230 km sin bencina.'},
-  {t:'bencina', n:"Venta en bidones, Villa O'Higgins", l:"Villa O'Higgins", d:'Bencina en bidón, precio más alto. Pregunta en el almacén.'},
-  {t:'taller', n:'Taller de motos Coyhaique', l:'Coyhaique', d:'Mecánica general, cadenas y kits de arrastre.', dest:true},
-  {t:'taller', n:'Gomería del centro', l:'Coyhaique', d:'Neumáticos de moto en stock, parches y válvulas.'},
-  {t:'taller', n:'Gomería de La Junta', l:'La Junta', d:'Repara pinchazos. Neumáticos solo por encargo.'},
-  {t:'taller', n:'Mecánico de Cochrane', l:'Cochrane', d:'Soldadura y arreglos de emergencia.'},
-  {t:'alojamiento', n:'Hostal con galpón para motos', l:'Puyuhuapi', d:'Galpón techado y lavado de moto.', dest:true},
-  {t:'alojamiento', n:'Cabañas a la entrada', l:'Coyhaique', d:'Estacionamiento cerrado, desayuno temprano.'},
-  {t:'alojamiento', n:'Camping junto al río', l:'Villa Cerro Castillo', d:'Quinchos techados y duchas calientes.'},
-  {t:'alojamiento', n:'Hospedaje frente al lago', l:'Puerto Río Tranquilo', d:'Patio cerrado. Reserva en enero y febrero.'},
-  {t:'alojamiento', n:'Residencial del pueblo', l:"Villa O'Higgins", d:'Galpón para motos y secado de ropa.'},
-  {t:'balsa', n:'Balsa Puerto Yungay a Río Bravo', l:'Puerto Yungay', d:'Gratuita, unos 45 minutos. Revisa horarios antes de salir de Cochrane.'},
-  {t:'balsa', n:'Barcaza Puerto Ibáñez a Chile Chico', l:'Puerto Ibáñez', d:'Cruce del General Carrera. Reserva en temporada alta.'},
-];
 
 const ICO = {bencina:'B', taller:'T', alojamiento:'A', balsa:'≈'};
 const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -487,10 +506,7 @@ const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',
   el.addEventListener('click', e => {
     const b = e.target.closest('button[data-loc]');
     if (!b) return;
-    filtro.loc = b.dataset.loc;
-    document.getElementById('selLocalidad').value = filtro.loc;
-    pintarDir();
-    document.getElementById('servicios').scrollIntoView();
+    irALocalidad(b.dataset.loc);
   });
 })();
 
@@ -506,9 +522,10 @@ document.getElementById('listaTramos').innerHTML = TRAMOS.map((t, i) => {
 }).join('');
 
 // Mapa Leaflet
+let mapa = null;
 (function(){
   if (!window.L) return;
-  const m = L.map('mapa', {scrollWheelZoom:false}).setView([-45.7, -72.4], 6);
+  const m = mapa = L.map('mapa', {scrollWheelZoom:false}).setView([-45.7, -72.4], 6);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:12, attribution:'© OpenStreetMap'}).addTo(m);
   const ruta = L.polyline(PUEBLOS.map(p => [p.lat, p.lng]), {color:'#23272B', weight:5, opacity:.85}).addTo(m);
   m.fitBounds(ruta.getBounds(), {padding:[20, 20]});
@@ -521,24 +538,115 @@ document.getElementById('listaTramos').innerHTML = TRAMOS.map((t, i) => {
   });
 })();
 
-// Directorio
-const filtro = {tipo:'todos', loc:''};
+// Datos reales: data/lugares.json (lo genera scripts/actualizar-datos.mjs)
+const norm = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const filtro = {tipo:'todos', loc:'', q:''};
 const sel = document.getElementById('selLocalidad');
-[...new Set(SERVICIOS.map(s => s.l))].forEach(l => sel.insertAdjacentHTML('beforeend', '<option>'+esc(l)+'</option>'));
-function pintarDir(){
-  const lista = SERVICIOS
-    .filter(s => (filtro.tipo === 'todos' || s.t === filtro.tipo) && (!filtro.loc || s.l === filtro.loc))
-    .sort((a, b) => (b.dest?1:0) - (a.dest?1:0));
-  document.getElementById('dir').innerHTML = lista.length
-    ? lista.map(s => '<div class="d-item"><span class="d-ico ico-'+s.t+'" aria-hidden="true">'+ICO[s.t]+'</span><h3>'+esc(s.n)+(s.dest?'<span class="destacado">Destacado</span>':'')+'</h3><p><b>'+esc(s.l)+'</b></p><p>'+esc(s.d)+'</p></div>').join('')
-    : '<p class="vacio">No hay servicios de ese tipo en '+esc(filtro.loc)+'. Prueba con el pueblo anterior o el siguiente en la ruta.</p>';
+const PASO = 36;
+let LUGARES = [], SERV = [], VER = [], marcadores = {}, verMostrados = PASO, dirMostrados = PASO, verSub = 'todos';
+const COLOR = {bencina:'#F4C300', taller:'#23272B', alojamiento:'#2E4B3C', balsa:'#4FA3A5', atractivo:'#C8372D'};
+const CAPA = {bencina:'Bencina', taller:'Talleres', alojamiento:'Alojamiento', balsa:'Balsas', atractivo:'Qué ver'};
+
+function verEnMapa(id){
+  const mk = marcadores[id];
+  if (!mk || !mapa) return;
+  if (!mapa.hasLayer(mk)) mk.addTo(mapa);
+  document.getElementById('mapa').scrollIntoView({block:'center'});
+  mapa.setView(mk.getLatLng(), 11);
+  mk.openPopup();
 }
-document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
-  document.querySelectorAll('.chip').forEach(o => o.setAttribute('aria-pressed', o === c));
-  filtro.tipo = c.dataset.tipo; pintarDir();
+document.addEventListener('click', e => { const b = e.target.closest('[data-ver]'); if (b) verEnMapa(b.dataset.ver); });
+
+function irALocalidad(nombre){
+  const n = norm(nombre);
+  const op = [...sel.options].find(o => o.value && (norm(o.value) === n || norm(o.value).includes(n) || n.includes(norm(o.value))));
+  filtro.loc = op ? op.value : '';
+  sel.value = filtro.loc;
+  dirMostrados = PASO; pintarDir();
+  document.getElementById('servicios').scrollIntoView();
+}
+
+function pintarDir(){
+  const q = norm(filtro.q);
+  const lista = SERV.filter(s => (filtro.tipo === 'todos' || s.cat === filtro.tipo)
+    && (!filtro.loc || s.loc === filtro.loc)
+    && (!q || norm(s.n + ' ' + s.sub + ' ' + (s.loc||'')).includes(q)));
+  document.getElementById('cuenta').textContent = lista.length + (lista.length === 1 ? ' lugar' : ' lugares');
+  document.getElementById('dir').innerHTML = lista.length
+    ? lista.slice(0, dirMostrados).map(s => '<div class="d-item"><span class="d-ico ico-'+s.cat+'" aria-hidden="true">'+ICO[s.cat]+'</span>'
+      + '<h3>'+esc(s.n)+'</h3>'
+      + '<p><b>'+esc(s.sub)+'</b>'+(s.loc ? ' en '+esc(s.loc)+(s.kmLoc > 2 ? ' (a '+s.kmLoc+' km)' : '') : '')+'</p>'
+      + ((s.tel || s.horario) ? '<p>'+(s.tel ? '<a class="tel" href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a> ' : '')+(s.horario ? esc(s.horario) : '')+'</p>' : '')
+      + '<button class="link-mapa" data-ver="'+s.id+'">Ver en el mapa</button></div>').join('')
+    : '<p class="vacio">No hay lugares que coincidan'+(filtro.loc ? ' en '+esc(filtro.loc) : '')+'. Prueba con otra localidad o borra la búsqueda.</p>';
+  const mas = document.getElementById('masDir');
+  mas.hidden = lista.length <= dirMostrados;
+  mas.textContent = 'Mostrar más (quedan '+(lista.length - dirMostrados)+')';
+}
+
+function pintarVer(){
+  const conFoto = VER.filter(a => a.foto && (verSub === 'todos' || a.sub === verSub));
+  document.getElementById('galeria').innerHTML = conFoto.slice(0, verMostrados).map(a =>
+    '<figure class="foto"><img src="'+esc(a.foto.url)+'" alt="'+esc(a.n)+'" loading="lazy">'
+    + '<h3>'+esc(a.n)+'</h3><p class="donde">'+esc(a.sub)+(a.loc ? ', cerca de '+esc(a.loc) : '')+'</p>'
+    + '<p class="credito">Foto: <a href="'+esc(a.foto.fuente)+'" target="_blank" rel="noopener">'+esc(a.foto.autor)+'</a>, '+esc(a.foto.licencia)+'</p>'
+    + '<button class="link-mapa" data-ver="'+a.id+'">Ver en el mapa</button></figure>').join('')
+    || '<p class="vacio">No hay fotos para este tipo de lugar todavía.</p>';
+  const mas = document.getElementById('masVer');
+  mas.hidden = conFoto.length <= verMostrados;
+  const sin = VER.filter(a => !a.foto && (verSub === 'todos' || a.sub === verSub));
+  const det = document.getElementById('sinFoto');
+  det.hidden = !sin.length;
+  det.querySelector('summary').textContent = sin.length + ' lugares más, todavía sin foto';
+  det.querySelector('ul').innerHTML = sin.map(a => '<li><button class="link-mapa" data-ver="'+a.id+'">'+esc(a.n)+'</button> <span>'+esc(a.sub)+(a.loc ? ', '+esc(a.loc) : '')+'</span></li>').join('');
+}
+
+function cargarMapa(){
+  if (!mapa) return;
+  const capas = {};
+  LUGARES.forEach(l => {
+    const g = capas[l.cat] || (capas[l.cat] = L.layerGroup());
+    const mk = L.circleMarker([l.lat, l.lng], {radius: l.cat === 'atractivo' ? 6 : 5, color:'#fff', weight:1.5, fillColor:COLOR[l.cat], fillOpacity:1});
+    mk.bindPopup((l.foto ? '<img src="'+esc(l.foto.url)+'" alt="">' : '') + '<b>'+esc(l.n)+'</b><br>'+esc(l.sub)+(l.loc ? ', '+esc(l.loc) : '')+(l.tel ? '<br>'+esc(l.tel) : ''));
+    mk.addTo(g);
+    marcadores[l.id] = mk;
+  });
+  const overlays = {};
+  Object.keys(CAPA).forEach(k => { if (capas[k]) { overlays[CAPA[k]] = capas[k]; if (k !== 'alojamiento' && k !== 'taller') capas[k].addTo(mapa); } });
+  L.control.layers(null, overlays, {collapsed:false}).addTo(mapa);
+}
+
+fetch('data/lugares.json').then(r => r.json()).then(d => {
+  LUGARES = d.lugares;
+  SERV = LUGARES.filter(l => l.cat !== 'atractivo').sort((a, b) => a.n.localeCompare(b.n, 'es'));
+  const ORDEN = ['Glaciar','Parque o reserva','Cascada','Mirador','Termas','Atractivo','Cerro','Volcán','Cueva','Museo'];
+  VER = LUGARES.filter(l => l.cat === 'atractivo').sort((a, b) => (b.foto?1:0) - (a.foto?1:0) || ORDEN.indexOf(a.sub) - ORDEN.indexOf(b.sub));
+  [...new Set(SERV.map(s => s.loc).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'))
+    .forEach(l => sel.insertAdjacentHTML('beforeend', '<option>'+esc(l)+'</option>'));
+  const subs = ORDEN.filter(s => VER.some(a => a.sub === s));
+  document.getElementById('filtrosVer').innerHTML = '<button class="chip" data-sub="todos" aria-pressed="true">Todo ('+VER.length+')</button>'
+    + subs.map(s => '<button class="chip" data-sub="'+s+'" aria-pressed="false">'+s+' ('+VER.filter(a => a.sub === s).length+')</button>').join('');
+  document.getElementById('actualizado').textContent = 'Actualizado el '+d.generado.split('-').reverse().join('-')+'.';
+  cargarMapa(); pintarDir(); pintarVer();
+}).catch(err => {
+  console.error('[ruta7] datos', err);
+  document.getElementById('dir').innerHTML = document.getElementById('galeria').innerHTML =
+    '<p class="vacio">No se pudieron cargar los lugares. Recarga la página.</p>';
+});
+
+document.getElementById('filtrosVer').addEventListener('click', e => {
+  const c = e.target.closest('.chip'); if (!c) return;
+  document.querySelectorAll('#filtrosVer .chip').forEach(o => o.setAttribute('aria-pressed', o === c));
+  verSub = c.dataset.sub; verMostrados = PASO; pintarVer();
+});
+document.getElementById('masVer').addEventListener('click', () => { verMostrados += PASO; pintarVer(); });
+document.getElementById('masDir').addEventListener('click', () => { dirMostrados += PASO; pintarDir(); });
+document.querySelectorAll('#servicios .chip').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('#servicios .chip').forEach(o => o.setAttribute('aria-pressed', o === c));
+  filtro.tipo = c.dataset.tipo; dirMostrados = PASO; pintarDir();
 }));
-sel.addEventListener('change', () => { filtro.loc = sel.value; pintarDir(); });
-pintarDir();
+sel.addEventListener('change', () => { filtro.loc = sel.value; dirMostrados = PASO; pintarDir(); });
+document.getElementById('buscar').addEventListener('input', e => { filtro.q = e.target.value; dirMostrados = PASO; pintarDir(); });
 
 // Checklist
 const checks = document.querySelectorAll('#checklist input');
