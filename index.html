@@ -69,6 +69,21 @@ section{padding:72px 0;scroll-margin-top:64px}
 .btn-oscuro{background:var(--tinta);color:#fff}
 .btn-oscuro:hover{background:var(--lenga)}
 
+.portada-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+@media (max-width:900px){.portada-grid{grid-template-columns:1fr;gap:28px}}
+.portada-foto{margin:0}
+.portada-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block;background:var(--asfalto-2)}
+.portada-foto .credito{color:#8d949a;font-size:.78rem;margin-top:8px}
+.portada-foto .credito a{color:#8d949a}
+.credito{font-size:.78rem;color:var(--tinta-suave);line-height:1.35}
+.credito a{color:inherit}
+.t-foto{margin:0 0 14px}
+.t-foto img{width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:4px;display:block;background:var(--linea)}
+.t-foto .credito{margin-top:6px}
+.tour-foto{margin:-22px -22px 18px}
+.tour-foto img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:4px 4px 0 0;background:var(--linea)}
+.tour-foto .credito{padding:6px 22px 0}
+
 /* Mapa en franja */
 .franja-cab{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-top:56px;flex-wrap:wrap}
 .franja-cab p{margin:0;color:#c9cdd1;font-size:.95rem}
@@ -240,11 +255,15 @@ footer .marca{color:#fff}
 <main>
 <section class="portada" id="inicio">
   <div class="wrap">
+    <div class="portada-grid"><div>
     <h1>Carretera Austral en moto, sin quedarte seco entre Cochrane y O'Higgins</h1>
     <p class="bajada">Cerca de mil kilómetros de Chaitén a Villa O'Higgins, buena parte en ripio. Acá tienes dónde cargar, qué tramo te espera y quién te arregla la moto si algo falla.</p>
     <div class="acciones">
       <a class="btn btn-senal" href="#tramos">Ver los tramos</a>
       <a class="btn btn-borde" href="#tours">Tours guiados</a>
+    </div>
+    </div>
+    <figure class="portada-foto"><img data-foto="ruta.portada" alt="Carretera Austral de ripio con la cordillera nevada al fondo"><figcaption class="credito"></figcaption></figure>
     </div>
 
     <div class="franja-cab">
@@ -365,6 +384,7 @@ footer .marca{color:#fff}
     <p class="intro">Tours guiados desde Coyhaique con vehículo de apoyo, o arriendo de moto si vienes en avión.</p>
     <div class="tours-grid">
       <article class="tour">
+        <figure class="tour-foto"><img data-foto="c-capillas" alt="Capillas de Mármol en el Lago General Carrera" loading="lazy"><figcaption class="credito"></figcaption></figure>
         <div class="dias">3 días</div>
         <h3>Lago General Carrera</h3>
         <ul><li>Coyhaique, Cerro Castillo, Río Tranquilo y Chile Chico</li><li>Visita a las Capillas de Mármol</li><li>Balsa de vuelta a Puerto Ibáñez</li></ul>
@@ -372,6 +392,7 @@ footer .marca{color:#fff}
         <button class="btn btn-oscuro" data-tour="Lago General Carrera (3 días)">Consultar este tour</button>
       </article>
       <article class="tour principal">
+        <figure class="tour-foto"><img data-foto="c-tortel" alt="Pasarelas de Caleta Tortel" loading="lazy"><figcaption class="credito"></figcaption></figure>
         <div class="dias">7 días</div>
         <h3>Austral completa al sur</h3>
         <ul><li>De Coyhaique a Villa O'Higgins y vuelta</li><li>Caleta Tortel y la balsa de Puerto Yungay</li><li>Camioneta de apoyo con bencina, repuestos y equipaje</li></ul>
@@ -379,6 +400,7 @@ footer .marca{color:#fff}
         <button class="btn btn-oscuro" data-tour="Austral completa al sur (7 días)">Consultar este tour</button>
       </article>
       <article class="tour">
+        <figure class="tour-foto"><img data-foto="ruta.ruta3" alt="Carretera Austral entre bosques y montañas" loading="lazy"><figcaption class="credito"></figcaption></figure>
         <div class="dias">Por día</div>
         <h3>Arriendo de moto</h3>
         <ul><li>Motos trail de 300 a 700 cc preparadas para ripio</li><li>Maletas laterales, bidón y kit de pinchazo</li><li>Entrega en el aeropuerto de Balmaceda</li></ul>
@@ -469,12 +491,12 @@ const OTROS = [
 ];
 
 const TRAMOS = [
-  {n:'Chaitén a La Junta', km:150, ripio:5, sinB:150, dif:'facil', temp:'Nov a abril', ojo:['Pavimento casi completo, con desvíos por obras','Lluvia frecuente: el asfalto mojado resbala en las curvas del bosque']},
-  {n:'La Junta a Coyhaique', km:270, ripio:20, sinB:185, dif:'media', temp:'Nov a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando','Puyuhuapi es buena parada para dormir']},
-  {n:'Coyhaique a Puerto Río Tranquilo', km:220, ripio:45, sinB:125, dif:'media', temp:'Dic a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo con nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio']},
-  {n:'Río Tranquilo a Cochrane', km:110, ripio:95, sinB:110, dif:'media', temp:'Dic a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
-  {n:"Cochrane a Villa O'Higgins", km:230, ripio:100, sinB:230, dif:'dura', temp:'Dic a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa gratuita de Puerto Yungay a Río Bravo, pocos cruces al día','Camino angosto y con barro después de lluvia']},
-  {n:'Puerto Ibáñez a Chile Chico (balsa)', km:0, ripio:0, sinB:0, dif:'facil', temp:'Todo el año', ojo:['Cruce del Lago General Carrera en barcaza, unas 2 horas y media','Reserva con anticipación en verano','Chile Chico es paso fronterizo a Los Antiguos, Argentina']},
+  {n:'Chaitén a La Junta', foto:'c-chaiten', km:150, ripio:5, sinB:150, dif:'facil', temp:'Nov a abril', ojo:['Pavimento casi completo, con desvíos por obras','Lluvia frecuente: el asfalto mojado resbala en las curvas del bosque']},
+  {n:'La Junta a Coyhaique', foto:'c-queulat', km:270, ripio:20, sinB:185, dif:'media', temp:'Nov a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando','Puyuhuapi es buena parada para dormir']},
+  {n:'Coyhaique a Puerto Río Tranquilo', foto:'c-castillo', km:220, ripio:45, sinB:125, dif:'media', temp:'Dic a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo con nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio']},
+  {n:'Río Tranquilo a Cochrane', foto:'c-bertrand', km:110, ripio:95, sinB:110, dif:'media', temp:'Dic a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
+  {n:"Cochrane a Villa O'Higgins", foto:'c-yungay', km:230, ripio:100, sinB:230, dif:'dura', temp:'Dic a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa gratuita de Puerto Yungay a Río Bravo, pocos cruces al día','Camino angosto y con barro después de lluvia']},
+  {n:'Puerto Ibáñez a Chile Chico (balsa)', foto:'c-carrera', km:0, ripio:0, sinB:0, dif:'facil', temp:'Todo el año', ojo:['Cruce del Lago General Carrera en barcaza, unas 2 horas y media','Reserva con anticipación en verano','Chile Chico es paso fronterizo a Los Antiguos, Argentina']},
 ];
 
 
@@ -517,7 +539,7 @@ document.getElementById('listaTramos').innerHTML = TRAMOS.map((t, i) => {
     ? '<span><b>'+t.km+' km</b></span><span><b>'+t.ripio+'%</b> ripio</span><span>Máx. sin bencina <b>'+t.sinB+' km</b></span><span>'+t.temp+'</span>'
     : '<span><b>Cruce en barcaza</b></span><span>'+t.temp+'</span>';
   return '<details class="t-item"'+(i===4?' open':'')+'><summary><h3>'+esc(t.n)+'</h3><span class="dif '+t.dif+'">'+difTxt+'</span><div class="t-datos">'+datos+'</div></summary>'
-    + '<div class="t-cuerpo">'+(t.km?'<div class="barra-ripio" title="'+t.ripio+'% ripio"><span style="width:'+t.ripio+'%"></span></div>':'')
+    + '<div class="t-cuerpo"><figure class="t-foto"><img data-foto="'+t.foto+'" alt="" loading="lazy"><figcaption class="credito"></figcaption></figure>'+(t.km?'<div class="barra-ripio" title="'+t.ripio+'% ripio"><span style="width:'+t.ripio+'%"></span></div>':'')
     + '<ul>'+t.ojo.map(o => '<li>'+esc(o)+'</li>').join('')+'</ul></div></details>';
 }).join('');
 
@@ -588,7 +610,7 @@ function pintarVer(){
   const conFoto = VER.filter(a => a.foto && (verSub === 'todos' || a.sub === verSub));
   document.getElementById('galeria').innerHTML = conFoto.slice(0, verMostrados).map(a =>
     '<figure class="foto"><img src="'+esc(a.foto.url)+'" alt="'+esc(a.n)+'" loading="lazy">'
-    + '<h3>'+esc(a.n)+'</h3><p class="donde">'+esc(a.sub)+(a.loc ? ', cerca de '+esc(a.loc) : '')+'</p>'
+    + '<h3>'+esc(a.n)+'</h3><p class="donde">'+esc(a.desc || a.sub)+(a.loc ? ', cerca de '+esc(a.loc) : '')+'</p>'
     + '<p class="credito">Foto: <a href="'+esc(a.foto.fuente)+'" target="_blank" rel="noopener">'+esc(a.foto.autor)+'</a>, '+esc(a.foto.licencia)+'</p>'
     + '<button class="link-mapa" data-ver="'+a.id+'">Ver en el mapa</button></figure>').join('')
     || '<p class="vacio">No hay fotos para este tipo de lugar todavía.</p>';
@@ -616,17 +638,33 @@ function cargarMapa(){
   L.control.layers(null, overlays, {collapsed:false}).addTo(mapa);
 }
 
-fetch('data/lugares.json').then(r => r.json()).then(d => {
-  LUGARES = d.lugares;
+function ponerFoto(img, f){
+  if (!f) { img.closest('figure').remove(); return; }
+  img.src = f.url;
+  const cap = img.nextElementSibling;
+  if (cap) cap.innerHTML = 'Foto: <a href="'+esc(f.fuente)+'" target="_blank" rel="noopener">'+esc(f.autor)+'</a>, '+esc(f.licencia);
+}
+
+Promise.all([
+  fetch('data/fotos.json').then(r => r.json()),
+  fetch('data/lugares.json').then(r => r.json()).catch(() => ({lugares:[], generado:''})),
+]).then(([F, d]) => {
+  const porId = {};
+  F.lugares.forEach(l => porId[l.id] = l.foto);
+  Object.entries(F.ruta).forEach(([k, f]) => porId['ruta.'+k] = f);
+  document.querySelectorAll('img[data-foto]').forEach(img => ponerFoto(img, porId[img.dataset.foto]));
+  const destacados = F.lugares.filter(l => l.lat != null).map(l => ({...l, cat:'atractivo', sub:l.tipo, dest:true}));
+  const nombres = new Set(destacados.map(l => norm(l.n)));
+  LUGARES = destacados.concat(d.lugares.filter(l => !(l.cat === 'atractivo' && nombres.has(norm(l.n)))));
   SERV = LUGARES.filter(l => l.cat !== 'atractivo').sort((a, b) => a.n.localeCompare(b.n, 'es'));
-  const ORDEN = ['Glaciar','Parque o reserva','Cascada','Mirador','Termas','Atractivo','Cerro','Volcán','Cueva','Museo'];
-  VER = LUGARES.filter(l => l.cat === 'atractivo').sort((a, b) => (b.foto?1:0) - (a.foto?1:0) || ORDEN.indexOf(a.sub) - ORDEN.indexOf(b.sub));
+  const ORDEN = ['Glaciar','Lago','Parque','Pueblo','Río','Volcán','Paso','Balsa','Parque o reserva','Cascada','Mirador','Termas','Atractivo','Cerro','Cueva','Museo'];
+  VER = LUGARES.filter(l => l.cat === 'atractivo').sort((a, b) => (b.dest?1:0) - (a.dest?1:0) || (b.foto?1:0) - (a.foto?1:0) || ORDEN.indexOf(a.sub) - ORDEN.indexOf(b.sub));
   [...new Set(SERV.map(s => s.loc).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'))
     .forEach(l => sel.insertAdjacentHTML('beforeend', '<option>'+esc(l)+'</option>'));
   const subs = ORDEN.filter(s => VER.some(a => a.sub === s));
   document.getElementById('filtrosVer').innerHTML = '<button class="chip" data-sub="todos" aria-pressed="true">Todo ('+VER.length+')</button>'
     + subs.map(s => '<button class="chip" data-sub="'+s+'" aria-pressed="false">'+s+' ('+VER.filter(a => a.sub === s).length+')</button>').join('');
-  document.getElementById('actualizado').textContent = 'Actualizado el '+d.generado.split('-').reverse().join('-')+'.';
+  if (d.generado) document.getElementById('actualizado').textContent = 'Actualizado el '+d.generado.split('-').reverse().join('-')+'.';
   cargarMapa(); pintarDir(); pintarVer();
 }).catch(err => {
   console.error('[ruta7] datos', err);

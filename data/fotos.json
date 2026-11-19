@@ -1,0 +1,309 @@
+{
+ "lugares": [
+  {
+   "id": "c-capillas",
+   "n": "Capillas de Mármol",
+   "tipo": "Lago",
+   "desc": "Lago General Carrera",
+   "loc": "Puerto Río Tranquilo",
+   "lat": -46.648,
+   "lng": -72.617,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Capillas_de_Marmol_-_Puerto_Tranquilo_%283582878935%29.jpg/1280px-Capillas_de_Marmol_-_Puerto_Tranquilo_%283582878935%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Daniel P. Gauer from Porto Alegre, Brasil",
+    "licencia": "CC BY 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Capillas_de_Marmol_-_Puerto_Tranquilo_(3582878935).jpg"
+   }
+  },
+  {
+   "id": "c-queulat",
+   "n": "Ventisquero Colgante",
+   "tipo": "Glaciar",
+   "desc": "Parque Nacional Queulat",
+   "loc": "Puyuhuapi",
+   "lat": -44.465,
+   "lng": -72.54,
+   "foto": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Ventisquero_colgante_Queulat._Parque_nacional_Queulat_%28Chile%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "autor": "Huincul",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Ventisquero_colgante_Queulat._Parque_nacional_Queulat_(Chile).jpg"
+   }
+  },
+  {
+   "id": "c-castillo",
+   "n": "Cerro Castillo",
+   "tipo": "Parque",
+   "desc": "Parque Nacional Cerro Castillo",
+   "loc": "Villa Cerro Castillo",
+   "lat": -46.06,
+   "lng": -72.16,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Cerro_Castillo%2C_Ays%C3%A9n.JPG/1280px-Cerro_Castillo%2C_Ays%C3%A9n.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Roberto Araya Barckhahn",
+    "licencia": "CC BY-SA 3.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Cerro_Castillo,_Ays%C3%A9n.JPG"
+   }
+  },
+  {
+   "id": "c-tortel",
+   "n": "Caleta Tortel",
+   "tipo": "Pueblo",
+   "desc": "Pueblo de pasarelas",
+   "loc": "Caleta Tortel",
+   "lat": -47.797,
+   "lng": -73.535,
+   "foto": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Caleta_Tortel_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "autor": "Valerie Beraud",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Caleta_Tortel_1.JPG"
+   }
+  },
+  {
+   "id": "c-baker",
+   "n": "Río Baker",
+   "tipo": "Río",
+   "desc": "El río más caudaloso de Chile",
+   "loc": "Cochrane",
+   "lat": -47.1,
+   "lng": -72.75,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/R%C3%ADo_Baker_en_confluencia_con_El_Salto%2C_Ays%C3%A9n.JPG/1280px-R%C3%ADo_Baker_en_confluencia_con_El_Salto%2C_Ays%C3%A9n.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Roberto Araya Barckhahn",
+    "licencia": "CC BY-SA 3.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Baker_en_confluencia_con_El_Salto,_Ays%C3%A9n.JPG"
+   }
+  },
+  {
+   "id": "c-carrera",
+   "n": "Lago General Carrera",
+   "tipo": "Lago",
+   "desc": "El lago más grande de Chile",
+   "loc": "Chile Chico",
+   "lat": -46.5,
+   "lng": -72.3,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Lago_General_Carrera_%283583690334%29.jpg/1280px-Lago_General_Carrera_%283583690334%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Daniel P. Gauer from Porto Alegre, Brasil",
+    "licencia": "CC BY 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Lago_General_Carrera_(3583690334).jpg"
+   }
+  },
+  {
+   "id": "c-exploradores",
+   "n": "Glaciar Exploradores",
+   "tipo": "Glaciar",
+   "desc": "Campo de Hielo Norte",
+   "loc": "Puerto Río Tranquilo",
+   "lat": -46.5,
+   "lng": -73.18,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Glaciar_Exploradores.jpg/1280px-Glaciar_Exploradores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Felipe Cancino",
+    "licencia": "CC BY-SA 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Glaciar_Exploradores.jpg"
+   }
+  },
+  {
+   "id": "c-sanrafael",
+   "n": "Laguna San Rafael",
+   "tipo": "Glaciar",
+   "desc": "Parque Nacional Laguna San Rafael",
+   "loc": "Puerto Aysén",
+   "lat": -46.68,
+   "lng": -73.85,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Glaciar_San_Rafael_y_t%C3%A9mpano_en_la_laguna.jpg/1280px-Glaciar_San_Rafael_y_t%C3%A9mpano_en_la_laguna.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Javiercamposg7",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Glaciar_San_Rafael_y_t%C3%A9mpano_en_la_laguna.jpg"
+   }
+  },
+  {
+   "id": "c-puyuhuapi",
+   "n": "Puyuhuapi",
+   "tipo": "Pueblo",
+   "desc": "Pueblo junto al fiordo",
+   "loc": "Puyuhuapi",
+   "lat": -44.326,
+   "lng": -72.557,
+   "foto": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Puerto_Puyuhuapi_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "autor": "Romigraphy",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Puerto_Puyuhuapi_02.jpg"
+   }
+  },
+  {
+   "id": "c-chacabuco",
+   "n": "Valle Chacabuco",
+   "tipo": "Parque",
+   "desc": "Parque Nacional Patagonia",
+   "loc": "Cochrane",
+   "lat": -47.13,
+   "lng": -72.48,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Guanacos_in_Chacabuco_valley_Chilean_Patagonia.jpg/1280px-Guanacos_in_Chacabuco_valley_Chilean_Patagonia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "ZedPlusIxe",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Guanacos_in_Chacabuco_valley_Chilean_Patagonia.jpg"
+   }
+  },
+  {
+   "id": "c-jeinimeni",
+   "n": "Reserva Nacional Lago Jeinimeni",
+   "tipo": "Parque",
+   "desc": "Lagunas y estepa",
+   "loc": "Chile Chico",
+   "lat": -46.85,
+   "lng": -72,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Jeinimeni_Lago.jpg/1280px-Jeinimeni_Lago.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Mario Otárola Alfaro",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Jeinimeni_Lago.jpg"
+   }
+  },
+  {
+   "id": "c-bertrand",
+   "n": "Lago Bertrand",
+   "tipo": "Lago",
+   "desc": "Agua turquesa",
+   "loc": "Puerto Bertrand",
+   "lat": -46.95,
+   "lng": -72.8,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Puente_En_Lago_Bertrand_%28260731065%29.jpeg/1280px-Puente_En_Lago_Bertrand_%28260731065%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Camila Eyzaguirre",
+    "licencia": "CC BY-SA 3.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Puente_En_Lago_Bertrand_(260731065).jpeg"
+   }
+  },
+  {
+   "id": "c-ohiggins",
+   "n": "Villa O'Higgins",
+   "tipo": "Pueblo",
+   "desc": "Fin de la Carretera Austral",
+   "loc": "Villa O'Higgins",
+   "lat": -48.467,
+   "lng": -72.56,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Villa_O%27Higgins_3.jpg/1280px-Villa_O%27Higgins_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "betoscopio",
+    "licencia": "CC BY-SA 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Villa_O%27Higgins_3.jpg"
+   }
+  },
+  {
+   "id": "c-coyhaique",
+   "n": "Coyhaique",
+   "tipo": "Pueblo",
+   "desc": "Capital regional",
+   "loc": "Coyhaique",
+   "lat": -45.571,
+   "lng": -72.068,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Coyhaique_desde_el_Cinchao_-_panor%C3%A1mica.jpg/1280px-Coyhaique_desde_el_Cinchao_-_panor%C3%A1mica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Lin linao",
+    "licencia": "CC BY-SA 4.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Coyhaique_desde_el_Cinchao_-_panor%C3%A1mica.jpg"
+   }
+  },
+  {
+   "id": "c-simpson",
+   "n": "Valle del río Simpson",
+   "tipo": "Río",
+   "desc": "Reserva Nacional Río Simpson",
+   "loc": "Coyhaique",
+   "lat": -45.5,
+   "lng": -72.3,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/R%C3%ADo_Simpson_en_Coyhaique.jpg/1280px-R%C3%ADo_Simpson_en_Coyhaique.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Lin linao",
+    "licencia": "CC BY-SA 3.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Simpson_en_Coyhaique.jpg"
+   }
+  },
+  {
+   "id": "c-pumalin",
+   "n": "Parque Pumalín",
+   "tipo": "Parque",
+   "desc": "Bosque de alerces y volcán Chaitén",
+   "loc": "Chaitén",
+   "lat": -42.85,
+   "lng": -72.6,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Waterfalls_in_Pumalin_Park.jpg/1280px-Waterfalls_in_Pumalin_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Bas Wallet",
+    "licencia": "CC BY 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Waterfalls_in_Pumalin_Park.jpg"
+   }
+  },
+  {
+   "id": "c-chaiten",
+   "n": "Volcán Chaitén",
+   "tipo": "Volcán",
+   "desc": "Parque Pumalín",
+   "loc": "Chaitén",
+   "lat": -42.83,
+   "lng": -72.65,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Volc%C3%A1n_Chait%C3%A9n_2.jpg/1280px-Volc%C3%A1n_Chait%C3%A9n_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Sam Beebe",
+    "licencia": "CC BY 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Volc%C3%A1n_Chait%C3%A9n_2.jpg"
+   }
+  },
+  {
+   "id": "c-yungay",
+   "n": "Balsa de Puerto Yungay",
+   "tipo": "Balsa",
+   "desc": "Cruce a Río Bravo",
+   "loc": "Puerto Yungay",
+   "lat": -47.962,
+   "lng": -73.383,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Ferry_at_Puerto_Yungay_%283259916857%29.jpg/1280px-Ferry_at_Puerto_Yungay_%283259916857%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Jason Hollinger",
+    "licencia": "CC BY 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:Ferry_at_Puerto_Yungay_(3259916857).jpg"
+   }
+  },
+  {
+   "id": "c-roballos",
+   "n": "Paso Roballos",
+   "tipo": "Paso",
+   "desc": "Paso fronterizo de ripio",
+   "loc": "Cochrane",
+   "lat": -47.15,
+   "lng": -71.86,
+   "foto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/View_from_Chile-Argentina_Border%2C_Paso_Roballos_%286952701190%29.jpg/1280px-View_from_Chile-Argentina_Border%2C_Paso_Roballos_%286952701190%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "autor": "Christoph Strässler from Oberdorf BL, Schweiz",
+    "licencia": "CC BY-SA 2.0",
+    "fuente": "https://commons.wikimedia.org/wiki/File:View_from_Chile-Argentina_Border,_Paso_Roballos_(6952701190).jpg"
+   }
+  }
+ ],
+ "ruta": {
+  "portada": {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Carretera_Austral_-_Leones.JPG/1280px-Carretera_Austral_-_Leones.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Rakela",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Carretera_Austral_-_Leones.JPG"
+  },
+  "ruta2": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Carretera_Austral%2C_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "autor": "Romigraphy",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Carretera_Austral,_2013.jpg"
+  },
+  "ruta3": {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Carretera_Austral_%28255633637%29.jpeg/1280px-Carretera_Austral_%28255633637%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Camila Eyzaguirre",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Carretera_Austral_(255633637).jpeg"
+  }
+ }
+}
