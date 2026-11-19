@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruta 7 Moto: la Carretera Austral en moto</title>
+<meta name="description" content="Dónde cargar bencina, qué tramos son ripio, talleres, alojamiento y tours guiados para recorrer la Carretera Austral en moto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --asfalto:#23272B;
+  --asfalto-2:#2E3338;
+  --senal:#F4C300;
+  --lenga:#2E4B3C;
+  --glaciar:#4FA3A5;
+  --ripio:#9A9284;
+  --alerta:#C8372D;
+  --papel:#F3F4F1;
+  --linea:#D6D8D2;
+  --tinta:#1D2124;
+  --tinta-suave:#4A5056;
+  --cond:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --body:"Barlow", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 1.0625rem/1.55 var(--body)}
+h1,h2,h3{font-family:var(--cond);line-height:1.02;margin:0;letter-spacing:-.005em}
+h2{font-size:clamp(2.1rem,4.6vw,3.2rem);font-weight:800}
+h3{font-size:1.45rem;font-weight:700}
+p{margin:0 0 1em;max-width:66ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--senal);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;scroll-margin-top:64px}
+.intro{color:var(--tinta-suave);margin-top:12px;font-size:1.1rem}
+.nota{font-size:.88rem;color:var(--tinta-suave)}
+
+/* Cabecera */
+.top{background:var(--asfalto);color:#fff;position:sticky;top:0;z-index:1000;border-bottom:4px solid var(--senal)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.45rem/1 var(--cond)}
+/* avoid-ai-design-ignore: K4 (hito kilométrico, no tarjeta) */
+.hito{display:inline-grid;place-items:center;width:30px;height:38px;background:#fff;color:var(--tinta);border-radius:3px 3px 0 0;font:800 1.2rem/1 var(--cond);border-top:7px solid var(--senal)}
+.top nav{display:flex;gap:22px}
+.top nav a{text-decoration:none;font:600 1.05rem/1 var(--cond);color:#d9dcdf}
+.top nav a:hover{color:var(--senal)}
+.menu-btn{display:none;background:none;border:2px solid #fff;color:#fff;font:600 1rem var(--cond);padding:6px 12px;border-radius:3px}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .top nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--asfalto);flex-direction:column;padding:16px 20px 22px;gap:16px}
+  .top nav.abierto{display:flex}
+}
+
+/* Portada */
+.portada{background:var(--asfalto);color:#fff;padding:56px 0 0;overflow:hidden}
+.portada h1{font-size:clamp(2.6rem,7.4vw,5.6rem);font-weight:800;max-width:15ch}
+.portada .bajada{font-size:1.2rem;color:#c9cdd1;max-width:52ch;margin:22px 0 28px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 22px;border-radius:3px;font:700 1.15rem/1 var(--cond);text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-senal{background:var(--senal);color:var(--tinta)}
+.btn-senal:hover{background:#ffd52e}
+.btn-borde{border-color:#fff;color:#fff;background:transparent}
+.btn-borde:hover{background:#fff;color:var(--tinta)}
+.btn-oscuro{background:var(--tinta);color:#fff}
+.btn-oscuro:hover{background:var(--lenga)}
+
+/* Mapa en franja */
+.franja-cab{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-top:56px;flex-wrap:wrap}
+.franja-cab p{margin:0;color:#c9cdd1;font-size:.95rem}
+.leyenda{display:flex;gap:18px;font-size:.9rem;color:#c9cdd1;flex-wrap:wrap}
+.leyenda span{display:inline-flex;align-items:center;gap:7px}
+.leyenda i{display:inline-block;width:22px;height:6px;border-radius:2px}
+.franja-scroll{overflow-x:auto;padding:12px 0 30px;scrollbar-color:var(--ripio) transparent}
+.franja{position:relative;height:250px;margin:0 20px}
+.camino{position:absolute;left:0;right:0;top:122px;height:10px;background:#5b6167;border-radius:5px}
+.tramo{position:absolute;top:122px;height:10px;border-radius:5px}
+.tramo.ok{background:var(--glaciar)}
+.tramo.largo{background:var(--alerta)}
+.tramo-etq{position:absolute;top:140px;transform:translateX(-50%);font:700 .95rem/1.1 var(--cond);color:#ff8b80;white-space:nowrap;text-align:center}
+.parada{position:absolute;top:0;height:250px;width:0}
+.parada button{position:absolute;left:0;transform:translateX(-50%);background:none;border:0;color:#fff;cursor:pointer;padding:4px;text-align:center;white-space:nowrap;font-family:var(--body)}
+.parada .nombre{display:block;font:700 1.08rem/1.05 var(--cond)}
+.parada .km{display:block;font-size:.8rem;color:#aeb4ba}
+.parada.arriba button{bottom:142px}
+.parada.abajo button{top:170px}
+.parada button:hover .nombre{color:var(--senal)}
+.punto{position:absolute;top:118px;left:0;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:var(--asfalto);border:3px solid #fff}
+.punto.bencina{background:var(--senal);border-color:var(--senal)}
+.punto.balsa{border-radius:3px;background:var(--glaciar);border-color:#fff}
+.palito{position:absolute;left:0;width:1px;background:#5b6167}
+.parada.arriba .palito{top:96px;height:22px}
+.parada.abajo .palito{top:136px;height:30px}
+
+/* Tramos */
+.tramos-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;margin-top:36px;align-items:start}
+@media (max-width:960px){.tramos-grid{grid-template-columns:1fr}}
+#mapa{height:560px;border-radius:4px;border:1px solid var(--linea);z-index:1}
+@media (max-width:960px){#mapa{height:380px}}
+.lista-tramos{border-top:3px solid var(--tinta)}
+.t-item{border-bottom:1px solid var(--linea)}
+.t-item summary{list-style:none;cursor:pointer;padding:16px 0;display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:baseline}
+.t-item summary::-webkit-details-marker{display:none}
+.t-item summary h3{font-size:1.5rem}
+.t-item summary .dif{font:700 .95rem/1 var(--cond);padding:5px 9px;border-radius:3px}
+.dif.facil{background:#dbe9df;color:var(--lenga)}
+.dif.media{background:#fbecb0;color:#6b5400}
+.dif.dura{background:#f4d2cf;color:#8a1f17}
+.t-datos{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 18px;color:var(--tinta-suave);font-size:.95rem}
+.t-datos b{color:var(--tinta);font-weight:600}
+.t-item[open] summary h3{color:var(--lenga)}
+.t-cuerpo{padding:0 0 18px}
+.t-cuerpo ul{margin:0;padding-left:20px}
+.t-cuerpo li{margin-bottom:6px}
+.barra-ripio{height:8px;background:#e3e1db;border-radius:4px;overflow:hidden;margin:4px 0 14px;max-width:340px}
+.barra-ripio span{display:block;height:100%;background:var(--ripio)}
+
+/* Servicios */
+.servicios{background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.filtros{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:30px 0 22px}
+.chip{border:2px solid var(--tinta);background:transparent;padding:8px 14px;border-radius:3px;font:600 1rem/1 var(--cond);cursor:pointer;color:var(--tinta)}
+.chip[aria-pressed="true"]{background:var(--tinta);color:#fff}
+.filtros select{font:600 1rem var(--cond);padding:8px 12px;border:2px solid var(--tinta);border-radius:3px;background:#fff;color:var(--tinta);margin-left:auto}
+@media (max-width:640px){.filtros select{margin-left:0;width:100%}}
+.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 36px}
+.d-item{padding:16px 0;border-bottom:1px solid var(--linea);display:grid;grid-template-columns:40px 1fr;gap:4px 12px}
+.d-ico{grid-row:1/4;width:40px;height:40px;border-radius:3px;display:grid;place-items:center;font:800 1.1rem var(--cond)}
+.ico-bencina{background:var(--senal);color:var(--tinta)}
+.ico-taller{background:var(--tinta);color:#fff}
+.ico-alojamiento{background:var(--lenga);color:#fff}
+.ico-balsa{background:var(--glaciar);color:#fff}
+.d-item h3{font-size:1.25rem}
+.d-item p{margin:0;font-size:.95rem;color:var(--tinta-suave)}
+.d-item .destacado{font:700 .82rem/1 var(--cond);background:var(--senal);padding:3px 7px;border-radius:2px;margin-left:6px;vertical-align:2px}
+.vacio{padding:28px 0;color:var(--tinta-suave)}
+
+/* Antes de venir */
+.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px 40px;margin-top:34px}
+.check-grid h3{border-bottom:3px solid var(--senal);padding-bottom:6px;margin-bottom:10px;display:inline-block}
+.check-grid label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+.check-grid input{width:20px;height:20px;margin-top:3px;accent-color:var(--lenga);flex:none}
+.check-grid input:checked + span{color:var(--tinta-suave);text-decoration:line-through}
+.contador{font:700 1.2rem var(--cond);margin-top:26px}
+
+/* Comunidad */
+.comunidad{background:var(--lenga);color:#fff}
+.comunidad .intro{color:#cfdcd4}
+.com-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;margin-top:36px}
+@media (max-width:900px){.com-grid{grid-template-columns:1fr}}
+.reporte{padding:0 0 16px;margin-bottom:16px;border-bottom:1px solid #4a6656}
+.reporte .quien{font:600 1rem var(--cond);color:var(--senal);margin-bottom:4px}
+.reporte p{margin:0}
+.rodada{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid #4a6656}
+.fecha{background:#fff;color:var(--tinta);text-align:center;border-radius:3px;padding:6px 0;font-family:var(--cond)}
+.fecha b{display:block;font-size:1.7rem;line-height:1}
+.fecha span{font-size:.9rem;font-weight:600}
+.rodada h3{font-size:1.25rem}
+.rodada p{margin:2px 0 0;color:#cfdcd4;font-size:.95rem}
+.comunidad .btn{margin-top:24px}
+
+/* Tours */
+.tours-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:36px}
+.tour{background:#fff;border:1px solid var(--linea);border-radius:4px;padding:22px;display:flex;flex-direction:column}
+.tour.principal{border:2px solid var(--tinta);box-shadow:6px 6px 0 var(--senal)}
+.tour .dias{font:700 1.05rem var(--cond);color:var(--tinta-suave)}
+.tour h3{font-size:1.75rem;margin:4px 0 10px}
+.tour ul{padding-left:20px;margin:0 0 18px;color:var(--tinta-suave)}
+.tour .precio{margin-top:auto;font:800 1.9rem/1 var(--cond)}
+.tour .precio small{font:500 .95rem var(--body);color:var(--tinta-suave)}
+.tour button{margin-top:16px}
+
+.consulta{margin-top:48px;display:grid;grid-template-columns:1fr 1.3fr;gap:40px;background:var(--asfalto);color:#fff;padding:36px;border-radius:4px}
+@media (max-width:860px){.consulta{grid-template-columns:1fr;padding:24px}}
+.consulta p{color:#c9cdd1}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .full{grid-column:1/-1}
+@media (max-width:560px){.form{grid-template-columns:1fr}}
+.form label{display:block;font:600 1rem var(--cond);margin-bottom:5px;color:#e4e6e8}
+.form input,.form select,.form textarea{width:100%;padding:11px 12px;border-radius:3px;border:1px solid #555c62;background:var(--asfalto-2);color:#fff;font:400 1rem var(--body)}
+.form textarea{min-height:84px;resize:vertical}
+
+/* Anuncia */
+.planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:34px;border:2px solid var(--tinta);border-radius:4px;overflow:hidden}
+.plan{padding:26px;background:#fff}
+.plan + .plan{border-left:2px solid var(--tinta)}
+@media (max-width:620px){.plan + .plan{border-left:0;border-top:2px solid var(--tinta)}}
+.plan .precio{font:800 2.2rem/1 var(--cond);margin:10px 0 14px}
+.plan .precio small{font:500 1rem var(--body);color:var(--tinta-suave)}
+.plan ul{padding-left:20px;margin:0 0 20px}
+
+footer{background:var(--asfalto);color:#aeb4ba;padding:40px 0;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer .marca{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="marca" href="#inicio"><span class="hito">7</span> Ruta 7 Moto</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
+    <nav id="nav">
+      <a href="#tramos">Tramos</a>
+      <a href="#servicios">Bencina y talleres</a>
+      <a href="#antes">Antes de venir</a>
+      <a href="#comunidad">Comunidad</a>
+      <a href="#tours">Tours</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="portada" id="inicio">
+  <div class="wrap">
+    <h1>Carretera Austral en moto, sin quedarte seco entre Cochrane y O'Higgins</h1>
+    <p class="bajada">Cerca de mil kilómetros de Chaitén a Villa O'Higgins, buena parte en ripio. Acá tienes dónde cargar, qué tramo te espera y quién te arregla la moto si algo falla.</p>
+    <div class="acciones">
+      <a class="btn btn-senal" href="#tramos">Ver los tramos</a>
+      <a class="btn btn-borde" href="#tours">Tours guiados</a>
+    </div>
+
+    <div class="franja-cab">
+      <p>Ruta 7, de norte a sur. Toca un pueblo para ver sus servicios.</p>
+      <div class="leyenda">
+        <span><i style="background:var(--senal);width:12px;height:12px;border-radius:50%"></i>Bencina</span>
+        <span><i style="background:var(--glaciar)"></i>Tramo con bencina cerca</span>
+        <span><i style="background:var(--alerta)"></i>Más de 200 km sin bencina</span>
+      </div>
+    </div>
+  </div>
+  <div class="franja-scroll">
+    <div class="franja" id="franja" aria-label="Mapa lineal de la Ruta 7 con bencineras"></div>
+  </div>
+</section>
+
+<section id="tramos">
+  <div class="wrap">
+    <h2>Los tramos, uno por uno</h2>
+    <p class="intro">Distancias y porcentaje de ripio aproximados. El camino cambia cada temporada: revisa los reportes de la comunidad antes de salir.</p>
+    <div class="tramos-grid">
+      <div class="lista-tramos" id="listaTramos"></div>
+      <div id="mapa" role="region" aria-label="Mapa de la Carretera Austral"></div>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <h2>Bencina, talleres y dónde dormir</h2>
+    <p class="intro">Lo que necesitas a lo largo de la ruta. Los alojamientos marcados tienen techo o patio cerrado para la moto.</p>
+    <div class="filtros" role="group" aria-label="Filtrar servicios">
+      <button class="chip" data-tipo="todos" aria-pressed="true">Todo</button>
+      <button class="chip" data-tipo="bencina" aria-pressed="false">Bencina</button>
+      <button class="chip" data-tipo="taller" aria-pressed="false">Talleres y gomerías</button>
+      <button class="chip" data-tipo="alojamiento" aria-pressed="false">Alojamiento</button>
+      <button class="chip" data-tipo="balsa" aria-pressed="false">Balsas</button>
+      <select id="selLocalidad" aria-label="Localidad"><option value="">Todas las localidades</option></select>
+    </div>
+    <div class="dir" id="dir"></div>
+    <p class="nota" style="margin-top:22px">Datos de ejemplo para esta versión de prueba. Antes de publicar se verifica cada servicio.</p>
+  </div>
+</section>
+
+<section id="antes">
+  <div class="wrap">
+    <h2>Antes de venir</h2>
+    <p class="intro">Lo que más se olvida. Marca lo que ya tienes listo.</p>
+    <div class="check-grid" id="checklist">
+      <div>
+        <h3>Moto</h3>
+        <label><input type="checkbox"><span>Neumáticos mixtos con vida para 2.000 km de ripio</span></label>
+        <label><input type="checkbox"><span>Cámara de repuesto, parches y bombín</span></label>
+        <label><input type="checkbox"><span>Bidón de 5 a 10 litros extra</span></label>
+        <label><input type="checkbox"><span>Filtro de aire limpio y uno de repuesto: el polvo es mucho</span></label>
+        <label><input type="checkbox"><span>Cubre cárter y defensas</span></label>
+      </div>
+      <div>
+        <h3>Papeles</h3>
+        <label><input type="checkbox"><span>Licencia y padrón al día</span></label>
+        <label><input type="checkbox"><span>SOAP vigente</span></label>
+        <label><input type="checkbox"><span>Si cruzas a Argentina: seguro de carta verde y autorización si la moto no está a tu nombre</span></label>
+        <label><input type="checkbox"><span>Si vienes del extranjero: título de importación temporal de la moto</span></label>
+      </div>
+      <div>
+        <h3>Tú</h3>
+        <label><input type="checkbox"><span>Ropa impermeable de verdad: llueve hasta en enero</span></label>
+        <label><input type="checkbox"><span>Capas térmicas para Cerro Castillo y el viento del lago</span></label>
+        <label><input type="checkbox"><span>Mapas descargados sin conexión: hay tramos largos sin señal</span></label>
+        <label><input type="checkbox"><span>Efectivo: no en todos lados aceptan tarjeta</span></label>
+        <label><input type="checkbox"><span>Horario de la balsa de Puerto Yungay revisado</span></label>
+      </div>
+    </div>
+    <p class="contador" id="contador" aria-live="polite">0 de 14 listos</p>
+  </div>
+</section>
+
+<section class="comunidad" id="comunidad">
+  <div class="wrap">
+    <h2>Lo que dicen los que van pasando</h2>
+    <p class="intro">Reportes del camino escritos por motoqueros que están en la ruta, y salidas para rodar en grupo.</p>
+    <div class="com-grid">
+      <div>
+        <h3 style="margin-bottom:18px">Reportes del camino</h3>
+        <div class="reporte"><div class="quien">Matías, en Tenere 700, hace 2 días</div><p>Entre Puerto Bertrand y Cochrane, calamina fuerte los primeros 20 km. Bajen presión.</p></div>
+        <div class="reporte"><div class="quien">Laura y Pedro, en dos GS, hace 3 días</div><p>Copec de Río Tranquilo sin bencina 93 en la tarde. Llegó el camión al día siguiente a las 10.</p></div>
+        <div class="reporte"><div class="quien">Ignacio, en XR 250, hace 5 días</div><p>Cuesta del Queulat seca y con máquinas trabajando. Esperas cortas de 15 minutos.</p></div>
+        <div class="reporte"><div class="quien">Camila, en KLR 650, hace 1 semana</div><p>Viento muy fuerte en la orilla del General Carrera pasado el mediodía. Salgan temprano.</p></div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:6px">Próximas rodadas</h3>
+        <div class="rodada"><div class="fecha"><b>06</b><span>dic</span></div><div><h3>Coyhaique a Cerro Castillo</h3><p>Ida y vuelta en el día, 190 km. Salida 9:00 desde la plaza.</p></div></div>
+        <div class="rodada"><div class="fecha"><b>20</b><span>dic</span></div><div><h3>Vuelta al Lago General Carrera</h3><p>Tres días, cruzando por Chile Chico y la balsa a Puerto Ibáñez.</p></div></div>
+        <div class="rodada"><div class="fecha"><b>10</b><span>ene</span></div><div><h3>Encuentro motoquero en Puyuhuapi</h3><p>Asado y camping junto al fiordo. Llegan grupos del norte.</p></div></div>
+        <a class="btn btn-senal" id="btnGrupo" href="#">Entrar al grupo de WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tours">
+  <div class="wrap">
+    <h2>Rodar con alguien que conoce el camino</h2>
+    <p class="intro">Tours guiados desde Coyhaique con vehículo de apoyo, o arriendo de moto si vienes en avión.</p>
+    <div class="tours-grid">
+      <article class="tour">
+        <div class="dias">3 días</div>
+        <h3>Lago General Carrera</h3>
+        <ul><li>Coyhaique, Cerro Castillo, Río Tranquilo y Chile Chico</li><li>Visita a las Capillas de Mármol</li><li>Balsa de vuelta a Puerto Ibáñez</li></ul>
+        <div class="precio">desde $480.000 <small>por persona</small></div>
+        <button class="btn btn-oscuro" data-tour="Lago General Carrera (3 días)">Consultar este tour</button>
+      </article>
+      <article class="tour principal">
+        <div class="dias">7 días</div>
+        <h3>Austral completa al sur</h3>
+        <ul><li>De Coyhaique a Villa O'Higgins y vuelta</li><li>Caleta Tortel y la balsa de Puerto Yungay</li><li>Camioneta de apoyo con bencina, repuestos y equipaje</li></ul>
+        <div class="precio">desde $1.150.000 <small>por persona</small></div>
+        <button class="btn btn-oscuro" data-tour="Austral completa al sur (7 días)">Consultar este tour</button>
+      </article>
+      <article class="tour">
+        <div class="dias">Por día</div>
+        <h3>Arriendo de moto</h3>
+        <ul><li>Motos trail de 300 a 700 cc preparadas para ripio</li><li>Maletas laterales, bidón y kit de pinchazo</li><li>Entrega en el aeropuerto de Balmaceda</li></ul>
+        <div class="precio">desde $75.000 <small>por día</small></div>
+        <button class="btn btn-oscuro" data-tour="Arriendo de moto">Consultar arriendo</button>
+      </article>
+    </div>
+
+    <div class="consulta" id="consulta">
+      <div>
+        <h3 style="font-size:2rem">Pregúntanos por WhatsApp</h3>
+        <p style="margin-top:12px">Completa lo que sepas y te llega el mensaje armado. Respondemos el mismo día.</p>
+      </div>
+      <form class="form" id="formConsulta">
+        <div><label for="fNombre">Tu nombre</label><input id="fNombre" required autocomplete="name"></div>
+        <div><label for="fTour">Qué te interesa</label>
+          <select id="fTour">
+            <option>Lago General Carrera (3 días)</option>
+            <option>Austral completa al sur (7 días)</option>
+            <option>Arriendo de moto</option>
+            <option>Otra cosa</option>
+          </select></div>
+        <div><label for="fFecha">Cuándo vienes</label><input id="fFecha" placeholder="Ej: segunda semana de enero"></div>
+        <div><label for="fPersonas">Cuántas motos</label><input id="fPersonas" type="number" min="1" value="1"></div>
+        <div class="full"><label for="fMsg">Algo más</label><textarea id="fMsg" placeholder="Tu moto, experiencia en ripio, desde dónde vienes"></textarea></div>
+        <div class="full"><button class="btn btn-senal" type="submit">Enviar por WhatsApp</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="anuncia" style="padding-top:0">
+  <div class="wrap">
+    <h2>¿Tienes un taller, hostal o bencinera en la ruta?</h2>
+    <p class="intro">Aparece en el mapa y en el directorio frente a los motoqueros que van pasando.</p>
+    <div class="planes">
+      <div class="plan">
+        <h3>Básico</h3>
+        <div class="precio">Gratis</div>
+        <ul><li>Nombre, localidad y teléfono</li><li>Aparece en el directorio</li></ul>
+        <a class="btn btn-oscuro wa-anuncio" data-plan="Básico" href="#">Quiero aparecer</a>
+      </div>
+      <div class="plan">
+        <h3>Destacado</h3>
+        <div class="precio">$15.000 <small>al mes</small></div>
+        <ul><li>Arriba en el directorio con marca destacada</li><li>Fotos, horario y botón directo a WhatsApp</li><li>Mención en el grupo cuando hay rodadas cerca</li></ul>
+        <a class="btn btn-senal wa-anuncio" data-plan="Destacado" href="#">Quiero destacarme</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><a class="marca" href="#inicio"><span class="hito">7</span> Ruta 7 Moto</a><p style="margin-top:12px">Región de Aysén, Patagonia chilena.</p></div>
+    <div><p>Coyhaique, Chile<br><a href="#consulta">Escríbenos</a></p></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// Número de WhatsApp de contacto (formato internacional, sin +)
+const WHATSAPP = '56900000000';
+
+// Pueblos sobre la Ruta 7, km aproximado desde Chaitén
+const PUEBLOS = [
+  {n:'Chaitén', km:0, bencina:true, lat:-42.915, lng:-72.709},
+  {n:'Villa Santa Lucía', km:76, lat:-43.413, lng:-72.364},
+  {n:'La Junta', km:150, bencina:true, lat:-43.973, lng:-72.403},
+  {n:'Puyuhuapi', km:196, bencina:true, lat:-44.326, lng:-72.557},
+  {n:'Villa Amengual', km:270, lat:-44.746, lng:-72.208},
+  {n:'Villa Mañihuales', km:335, bencina:true, lat:-45.172, lng:-72.149},
+  {n:'Coyhaique', km:420, bencina:true, lat:-45.571, lng:-72.068},
+  {n:'Villa Cerro Castillo', km:515, lat:-46.121, lng:-72.155},
+  {n:'Puerto Río Tranquilo', km:640, bencina:true, lat:-46.625, lng:-72.672},
+  {n:'Puerto Bertrand', km:700, lat:-46.995, lng:-72.823},
+  {n:'Cochrane', km:750, bencina:true, lat:-47.254, lng:-72.574},
+  {n:'Puerto Yungay', km:865, balsa:true, lat:-47.962, lng:-73.383},
+  {n:"Villa O'Higgins", km:980, bencina:true, lat:-48.467, lng:-72.560},
+];
+// Fuera de la línea principal (solo mapa y directorio)
+const OTROS = [
+  {n:'Caleta Tortel', lat:-47.797, lng:-73.535},
+  {n:'Puerto Ibáñez', lat:-46.294, lng:-71.937},
+  {n:'Chile Chico', lat:-46.541, lng:-71.722},
+];
+
+const TRAMOS = [
+  {n:'Chaitén a La Junta', km:150, ripio:5, sinB:150, dif:'facil', temp:'Nov a abril', ojo:['Pavimento casi completo, con desvíos por obras','Lluvia frecuente: el asfalto mojado resbala en las curvas del bosque']},
+  {n:'La Junta a Coyhaique', km:270, ripio:20, sinB:139, dif:'media', temp:'Nov a abril', ojo:['Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando','Puyuhuapi es buena parada para dormir']},
+  {n:'Coyhaique a Puerto Río Tranquilo', km:220, ripio:45, sinB:220, dif:'media', temp:'Dic a marzo', ojo:['Carga lleno en Coyhaique: en Cerro Castillo la bencina es incierta','Cuesta del Diablo con nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio']},
+  {n:'Río Tranquilo a Cochrane', km:110, ripio:95, sinB:110, dif:'media', temp:'Dic a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
+  {n:"Cochrane a Villa O'Higgins", km:230, ripio:100, sinB:230, dif:'dura', temp:'Dic a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa gratuita de Puerto Yungay a Río Bravo, pocos cruces al día','Camino angosto y con barro después de lluvia']},
+  {n:'Puerto Ibáñez a Chile Chico (balsa)', km:0, ripio:0, sinB:0, dif:'facil', temp:'Todo el año', ojo:['Cruce del Lago General Carrera en barcaza, unas 2 horas y media','Reserva con anticipación en verano','Chile Chico es paso fronterizo a Los Antiguos, Argentina']},
+];
+
+const SERVICIOS = [
+  {t:'bencina', n:'Bencinera de Chaitén', l:'Chaitén', d:'93, 95 y diésel. Cierra temprano los domingos.'},
+  {t:'bencina', n:'Bencinera de La Junta', l:'La Junta', d:'Abierta todos los días hasta las 21:00.'},
+  {t:'bencina', n:'Surtidor de Puyuhuapi', l:'Puyuhuapi', d:'Solo 93. Puede quedarse sin stock en enero.'},
+  {t:'bencina', n:'Bencinera de Coyhaique', l:'Coyhaique', d:'Varias en la ciudad. Último lugar seguro antes de Río Tranquilo.'},
+  {t:'bencina', n:'Bencinera de Río Tranquilo', l:'Puerto Río Tranquilo', d:'Una sola. Llega camión día por medio.'},
+  {t:'bencina', n:'Bencinera de Cochrane', l:'Cochrane', d:'Carga lleno y bidón: siguen 230 km sin bencina.'},
+  {t:'bencina', n:"Venta en bidones, Villa O'Higgins", l:"Villa O'Higgins", d:'Bencina en bidón, precio más alto. Pregunta en el almacén.'},
+  {t:'taller', n:'Taller de motos Coyhaique', l:'Coyhaique', d:'Mecánica general, cadenas y kits de arrastre.', dest:true},
+  {t:'taller', n:'Gomería del centro', l:'Coyhaique', d:'Neumáticos de moto en stock, parches y válvulas.'},
+  {t:'taller', n:'Gomería de La Junta', l:'La Junta', d:'Repara pinchazos. Neumáticos solo por encargo.'},
+  {t:'taller', n:'Mecánico de Cochrane', l:'Cochrane', d:'Soldadura y arreglos de emergencia.'},
+  {t:'alojamiento', n:'Hostal con galpón para motos', l:'Puyuhuapi', d:'Galpón techado y lavado de moto.', dest:true},
+  {t:'alojamiento', n:'Cabañas a la entrada', l:'Coyhaique', d:'Estacionamiento cerrado, desayuno temprano.'},
+  {t:'alojamiento', n:'Camping junto al río', l:'Villa Cerro Castillo', d:'Quinchos techados y duchas calientes.'},
+  {t:'alojamiento', n:'Hospedaje frente al lago', l:'Puerto Río Tranquilo', d:'Patio cerrado. Reserva en enero y febrero.'},
+  {t:'alojamiento', n:'Residencial del pueblo', l:"Villa O'Higgins", d:'Galpón para motos y secado de ropa.'},
+  {t:'balsa', n:'Balsa Puerto Yungay a Río Bravo', l:'Puerto Yungay', d:'Gratuita, unos 45 minutos. Revisa horarios antes de salir de Cochrane.'},
+  {t:'balsa', n:'Barcaza Puerto Ibáñez a Chile Chico', l:'Puerto Ibáñez', d:'Cruce del General Carrera. Reserva en temporada alta.'},
+];
+
+const ICO = {bencina:'B', taller:'T', alojamiento:'A', balsa:'≈'};
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// Mapa en franja
+(function(){
+  const el = document.getElementById('franja');
+  const max = PUEBLOS[PUEBLOS.length-1].km;
+  const ancho = Math.max(1100, el.parentElement.clientWidth - 40);
+  el.style.width = ancho + 'px';
+  const x = km => 50 + (km / max) * (ancho - 100);
+  let html = '<div class="camino" style="left:'+x(0)+'px;right:'+(ancho-x(max))+'px"></div>';
+  const conB = PUEBLOS.filter(p => p.bencina);
+  for (let i = 0; i < conB.length - 1; i++) {
+    const a = conB[i].km, b = conB[i+1].km, largo = b - a > 200;
+    html += '<div class="tramo '+(largo?'largo':'ok')+'" style="left:'+x(a)+'px;width:'+(x(b)-x(a))+'px"></div>';
+    if (largo) html += '<div class="tramo-etq" style="left:'+x((a+b)/2)+'px">'+(b-a)+' km<br>sin bencina</div>';
+  }
+  PUEBLOS.forEach((p, i) => {
+    const pos = i % 2 ? 'abajo' : 'arriba';
+    const cls = p.bencina ? 'bencina' : (p.balsa ? 'balsa' : '');
+    html += '<div class="parada '+pos+'" style="left:'+x(p.km)+'px">'
+      + '<span class="palito"></span><span class="punto '+cls+'"></span>'
+      + '<button data-loc="'+esc(p.n)+'"><span class="nombre">'+esc(p.n)+'</span><span class="km">km '+p.km+(p.bencina?', bencina':'')+(p.balsa?', balsa':'')+'</span></button></div>';
+  });
+  el.innerHTML = html;
+  el.addEventListener('click', e => {
+    const b = e.target.closest('button[data-loc]');
+    if (!b) return;
+    filtro.loc = b.dataset.loc;
+    document.getElementById('selLocalidad').value = filtro.loc;
+    pintarDir();
+    document.getElementById('servicios').scrollIntoView();
+  });
+})();
+
+// Lista de tramos
+document.getElementById('listaTramos').innerHTML = TRAMOS.map((t, i) => {
+  const difTxt = {facil:'Fácil', media:'Media', dura:'Exigente'}[t.dif];
+  const datos = t.km
+    ? '<span><b>'+t.km+' km</b></span><span><b>'+t.ripio+'%</b> ripio</span><span>Máx. sin bencina <b>'+t.sinB+' km</b></span><span>'+t.temp+'</span>'
+    : '<span><b>Cruce en barcaza</b></span><span>'+t.temp+'</span>';
+  return '<details class="t-item"'+(i===4?' open':'')+'><summary><h3>'+esc(t.n)+'</h3><span class="dif '+t.dif+'">'+difTxt+'</span><div class="t-datos">'+datos+'</div></summary>'
+    + '<div class="t-cuerpo">'+(t.km?'<div class="barra-ripio" title="'+t.ripio+'% ripio"><span style="width:'+t.ripio+'%"></span></div>':'')
+    + '<ul>'+t.ojo.map(o => '<li>'+esc(o)+'</li>').join('')+'</ul></div></details>';
+}).join('');
+
+// Mapa Leaflet
+(function(){
+  if (!window.L) return;
+  const m = L.map('mapa', {scrollWheelZoom:false}).setView([-45.7, -72.4], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:12, attribution:'© OpenStreetMap'}).addTo(m);
+  const ruta = L.polyline(PUEBLOS.map(p => [p.lat, p.lng]), {color:'#23272B', weight:5, opacity:.85}).addTo(m);
+  m.fitBounds(ruta.getBounds(), {padding:[20, 20]});
+  L.polyline([[-45.571,-72.068],[-46.294,-71.937]], {color:'#23272B', weight:3, dashArray:'6 6'}).addTo(m);
+  L.polyline([[-46.294,-71.937],[-46.541,-71.722]], {color:'#4FA3A5', weight:3, dashArray:'2 6'}).addTo(m);
+  L.polyline([[-47.254,-72.574],[-47.797,-73.535]], {color:'#23272B', weight:3, dashArray:'6 6'}).addTo(m);
+  PUEBLOS.concat(OTROS).forEach(p => {
+    L.circleMarker([p.lat, p.lng], {radius:p.bencina?7:5, color:'#23272B', weight:2, fillColor:p.bencina?'#F4C300':'#ffffff', fillOpacity:1})
+      .addTo(m).bindPopup('<b>'+esc(p.n)+'</b>'+(p.km!==undefined?'<br>km '+p.km:'')+(p.bencina?'<br>Hay bencina':''));
+  });
+})();
+
+// Directorio
+const filtro = {tipo:'todos', loc:''};
+const sel = document.getElementById('selLocalidad');
+[...new Set(SERVICIOS.map(s => s.l))].forEach(l => sel.insertAdjacentHTML('beforeend', '<option>'+esc(l)+'</option>'));
+function pintarDir(){
+  const lista = SERVICIOS
+    .filter(s => (filtro.tipo === 'todos' || s.t === filtro.tipo) && (!filtro.loc || s.l === filtro.loc))
+    .sort((a, b) => (b.dest?1:0) - (a.dest?1:0));
+  document.getElementById('dir').innerHTML = lista.length
+    ? lista.map(s => '<div class="d-item"><span class="d-ico ico-'+s.t+'" aria-hidden="true">'+ICO[s.t]+'</span><h3>'+esc(s.n)+(s.dest?'<span class="destacado">Destacado</span>':'')+'</h3><p><b>'+esc(s.l)+'</b></p><p>'+esc(s.d)+'</p></div>').join('')
+    : '<p class="vacio">No hay servicios de ese tipo en '+esc(filtro.loc)+'. Prueba con el pueblo anterior o el siguiente en la ruta.</p>';
+}
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('.chip').forEach(o => o.setAttribute('aria-pressed', o === c));
+  filtro.tipo = c.dataset.tipo; pintarDir();
+}));
+sel.addEventListener('change', () => { filtro.loc = sel.value; pintarDir(); });
+pintarDir();
+
+// Checklist
+const checks = document.querySelectorAll('#checklist input');
+const cont = document.getElementById('contador');
+const contar = () => cont.textContent = [...checks].filter(c => c.checked).length + ' de ' + checks.length + ' listos';
+checks.forEach(c => c.addEventListener('change', contar)); contar();
+
+// WhatsApp
+const wa = txt => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt);
+document.getElementById('btnGrupo').href = wa('Hola, quiero entrar al grupo de motoqueros de la Carretera Austral.');
+document.querySelectorAll('.wa-anuncio').forEach(a => a.href = wa('Hola, tengo un negocio en la ruta y quiero el plan ' + a.dataset.plan + '.'));
+document.querySelectorAll('.tour button').forEach(b => b.addEventListener('click', () => {
+  document.getElementById('fTour').value = b.dataset.tour;
+  document.getElementById('consulta').scrollIntoView();
+  document.getElementById('fNombre').focus({preventScroll:true});
+}));
+document.getElementById('formConsulta').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const txt = 'Hola, soy ' + v('fNombre') + '. Me interesa: ' + v('fTour') + '.'
+    + (v('fFecha') ? ' Vengo: ' + v('fFecha') + '.' : '')
+    + ' Motos: ' + v('fPersonas') + '.'
+    + (v('fMsg') ? ' ' + v('fMsg') : '');
+  window.open(wa(txt), '_blank', 'noopener');
+});
+
+// Menú móvil
+const mb = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+mb.addEventListener('click', () => { const a = nav.classList.toggle('abierto'); mb.setAttribute('aria-expanded', a); });
+nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('abierto'); mb.setAttribute('aria-expanded', false); } });
+</script>
+</body>
+</html>
