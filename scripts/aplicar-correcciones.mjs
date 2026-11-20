@@ -12,11 +12,14 @@ export function aplicarCorrecciones(lugares, correcciones) {
     for (const l of lugares) {
       if (c.cat && l.cat !== c.cat) continue;
       if (c.loc && norm(l.loc) !== norm(c.loc)) continue;
-      if (c.nombre && !norm(l.n).includes(norm(c.nombre))) continue;
-      Object.assign(l, c.cambios);
+      if (c.nombre && norm(l.n) !== norm(c.nombre)) continue;
+      if (c.quitar) l._quitar = true;
+      else if (c.sinFoto) delete l.foto;
+      else Object.assign(l, c.cambios);
       n++;
     }
   }
+  for (let i = lugares.length - 1; i >= 0; i--) if (lugares[i]._quitar) lugares.splice(i, 1);
   return n;
 }
 

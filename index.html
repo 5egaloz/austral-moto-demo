@@ -1049,6 +1049,10 @@ Promise.all([
   const lugares = DESTACADOS.concat((d.lugares || []).filter(l => !(l.cat === 'atractivo' && nombres.has(norm(l.n)))));
   const ORDEN = ['Glaciar','Lago','Parque','Pueblo','Río','Volcán','Paso','Balsa','Parque o reserva','Cascada','Mirador','Termas','Atractivo','Cerro','Cueva','Museo'];
   VER = lugares.filter(l => l.cat === 'atractivo').sort((a, b) => (b.dest?1:0) - (a.dest?1:0) || (b.foto?1:0) - (a.foto?1:0) || ORDEN.indexOf(a.sub) - ORDEN.indexOf(b.sub));
+  // Sin repetidos: el mismo lugar (volcán y cerro) o la misma foto usada en varios puntos
+  const yaNombre = new Set(), yaFoto = new Set();
+  VER = VER.filter(l => { const k = norm(l.n); if (yaNombre.has(k)) return false; yaNombre.add(k); return true; })
+    .map(l => { if (!l.foto) return l; const u = l.foto.url.split('?')[0]; if (yaFoto.has(u)) { const c = {...l}; delete c.foto; return c; } yaFoto.add(u); return l; });
   const subs = ORDEN.filter(s => VER.some(a => a.sub === s && a.foto));
   document.getElementById('filtrosVer').innerHTML = '<button class="chip" data-sub="todos" aria-pressed="true">Todo</button>'
     + subs.map(s => '<button class="chip" data-sub="'+s+'" aria-pressed="false">'+s+'</button>').join('');

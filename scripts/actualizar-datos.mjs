@@ -155,6 +155,17 @@ async function infoArchivos(titulos) {
 }
 
 async function fotos(atractivos) {
+  // Lo encontrado se guarda en data/.cache/fotos.json: volver a correr no repite la búsqueda
+  const archivoCache = new URL('../data/.cache/fotos.json', import.meta.url);
+  let previo = {};
+  try { previo = JSON.parse(await readFile(archivoCache, 'utf8')); } catch {}
+  if (previo.titulos) {
+    console.log('Fotos desde caché');
+    const info = previo.info;
+    let n = 0;
+    for (const a of atractivos) { const f = info[previo.titulos[a.id]]; if (f) { a.foto = f; n++; } }
+    return n;
+  }
   const titulo = new Map(); // id -> 'File:...'
 
   // 1. Wikidata P18
@@ -196,6 +207,7 @@ async function fotos(atractivos) {
   }
 
   const info = await infoArchivos([...new Set(titulo.values())]);
+  await writeFile(archivoCache, JSON.stringify({ titulos: Object.fromEntries(titulo), info }));
   let n = 0;
   for (const a of atractivos) {
     const f = info[titulo.get(a.id)];
@@ -210,7 +222,7 @@ console.log('Elementos OSM:', els.length);
 
 const pueblos = els
   .filter(e => e.tags?.place && e.tags.name)
-  .map(e => ({ n: e.tags.name, lat: e.lat, lng: e.lon, peso: { city: 3, town: 2, village: 1 }[e.tags.place] }));
+  .map(e => ({ n: e.tags.name, lat: e.lat ?? e.center.lat, lng: e.lon ?? e.center.lon, peso: { city: 3, town: 2, village: 1 }[e.tags.place] }));
 
 const vistos = new Set();
 const lugares = [];

@@ -3,6 +3,114 @@
   "nota": "Verificado en Google Maps el 2026-11-19: el Copec de Puyuhuapi es solo diésel y puede estar cerrado",
   "cat": "bencina",
   "loc": "Puyuhuapi",
-  "cambios": { "sub": "Bencinera, solo diésel", "aviso": "Solo diésel: los motoqueros cargan en La Junta" }
+  "cambios": {
+   "sub": "Bencinera, solo diésel",
+   "aviso": "Solo diésel: los motoqueros cargan en La Junta"
+  }
+ },
+ {
+  "nota": "Está en Argentina (revisado 2026-11-19)",
+  "nombre": "PetroChubut Aldea Beleiro",
+  "quitar": true
+ },
+ {
+  "nota": "Está en Argentina (revisado 2026-11-19)",
+  "nombre": "Parque y Reserva Nacional Los Alerces",
+  "quitar": true
+ },
+ {
+  "nota": "Está en Argentina (revisado 2026-11-19)",
+  "nombre": "Parque Nacional Los Alerces",
+  "quitar": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Mirador Edén",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Glaciar Bernardo",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Parque Nacional Laguna San Rafael",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Monte San Valentín",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Museo Balmaceda",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Mirador Río Coyhaique",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Laguna Venus",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Chai Chai",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Museo de sitio de Chaitén",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Museo Comunal de Futaleufú",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Plaza Mirador Condell",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Museo Regional de Aysén",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Volcán Cay",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Parque Nacional Isla Guamblín",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Parque Nacional Isla Magdalena",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Glaciar Chico",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Volcán Lautaro",
+  "sinFoto": true
+ },
+ {
+  "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
+  "nombre": "Bienvenida a Caleta Tortel",
+  "sinFoto": true
  }
 ]
