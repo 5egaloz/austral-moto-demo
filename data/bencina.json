@@ -1,0 +1,773 @@
+{
+ "fuente": "CNE, Bencina en Línea (bencinaenlinea.cl)",
+ "generado": "2026-11-21",
+ "estaciones": [
+  {
+   "id": 1479,
+   "marca": 5,
+   "direccion": "AV. CORCOVADO 453",
+   "comuna": "Chaitén",
+   "lat": -42.917258,
+   "lng": -72.712736,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1810,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1888,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1758,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1844,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1482,
+   "marca": 5,
+   "direccion": "HURTADO DE MENDOZA S/N",
+   "comuna": "Palena",
+   "lat": -43.615417075705,
+   "lng": -71.79998874664307,
+   "horario": "",
+   "comb": [
+    {
+     "t": "Diésel",
+     "precio": 1749,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1819,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1480,
+   "marca": 5,
+   "direccion": "Ruta CH 231",
+   "comuna": "Futaleufú",
+   "lat": -43.1833,
+   "lng": -71.86669999999998,
+   "horario": "",
+   "comb": [
+    {
+     "t": "Diésel",
+     "precio": 1881,
+     "fecha": "2026-11-12"
+    },
+    {
+     "t": "95",
+     "precio": 1859,
+     "fecha": "2026-11-12"
+    }
+   ]
+  },
+  {
+   "id": 2253,
+   "marca": 4,
+   "direccion": "Sector El Amarillo S/N, Carretera Austral Km. 225",
+   "comuna": "Chaitén",
+   "lat": -43.00987000562159,
+   "lng": -72.4844203169278,
+   "horario": "",
+   "comb": [
+    {
+     "t": "95",
+     "precio": 1844,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1758,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1484,
+   "marca": 5,
+   "direccion": "Balmaceda 455",
+   "comuna": "Coihaique",
+   "lat": -45.570808729084185,
+   "lng": -72.06968486309052,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1652,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1726,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1596,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1692,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1485,
+   "marca": 5,
+   "direccion": "AV. OGANA 1157",
+   "comuna": "Coihaique",
+   "lat": -45.58278592464618,
+   "lng": -72.07491809926393,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1651,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "97",
+     "precio": 1720,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1597,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "95",
+     "precio": 1691,
+     "fecha": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "id": 1499,
+   "marca": 4,
+   "direccion": "La Junta carretera austral km 269",
+   "comuna": "Cisnes",
+   "lat": -43.969159956797895,
+   "lng": -72.39963412284851,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1677,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1728,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1665,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1692,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1486,
+   "marca": 5,
+   "direccion": "RIO TRANQUILO S/N",
+   "comuna": "Río Ibáñez",
+   "lat": -46.623396747748544,
+   "lng": -72.67380212415162,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1735,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1783,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1683,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1759,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1487,
+   "marca": 5,
+   "direccion": "GENERAL BAQUEDANO 1578",
+   "comuna": "Coihaique",
+   "lat": -45.57385,
+   "lng": -72.049946,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1652,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1726,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1596,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1692,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1493,
+   "marca": 5,
+   "direccion": "Sargento Aldea 1902",
+   "comuna": "Aysén",
+   "lat": -45.399775855279124,
+   "lng": -72.68078327178955,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1651,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1719,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1579,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1684,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1494,
+   "marca": 5,
+   "direccion": "Bernardo O'Higgins 000",
+   "comuna": "Aysén",
+   "lat": -45.46172597124796,
+   "lng": -72.81182527542114,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1648,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1716,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1575,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1681,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1506,
+   "marca": 5,
+   "direccion": "CARRETERA AUSTRAL S/N",
+   "comuna": "O’Higgins",
+   "lat": -48.46349582806796,
+   "lng": -72.56110917699884,
+   "horario": "",
+   "comb": [
+    {
+     "t": "Diésel",
+     "precio": 1797,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1863,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1496,
+   "marca": 5,
+   "direccion": "EUSEBIO IBAR 1950",
+   "comuna": "Aysén",
+   "lat": -45.3902446,
+   "lng": -72.68957499999999,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1708,
+     "fecha": "2026-11-20"
+    },
+    {
+     "t": "97",
+     "precio": 1776,
+     "fecha": "2026-11-20"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1648,
+     "fecha": "2026-11-20"
+    },
+    {
+     "t": "95",
+     "precio": 1740,
+     "fecha": "2026-11-20"
+    }
+   ]
+  },
+  {
+   "id": 1500,
+   "marca": 5,
+   "direccion": "Ernesto Ludwig, Puyuhuapi",
+   "comuna": "Cisnes",
+   "lat": -44.326115054621674,
+   "lng": -72.56610180138958,
+   "horario": "",
+   "comb": [
+    {
+     "t": "Diésel",
+     "precio": 1684,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1501,
+   "marca": 5,
+   "direccion": "Piloto Pardo esquina Carlos Condell de Puerto Cisnes",
+   "comuna": "Cisnes",
+   "lat": -44.73146672963587,
+   "lng": -72.68140007596047,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1730,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1781,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1669,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1759,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1502,
+   "marca": 5,
+   "direccion": "RUTA 7 CARRETERA AUSTRAL 1050",
+   "comuna": "Cisnes",
+   "lat": -43.978275,
+   "lng": -72.404615,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1677,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1728,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1665,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1692,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1504,
+   "marca": 5,
+   "direccion": "Arturo Prat 275",
+   "comuna": "Cochrane",
+   "lat": -47.25573899434182,
+   "lng": -72.57770597934723,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1777,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1850,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1730,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1812,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1508,
+   "marca": 5,
+   "direccion": "MANZANA 38-LOTE 2",
+   "comuna": "Tortel",
+   "lat": -47.795693,
+   "lng": -73.530544,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1812,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1769,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1510,
+   "marca": 5,
+   "direccion": "Camino Internacional 1265",
+   "comuna": "Chile Chico",
+   "lat": -46.54069,
+   "lng": -71.722309,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1738,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1816,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1688,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1776,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1513,
+   "marca": 5,
+   "direccion": "CARRETERA LONGITUDINAL AUSTRAL SN, CERRO CASTILLO, RUTA 7",
+   "comuna": "Río Ibáñez",
+   "lat": -46.122372,
+   "lng": -72.163036,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1699,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "97",
+     "precio": 1768,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1677,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "95",
+     "precio": 1739,
+     "fecha": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "id": 1489,
+   "marca": 151,
+   "direccion": "Gral. Parra esq . Riquelme 277",
+   "comuna": "Coihaique",
+   "lat": -45.56951315673345,
+   "lng": -72.06857979297638,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1652,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1726,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1596,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1692,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1490,
+   "marca": 151,
+   "direccion": "ogana 725",
+   "comuna": "Coihaique",
+   "lat": -45.576557705530355,
+   "lng": -72.07348823547363,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1651,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1720,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1597,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1691,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1511,
+   "marca": 5,
+   "direccion": "Las Magnolias 240",
+   "comuna": "Chile Chico",
+   "lat": -46.84492960653596,
+   "lng": -72.70430088043213,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1743,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1700,
+     "fecha": "2026-11-18"
+    },
+    {
+     "t": "95",
+     "precio": 1781,
+     "fecha": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "id": 1491,
+   "marca": 4,
+   "direccion": "avenida ogana 799",
+   "comuna": "Coihaique",
+   "lat": -45.57761280972317,
+   "lng": -72.0736813545227,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1651,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1720,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1597,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1691,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1492,
+   "marca": 4,
+   "direccion": "Carrera 330",
+   "comuna": "Coihaique",
+   "lat": -45.56758288626647,
+   "lng": -72.06462353467941,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1652,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1726,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1596,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1692,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 1498,
+   "marca": 4,
+   "direccion": "Av. Sargento Aldea - Camino a Puerto Aysén, Km 1",
+   "comuna": "Aysén",
+   "lat": -45.401212816819374,
+   "lng": -72.68734127283096,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1651,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1719,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1579,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1684,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
+   "id": 2173,
+   "marca": 4,
+   "direccion": "Camino Internacional Hijuela 47, n° S/N",
+   "comuna": "Chile Chico",
+   "lat": -46.54232228028416,
+   "lng": -71.71592432734792,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1738,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1778,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1816,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1688,
+     "fecha": "2026-11-19"
+    }
+   ]
+  }
+ ]
+}

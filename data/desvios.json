@@ -1,0 +1,117 @@
+{
+ "_nota": "Desvíos que sugiere un operador local. a = km desde el pueblo 'desde' hasta el lugar; b = km del lugar al pueblo 'hasta' (OSRM, 21-11-2026). Si desde = hasta, es ida y vuelta. Bencina: CNE (data/bencina.json). Textos solo con datos de las fuentes listadas.",
+ "desvios": [
+  {
+   "id": "futaleufu",
+   "n": "Futaleufú",
+   "desde": "Villa Santa Lucía",
+   "hasta": "Villa Santa Lucía",
+   "a": 77,
+   "b": 77,
+   "lat": -43.189,
+   "lng": -71.855,
+   "bencina": true,
+   "texto": "Desde Santa Lucía salen 77 km hacia la cordillera hasta Futaleufú, el pueblo del río turquesa famoso por el rafting. Tiene bencinera y paso fronterizo a Argentina, así que sirve también para entrar o salir de la Austral.",
+   "fuentes": [
+    {
+     "t": "Wikipedia: Futaleufú",
+     "u": "https://es.wikipedia.org/wiki/Futaleuf%C3%BA"
+    }
+   ]
+  },
+  {
+   "id": "cisnes",
+   "n": "Puerto Cisnes",
+   "desde": "Puyuhuapi",
+   "hasta": "Villa Amengual",
+   "a": 86,
+   "b": 62,
+   "lat": -44.731,
+   "lng": -72.681,
+   "bencina": true,
+   "texto": "Entre Puyuhuapi y Amengual no hay bencina en la ruta, pero sí a un costado: Puerto Cisnes tiene Copec con gasolina. A cambio del desvío conoces un pueblo de pescadores con costanera al canal Puyuhuapi y el Parque Nacional Isla Magdalena enfrente. A fines de enero hacen la Fiesta del Pesca'o Frito.",
+   "fuentes": [
+    {
+     "t": "Wikipedia: Puerto Cisnes",
+     "u": "https://es.wikipedia.org/wiki/Puerto_Cisnes"
+    },
+    {
+     "t": "Ruta de los Parques: Puerto Cisnes",
+     "u": "https://www.rutadelosparques.org/en/puerto-cisnes/"
+    }
+   ]
+  },
+  {
+   "id": "aysen",
+   "n": "Puerto Aysén",
+   "desde": "Villa Mañihuales",
+   "hasta": "Coyhaique",
+   "a": 59,
+   "b": 65,
+   "lat": -45.403,
+   "lng": -72.692,
+   "bencina": true,
+   "texto": "Otra forma de llegar a Coyhaique: bajar por Puerto Aysén. Ahí cruzas el Puente Presidente Ibáñez, de 210 metros, el puente colgante más largo de Chile y Monumento Nacional. Hay Copec y Shell.",
+   "fuentes": [
+    {
+     "t": "Wikipedia: Puente Presidente Ibáñez",
+     "u": "https://es.wikipedia.org/wiki/Puente_Presidente_Ib%C3%A1%C3%B1ez"
+    }
+   ]
+  },
+  {
+   "id": "exploradores",
+   "n": "Glaciar Exploradores",
+   "desde": "Puerto Río Tranquilo",
+   "hasta": "Puerto Río Tranquilo",
+   "a": 52,
+   "b": 52,
+   "lat": -46.5168,
+   "lng": -73.1627,
+   "bencina": false,
+   "texto": "Camino sin salida de 52 km por el valle Exploradores hasta los miradores del glaciar. No hay bencina: carga en Tranquilo antes, porque son 104 km ida y vuelta.",
+   "fuentes": [
+    {
+     "t": "OpenStreetMap: plataformas de observación del glaciar",
+     "u": "https://www.openstreetmap.org/node/12511053162"
+    }
+   ]
+  },
+  {
+   "id": "guadal",
+   "n": "Puerto Guadal",
+   "desde": "Puerto Río Tranquilo",
+   "hasta": "Puerto Bertrand",
+   "a": 59,
+   "b": 22,
+   "lat": -46.843,
+   "lng": -72.704,
+   "bencina": true,
+   "texto": "Con un desvío corto bajas a Puerto Guadal, a la orilla del General Carrera, y cargas bencina antes de seguir a Bertrand y Cochrane. Desde Guadal sale el camino por la orilla sur del lago, pasando por Las Llaves, hasta Chile Chico (106 km): pueblo de microclima, con la Piedra Clavada cerca y paso a Argentina.",
+   "fuentes": [
+    {
+     "t": "Wikipedia: Chile Chico",
+     "u": "https://es.wikipedia.org/wiki/Chile_Chico"
+    }
+   ]
+  },
+  {
+   "id": "tortel",
+   "n": "Caleta Tortel",
+   "desde": "Cochrane",
+   "hasta": "Puerto Yungay",
+   "a": 126,
+   "b": 43,
+   "lat": -47.797,
+   "lng": -73.535,
+   "bencina": true,
+   "texto": "El dato que más sirve en el sur: Caleta Tortel tiene Copec, así que el tramo largo sin bencina de Cochrane a O'Higgins se parte en dos. Y conoces un pueblo sin calles: se recorre a pie por pasarelas de ciprés, así que la moto se queda arriba. Es zona típica; cerca están la Isla de los Muertos y la desembocadura del Baker.",
+   "fuentes": [
+    {
+     "t": "Wikipedia: Caleta Tortel",
+     "u": "https://es.wikipedia.org/wiki/Caleta_Tortel"
+    }
+   ]
+  }
+ ]
+}
