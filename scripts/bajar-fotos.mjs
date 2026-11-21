@@ -22,6 +22,8 @@ const urls = new Set([
 ].filter(Boolean));
 
 await mkdir(new URL('fotos/', raiz), { recursive: true });
+// Wikimedia pide identificarse con una forma de contacto y no hacer ráfagas
+const UA = 'Ruta7Moto/1.0 (https://github.com/5egaloz/austral-moto-demo) bajar-fotos.mjs';
 const espera = ms => new Promise(r => setTimeout(r, ms));
 let nuevas = 0, fallas = [];
 for (const u of urls) {
@@ -29,13 +31,13 @@ for (const u of urls) {
   try { await access(destino); continue; } catch {}
   let ok = false;
   for (let intento = 0; intento < 5 && !ok; intento++) {
-    const r = await fetch(a500(u), { headers: { 'User-Agent': 'ruta7moto/1.0 (demo; fotos con autor y licencia)' } });
+    const r = await fetch(a500(u), { headers: { 'User-Agent': UA } });
     if (r.status === 429) { await espera(20000 * (intento + 1)); continue; }
     if (!r.ok) { fallas.push(r.status + ' ' + u); break; }
     await writeFile(destino, Buffer.from(await r.arrayBuffer()));
     ok = true; nuevas++;
   }
-  await espera(1200);
+  await espera(3000);
 }
 console.log('Fotos:', urls.size, '| nuevas:', nuevas, '| fallas:', fallas.length);
 fallas.forEach(f => console.log('  ', f));
