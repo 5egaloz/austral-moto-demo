@@ -14,6 +14,7 @@
 /* Hoja de ruta (roadbook de rally). Ver DESIGN.md */
 :root{
   --papel:#FFFFFF;
+  --sup:#FFFFFF;
   --blanco:#FFFFFF;
   --tinta:#1E2124;
   --tinta-2:#575C61;
@@ -200,7 +201,7 @@ button{font:inherit;color:inherit}
 .foto-p .mas button{position:relative}
 .foto-p .mas img{aspect-ratio:3/2}
 .foto-p .mas span{position:absolute;left:0;right:0;bottom:0;padding:14px 5px 3px;font-size:.72rem;line-height:1.15;font-weight:600;color:var(--blanco);text-align:left;background:linear-gradient(to top,rgb(16 18 20 / .8),transparent)}
-.tramo{background:color-mix(in srgb,var(--c,var(--tinta)) 9%,#fff);border-bottom:1px solid var(--regla);padding:14px 0 16px;position:relative}
+.tramo{background:color-mix(in srgb,var(--c,var(--tinta)) 9%,var(--sup));border-bottom:1px solid var(--regla);padding:14px 0 16px;position:relative}
 .tramo h4{color:var(--c)}
 .tramo .eje::before{background:repeating-linear-gradient(to bottom,var(--c,var(--tinta)) 0 9px,transparent 9px 15px)}
 .tramo.asfalto .eje::before{background:var(--c,var(--tinta))}
@@ -310,21 +311,21 @@ footer a{color:inherit}
 .casilla.oculta{opacity:0;transform:translateY(24px)}
 .casilla .foto-p img{transition:opacity .6s var(--ease),transform .5s var(--ease)}
 .casilla .foto-p button:hover img{transform:scale(1.04)}
-.moto{position:absolute;z-index:3;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:var(--c,var(--tinta));color:#fff;display:grid;place-items:center;box-shadow:0 0 0 4px #fff;pointer-events:none;transition:background .4s var(--ease)}
+.moto{position:absolute;z-index:3;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:var(--c,var(--tinta));color:#fff;display:grid;place-items:center;box-shadow:0 0 0 4px var(--papel);pointer-events:none;transition:background .4s var(--ease)}
 .moto svg{width:26px;height:26px}
 @media (max-width:700px){.moto{width:30px;height:30px;margin:-15px 0 0 -15px}.moto svg{width:20px;height:20px}}
 #galeria{background:#173A33 var(--curvas-claras) 0 0/640px 420px;color:#fff;border-top:0}
 #galeria .sub{color:#B9D3CC}
-#antes{background:color-mix(in srgb,var(--t4) 8%,#fff) var(--curvas) 0 0/640px 420px;border-top:0}
+#antes{background:color-mix(in srgb,var(--t4) 8%,var(--sup)) var(--curvas) 0 0/640px 420px;border-top:0}
 #antes h3{border-bottom-color:var(--t4);color:var(--t2)}
 .chequeo input{accent-color:var(--t4)}
 .sec h2{letter-spacing:-.02em}
-.hoja-sec{background-image:linear-gradient(rgb(255 255 255 / .93),rgb(255 255 255 / .93)),var(--curvas);background-size:auto,640px 420px}
+.hoja-sec{background-color:var(--papel);background-image:linear-gradient(var(--velo-hoja,rgb(255 255 255 / .93)),var(--velo-hoja,rgb(255 255 255 / .93))),var(--curvas);background-size:auto,640px 420px}
 
 /* Precios de la CNE y "Dato de local" (desvíos que sugiere alguien de la zona) */
 .precios{font-size:.86rem;color:var(--tinta-2);margin:6px 0 0;font-variant-numeric:tabular-nums}
 .precios b{color:var(--tinta);font-weight:700}
-.local{margin:16px 0 0;padding:12px 14px;border-left:4px solid var(--c,var(--tinta));background:color-mix(in srgb,var(--c,var(--tinta)) 7%,#fff);display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:14px;align-items:start}
+.local{margin:16px 0 0;padding:12px 14px;border-left:4px solid var(--c,var(--tinta));background:color-mix(in srgb,var(--c,var(--tinta)) 7%,var(--sup));display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:14px;align-items:start}
 .local .et{display:block;font:400 1.2rem/1 var(--mano);color:var(--c,var(--tinta));margin-bottom:4px}
 .local h5{margin:0;font-size:1.25rem;font-weight:700;line-height:1.1}
 .local .k{font-size:.9rem;color:var(--tinta-2);margin:3px 0 0}
@@ -341,7 +342,7 @@ footer a{color:inherit}
 .precios a{color:inherit}
 
 /* Cómo llegar a Chaitén */
-.llegar{background:color-mix(in srgb,var(--t1) 6%,#fff) var(--curvas) 0 0/640px 420px}
+.llegar{background:color-mix(in srgb,var(--t1) 6%,var(--sup)) var(--curvas) 0 0/640px 420px}
 .llegar-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 56px;margin-top:24px}
 @media (max-width:860px){.llegar-grid{grid-template-columns:minmax(0,1fr)}}
 .llegar h3{font-size:1.3rem;margin:0 0 12px;color:var(--t1)}
@@ -351,7 +352,7 @@ footer a{color:inherit}
 .pasos li{position:relative;padding:0 0 16px 34px}
 .pasos li::before{content:"";position:absolute;left:10px;top:6px;bottom:-6px;width:3px;background:var(--t1)}
 .pasos li:last-child::before{display:none}
-.pasos li::after{content:"";position:absolute;left:3px;top:4px;width:17px;height:17px;border-radius:50%;background:#fff;border:3px solid var(--t1)}
+.pasos li::after{content:"";position:absolute;left:3px;top:4px;width:17px;height:17px;border-radius:50%;background:var(--papel);border:3px solid var(--t1)}
 .pasos li.barco::before{background:repeating-linear-gradient(to bottom,var(--lago) 0 6px,transparent 6px 11px)}
 .pasos li.barco::after{background:var(--lago);border-color:var(--lago)}
 .pasos > li > b{display:block;font-size:1.05rem}
@@ -369,6 +370,48 @@ footer a{color:inherit}
 .fotos-local img{display:block;width:100%;height:118px;object-fit:cover;transition:transform .4s var(--ease)}
 .fotos-local button:hover img{transform:scale(1.04)}
 @media (max-width:700px){.local .fotos-local{order:-1}.fotos-local img{height:96px}}
+
+/* Fondo: bosque de noche (elegido por Fer el 21-11-2026). Verde muy oscuro, letra clara, colores de tramo encendidos */
+:root{color-scheme:dark;--papel:#141D18;--sup:#1C2822;--tinta:#EDF0EA;--tinta-2:#BAC4BC;--tinta-3:#93A098;--regla:#34443B;--regla-suave:#25322B;
+  --lago:#5CC9D5;--lago-claro:#183A3E;--rojo:#FF7D6E;--ripio:#C9B68C;--ripio-claro:#3A382D;--velo-hoja:rgb(20 29 24 / .9);
+  --t1:#7FC892;--t2:#62C6B8;--t3:#E2B05A;--t4:#55CCD9;--t5:#9BBDE2;--curvas:var(--curvas-claras)}
+html .cab,html .cab nav{background:#0F1612}
+html .viaje,html #contacto,html footer{background:#0B110E;color:#EDF0EA}
+html .comb.si{color:#BFEFF3}
+html .dia{color:#10170F}
+html .dia .eje::before{background:#10170F}
+html .eje i{background:var(--papel)}
+html .dir-filtros select,html .dir-filtros input{background:var(--sup);border-color:var(--regla)}
+html #galeria{background-color:#0F2A24}
+html .moto{color:#10170F}
+html .nota-llegar{color:#FFB3A8}
+html #mapa{filter:brightness(.88) saturate(.9)}
+
+/* Rutas laterales */
+.ramal{margin:16px 0 0;border-top:4px dashed #F2C230;background:color-mix(in srgb,#F2C230 7%,var(--sup))}
+.ramal summary{list-style:none;cursor:pointer;padding:12px 48px 12px 14px;position:relative}
+.ramal summary::-webkit-details-marker{display:none}
+.ramal summary::after{content:"+";position:absolute;right:14px;top:50%;transform:translateY(-50%);width:26px;height:26px;border:2px solid #F2C230;border-radius:50%;display:grid;place-items:center;font:700 1.1rem/1 var(--f);color:#F2C230}
+.ramal[open] summary::after{content:"–"}
+.ramal .et{display:block;font:400 1.2rem/1 var(--mano);color:#F2C230;margin-bottom:4px}
+.ramal .r-n{display:block;font-size:1.3rem;font-weight:700;font-stretch:80%;line-height:1.1}
+.ramal .r-datos{display:block;font-size:.92rem;color:var(--tinta-2);margin-top:3px}
+.ramal .r-datos b{color:var(--tinta)}
+.r-cuerpo{padding:0 14px 14px}
+.r-cuerpo > p{margin:0 0 12px;font-size:.98rem}
+.r-cuerpo .fotos-local{margin-bottom:12px}
+.r-pueblos{list-style:none;margin:0 0 10px;padding:0;border-top:1px solid var(--regla)}
+.r-pueblo{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--regla)}
+.r-km{font-weight:700;font-stretch:80%;color:#F2C230;font-variant-numeric:tabular-nums;padding-top:3px}
+.r-p h5{margin:0;font-size:1.15rem;font-weight:700}
+.r-p .enc{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.r-p .serv-p{margin-top:8px}
+.r-p .cerca{margin-top:10px}
+.r-cuerpo .fu{font-size:.78rem;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline}
+.r-cuerpo .fu a{color:inherit}
+.r-cuerpo .fu .lnk{font-size:.85rem;color:var(--lago)}
+.ley-ramal{color:#F2C230}
+@media (max-width:700px){.r-pueblo{grid-template-columns:minmax(0,1fr);gap:4px}}
 </style>
 </head>
 <body>
@@ -440,7 +483,7 @@ footer a{color:inherit}
         <p>Naviera Austral lleva vehículos a Chaitén desde <b>Puerto Montt</b>, <b>Quellón</b> y <b>Castro</b>. Se reserva en línea; para motos, confirma con ellos el espacio.</p>
         <p class="fu-llegar"><a href="https://www.navieraustral.cl" target="_blank" rel="noopener">navieraustral.cl</a></p>
         <h3>Desde Argentina, por Futaleufú</h3>
-        <p>Entras por el paso de Futaleufú y bajas 77 km a Villa Santa Lucía, el km 76 de la hoja. Así te saltas las barcazas. <a href="#hoja" data-ir-pueblo="Villa Santa Lucía">Ver Santa Lucía en la hoja</a></p>
+        <p>Entras por el paso de Futaleufú y bajas 76 km a Villa Santa Lucía, el km 76 de la hoja. Así te saltas las barcazas. <a href="#hoja" data-ir-pueblo="Villa Santa Lucía">Ver Santa Lucía en la hoja</a></p>
         <p class="nota-llegar">Horarios y tarifas cambian según la temporada: revísalos con cada operador antes de salir, sobre todo en enero y febrero.</p>
       </div>
     </div>
@@ -468,7 +511,7 @@ footer a{color:inherit}
     </div>
     <aside class="mapa-col">
       <div id="mapa" role="region" aria-label="Mapa de la ruta"></div>
-      <p class="credito">El mapa sigue la casilla que estás leyendo.</p>
+      <p class="credito">El mapa sigue la casilla que estás leyendo. <span class="ley-ramal">En amarillo, las rutas laterales.</span></p>
     </aside>
   </div>
 </section>
@@ -560,7 +603,7 @@ footer a{color:inherit}
       </div>
       <div>
         <h3>¿Tienes un negocio en la ruta?</h3>
-        <p>Talleres, hospedajes y bencineras aparecen gratis en la hoja y el directorio. Con el plan Destacado ($15.000 al mes) subes tus propias fotos, tu horario y un botón directo a WhatsApp.</p>
+        <p>Talleres, hospedajes y bencineras aparecen gratis en la hoja y el directorio. Por $5.000 al mes quedas como Destacado: tus propias fotos, tu horario, un botón directo a tu WhatsApp, y cada mes te contamos cuántos motoqueros vieron tu ficha.</p>
         <a class="wa" id="waNegocio" href="#" target="_blank" rel="noopener">Agregar o corregir mi negocio</a>
       </div>
       <div>
@@ -639,7 +682,7 @@ function credito(f){
 const imgCon = (u, alt, cls) => '<img src="'+esc(chica(u))+'" alt="'+esc(alt)+'"'+(cls ? ' class="'+cls+'"' : '')+' loading="lazy" decoding="async" onload="this.classList.add(\'lista\')" onerror="this.onerror=null;this.src=\''+esc(a500(u))+'\'">';
 
 let FOTOS = {}, TODOS = [], CON_FOTO = [], SERV = [], VER = [], FOTO_PUEBLO = {}, CARGADO = false;
-let BENCINA = [], BENCINA_FECHA = '', DESVIOS = [];
+let BENCINA = [], BENCINA_FECHA = '', DESVIOS = [], RAMALES = [], RAMAL_PUEBLOS = [];
 const POR_PUEBLO = {};   // nombre -> {serv:{cat:[...]}, cerca:[...], foto}
 let mapa = null, marcadores = {}, marcasPueblo = {};
 
@@ -782,7 +825,7 @@ function cargaEnDesvio(P1, P2, v){
   return mejor;
 }
 function desviosHtml(p, v){
-  return DESVIOS.filter(d => enSentido(d, v).entra === p.n).map(d => {
+  return DESVIOS.filter(d => enSentido(d, v).entra === p.n && !RAMALES.some(r => r.desvio === d.id)).map(d => {
     const pr = d.bencina ? preciosDe(d.lat, d.lng) : null;
     const k = d.desde === d.hasta ? 'Ida y vuelta: <b>' + (d.a + d.b) + ' km</b> desde aquí' : 'Desvío: <b>' + extraDe(d) + ' km</b> más que ir directo a ' + esc(enSentido(d, v).sale);
     const fs = d.fotos || [];
@@ -793,6 +836,40 @@ function desviosHtml(p, v){
       + '<button class="lnk" type="button" data-ver="d-' + d.id + '">Ver en el mapa</button></div></div>'
       + (fs.length ? '<div class="fotos-local">' + fs.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
       + '</aside>';
+  }).join('');
+}
+
+/* ---------- Rutas laterales: los caminos que salen de la Austral, con los mismos datos que la ruta ---------- */
+function ramalesHtml(p){
+  return RAMALES.filter(r => r.desde === p.n).map(r => {
+    const d = r.desvio && DESVIOS.find(x => x.id === r.desvio);
+    const texto = r.texto || (d && d.texto) || '', fotos = (d && d.fotos) || [];
+    const conB = r.pueblos.filter(pb => pb.bencina).map(pb => pb.n);
+    const datos = '<b>' + r.km + ' km</b>'
+      + (r.ripio != null ? ' · cerca de <b>' + r.ripio + '%</b> ripio' : ' · ripio por confirmar')
+      + (conB.length ? ' · bencina en ' + esc(conB.join(' y ')) : ' · <b>sin bencina</b>')
+      + (r.balsa ? ' · con balsa' : '');
+    const pueblos = r.pueblos.map(pb => {
+      const P = POR_PUEBLO[pb.n] || {serv:{}, cerca:[]};
+      const serv = ['bencina','taller','alojamiento','balsa'].filter(c => (P.serv[c] || []).length)
+        .map(c => { const n = P.serv[c].length; return '<button type="button" aria-expanded="false" data-pueblo="'+esc(pb.n)+'" data-cat="'+c+'"><b>'+n+'</b> '+PLURAL[c][n === 1 ? 0 : 1]+'</button>'; }).join('');
+      const tag = pb.bencina ? '<span class="comb si">Bencina</span>' : pb.balsa ? '<span class="comb no">Balsa, sin bencina</span>' : '<span class="comb no">Sin bencina</span>';
+      const fotosP = [P.foto, ...P.cerca].filter(Boolean).slice(0, 4);
+      return '<li class="r-pueblo"><div class="r-km">km ' + pb.km + '</div><div class="r-p">'
+        + '<div class="enc"><h5>' + esc(pb.n) + '</h5>' + tag + '</div>' + preciosHtml(pb)
+        + (serv ? '<div class="serv-p">' + serv + '</div>' : '') + '<div class="serv-abierto"></div>'
+        + (fotosP.length ? '<div class="cerca">' + fotosP.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(pb.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('') + '</div>' : '')
+        + '</div></li>';
+    }).join('');
+    return '<details class="ramal" data-ramal="' + r.id + '"><summary><span class="et">Ruta lateral · ' + esc(r.ruta) + '</span>'
+      + '<span class="r-n">' + esc(r.n) + '</span><span class="r-datos">' + datos + '</span></summary>'
+      + '<div class="r-cuerpo">' + (texto ? '<p>' + esc(texto) + '</p>' : '')
+      + (fotos.length ? '<div class="fotos-local">' + fotos.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
+      + '<ol class="r-pueblos">' + pueblos + '</ol>'
+      + '<div class="fu"><span>Fuentes:</span><span>camino y km, OpenStreetMap</span>' + (conB.length ? '<span>bencina, ' + CNE + '</span>' : '')
+      + r.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
+      + '<button class="lnk" type="button" data-ver="r-' + r.id + '">Ver en el mapa</button></div>'
+      + '</div></details>';
   }).join('');
 }
 
@@ -897,6 +974,7 @@ function pintarHoja(){
       + notaBencina(p, v)
       + (p.t ? '<p class="texto">'+esc(p.t)+(p.tf ? ' <span class="fuente-dato">'+esc(p.tf)+'</span>' : '')+'</p>' : '')
       + desviosHtml(p, v)
+      + ramalesHtml(p)
       + (servHtml ? '<div class="serv-p">'+servHtml+'</div><div class="serv-abierto"></div>' : '')
       + (cerca.length ? '<div class="cerca">'+cerca.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+(l.desvio > 15 ? '<small>a '+l.desvio+' km en línea recta</small>' : '')+'</span></button>').join('')+'</div>' : '')
       + '</div>'
@@ -937,7 +1015,7 @@ vAut.addEventListener('input', pintarHoja);
 // Abrir la lista de servicios de un pueblo
 document.getElementById('listaHoja').addEventListener('click', e => {
   const b = e.target.closest('.serv-p button'); if (!b) return;
-  const caja = b.closest('.cuerpo').querySelector('.serv-abierto');
+  const caja = b.closest('.r-p, .cuerpo').querySelector(':scope > .serv-abierto');
   const abierto = b.getAttribute('aria-expanded') === 'true';
   b.closest('.serv-p').querySelectorAll('button').forEach(o => o.setAttribute('aria-expanded', 'false'));
   if (abierto) { caja.innerHTML = ''; return; }
@@ -969,9 +1047,28 @@ document.getElementById('listaHoja').addEventListener('click', e => {
   });
 })();
 const COLOR = {bencina:'#0F7F8C', taller:'#1E2124', alojamiento:'#8A8F94', balsa:'#0F7F8C', atractivo:'#D11A1A'};
+function cargarRamales(){
+  if (!mapa) return;
+  RAMALES.forEach(r => {
+    // Borde oscuro debajo para que el amarillo se lea sobre el mapa claro
+    L.polyline(r.linea, {color:'#1E2124', weight:7, opacity:.8}).addTo(mapa);
+    const l = L.polyline(r.linea, {color:'#F2C230', weight:4}).addTo(mapa)
+      .bindPopup('<b>' + esc(r.n) + '</b><br>' + esc(r.ruta) + ', ' + r.km + ' km' + (r.ripio != null ? ', ' + r.ripio + '% ripio' : '') + '<br><button class="lnk" type="button" data-abrir-ramal="' + r.id + '">Ver en la hoja</button>');
+    marcadores['r-' + r.id] = l;
+  });
+  RAMAL_PUEBLOS.forEach(pb => {
+    marcasPueblo[pb.n] = L.circleMarker([pb.lat, pb.lng], {radius:pb.bencina ? 7 : 5, color:'#1E2124', weight:3, fillColor:pb.bencina ? '#F2C230' : '#ffffff', fillOpacity:1})
+      .addTo(mapa).bindPopup('<b>' + esc(pb.n) + '</b><br>Ruta lateral' + (pb.bencina ? '<br>Hay bencina' : '<br>Sin bencina'));
+  });
+}
+function abrirRamal(id){
+  const d = document.querySelector('.ramal[data-ramal="' + id + '"]'); if (!d) return;
+  d.open = true; d.scrollIntoView({block:'start', behavior:'smooth'});
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-abrir-ramal]'); if (b) abrirRamal(b.dataset.abrirRamal); });
 function cargarDesvios(){
   if (!mapa) return;
-  DESVIOS.forEach(d => {
+  DESVIOS.filter(d => !RAMALES.some(r => r.desvio === d.id)).forEach(d => {
     marcadores['d-' + d.id] = L.circleMarker([d.lat, d.lng], {radius:7, color:'#1E2124', weight:2, fillColor:d.bencina ? '#F2C230' : '#ffffff', fillOpacity:1})
       .addTo(mapa).bindPopup('<b>'+esc(d.n)+'</b><br>Desvío desde '+esc(d.desde)+(d.bencina ? '<br>Hay bencina' : '<br>Sin bencina'));
   });
@@ -1004,6 +1101,7 @@ function verEnMapa(id){
   if (!mapa.hasLayer(mk)) mk.addTo(mapa);
   if (innerWidth <= 1000) document.getElementById('mapa').scrollIntoView({block:'center'});
   siguiendo = null;
+  if (mk.getBounds) { mapa.fitBounds(mk.getBounds(), {padding:[30, 30]}); mk.openPopup(); return; }
   mapa.setView(mk.getLatLng(), 12); mk.openPopup();
 }
 
@@ -1119,8 +1217,12 @@ Promise.all([
   fetch('data/lugares.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({lugares:[], generado:''})),
   fetch('data/bencina.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({estaciones:[]})),
   fetch('data/desvios.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({desvios:[]})),
-]).then(([F, d, B, D]) => {
+  fetch('data/ramales.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({ramales:[]})),
+]).then(([F, d, B, D, RR]) => {
   BENCINA = B.estaciones || []; BENCINA_FECHA = B.generado || ''; DESVIOS = D.desvios || [];
+  RAMALES = (RR.ramales || []).filter(r => r.linea);
+  // Pueblos de las rutas laterales (sin repetir: Puerto Ramírez está en dos)
+  RAMALES.forEach(r => r.pueblos.forEach(pb => { if (!RAMAL_PUEBLOS.some(x => x.n === pb.n)) RAMAL_PUEBLOS.push(pb); }));
   { const pr = preciosDe(-41.964, -72.48); if (pr) document.getElementById('precioHornopiren').innerHTML = pr.txt + ' · ' + CNE + ', ' + fmtFecha(pr.fecha) + '.'; }
   F.lugares.forEach(l => FOTOS[l.id] = l.foto);
   Object.entries(F.ruta).forEach(([k, f]) => FOTOS['ruta.'+k] = f);
@@ -1139,15 +1241,16 @@ Promise.all([
   VER = CON_FOTO.filter(l => l.cat === 'atractivo');
 
   // Cada lugar al pueblo de la ruta más cercano
-  PUEBLOS.forEach(p => POR_PUEBLO[p.n] = {serv:{}, cerca:[], foto:null});
+  const TODOS_PUEBLOS = PUEBLOS.concat(RAMAL_PUEBLOS);
+  TODOS_PUEBLOS.forEach(p => POR_PUEBLO[p.n] = {serv:{}, cerca:[], foto:null});
   TODOS.forEach(l => {
     let cerca = null, dist = Infinity;
-    PUEBLOS.forEach(p => { const k = kmEntre(l, p); if (k < dist) { dist = k; cerca = p; } });
+    TODOS_PUEBLOS.forEach(p => { const k = kmEntre(l, p); if (k < dist) { dist = k; cerca = p; } });
     const P = POR_PUEBLO[cerca.n];
     if (l.cat === 'atractivo') { if (l.foto && dist <= 40) P.cerca.push({...l, desvio:Math.round(dist)}); }
     else if (dist <= 15) (P.serv[l.cat] || (P.serv[l.cat] = [])).push(l);
   });
-  PUEBLOS.forEach(p => {
+  TODOS_PUEBLOS.forEach(p => {
     const P = POR_PUEBLO[p.n];
     P.cerca.sort((a, b) => (b.dest?1:0) - (a.dest?1:0) || a.desvio - b.desvio);
     // La foto principal tiene que ser del pueblo: la propia, o un lugar a 8 km o menos
@@ -1170,7 +1273,7 @@ Promise.all([
   document.getElementById('dirSub').textContent = fmt(TODOS.length) + ' lugares de Aysén, también fuera de la Ruta 7: bencineras, talleres, alojamientos, balsas y lugares para ver. Datos de OpenStreetMap.';
   if (d.generado) document.getElementById('actualizado').textContent = 'Directorio actualizado el '+d.generado.split('-').reverse().join('-')+'.';
   cargarMapa(TODOS.filter(l => l.cat !== 'alojamiento'));
-  cargarDesvios();
+  cargarDesvios(); cargarRamales();
   // La ficha de la portada también cuenta la bencina fuera de la ruta
   { const v = planViaje(); if (v.alt) document.getElementById('fMax').innerHTML = esc(document.getElementById('fMax').textContent) + '<small>'+v.alt.max+' km si cargas en '+v.alt.donde.map(d => esc(d.n)).join(' y ')+'</small>'; }
   CARGADO = true;
