@@ -337,6 +337,8 @@ footer a{color:inherit}
 .local img{width:128px;height:96px;object-fit:cover;background:var(--regla-suave)}
 @media (max-width:700px){.local{grid-template-columns:minmax(0,1fr)}.local figure{order:-1}.local img{width:100%;height:150px}}
 .ficha-ruta dd small{display:block;font-weight:500;color:#D5D9DC}
+.fuente-dato{font-size:.78rem;color:var(--tinta-3)}
+.precios a{color:inherit}
 </style>
 </head>
 <body>
@@ -391,7 +393,7 @@ footer a{color:inherit}
     <div class="campo"><label for="vHasta">Hasta</label><select id="vHasta"></select></div>
     <div class="campo"><label for="vRitmo">Ritmo</label>
       <select id="vRitmo"><option value="150">Tranquilo, 150 km al día</option><option value="250" selected>Normal, 250 km al día</option><option value="350">Rápido, 350 km al día</option></select></div>
-    <div class="rinde"><label for="vAut">Tu moto rinde</label><span><input type="range" id="vAut" min="120" max="450" step="10" value="250"><output id="vAutOut" for="vAut">250 km</output></span></div>
+    <div class="rinde"><label for="vAut" title="Cuántos km haces con un estanque en ripio y con tu carga, no lo que dice el manual">Tu moto rinde (en ripio, cargada)</label><span><input type="range" id="vAut" min="120" max="450" step="10" value="250"><output id="vAutOut" for="vAut">250 km</output></span></div>
     <p class="resumen"><span id="resumen" aria-live="polite"></span><a class="wa" id="waPlan" href="#" target="_blank" rel="noopener">Enviar este plan por WhatsApp</a></p>
   </form>
 </div>
@@ -532,12 +534,12 @@ const PUEBLOS = [
   {n:'Villa Amengual', km:276, foto:'p-amengual', lat:-44.746, lng:-72.208},
   {n:'Villa Mañihuales', km:335, bencina:true, foto:'p-manihuales', lat:-45.172, lng:-72.149, t:'Bencina antes de bajar a Coyhaique por el valle.'},
   {n:'Coyhaique', km:409, bencina:true, lat:-45.571, lng:-72.068, foto:'c-coyhaique', t:'Capital regional: talleres, repuestos y la última ciudad grande.'},
-  {n:'Villa Cerro Castillo', km:505, bencina:true, lat:-46.121, lng:-72.155, foto:'c-castillo', t:'Copec abierto las 24 horas, con las agujas del cerro de fondo.'},
+  {n:'Villa Cerro Castillo', km:505, bencina:true, lat:-46.121, lng:-72.155, foto:'c-castillo', t:'Copec abierto las 24 horas, con las agujas del cerro de fondo.', tf:'Horario según Google Maps, revisado el 21-11-2026.'},
   {n:'Puerto Río Tranquilo', km:624, bencina:true, lat:-46.625, lng:-72.672, foto:'c-capillas', t:'Salida en bote a las Capillas de Mármol.'},
   {n:'Puerto Bertrand', km:687, lat:-46.995, lng:-72.823, foto:'c-bertrand', t:'Agua turquesa del lago Bertrand, donde nace el río Baker.'},
   {n:'Cochrane', km:739, bencina:true, lat:-47.254, lng:-72.574, foto:'p-cochrane', t:'Último pueblo grande antes del extremo sur.'},
   {n:'Puerto Yungay', km:862, balsa:true, lat:-47.962, lng:-73.383, foto:'c-yungay', t:'Balsa a Río Bravo. Revisa los horarios antes de salir de Cochrane.'},
-  {n:"Villa O'Higgins", km:970, bencina:true, lat:-48.467, lng:-72.560, foto:'c-ohiggins', t:'Fin de la Carretera Austral. Hay Copec abierto las 24 horas.'},
+  {n:"Villa O'Higgins", km:970, bencina:true, lat:-48.467, lng:-72.560, foto:'c-ohiggins', t:'Fin de la Carretera Austral. Hay Copec abierto las 24 horas.', tf:'Horario según Google Maps, revisado el 19-11-2026.'},
 ];
 const KM_MAX = PUEBLOS[PUEBLOS.length - 1].km;
 const kmDe = n => PUEBLOS.find(p => p.n === n).km;
@@ -548,7 +550,7 @@ const TRAMOS = [
   {a:'La Junta', b:'Coyhaique', ripio:20, dif:'Media', temp:'noviembre a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando']},
   {a:'Coyhaique', b:'Puerto Río Tranquilo', ripio:45, dif:'Media', temp:'diciembre a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo: puede haber nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio (por confirmar)','Variante: balsa de Puerto Ibáñez a Chile Chico por el Lago General Carrera; revisa duración y reserva antes, en verano se llena']},
   {a:'Puerto Río Tranquilo', b:'Cochrane', ripio:95, dif:'Media', temp:'diciembre a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
-  {a:'Cochrane', b:"Villa O'Higgins", ripio:100, dif:'Exigente', temp:'diciembre a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa de Puerto Yungay a Río Bravo, con pocos cruces al día: revisa horarios y tarifa antes','Camino angosto y con barro después de lluvia']},
+  {a:'Cochrane', b:"Villa O'Higgins", ripio:100, dif:'Exigente', temp:'diciembre a febrero', ojo:['No hay bencina en la ruta hasta Villa O\'Higgins; la única, desviándote a Caleta Tortel','Balsa de Puerto Yungay a Río Bravo, con pocos cruces al día: revisa horarios y tarifa antes','Camino angosto y con barro después de lluvia']},
 ];
 TRAMOS.forEach(t => t.km = kmDe(t.b) - kmDe(t.a));
 
@@ -683,6 +685,7 @@ addEventListener('resize', moverMoto);
 
 
 /* ---------- Lo que sabe alguien de la zona: precios de la CNE y desvíos ---------- */
+const CNE = '<a href="https://www.bencinaenlinea.cl" target="_blank" rel="noopener" title="Comisión Nacional de Energía, Bencina en Línea: precios que informan las bencineras">CNE</a>';
 const fmtFecha = f => f ? f.slice(8, 10) + '-' + f.slice(5, 7) : '';
 // Precio más bajo de cada combustible en las bencineras a menos de 4 km
 function preciosDe(lat, lng){
@@ -697,7 +700,7 @@ function preciosHtml(p){
   if (!BENCINA.length || !(p.bencina || p.diesel)) return '';
   const pr = preciosDe(p.lat, p.lng);
   if (!pr) return '<p class="precios">Esta bencinera no informa precios a la CNE.</p>';
-  return '<p class="precios">' + pr.txt + ' <span>· CNE, ' + fmtFecha(pr.fecha) + '</span></p>';
+  return '<p class="precios">' + pr.txt + ' <span>· ' + CNE + ', ' + fmtFecha(pr.fecha) + '</span></p>';
 }
 // Un desvío visto en el sentido del viaje: dónde doblas, cuánto hasta el lugar y cuánto de vuelta a la ruta
 function enSentido(d, v){
@@ -725,7 +728,7 @@ function desviosHtml(p, v){
     return '<aside class="local"><div><span class="et">Dato de local</span><h5>' + esc(d.n) + '</h5>'
       + '<p class="k">' + k + (pr && pr.gasolina ? ' · Bencina: ' + pr.txt : d.bencina ? '' : ' · <b>sin bencina</b>') + '</p>'
       + '<p>' + esc(d.texto) + '</p>'
-      + '<div class="fu">' + d.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('') + (pr ? '<span>Precios: CNE, ' + fmtFecha(pr.fecha) + '</span>' : '')
+      + '<div class="fu"><span>Fuentes:</span>' + (pr ? '<span>bencina y precios, ' + CNE + ' (' + fmtFecha(pr.fecha) + ')</span>' : '') + '<span>km, OpenStreetMap</span>' + d.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
       + '<button class="lnk" type="button" data-ver="d-' + d.id + '">Ver en el mapa</button></div></div>'
       + (f ? '<figure><button type="button" class="lnk" style="padding:0;border:0;cursor:zoom-in" data-visor="' + f.id + '" aria-label="Ver foto de ' + esc(f.n) + '">' + imgCon(f.foto.url, f.n) + '</button></figure>' : '')
       + '</aside>';
@@ -753,13 +756,20 @@ function planViaje(){
   const dentro = p => (p.km - a.km) * sentido >= 0 && (b.km - p.km) * sentido >= 0;
   const paradas = orden.filter(dentro);
   // Cortes de día: se duerme en el último pueblo antes de pasarse del ritmo
-  const duerme = new Map(); let dias = 1, inicio = 0;
-  paradas.forEach((p, i) => {
-    const d = Math.abs(p.km - a.km), sig = paradas[i+1];
-    // Solo se duerme donde hay alojamiento; si no hay, se sigue al próximo pueblo que tenga
-    const aloja = !CARGADO || (POR_PUEBLO[p.n].serv.alojamiento || []).length > 0;
-    if (sig && aloja && Math.abs(sig.km - a.km) - inicio > ritmo && d > inicio) { duerme.set(p.n, dias); dias++; inicio = d; }
-  });
+  // Cada día termina en el pueblo con alojamiento más lejano que quepa en el ritmo.
+  // Si ninguno cabe (ej.: Puerto Yungay no tiene alojamiento), se duerme en el primero que tenga, aunque se pase.
+  const duerme = new Map(); let dias = 1;
+  const aloja = p => !CARGADO || (POR_PUEBLO[p.n].serv.alojamiento || []).length > 0;
+  for (let i = 0; i < paradas.length - 1; ) {
+    const desde = paradas[i];
+    if (Math.abs(paradas[paradas.length - 1].km - desde.km) <= ritmo) break;
+    const resto = paradas.slice(i + 1, -1).filter(aloja);
+    const caben = resto.filter(p => Math.abs(p.km - desde.km) <= ritmo);
+    const fin = caben.length ? caben[caben.length - 1] : resto[0];
+    if (!fin) break;
+    duerme.set(fin.n, dias); dias++;
+    i = paradas.indexOf(fin);
+  }
   // Distancia hasta la próxima bencina en el sentido del viaje
   const proxima = {};
   orden.forEach((p, i) => {
@@ -796,7 +806,7 @@ function notaBencina(p, v){
     if (alt && k > v.aut && larga <= v.aut) return '<p class="mano">Por la ruta no llegas a '+esc(hasta)+' ('+k+' km), pero sí cargando en '+esc(alt.d.n)+': '+alt.l1+' km desde aquí, con un desvío de '+alt.extra+' km.</p>';
     const otra = alt && larga < k ? '<p class="mano gris">O carga en '+esc(alt.d.n)+', a '+alt.l1+' km: desvío de '+alt.extra+' km y desde ahí '+alt.l2+' km a '+esc(hasta)+'. Mira el dato de local más abajo.</p>' : '';
     if (k > v.aut) return '<p class="mano">¡Ojo! '+k+' km hasta la bencina de '+esc(hasta)+' y tu moto rinde '+v.aut+'. No llegas: carga lleno y lleva bidón.</p>';
-    if (k > v.aut * 0.8) return '<p class="mano">Llena el estanque: son '+k+' km hasta '+esc(hasta)+' y llegas con lo justo.</p>' + otra;
+    if (k > v.aut * 0.8) return '<p class="mano">Llena el estanque y lleva bidón de reserva: son '+k+' km hasta '+esc(hasta)+' y llegas justo.</p>' + otra;
     if (k >= 120) return '<p class="mano gris">Siguiente bencina en la ruta: '+esc(hasta)+', a '+k+' km.</p>' + otra;
     return '';
   }
@@ -824,10 +834,10 @@ function pintarHoja(){
       + '<div class="km"><b>'+p.km+'</b><span>'+parcial+'</span></div><div class="eje"><i></i></div>'
       + '<div class="cuerpo"><div class="enc"><h3>'+esc(p.n)+'</h3>'+comb+'</div>' + preciosHtml(p)
       + notaBencina(p, v)
-      + (p.t ? '<p class="texto">'+esc(p.t)+'</p>' : '')
+      + (p.t ? '<p class="texto">'+esc(p.t)+(p.tf ? ' <span class="fuente-dato">'+esc(p.tf)+'</span>' : '')+'</p>' : '')
       + desviosHtml(p, v)
       + (servHtml ? '<div class="serv-p">'+servHtml+'</div><div class="serv-abierto"></div>' : '')
-      + (cerca.length ? '<div class="cerca">'+cerca.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+(l.desvio > 15 ? '<small>a '+l.desvio+' km</small>' : '')+'</span></button>').join('')+'</div>' : '')
+      + (cerca.length ? '<div class="cerca">'+cerca.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+(l.desvio > 15 ? '<small>a '+l.desvio+' km en línea recta</small>' : '')+'</span></button>').join('')+'</div>' : '')
       + '</div>'
       + (f ? '<figure class="foto-p"><button type="button" data-visor="'+f.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(f.n)+' en grande">'+imgCon(f.foto.url, f.n)+'</button><figcaption class="credito">'+(f.n !== p.n ? esc(f.n)+'. ' : '')+credito(f.foto)+'</figcaption>'
         + (junto.length ? '<div class="mas">'+junto.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(l.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('')+'</div>' : '')
@@ -856,7 +866,7 @@ function pintarHoja(){
   const alcanza = v.max <= v.aut;
   res.innerHTML = '<b>'+fmt(v.total)+' km en '+v.dias+(v.dias === 1 ? ' día' : ' días')+'.</b> '
     + (v.max ? 'Lo más largo sin bencina: '+v.max+' km, de '+esc(v.maxA.n)+' a '+esc(v.maxB.n)+'. '
-      + (alcanza ? 'Te alcanza sin bidón.' : v.alt && v.alt.max <= v.aut ? '<span class="mal">Por la ruta no te alcanza</span>, pero cargando en '+v.alt.donde.map(d => esc(d.n)).join(' y ')+' lo más largo baja a '+v.alt.max+' km.' : '<span class="mal">No te alcanza: lleva bidón.</span>') : '');
+      + (v.max <= v.aut * 0.8 ? 'Te alcanza.' : alcanza ? 'Llegas justo: lleva bidón de reserva.' : v.alt && v.alt.max <= v.aut ? '<span class="mal">Por la ruta no te alcanza</span>, pero cargando en '+v.alt.donde.map(d => esc(d.n)).join(' y ')+' lo más largo baja a '+v.alt.max+' km.' : '<span class="mal">No te alcanza: lleva bidón.</span>') : '');
   btn.href = wa('Hola, quiero hacer la Carretera Austral en moto: de '+v.a.n+' a '+v.b.n+' ('+v.total+' km, '+v.dias+' días a '+v.ritmo+' km por día, mi moto rinde '+v.aut+' km). ¿Me ayudan a armarlo?');
   observarCasillas();
 }
