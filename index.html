@@ -363,6 +363,12 @@ footer a{color:inherit}
 .fu-llegar,.nota-llegar{font-size:.92rem;color:var(--tinta-2)}
 .nota-llegar{font:400 1.2rem/1.3 var(--mano);color:var(--rojo);transform:rotate(-1deg);margin-top:20px}
 .llegar .credito{margin-top:28px}
+.local.con-fotos{grid-template-columns:minmax(0,1fr)}
+.fotos-local{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.fotos-local button{padding:0;border:0;background:var(--regla-suave);cursor:zoom-in;overflow:hidden}
+.fotos-local img{display:block;width:100%;height:118px;object-fit:cover;transition:transform .4s var(--ease)}
+.fotos-local button:hover img{transform:scale(1.04)}
+@media (max-width:700px){.local .fotos-local{order:-1}.fotos-local img{height:96px}}
 </style>
 </head>
 <body>
@@ -779,14 +785,13 @@ function desviosHtml(p, v){
   return DESVIOS.filter(d => enSentido(d, v).entra === p.n).map(d => {
     const pr = d.bencina ? preciosDe(d.lat, d.lng) : null;
     const k = d.desde === d.hasta ? 'Ida y vuelta: <b>' + (d.a + d.b) + ' km</b> desde aquí' : 'Desvío: <b>' + extraDe(d) + ' km</b> más que ir directo a ' + esc(enSentido(d, v).sale);
-    let f = null, dist = 8;
-    CON_FOTO.forEach(l => { const x = kmEntre(l, d); if (x < dist) { dist = x; f = l; } });
-    return '<aside class="local"><div><span class="et">Dato de local</span><h5>' + esc(d.n) + '</h5>'
+    const fs = d.fotos || [];
+    return '<aside class="local' + (fs.length ? ' con-fotos' : '') + '"><div><span class="et">Dato de local</span><h5>' + esc(d.n) + '</h5>'
       + '<p class="k">' + k + (pr && pr.gasolina ? ' · Bencina: ' + pr.txt : d.bencina ? '' : ' · <b>sin bencina</b>') + '</p>'
       + '<p>' + esc(d.texto) + '</p>'
       + '<div class="fu"><span>Fuentes:</span>' + (pr ? '<span>bencina y precios, ' + CNE + ' (' + fmtFecha(pr.fecha) + ')</span>' : '') + '<span>km, OpenStreetMap</span>' + d.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
       + '<button class="lnk" type="button" data-ver="d-' + d.id + '">Ver en el mapa</button></div></div>'
-      + (f ? '<figure><button type="button" class="lnk" style="padding:0;border:0;cursor:zoom-in" data-visor="' + f.id + '" aria-label="Ver foto de ' + esc(f.n) + '">' + imgCon(f.foto.url, f.n) + '</button></figure>' : '')
+      + (fs.length ? '<div class="fotos-local">' + fs.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
       + '</aside>';
   }).join('');
 }
@@ -1027,6 +1032,8 @@ function pintarFranjas(){
 }
 
 function abrirVisor(id, grupo){
+  const dv = grupo && grupo.startsWith('d-') && DESVIOS.find(d => 'd-' + d.id === grupo);
+  if (dv) { enVisor = dv.fotos.map((f, i) => ({id:'d-' + dv.id + '-' + i, mapa:'d-' + dv.id, n:f.pie, desc:'Dato de local: ' + dv.n, foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   if (grupo === 'galeria') { enVisor = GALERIA; iVisor = Math.max(0, GALERIA.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   const g = grupo && POR_PUEBLO[grupo] ? [POR_PUEBLO[grupo].foto, ...POR_PUEBLO[grupo].cerca].filter(Boolean) : [];
   enVisor = g.some(l => l.id === id) ? g.filter((l, i, arr) => arr.findIndex(x => x.id === l.id) === i) : VER;
@@ -1046,7 +1053,7 @@ function mostrarVisor(){
   document.getElementById('vDonde').textContent = (a.desc || a.sub || '') + (a.loc ? ', cerca de ' + a.loc : '');
   document.getElementById('vCredito').innerHTML = credito(a.foto);
   document.getElementById('vNum').textContent = (iVisor + 1) + ' de ' + enVisor.length;
-  document.getElementById('vMapa').dataset.destino = a.id;
+  document.getElementById('vMapa').dataset.destino = a.mapa || a.id;
 }
 const mover = d => { iVisor = (iVisor + d + enVisor.length) % enVisor.length; mostrarVisor(); };
 document.getElementById('vAnt').addEventListener('click', () => mover(-1));
