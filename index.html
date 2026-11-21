@@ -339,6 +339,30 @@ footer a{color:inherit}
 .ficha-ruta dd small{display:block;font-weight:500;color:#D5D9DC}
 .fuente-dato{font-size:.78rem;color:var(--tinta-3)}
 .precios a{color:inherit}
+
+/* Cómo llegar a Chaitén */
+.llegar{background:color-mix(in srgb,var(--t1) 6%,#fff) var(--curvas) 0 0/640px 420px}
+.llegar-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 56px;margin-top:24px}
+@media (max-width:860px){.llegar-grid{grid-template-columns:minmax(0,1fr)}}
+.llegar h3{font-size:1.3rem;margin:0 0 12px;color:var(--t1)}
+.llegar-grid > div > h3 + p{margin-top:0}
+.llegar-grid > div > p + h3{margin-top:28px}
+.pasos{list-style:none;margin:0;padding:0}
+.pasos li{position:relative;padding:0 0 16px 34px}
+.pasos li::before{content:"";position:absolute;left:10px;top:6px;bottom:-6px;width:3px;background:var(--t1)}
+.pasos li:last-child::before{display:none}
+.pasos li::after{content:"";position:absolute;left:3px;top:4px;width:17px;height:17px;border-radius:50%;background:#fff;border:3px solid var(--t1)}
+.pasos li.barco::before{background:repeating-linear-gradient(to bottom,var(--lago) 0 6px,transparent 6px 11px)}
+.pasos li.barco::after{background:var(--lago);border-color:var(--lago)}
+.pasos > li > b{display:block;font-size:1.05rem}
+.pasos > li > span{display:block;color:var(--tinta-2);font-size:.97rem}
+#precioHornopiren{display:block;margin-top:2px;font-size:.88rem;font-variant-numeric:tabular-nums}
+#precioHornopiren b{color:var(--tinta)}
+#precioHornopiren a{color:inherit}
+.pasos strong{color:var(--tinta)}
+.fu-llegar,.nota-llegar{font-size:.92rem;color:var(--tinta-2)}
+.nota-llegar{font:400 1.2rem/1.3 var(--mano);color:var(--rojo);transform:rotate(-1deg);margin-top:20px}
+.llegar .credito{margin-top:28px}
 </style>
 </head>
 <body>
@@ -351,6 +375,7 @@ footer a{color:inherit}
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
     <nav id="nav">
+      <a href="#llegar">Cómo llegar</a>
       <a href="#hoja">Hoja de ruta</a>
       <a href="#galeria">Fotos</a>
       <a href="#directorio">Directorio</a>
@@ -383,6 +408,37 @@ footer a{color:inherit}
         <div class="tira-pasos" id="tiraPasos" role="group" aria-label="Fotos de la ruta"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="sec llegar" id="llegar" style="--c:var(--t1)">
+  <div class="wrap">
+    <h2>Antes del km 0: cómo llegar a Chaitén</h2>
+    <p class="sub">La hoja parte en Chaitén, pero casi nadie empieza ahí. Hay tres formas de llegar con la moto.</p>
+    <div class="llegar-grid">
+      <div>
+        <h3>Por tierra desde Puerto Montt, con tres barcazas</h3>
+        <ol class="pasos">
+          <li class="tierra"><b>Puerto Montt a Caleta La Arena</b><span>44 km por la Carretera Austral.</span></li>
+          <li class="barco"><b>Barcaza La Arena a Caleta Puelche</b><span>Sin reserva previa.</span></li>
+          <li class="tierra"><b>Puelche a Hornopirén</b><span>55 km. <strong>Carga lleno en Hornopirén</strong>: la siguiente bencina es la de Chaitén. <span id="precioHornopiren"></span></span></li>
+          <li class="barco"><b>Barcaza Hornopirén a Leptepú</b><span>Más de dos horas de navegación. Reserva antes.</span></li>
+          <li class="tierra"><b>Leptepú a Fiordo Largo</b><span>10 km de ripio dentro del Parque Pumalín, en caravana con los vehículos de la barcaza.</span></li>
+          <li class="barco"><b>Barcaza Fiordo Largo a Caleta Gonzalo</b><span>Unos 30 minutos.</span></li>
+          <li class="tierra"><b>Caleta Gonzalo a Chaitén</b><span>57 km. Llegas al km 0 de la hoja.</span></li>
+        </ol>
+        <p class="fu-llegar">Las dos barcazas desde Hornopirén las opera Somarco, con pasajes en línea: <a href="https://www.barcazas.cl" target="_blank" rel="noopener">barcazas.cl</a>.</p>
+      </div>
+      <div>
+        <h3>En barco directo a Chaitén</h3>
+        <p>Naviera Austral lleva vehículos a Chaitén desde <b>Puerto Montt</b>, <b>Quellón</b> y <b>Castro</b>. Se reserva en línea; para motos, confirma con ellos el espacio.</p>
+        <p class="fu-llegar"><a href="https://www.navieraustral.cl" target="_blank" rel="noopener">navieraustral.cl</a></p>
+        <h3>Desde Argentina, por Futaleufú</h3>
+        <p>Entras por el paso de Futaleufú y bajas 77 km a Villa Santa Lucía, el km 76 de la hoja. Así te saltas las barcazas. <a href="#hoja" data-ir-pueblo="Villa Santa Lucía">Ver Santa Lucía en la hoja</a></p>
+        <p class="nota-llegar">Horarios y tarifas cambian según la temporada: revísalos con cada operador antes de salir, sobre todo en enero y febrero.</p>
+      </div>
+    </div>
+    <p class="credito">Fuentes: <a href="https://chile.travel/atractivos/chaiten/" target="_blank" rel="noopener">Sernatur, chile.travel: Chaitén</a> (ruta por tierra y barcazas); <a href="https://www.rionegro.com.ar/?p=784467" target="_blank" rel="noopener">Diario Río Negro</a> (duración de las barcazas y caravana en Pumalín); km por camino: OpenStreetMap (OSRM); bencina de Hornopirén: CNE; operadores: Somarco y Naviera Austral.</p>
   </div>
 </section>
 
@@ -1008,6 +1064,7 @@ document.getElementById('vMapa').addEventListener('click', e => { visor.close();
 document.addEventListener('click', e => {
   const v = e.target.closest('[data-visor]'); if (v) { abrirVisor(v.dataset.visor, v.dataset.grupo); return; }
   const m = e.target.closest('[data-ver]'); if (m) { verEnMapa(m.dataset.ver); return; }
+  const ip = e.target.closest('[data-ir-pueblo]'); if (ip) { e.preventDefault(); const c = document.querySelector('.casilla[data-pueblo="'+ip.dataset.irPueblo+'"]'); if (c) c.scrollIntoView({block:'center'}); return; }
   const d = e.target.closest('[data-ir-dir]'); if (d) { e.preventDefault(); irADirectorio(d.dataset.irDir, d.dataset.cat); }
 });
 
@@ -1057,6 +1114,7 @@ Promise.all([
   fetch('data/desvios.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({desvios:[]})),
 ]).then(([F, d, B, D]) => {
   BENCINA = B.estaciones || []; BENCINA_FECHA = B.generado || ''; DESVIOS = D.desvios || [];
+  { const pr = preciosDe(-41.964, -72.48); if (pr) document.getElementById('precioHornopiren').innerHTML = pr.txt + ' · ' + CNE + ', ' + fmtFecha(pr.fecha) + '.'; }
   F.lugares.forEach(l => FOTOS[l.id] = l.foto);
   Object.entries(F.ruta).forEach(([k, f]) => FOTOS['ruta.'+k] = f);
   Object.entries(F.pueblos || {}).forEach(([k, f]) => FOTOS[k] = f);

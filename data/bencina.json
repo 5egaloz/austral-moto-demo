@@ -34,6 +34,37 @@
    ]
   },
   {
+   "id": 1481,
+   "marca": 5,
+   "direccion": "Carretera Austral KM 107",
+   "comuna": "Hualaihué",
+   "lat": -41.96429675467794,
+   "lng": -72.47951567173004,
+   "horario": "",
+   "comb": [
+    {
+     "t": "93",
+     "precio": 1696,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "97",
+     "precio": 1745,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "Diésel",
+     "precio": 1596,
+     "fecha": "2026-11-19"
+    },
+    {
+     "t": "95",
+     "precio": 1717,
+     "fecha": "2026-11-19"
+    }
+   ]
+  },
+  {
    "id": 1482,
    "marca": 5,
    "direccion": "HURTADO DE MENDOZA S/N",

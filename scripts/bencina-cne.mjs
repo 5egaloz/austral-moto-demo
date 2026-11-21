@@ -14,7 +14,8 @@ const estaciones = todas
   .map(e => ({...e, lat:+e.latitud, lng:+e.longitud}))
   // Aysén completo y Los Lagos desde Chaitén al sur (Chaitén, Futaleufú, Palena)
   // (lng > -73.58 deja fuera Chiloé; Caleta Tortel está en -73.53)
-  .filter(e => e.lat < -42.6 && e.lat > -49.5 && e.lng > -73.58 && e.lng < -71)
+  // más Hornopirén (-41.96), última bencina antes de las barcazas a Chaitén
+  .filter(e => (e.lat < -42.6 || (e.lat < -41.9 && e.lat > -42.1 && e.lng > -72.6)) && e.lat > -49.5 && e.lng > -73.58 && e.lng < -71)
   .map(e => ({
     id: e.id,
     marca: e.marca,
