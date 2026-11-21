@@ -28,3 +28,10 @@ la línea de la ruta al medio y lo que hay en ese punto a la derecha. Todo lo de
 - Sin contenido inventado. Los km son aproximados y se dice.
 - Lo dinámico (autonomía, desde/hasta, ritmo) cambia las notas de la hoja, no abre otra sección.
 - Fotos: solo Wikimedia Commons, con autor y licencia. La foto de un negocio es "la zona", hasta que el negocio suba la suya.
+
+## Portada, logo y fotos (2026-11-21)
+- Fer pidió menos blanco y más foto: la portada es la foto de la ruta a pantalla completa (rota entre 11 fotos, cada una se baja justo antes de mostrarse) con el título y la ficha encima, sobre un degradado oscuro.
+- Logo: placa verde de señal caminera (#0B6B3A, filete blanco interior) con el escudo de ruta "RUTA 7" en blanco. El mismo escudo es el favicon.
+- Más fotos: dos fotos de la zona bajo la foto de cada pueblo, galería "La ruta en fotos" (mosaico de norte a sur, una grande cada cinco) y franjas a todo el ancho antes de "Antes de salir" y de "Contacto".
+- Contacto y pie en fondo oscuro (--tinta) para cerrar la página.
+- Sin backdrop-filter (el detector lo marca como glassmorphism).

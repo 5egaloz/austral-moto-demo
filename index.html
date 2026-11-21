@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ruta 7 Moto: la Carretera Austral en moto</title>
 <meta name="description" content="Hoja de ruta de la Carretera Austral en moto: dónde cargar bencina, cuánto rinde tu estanque en cada tramo, talleres, alojamiento y qué ver, kilómetro a kilómetro.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'%3E%3Cpath d='M3 3H37V20C37 33 28 40 20 44C12 40 3 33 3 20Z' fill='%23fff' stroke='%231E2124' stroke-width='3'/%3E%3Ctext x='20' y='33' font-family='Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%231E2124'%3E7%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Kalam:wght@700&display=swap" rel="stylesheet">
@@ -25,6 +26,7 @@
   --ripio:#B3A27E;
   --ripio-claro:#ECE6D8;
   --velo:rgb(20 22 24 / .72);
+  --senal:#0B6B3A;
   --f:"Archivo", system-ui, sans-serif;
   --mano:"Kalam", "Comic Sans MS", cursive;
   --cab-h:56px;
@@ -49,43 +51,65 @@ button{font:inherit;color:inherit}
 /* Cabecera */
 .cab{position:sticky;top:0;z-index:1200;background:var(--papel);border-bottom:2px solid var(--tinta);height:var(--cab-h)}
 .cab .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:100%}
-.marca{text-decoration:none;color:var(--tinta);font:800 1.35rem/1 var(--f);font-stretch:125%;letter-spacing:-.01em;white-space:nowrap}
-.marca small{font-weight:500;font-stretch:100%;font-size:.95rem;color:var(--tinta-2);margin-left:8px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--blanco);background:var(--senal);border-radius:5px;padding:4px 14px 4px 6px;box-shadow:inset 0 0 0 2px var(--senal),inset 0 0 0 3.5px var(--blanco);white-space:nowrap}
+.marca svg{width:34px;height:39px;flex:none}
+.marca b{display:block;font:800 1.3rem/1 var(--f);font-stretch:118%;letter-spacing:.01em;text-transform:uppercase}
+.marca small{display:block;font:600 .74rem/1.2 var(--f);font-stretch:95%;color:#CFE6D8;margin-top:2px}
 .cab nav{display:flex;gap:24px}
 .cab nav a{color:var(--tinta);text-decoration:none;font-weight:600;font-stretch:87%;white-space:nowrap}
 .cab nav a:hover{text-decoration:underline;text-underline-offset:4px}
 .menu-btn{display:none;background:none;border:2px solid var(--tinta);padding:4px 12px;border-radius:3px;font-weight:700}
 @media (max-width:820px){
   .marca small{display:none}
+  .marca b{font-size:1.1rem}
   .menu-btn{display:block}
   .cab nav{display:none;position:absolute;top:var(--cab-h);left:0;right:0;background:var(--papel);border-bottom:2px solid var(--tinta);flex-direction:column;padding:16px;gap:16px}
   .cab nav.abierto{display:flex}
 }
 
-/* Tapa: como la primera hoja de un roadbook */
-.tapa{padding:40px 0 0}
-.tapa-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px 56px;align-items:end}
-.tapa h1{font-size:clamp(2.4rem,5vw,4.1rem);font-stretch:70%;font-weight:800;letter-spacing:-.01em;max-width:14ch}
-.tapa .bajada{font-size:1.15rem;color:var(--tinta-2);margin:18px 0 0;max-width:46ch}
-.ficha-ruta{margin:0;border:2px solid var(--tinta);background:var(--blanco)}
-.ficha-ruta div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:9px 14px;border-top:1px solid var(--regla)}
-.ficha-ruta div:first-child{border-top:0}
-.ficha-ruta dt{color:var(--tinta-2)}
-.ficha-ruta dd{margin:0;font-weight:700;font-stretch:87%;text-align:right}
-.ficha-ruta dd.alerta{color:var(--rojo)}
-@media (max-width:860px){.tapa-grid{grid-template-columns:minmax(0,1fr)}}
-.tira{position:relative;margin-top:32px;aspect-ratio:21/8;max-height:480px;width:100%;overflow:hidden;background:var(--regla-suave);border:2px solid var(--tinta)}
-@media (max-width:700px){.tira{aspect-ratio:4/3}}
-.tira img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity 1.4s ease-in-out}
-.tira img.visible{opacity:1;animation:acercar 10s linear forwards}
+/* Tapa: la foto de la ruta a pantalla completa, con los datos encima */
+.tapa{position:relative;color:var(--blanco);background:#2A2E32}
+.tira{position:relative;min-height:calc(100svh - var(--cab-h));display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.tira-fotos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease-in-out}
+.tira-fotos img.visible{opacity:1;animation:acercar 12s linear forwards}
 @keyframes acercar{to{transform:scale(1.09)}}
-.tira-pie{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:40px 16px 12px;background:linear-gradient(to top,var(--velo),transparent);color:var(--blanco)}
-.tira-pie b{font-stretch:75%;font-size:1.3rem;display:block;line-height:1.1}
-.tira-pie span{font-size:.95rem}
-.tira-pie .credito{color:rgb(255 255 255 / .75);text-align:right}
-.tira-pasos{display:flex;gap:6px;margin-top:10px}
-.tira-pasos button{width:28px;height:4px;padding:0;border:0;background:var(--regla);cursor:pointer}
-.tira-pasos button[aria-current="true"]{background:var(--tinta)}
+.tira::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgb(16 18 20 / .9) 0,rgb(16 18 20 / .55) 38%,rgb(16 18 20 / .05) 70%),linear-gradient(to bottom,rgb(16 18 20 / .35),transparent 22%);pointer-events:none}
+.tapa-in{position:relative;z-index:1;padding:clamp(60px,22vh,220px) 0 22px}
+.tapa-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 56px;align-items:end}
+.tapa h1{font-size:clamp(2.4rem,min(6vw,10vh),5.2rem);font-stretch:68%;font-weight:800;letter-spacing:-.01em;max-width:13ch;text-shadow:0 2px 18px rgb(0 0 0 / .35)}
+.tapa .bajada{font-size:1.2rem;color:#E9ECEE;margin:18px 0 0;max-width:44ch}
+.ficha-ruta{margin:0;border:2px solid var(--blanco);background:rgb(16 18 20 / .74)}
+.ficha-ruta div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:9px 14px;border-top:1px solid rgb(255 255 255 / .22)}
+.ficha-ruta div:first-child{border-top:0}
+.ficha-ruta dt{color:#C9CDD1}
+.ficha-ruta dd{margin:0;font-weight:700;font-stretch:87%;text-align:right}
+.ficha-ruta dd.alerta{color:#FF9A90}
+@media (max-width:860px){.tapa-grid{grid-template-columns:minmax(0,1fr)}.tapa-in{padding-top:30vh}.tira::after{background:linear-gradient(to top,rgb(16 18 20 / .9) 0,rgb(16 18 20 / .62) 60%,rgb(16 18 20 / .25) 100%)}}
+.tira-pie{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 24px;margin-top:34px;padding-top:14px;border-top:1px solid rgb(255 255 255 / .3)}
+.tira-pie b{font-stretch:75%;font-size:1.25rem;display:inline;margin-right:10px}
+.tira-pie span{font-size:.95rem;color:#D5D9DC}
+.tira-pie .credito{color:rgb(255 255 255 / .7);margin:2px 0 0}
+.tira-pasos{display:flex;gap:6px;align-self:center}
+.tira-pasos button{width:26px;height:4px;padding:0;border:0;background:rgb(255 255 255 / .35);cursor:pointer}
+.tira-pasos button[aria-current="true"]{background:var(--blanco)}
+
+/* Franjas de foto entre secciones */
+.franja{position:relative;margin:0;height:min(62vh,560px);min-height:300px;background:#2A2E32;overflow:hidden}
+.franja img{width:100%;height:100%;object-fit:cover}
+.franja figcaption{position:absolute;left:0;right:0;bottom:0;padding:60px 0 16px;color:var(--blanco);background:linear-gradient(to top,rgb(16 18 20 / .8),transparent)}
+.franja figcaption b{display:block;font:800 clamp(1.6rem,3.4vw,2.4rem)/1.05 var(--f);font-stretch:70%}
+.franja figcaption span{color:#D5D9DC}
+.franja .credito{color:rgb(255 255 255 / .65)}
+
+/* Galería de la ruta */
+.galeria{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;grid-auto-flow:dense;gap:6px;margin-top:24px}
+.galeria button{position:relative;padding:0;border:0;background:var(--regla-suave);cursor:zoom-in;overflow:hidden;text-align:left}
+.galeria button.g{grid-column:span 2;grid-row:span 2}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.galeria button:hover img{transform:scale(1.04)}
+.galeria span{position:absolute;left:0;right:0;bottom:0;padding:28px 10px 8px;color:var(--blanco);font-weight:700;font-stretch:85%;line-height:1.15;background:linear-gradient(to top,rgb(16 18 20 / .78),transparent)}
+.galeria small{display:block;font-weight:500;font-stretch:100%;color:#D5D9DC}
+@media (max-width:860px){.galeria{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}}
 
 /* Barra "Mi viaje" */
 .viaje{position:sticky;top:var(--cab-h);z-index:1100;background:var(--tinta);color:var(--blanco);margin-top:40px}
@@ -159,6 +183,10 @@ button{font:inherit;color:inherit}
 .foto-p button{display:block;width:100%;padding:0;border:0;background:var(--regla-suave);cursor:zoom-in;overflow:hidden}
 .foto-p img{width:100%;aspect-ratio:4/3;object-fit:cover;opacity:0;transition:opacity .6s var(--ease)}
 .foto-p img.lista{opacity:1}
+.foto-p .mas{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px}
+.foto-p .mas button{position:relative}
+.foto-p .mas img{aspect-ratio:3/2}
+.foto-p .mas span{position:absolute;left:0;right:0;bottom:0;padding:14px 5px 3px;font-size:.72rem;line-height:1.15;font-weight:600;color:var(--blanco);text-align:left;background:linear-gradient(to top,rgb(16 18 20 / .8),transparent)}
 .tramo{background:#F3F5F6;border-bottom:1px solid var(--regla);padding:14px 0 16px}
 .tramo .eje::before{background:repeating-linear-gradient(to bottom,var(--tinta) 0 9px,transparent 9px 15px)}
 .tramo.asfalto .eje::before{background:var(--tinta)}
@@ -210,6 +238,7 @@ button{font:inherit;color:inherit}
 
 /* Directorio completo */
 .sec{padding:56px 0;border-top:2px solid var(--tinta)}
+.franja + .sec{border-top:0}
 .sec h2{font-size:clamp(1.9rem,3.6vw,2.6rem);font-stretch:72%}
 .sec .sub{color:var(--tinta-2);margin:8px 0 0}
 .dir-filtros{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 14px}
@@ -243,6 +272,10 @@ button{font:inherit;color:inherit}
 .contador{margin-top:16px;font-weight:700;font-stretch:87%}
 
 /* Contacto */
+#contacto{background:var(--tinta);color:var(--blanco);border-top:0}
+#contacto .contacto p{color:#C9CDD1}
+#contacto .contacto a.wa,#contacto .directo a{color:var(--blanco)}
+#contacto .directo{border-top-color:rgb(255 255 255 / .35)}
 .contacto{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 40px;margin-top:26px}
 @media (max-width:860px){.contacto{grid-template-columns:minmax(0,1fr)}}
 .contacto h3{font-size:1.3rem;font-stretch:80%;margin-bottom:8px}
@@ -251,7 +284,7 @@ button{font:inherit;color:inherit}
 .directo{margin-top:32px;padding-top:18px;border-top:2px solid var(--tinta);font-size:1.1rem}
 .directo a{font-weight:700;color:var(--tinta);white-space:nowrap}
 
-footer{border-top:2px solid var(--tinta);padding:28px 0 40px;font-size:.9rem;color:var(--tinta-2)}
+footer{background:var(--tinta);border-top:1px solid rgb(255 255 255 / .18);padding:28px 0 40px;font-size:.9rem;color:#9AA0A6}
 footer a{color:inherit}
 .leaflet-popup-content{font-family:var(--f)}
 .leaflet-popup-content img{width:200px;height:130px;object-fit:cover;margin-bottom:6px}
@@ -261,10 +294,14 @@ footer a{color:inherit}
 
 <header class="cab">
   <div class="wrap">
-    <a class="marca" href="#inicio">Ruta 7 Moto<small>Carretera Austral, Aysén</small></a>
+    <a class="marca" href="#inicio" aria-label="Ruta 7 Moto, ir al inicio">
+      <svg viewBox="0 0 40 46" aria-hidden="true"><path d="M3 3H37V20C37 33 28 40 20 44C12 40 3 33 3 20Z" fill="#fff" stroke="#1E2124" stroke-width="2.5"/><text x="20" y="13" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="7.5" fill="#1E2124" letter-spacing=".6">RUTA</text><text x="20" y="35" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="23" fill="#1E2124">7</text></svg>
+      <span><b>Ruta 7 Moto</b><small>Carretera Austral, Aysén</small></span>
+    </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
     <nav id="nav">
       <a href="#hoja">Hoja de ruta</a>
+      <a href="#galeria">Fotos</a>
       <a href="#directorio">Directorio</a>
       <a href="#antes">Antes de salir</a>
       <a href="#contacto">Contacto</a>
@@ -274,25 +311,27 @@ footer a{color:inherit}
 
 <main>
 <section class="tapa" id="inicio">
-  <div class="wrap">
-    <div class="tapa-grid">
-      <div>
-        <h1>La Carretera Austral en moto, kilómetro a kilómetro</h1>
-        <p class="bajada">Dónde cargar bencina, cuánto te rinde el estanque en cada tramo, talleres, alojamiento y qué ver, de Chaitén a Villa O'Higgins.</p>
+  <div class="tira" id="tira">
+    <div class="tira-fotos" id="tiraFotos"><img src="fotos/Carretera_Austral_-_Leones.JPG" data-foto="ruta.portada" class="visible" alt="Carretera Austral de ripio con la cordillera nevada al fondo" fetchpriority="high"></div>
+    <div class="wrap tapa-in">
+      <div class="tapa-grid">
+        <div>
+          <h1>La Carretera Austral en moto, kilómetro a kilómetro</h1>
+          <p class="bajada">Dónde cargar bencina, cuánto te rinde el estanque en cada tramo, talleres, alojamiento y qué ver, de Chaitén a Villa O'Higgins.</p>
+        </div>
+        <dl class="ficha-ruta" aria-label="Datos de la ruta">
+          <div><dt>Recorrido</dt><dd>Chaitén a Villa O'Higgins</dd></div>
+          <div><dt>Distancia por camino</dt><dd id="fKm">970 km</dd></div>
+          <div><dt>Pueblos con bencina</dt><dd id="fPueblosB">8</dd></div>
+          <div><dt>Tramo más largo sin bencina</dt><dd class="alerta" id="fMax">231 km, Cochrane a Villa O'Higgins</dd></div>
+          <div><dt>Mejor época</dt><dd>diciembre a marzo</dd></div>
+        </dl>
       </div>
-      <dl class="ficha-ruta" aria-label="Datos de la ruta">
-        <div><dt>Recorrido</dt><dd>Chaitén a Villa O'Higgins</dd></div>
-        <div><dt>Distancia por camino</dt><dd id="fKm">970 km</dd></div>
-        <div><dt>Pueblos con bencina</dt><dd id="fPueblosB">8</dd></div>
-        <div><dt>Tramo más largo sin bencina</dt><dd class="alerta" id="fMax">231 km, Cochrane a Villa O'Higgins</dd></div>
-        <div><dt>Mejor época</dt><dd>diciembre a marzo</dd></div>
-      </dl>
+      <div class="tira-pie">
+        <div><div id="tiraTxt"><b>Carretera Austral</b><span>Ruta 7, Región de Aysén</span></div><p class="credito" id="tiraCredito"></p></div>
+        <div class="tira-pasos" id="tiraPasos" role="group" aria-label="Fotos de la ruta"></div>
+      </div>
     </div>
-    <div class="tira" id="tira">
-      <div id="tiraFotos"><img data-foto="ruta.portada" class="visible" alt="Carretera Austral de ripio con la cordillera nevada al fondo" fetchpriority="high"></div>
-      <div class="tira-pie"><div id="tiraTxt"><b>Carretera Austral</b><span>Ruta 7, Región de Aysén</span></div><p class="credito" id="tiraCredito"></p></div>
-    </div>
-    <div class="tira-pasos" id="tiraPasos" role="group" aria-label="Fotos de la ruta"></div>
   </div>
 </section>
 
@@ -321,6 +360,14 @@ footer a{color:inherit}
   </div>
 </section>
 </div>
+
+<section class="sec" id="galeria">
+  <div class="wrap">
+    <h2>La ruta en fotos</h2>
+    <p class="sub">De Chaitén a Villa O'Higgins, de norte a sur. Toca una foto para verla en grande.</p>
+    <div class="galeria" id="galeriaFotos"></div>
+  </div>
+</section>
 
 <dialog class="visor" id="visor" aria-label="Foto en pantalla completa">
   <div class="visor-img" id="visorImg">
@@ -351,6 +398,8 @@ footer a{color:inherit}
     <p class="tuya">La foto de cada negocio es la de su zona, hasta que el dueño suba la suya. Horarios y teléfonos cambian: confirma antes de ir.</p>
   </div>
 </section>
+
+<figure class="franja" data-foto="c-carrera" data-donde="Entre Puerto Río Tranquilo y Puerto Bertrand"></figure>
 
 <section class="sec" id="antes">
   <div class="wrap">
@@ -384,6 +433,8 @@ footer a{color:inherit}
     <p class="contador" id="contador" aria-live="polite"></p>
   </div>
 </section>
+
+<figure class="franja" data-foto="c-chacabuco" data-donde="Cerca de Cochrane"></figure>
 
 <section class="sec" id="contacto">
   <div class="wrap">
@@ -484,21 +535,30 @@ const TIRA = [
   {id:'c-castillo', n:'Villa Cerro Castillo', d:'Km ' + kmDe('Villa Cerro Castillo')},
   {id:'c-capillas', n:'Capillas de Mármol', d:'Puerto Río Tranquilo, km ' + kmDe('Puerto Río Tranquilo')},
   {id:'c-queulat', n:'Parque Queulat', d:'Cerca de Puyuhuapi, km ' + kmDe('Puyuhuapi')},
+  {id:'ruta.ruta2', n:'Carretera Austral', d:'Ruta 7, tramo de ripio'},
   {id:'c-bertrand', n:'Lago Bertrand', d:'Km ' + kmDe('Puerto Bertrand')},
+  {id:'c-carrera', n:'Lago General Carrera', d:'Entre Puerto Río Tranquilo y Puerto Bertrand'},
+  {id:'c-exploradores', n:'Glaciar Exploradores', d:'Desvío desde Puerto Río Tranquilo'},
+  {id:'ruta.ruta3', n:'Carretera Austral', d:'Ruta 7, Región de Aysén'},
+  {id:'c-chacabuco', n:'Valle Chacabuco', d:'Cerca de Cochrane, km ' + kmDe('Cochrane')},
+  {id:'c-ohiggins', n:"Villa O'Higgins", d:'Fin de la ruta, km ' + kmDe("Villa O'Higgins")},
 ];
 function armarTira(){
   const lista = TIRA.filter(p => FOTOS[p.id]);
   const caja = document.getElementById('tiraFotos'), pasos = document.getElementById('tiraPasos'), txt = document.getElementById('tiraTxt');
   if (lista.length < 2) return;
-  caja.innerHTML = lista.map((p, i) => '<img'+(i === 0 ? ' class="visible"' : '')+' src="'+esc(grande(FOTOS[p.id].url))+'" alt="'+esc(p.n)+'">').join('');
+  // Solo la primera se baja de entrada; las demás justo antes de mostrarse
+  caja.innerHTML = lista.map((p, i) => '<img'+(i === 0 ? ' class="visible" src' : ' data-src')+'="'+esc(grande(FOTOS[p.id].url))+'" alt="'+esc(p.n)+'">').join('');
+  const cargar = img => { if (img && img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
   pasos.innerHTML = lista.map((p, i) => '<button aria-label="Ver '+esc(p.n)+'"'+(i === 0 ? ' aria-current="true"' : '')+'></button>').join('');
   const fotos = [...caja.children], btns = [...pasos.children];
   let i = 0, reloj = null, pausa = false;
   const ir = k => {
     i = (k + lista.length) % lista.length;
+    cargar(fotos[i]); cargar(fotos[(i + 1) % fotos.length]);
     fotos.forEach((f, j) => f.classList.toggle('visible', j === i));
     btns.forEach((b, j) => j === i ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current'));
-    txt.innerHTML = '<b>'+esc(lista[i].n)+'</b><span>'+esc(lista[i].d)+'</span>';
+    txt.innerHTML = '<b>'+esc(lista[i].n)+'</b> <span>'+esc(lista[i].d)+'</span>';
     document.getElementById('tiraCredito').innerHTML = credito(FOTOS[lista[i].id]);
   };
   const programar = () => { clearInterval(reloj); reloj = setInterval(() => { if (!pausa) ir(i + 1); }, quieto ? 9000 : 6500); };
@@ -580,7 +640,9 @@ function pintarHoja(){
     const servHtml = ['bencina','taller','alojamiento','balsa'].filter(c => (datos.serv[c] || []).length)
       .map(c => { const n = datos.serv[c].length; return '<button type="button" aria-expanded="false" data-pueblo="'+esc(p.n)+'" data-cat="'+c+'"><b>'+n+'</b> '+PLURAL[c][n === 1 ? 0 : 1]+'</button>'; }).join('');
     const f = datos.foto;
-    const cerca = datos.cerca.slice(0, 4);
+    // Dos fotos de la zona van junto a la foto del pueblo; el resto, en la fila de "cerca"
+    const junto = f ? datos.cerca.slice(0, 2) : [];
+    const cerca = datos.cerca.slice(junto.length, junto.length + 4);
     html += '<li class="casilla '+tipo+(v.dentro(p) ? '' : ' fuera')+'" data-pueblo="'+esc(p.n)+'">'
       + '<div class="km"><b>'+p.km+'</b><span>'+parcial+'</span></div><div class="eje"><i></i></div>'
       + '<div class="cuerpo"><div class="enc"><h3>'+esc(p.n)+'</h3>'+comb+'</div>'
@@ -589,7 +651,9 @@ function pintarHoja(){
       + (servHtml ? '<div class="serv-p">'+servHtml+'</div><div class="serv-abierto"></div>' : '')
       + (cerca.length ? '<div class="cerca">'+cerca.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+(l.desvio > 15 ? '<small>a '+l.desvio+' km</small>' : '')+'</span></button>').join('')+'</div>' : '')
       + '</div>'
-      + (f ? '<figure class="foto-p"><button type="button" data-visor="'+f.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(f.n)+' en grande">'+imgCon(f.foto.url, f.n)+'</button><figcaption class="credito">'+(f.n !== p.n ? esc(f.n)+'. ' : '')+credito(f.foto)+'</figcaption></figure>' : '')
+      + (f ? '<figure class="foto-p"><button type="button" data-visor="'+f.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(f.n)+' en grande">'+imgCon(f.foto.url, f.n)+'</button><figcaption class="credito">'+(f.n !== p.n ? esc(f.n)+'. ' : '')+credito(f.foto)+'</figcaption>'
+        + (junto.length ? '<div class="mas">'+junto.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(l.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('')+'</div>' : '')
+        + '</figure>' : '')
       + '</li>';
     const dia = v.duerme.get(p.n);
     if (dia) html += '<li class="dia"><div class="km">día '+dia+'</div><div class="eje"></div><div class="cuerpo">Fin del día '+dia+': duermes en '+esc(p.n)+'</div></li>';
@@ -689,7 +753,29 @@ function verEnMapa(id){
 /* ---------- Visor de fotos ---------- */
 const visor = document.getElementById('visor');
 let enVisor = [], iVisor = 0;
+let GALERIA = [];
+function pintarGaleria(){
+  const kmCerca = l => { let m = null, d = Infinity; PUEBLOS.forEach(p => { const k = kmEntre(l, p); if (k < d) { d = k; m = p; } }); return m; };
+  GALERIA = CON_FOTO.filter(l => l.cat === 'atractivo' && l.dest).map(l => ({...l, cerca:kmCerca(l)})).sort((a, b) => a.cerca.km - b.cerca.km);
+  // Una foto grande cada cinco, para que el mosaico tenga ritmo
+  document.getElementById('galeriaFotos').innerHTML = GALERIA.map((l, i) => {
+    const g = i % 5 === 0;
+    return '<button type="button" class="'+(g ? 'g' : '')+'" data-visor="'+l.id+'" data-grupo="galeria" aria-label="Ver foto de '+esc(l.n)+'">'
+      + (g ? '<img src="'+esc(grande(l.foto.url))+'" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\''+esc(chica(l.foto.url))+'\'">' : imgCon(l.foto.url, ''))
+      + '<span>'+esc(l.n)+'<small>Cerca de '+esc(l.cerca.n)+', km '+l.cerca.km+'</small></span></button>';
+  }).join('');
+}
+function pintarFranjas(){
+  document.querySelectorAll('.franja[data-foto]').forEach(fig => {
+    const f = FOTOS[fig.dataset.foto], l = CON_FOTO.find(x => x.id === fig.dataset.foto);
+    if (!f) { fig.remove(); return; }
+    fig.innerHTML = '<img src="'+esc(grande(f.url))+'" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\''+esc(chica(f.url))+'\'">'
+      + '<figcaption><div class="wrap"><b>'+esc(l ? l.n : '')+'</b><span>'+esc(fig.dataset.donde || '')+'</span><p class="credito">'+credito(f)+'</p></div></figcaption>';
+  });
+}
+
 function abrirVisor(id, grupo){
+  if (grupo === 'galeria') { enVisor = GALERIA; iVisor = Math.max(0, GALERIA.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   const g = grupo && POR_PUEBLO[grupo] ? [POR_PUEBLO[grupo].foto, ...POR_PUEBLO[grupo].cerca].filter(Boolean) : [];
   enVisor = g.some(l => l.id === id) ? g.filter((l, i, arr) => arr.findIndex(x => x.id === l.id) === i) : VER;
   iVisor = Math.max(0, enVisor.findIndex(a => a.id === id));
@@ -821,7 +907,7 @@ Promise.all([
   if (d.generado) document.getElementById('actualizado').textContent = 'Directorio actualizado el '+d.generado.split('-').reverse().join('-')+'.';
   cargarMapa(TODOS.filter(l => l.cat !== 'alojamiento'));
   CARGADO = true;
-  pintarHoja(); pintarDir();
+  pintarHoja(); pintarDir(); pintarGaleria(); pintarFranjas();
 }).catch(err => {
   console.error('[ruta7] datos', err);
   pintarHoja();
