@@ -305,5 +305,31 @@
    "licencia": "CC BY-SA 3.0",
    "fuente": "https://commons.wikimedia.org/wiki/File:Carretera_Austral_(255633637).jpeg"
   }
+ },
+ "pueblos": {
+  "p-manihuales": {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Centro_de_Ma%C3%B1ihuales.jpg/1280px-Centro_de_Ma%C3%B1ihuales.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Mr. Luisgabo",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Centro_de_Ma%C3%B1ihuales.jpg"
+  },
+  "p-lajunta": {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Plaza_de_Armas_de_La_Junta.JPG/1280px-Plaza_de_Armas_de_La_Junta.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Develp",
+   "licencia": "CC BY-SA 3.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Plaza_de_Armas_de_La_Junta.JPG"
+  },
+  "p-santalucia": {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Villa_Santa_Lucia.jpg/1280px-Villa_Santa_Lucia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Dhic",
+   "licencia": "CC BY-SA 4.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Villa_Santa_Lucia.jpg"
+  },
+  "p-amengual": {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Church_of_Villa_Amengual_%282953069464%29.jpg/1280px-Church_of_Villa_Amengual_%282953069464%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Vera & Jean-Christophe from Europe",
+   "licencia": "CC BY-SA 2.0",
+   "fuente": "https://commons.wikimedia.org/wiki/File:Church_of_Villa_Amengual_(2953069464).jpg"
+  }
  }
 }

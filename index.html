@@ -422,11 +422,11 @@ const WHATSAPP = '56900000000';
 // Pueblos sobre la Ruta 7, km aproximado desde Chaitén. Bencina verificada en OSM y Google Maps (19-11-2026)
 const PUEBLOS = [
   {n:'Chaitén', km:0, bencina:true, lat:-42.915, lng:-72.709, foto:'c-chaiten', t:'Arranque de la Ruta 7, a los pies del volcán Chaitén.'},
-  {n:'Villa Santa Lucía', km:76, lat:-43.413, lng:-72.364},
-  {n:'La Junta', km:150, bencina:true, lat:-43.973, lng:-72.403},
+  {n:'Villa Santa Lucía', km:76, foto:'p-santalucia', lat:-43.413, lng:-72.364},
+  {n:'La Junta', km:150, bencina:true, foto:'p-lajunta', lat:-43.973, lng:-72.403},
   {n:'Puyuhuapi', km:196, diesel:true, lat:-44.326, lng:-72.557, foto:'c-puyuhuapi', t:'Pueblo junto al fiordo y buena parada para dormir. Cerca, en el Parque Queulat, un sendero corto lleva al mirador del Ventisquero Colgante.'},
-  {n:'Villa Amengual', km:270, lat:-44.746, lng:-72.208},
-  {n:'Villa Mañihuales', km:335, bencina:true, lat:-45.172, lng:-72.149, t:'Bencina antes de bajar a Coyhaique por el valle.'},
+  {n:'Villa Amengual', km:270, foto:'p-amengual', lat:-44.746, lng:-72.208},
+  {n:'Villa Mañihuales', km:335, bencina:true, foto:'p-manihuales', lat:-45.172, lng:-72.149, t:'Bencina antes de bajar a Coyhaique por el valle.'},
   {n:'Coyhaique', km:420, bencina:true, lat:-45.571, lng:-72.068, foto:'c-coyhaique', t:'Capital regional: talleres, repuestos y la última ciudad grande.'},
   {n:'Villa Cerro Castillo', km:515, bencina:true, lat:-46.121, lng:-72.155, foto:'c-castillo', t:'Copec abierto las 24 horas, con las agujas del cerro de fondo.'},
   {n:'Puerto Río Tranquilo', km:640, bencina:true, lat:-46.625, lng:-72.672, foto:'c-capillas', t:'Salida en bote a las Capillas de Mármol.'},
@@ -708,7 +708,7 @@ const PASO = 40; let dMostrados = PASO;
 function fotoZona(s){
   if (s.foto) return s;
   if (s._zona !== undefined) return s._zona;
-  let mejor = null, dist = 30;
+  let mejor = null, dist = 15;
   CON_FOTO.forEach(f => { const k = kmEntre(s, f); if (k < dist) { dist = k; mejor = f; } });
   return s._zona = mejor;
 }
@@ -742,11 +742,12 @@ document.getElementById('dMas').addEventListener('click', () => { dMostrados += 
 
 /* ---------- Carga de datos ---------- */
 Promise.all([
-  fetch('data/fotos.json').then(r => r.json()),
-  fetch('data/lugares.json').then(r => r.json()).catch(() => ({lugares:[], generado:''})),
+  fetch('data/fotos.json', {cache:'no-cache'}).then(r => r.json()),
+  fetch('data/lugares.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({lugares:[], generado:''})),
 ]).then(([F, d]) => {
   F.lugares.forEach(l => FOTOS[l.id] = l.foto);
   Object.entries(F.ruta).forEach(([k, f]) => FOTOS['ruta.'+k] = f);
+  Object.entries(F.pueblos || {}).forEach(([k, f]) => FOTOS[k] = f);
   armarTira();
 
   const elegidos = F.lugares.filter(l => l.lat != null).map(l => ({...l, cat:'atractivo', sub:l.tipo, dest:true}));
@@ -755,7 +756,10 @@ Promise.all([
   // Sin repetir la misma foto en dos lugares
   const ya = new Set();
   TODOS.forEach(l => { if (!l.foto) return; const u = l.foto.url.split('?')[0]; if (ya.has(u)) delete l.foto; else ya.add(u); });
-  CON_FOTO = TODOS.filter(l => l.foto && l.lat != null);
+  // Fotos de los pueblos mismos (no son atracciones, pero sirven como foto de la zona)
+  const FOTO_PUEBLO = {};
+  PUEBLOS.forEach(p => { if (p.foto && p.foto.startsWith('p-') && FOTOS[p.foto]) FOTO_PUEBLO[p.n] = {id:p.foto, n:p.n, lat:p.lat, lng:p.lng, foto:FOTOS[p.foto], sub:'Pueblo'}; });
+  CON_FOTO = TODOS.filter(l => l.foto && l.lat != null).concat(Object.values(FOTO_PUEBLO));
   VER = CON_FOTO.filter(l => l.cat === 'atractivo');
 
   // Cada lugar al pueblo de la ruta más cercano
@@ -770,8 +774,9 @@ Promise.all([
   PUEBLOS.forEach(p => {
     const P = POR_PUEBLO[p.n];
     P.cerca.sort((a, b) => (b.dest?1:0) - (a.dest?1:0) || a.desvio - b.desvio);
-    const propia = p.foto && CON_FOTO.find(l => l.id === p.foto);
-    P.foto = propia || P.cerca[0] || null;
+    // La foto principal tiene que ser del pueblo: la propia, o un lugar a 8 km o menos
+    const propia = FOTO_PUEBLO[p.n] || (p.foto && CON_FOTO.find(l => l.id === p.foto));
+    P.foto = propia || P.cerca.find(l => l.desvio <= 8) || null;
     P.cerca = P.cerca.filter(l => !P.foto || l.id !== P.foto.id);
     Object.values(P.serv).forEach(arr => arr.sort((a, b) => a.n.localeCompare(b.n, 'es')));
   });
