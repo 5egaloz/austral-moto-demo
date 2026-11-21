@@ -1,6 +1,7 @@
 // Baja de OpenStreetMap los lugares útiles para motoqueros en Aysén (y la provincia de Palena),
 // busca fotos libres en Wikimedia Commons para los atractivos y escribe data/lugares.json.
 // Uso: node scripts/actualizar-datos.mjs
+import { sumarExtra } from './localidades.mjs';
 import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -220,9 +221,9 @@ async function fotos(atractivos) {
 const els = (await overpass()).filter(e => { const lat = e.lat ?? e.center?.lat, lng = e.lon ?? e.center?.lon; return lat != null && dentro(lat, lng); });
 console.log('Elementos OSM:', els.length);
 
-const pueblos = els
+const pueblos = sumarExtra(els
   .filter(e => e.tags?.place && e.tags.name)
-  .map(e => ({ n: e.tags.name, lat: e.lat ?? e.center.lat, lng: e.lon ?? e.center.lon, peso: { city: 3, town: 2, village: 1 }[e.tags.place] }));
+  .map(e => ({ n: e.tags.name, lat: e.lat ?? e.center.lat, lng: e.lon ?? e.center.lon, peso: { city: 3, town: 2, village: 1 }[e.tags.place] })));
 
 const vistos = new Set();
 const lugares = [];

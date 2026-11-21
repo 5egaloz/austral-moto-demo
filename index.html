@@ -280,9 +280,9 @@ footer a{color:inherit}
       </div>
       <dl class="ficha-ruta" aria-label="Datos de la ruta">
         <div><dt>Recorrido</dt><dd>Chaitén a Villa O'Higgins</dd></div>
-        <div><dt>Distancia</dt><dd>cerca de 980 km</dd></div>
-        <div><dt>Pueblos con bencina</dt><dd id="fPueblosB">9</dd></div>
-        <div><dt>Tramo más largo sin bencina</dt><dd class="alerta">230 km, Cochrane a Villa O'Higgins</dd></div>
+        <div><dt>Distancia por camino</dt><dd id="fKm">970 km</dd></div>
+        <div><dt>Pueblos con bencina</dt><dd id="fPueblosB">8</dd></div>
+        <div><dt>Tramo más largo sin bencina</dt><dd class="alerta" id="fMax">231 km, Cochrane a Villa O'Higgins</dd></div>
         <div><dt>Mejor época</dt><dd>diciembre a marzo</dd></div>
       </dl>
     </div>
@@ -309,7 +309,7 @@ footer a{color:inherit}
 <section class="hoja-sec" id="hoja" aria-label="Hoja de ruta">
   <div class="wrap hoja-grid">
     <div>
-      <p class="hoja-nota">Km desde Chaitén, aproximados. La línea punteada es ripio. Las notas en rojo cambian según cuánto rinde tu moto.</p>
+      <p class="hoja-nota">Km por camino desde Chaitén, según OpenStreetMap. La línea punteada es ripio; el porcentaje es aproximado y cambia cada temporada. Las notas en rojo cambian según cuánto rinde tu moto.</p>
       <ol class="hoja" id="listaHoja"></ol>
     </div>
     <aside class="mapa-col">
@@ -398,9 +398,9 @@ footer a{color:inherit}
         <a class="wa" id="waNegocio" href="#" target="_blank" rel="noopener">Agregar o corregir mi negocio</a>
       </div>
       <div>
-        <h3>Tours y arriendo de motos</h3>
-        <p>Salidas guiadas desde Coyhaique con vehículo de apoyo, y motos trail en arriendo con entrega en Balmaceda. Escríbenos con tus fechas.</p>
-        <a class="wa" id="waTour" href="#" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+        <h3>Próximamente: tours guiados</h3>
+        <p>Estamos armando salidas guiadas por la Carretera Austral. Si te interesa, escríbenos y te avisamos cuando estén listas.</p>
+        <a class="wa" id="waTour" href="#" target="_blank" rel="noopener">Avísenme por WhatsApp</a>
       </div>
     </div>
   </div>
@@ -419,32 +419,35 @@ footer a{color:inherit}
 // Número de WhatsApp del negocio (falta el real)
 const WHATSAPP = '56900000000';
 
-// Pueblos sobre la Ruta 7, km aproximado desde Chaitén. Bencina verificada en OSM y Google Maps (19-11-2026)
+// Pueblos sobre la Ruta 7, km por camino desde Chaitén (OSRM sobre OpenStreetMap, scripts/trazar-ruta.mjs).
+// Bencina verificada en OSM y Google Maps (19 y 20-11-2026)
 const PUEBLOS = [
-  {n:'Chaitén', km:0, bencina:true, lat:-42.915, lng:-72.709, foto:'c-chaiten', t:'Arranque de la Ruta 7, a los pies del volcán Chaitén.'},
+  {n:'Chaitén', km:0, bencina:true, lat:-42.915, lng:-72.709, foto:'p-chaiten', t:'Arranque de la Ruta 7, a los pies del volcán Chaitén.'},
   {n:'Villa Santa Lucía', km:76, foto:'p-santalucia', lat:-43.413, lng:-72.364},
-  {n:'La Junta', km:150, bencina:true, foto:'p-lajunta', lat:-43.973, lng:-72.403},
-  {n:'Puyuhuapi', km:196, diesel:true, lat:-44.326, lng:-72.557, foto:'c-puyuhuapi', t:'Pueblo junto al fiordo y buena parada para dormir. Cerca, en el Parque Queulat, un sendero corto lleva al mirador del Ventisquero Colgante.'},
-  {n:'Villa Amengual', km:270, foto:'p-amengual', lat:-44.746, lng:-72.208},
+  {n:'La Junta', km:144, bencina:true, foto:'p-lajunta', lat:-43.973, lng:-72.403},
+  {n:'Puyuhuapi', km:188, diesel:true, lat:-44.326, lng:-72.557, foto:'c-puyuhuapi', t:'Pueblo junto al fiordo y buena parada para dormir. Cerca, en el Parque Queulat, un sendero corto lleva al mirador del Ventisquero Colgante.'},
+  {n:'Villa Amengual', km:276, foto:'p-amengual', lat:-44.746, lng:-72.208},
   {n:'Villa Mañihuales', km:335, bencina:true, foto:'p-manihuales', lat:-45.172, lng:-72.149, t:'Bencina antes de bajar a Coyhaique por el valle.'},
-  {n:'Coyhaique', km:420, bencina:true, lat:-45.571, lng:-72.068, foto:'c-coyhaique', t:'Capital regional: talleres, repuestos y la última ciudad grande.'},
-  {n:'Villa Cerro Castillo', km:515, bencina:true, lat:-46.121, lng:-72.155, foto:'c-castillo', t:'Copec abierto las 24 horas, con las agujas del cerro de fondo.'},
-  {n:'Puerto Río Tranquilo', km:640, bencina:true, lat:-46.625, lng:-72.672, foto:'c-capillas', t:'Salida en bote a las Capillas de Mármol.'},
-  {n:'Puerto Bertrand', km:700, lat:-46.995, lng:-72.823, foto:'c-bertrand', t:'Agua turquesa del lago Bertrand, donde nace el río Baker.'},
-  {n:'Cochrane', km:750, bencina:true, lat:-47.254, lng:-72.574, foto:'c-chacabuco', t:'Último pueblo grande antes del extremo sur.'},
-  {n:'Puerto Yungay', km:865, balsa:true, lat:-47.962, lng:-73.383, foto:'c-yungay', t:'Balsa a Río Bravo. Revisa los horarios antes de salir de Cochrane.'},
-  {n:"Villa O'Higgins", km:980, bencina:true, lat:-48.467, lng:-72.560, foto:'c-ohiggins', t:'Fin de la Carretera Austral. Hay Copec abierto las 24 horas.'},
+  {n:'Coyhaique', km:409, bencina:true, lat:-45.571, lng:-72.068, foto:'c-coyhaique', t:'Capital regional: talleres, repuestos y la última ciudad grande.'},
+  {n:'Villa Cerro Castillo', km:505, bencina:true, lat:-46.121, lng:-72.155, foto:'c-castillo', t:'Copec abierto las 24 horas, con las agujas del cerro de fondo.'},
+  {n:'Puerto Río Tranquilo', km:624, bencina:true, lat:-46.625, lng:-72.672, foto:'c-capillas', t:'Salida en bote a las Capillas de Mármol.'},
+  {n:'Puerto Bertrand', km:687, lat:-46.995, lng:-72.823, foto:'c-bertrand', t:'Agua turquesa del lago Bertrand, donde nace el río Baker.'},
+  {n:'Cochrane', km:739, bencina:true, lat:-47.254, lng:-72.574, foto:'p-cochrane', t:'Último pueblo grande antes del extremo sur.'},
+  {n:'Puerto Yungay', km:862, balsa:true, lat:-47.962, lng:-73.383, foto:'c-yungay', t:'Balsa a Río Bravo. Revisa los horarios antes de salir de Cochrane.'},
+  {n:"Villa O'Higgins", km:970, bencina:true, lat:-48.467, lng:-72.560, foto:'c-ohiggins', t:'Fin de la Carretera Austral. Hay Copec abierto las 24 horas.'},
 ];
-const KM_MAX = 980;
+const KM_MAX = PUEBLOS[PUEBLOS.length - 1].km;
+const kmDe = n => PUEBLOS.find(p => p.n === n).km;
 
 // Tramos: empiezan en "a" y terminan en "b" (en sentido norte a sur)
 const TRAMOS = [
-  {a:'Chaitén', b:'La Junta', km:150, ripio:5, dif:'Fácil', temp:'noviembre a abril', ojo:['Pavimento casi completo, con desvíos por obras','Lluvia frecuente: el asfalto mojado resbala en las curvas del bosque']},
-  {a:'La Junta', b:'Coyhaique', km:270, ripio:20, dif:'Media', temp:'noviembre a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando']},
-  {a:'Coyhaique', b:'Puerto Río Tranquilo', km:220, ripio:45, dif:'Media', temp:'diciembre a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo con nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio','Variante: balsa de Puerto Ibáñez a Chile Chico por el Lago General Carrera, unas 2 horas y media; reserva en verano']},
-  {a:'Puerto Río Tranquilo', b:'Cochrane', km:110, ripio:95, dif:'Media', temp:'diciembre a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
-  {a:'Cochrane', b:"Villa O'Higgins", km:230, ripio:100, dif:'Exigente', temp:'diciembre a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa gratuita de Puerto Yungay a Río Bravo, pocos cruces al día','Camino angosto y con barro después de lluvia']},
+  {a:'Chaitén', b:'La Junta', ripio:5, dif:'Fácil', temp:'noviembre a abril', ojo:['Pavimento casi completo, con desvíos por obras','Lluvia frecuente: el asfalto mojado resbala en las curvas del bosque']},
+  {a:'La Junta', b:'Coyhaique', ripio:20, dif:'Media', temp:'noviembre a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando']},
+  {a:'Coyhaique', b:'Puerto Río Tranquilo', ripio:45, dif:'Media', temp:'diciembre a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo: puede haber nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio (por confirmar)','Variante: balsa de Puerto Ibáñez a Chile Chico por el Lago General Carrera; revisa duración y reserva antes, en verano se llena']},
+  {a:'Puerto Río Tranquilo', b:'Cochrane', ripio:95, dif:'Media', temp:'diciembre a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
+  {a:'Cochrane', b:"Villa O'Higgins", ripio:100, dif:'Exigente', temp:'diciembre a febrero', ojo:['El tramo más largo sin bencina: lleva bidón','Balsa de Puerto Yungay a Río Bravo, con pocos cruces al día: revisa horarios y tarifa antes','Camino angosto y con barro después de lluvia']},
 ];
+TRAMOS.forEach(t => t.km = kmDe(t.b) - kmDe(t.a));
 
 const NOMBRE = {bencina:'Bencinera', taller:'Taller', alojamiento:'Alojamiento', balsa:'Balsa', atractivo:'Qué ver'};
 const PLURAL = {bencina:['bencinera','bencineras'], taller:['taller','talleres'], alojamiento:['alojamiento','alojamientos'], balsa:['balsa','balsas']};
@@ -452,7 +455,12 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>'
 const norm = t => String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const fmt = n => n.toLocaleString('es-CL');
 const wa = txt => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt);
-const chica = u => u.replace(/\/\d+px-/, '/500px-');
+// Copia local de 500 px (scripts/bajar-fotos.mjs); si falta, la de Wikimedia
+const archivoLocal = u => decodeURIComponent(u.split('?')[0].split('/').pop().replace(/^\d+px-/, ''))
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9._-]+/g, '_').slice(-120);
+const chica = u => 'fotos/' + archivoLocal(u);
+const a500 = u => u.split('?')[0].replace('//thumb.wikimedia.org/', '//upload.wikimedia.org/').replace(/\/\d+px-/, '/500px-');
+const grande = u => u.split('?')[0].replace('//thumb.wikimedia.org/', '//upload.wikimedia.org/').replace(/\/\d+px-/, '/1280px-');
 const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function kmEntre(a, b){
   const r = Math.PI/180, x = Math.sin((b.lat-a.lat)*r/2)**2 + Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin((b.lng-a.lng)*r/2)**2;
@@ -461,25 +469,25 @@ function kmEntre(a, b){
 function credito(f){
   return f ? 'Foto: <a href="'+esc(f.fuente)+'" target="_blank" rel="noopener">'+esc(f.autor)+'</a>, '+esc(f.licencia) : '';
 }
-const imgCon = (u, alt, cls) => '<img src="'+esc(chica(u))+'" alt="'+esc(alt)+'"'+(cls ? ' class="'+cls+'"' : '')+' loading="lazy" decoding="async" onload="this.classList.add(\'lista\')" onerror="this.onerror=null;this.src=\''+esc(u)+'\'">';
+const imgCon = (u, alt, cls) => '<img src="'+esc(chica(u))+'" alt="'+esc(alt)+'"'+(cls ? ' class="'+cls+'"' : '')+' loading="lazy" decoding="async" onload="this.classList.add(\'lista\')" onerror="this.onerror=null;this.src=\''+esc(a500(u))+'\'">';
 
-let FOTOS = {}, TODOS = [], CON_FOTO = [], SERV = [], VER = [];
+let FOTOS = {}, TODOS = [], CON_FOTO = [], SERV = [], VER = [], FOTO_PUEBLO = {}, CARGADO = false;
 const POR_PUEBLO = {};   // nombre -> {serv:{cat:[...]}, cerca:[...], foto}
 let mapa = null, marcadores = {}, marcasPueblo = {};
 
 /* ---------- Tira de fotos de la tapa ---------- */
 const TIRA = [
   {id:'ruta.portada', n:'Carretera Austral', d:'Ruta 7, Región de Aysén'},
-  {id:'c-castillo', n:'Villa Cerro Castillo', d:'Km 515'},
-  {id:'c-capillas', n:'Capillas de Mármol', d:'Puerto Río Tranquilo, km 640'},
-  {id:'c-queulat', n:'Parque Queulat', d:'Cerca de Puyuhuapi, km 196'},
-  {id:'c-bertrand', n:'Lago Bertrand', d:'Km 700'},
+  {id:'c-castillo', n:'Villa Cerro Castillo', d:'Km ' + kmDe('Villa Cerro Castillo')},
+  {id:'c-capillas', n:'Capillas de Mármol', d:'Puerto Río Tranquilo, km ' + kmDe('Puerto Río Tranquilo')},
+  {id:'c-queulat', n:'Parque Queulat', d:'Cerca de Puyuhuapi, km ' + kmDe('Puyuhuapi')},
+  {id:'c-bertrand', n:'Lago Bertrand', d:'Km ' + kmDe('Puerto Bertrand')},
 ];
 function armarTira(){
   const lista = TIRA.filter(p => FOTOS[p.id]);
   const caja = document.getElementById('tiraFotos'), pasos = document.getElementById('tiraPasos'), txt = document.getElementById('tiraTxt');
   if (lista.length < 2) return;
-  caja.innerHTML = lista.map((p, i) => '<img'+(i === 0 ? ' class="visible"' : '')+' src="'+esc(FOTOS[p.id].url)+'" alt="'+esc(p.n)+'">').join('');
+  caja.innerHTML = lista.map((p, i) => '<img'+(i === 0 ? ' class="visible"' : '')+' src="'+esc(grande(FOTOS[p.id].url))+'" alt="'+esc(p.n)+'">').join('');
   pasos.innerHTML = lista.map((p, i) => '<button aria-label="Ver '+esc(p.n)+'"'+(i === 0 ? ' aria-current="true"' : '')+'></button>').join('');
   const fotos = [...caja.children], btns = [...pasos.children];
   let i = 0, reloj = null, pausa = false;
@@ -503,7 +511,14 @@ function armarTira(){
 const vDesde = document.getElementById('vDesde'), vHasta = document.getElementById('vHasta'), vRitmo = document.getElementById('vRitmo'), vAut = document.getElementById('vAut');
 PUEBLOS.forEach(p => { vDesde.add(new Option(p.n, p.n)); vHasta.add(new Option(p.n, p.n)); });
 vDesde.value = 'Chaitén'; vHasta.value = "Villa O'Higgins";
-document.getElementById('fPueblosB').textContent = PUEBLOS.filter(p => p.bencina).length;
+{
+  const conB = PUEBLOS.filter(p => p.bencina);
+  let max = 0, de = null;
+  conB.forEach((p, i) => { if (i && p.km - conB[i-1].km > max) { max = p.km - conB[i-1].km; de = [conB[i-1], p]; } });
+  document.getElementById('fPueblosB').textContent = conB.length;
+  document.getElementById('fKm').textContent = fmt(KM_MAX) + ' km';
+  document.getElementById('fMax').textContent = max + ' km, ' + de[0].n + ' a ' + de[1].n;
+}
 
 function planViaje(){
   const a = PUEBLOS.find(p => p.n === vDesde.value), b = PUEBLOS.find(p => p.n === vHasta.value);
@@ -516,7 +531,9 @@ function planViaje(){
   const duerme = new Map(); let dias = 1, inicio = 0;
   paradas.forEach((p, i) => {
     const d = Math.abs(p.km - a.km), sig = paradas[i+1];
-    if (sig && Math.abs(sig.km - a.km) - inicio > ritmo && d > inicio) { duerme.set(p.n, dias); dias++; inicio = d; }
+    // Solo se duerme donde hay alojamiento; si no hay, se sigue al próximo pueblo que tenga
+    const aloja = !CARGADO || (POR_PUEBLO[p.n].serv.alojamiento || []).length > 0;
+    if (sig && aloja && Math.abs(sig.km - a.km) - inicio > ritmo && d > inicio) { duerme.set(p.n, dias); dias++; inicio = d; }
   });
   // Distancia hasta la próxima bencina en el sentido del viaje
   const proxima = {};
@@ -524,9 +541,12 @@ function planViaje(){
     const sig = orden.slice(i + 1).find(q => q.bencina);
     if (sig) proxima[p.n] = {p:sig, km:Math.abs(sig.km - p.km)};
   });
-  const conB = paradas.filter(p => p.bencina);
+  // Puntos con el estanque lleno: la salida (sales cargado) y cada bencina; se cuenta también el último tramo hasta la llegada
+  const llenos = paradas.filter((p, i) => i === 0 || p.bencina);
+  const ultima = paradas[paradas.length - 1];
+  const puntos = llenos.concat(ultima && !ultima.bencina && llenos[llenos.length - 1] !== ultima ? [ultima] : []);
   let max = 0, maxA = null, maxB = null;
-  conB.forEach((p, i) => { if (i) { const k = Math.abs(p.km - conB[i-1].km); if (k > max) { max = k; maxA = conB[i-1]; maxB = p; } } });
+  puntos.forEach((p, i) => { if (i) { const k = Math.abs(p.km - puntos[i-1].km); if (k > max) { max = k; maxA = puntos[i-1]; maxB = p; } } });
   return {a, b, ritmo, aut, sentido, orden, dentro, paradas, duerme, dias: a === b ? 0 : dias, proxima, max, maxA, maxB, total:Math.abs(b.km - a.km)};
 }
 
@@ -541,7 +561,7 @@ function notaBencina(p, v){
     if (k >= 120) return '<p class="mano gris">Siguiente bencina en '+esc(hasta)+', a '+k+' km.</p>';
     return '';
   }
-  if (p === v.a) return '<p class="mano">Aquí no hay bencina: sal con el estanque lleno.</p>';
+  if (p === v.a) return '<p class="mano">Aquí no hay bencina: sal con el estanque lleno. La primera está en '+esc(hasta)+', a '+k+' km'+(k > v.aut ? '; con '+v.aut+' km no te alcanza, lleva bidón.' : '.')+'</p>';
   return '';
 }
 
@@ -575,7 +595,7 @@ function pintarHoja(){
     if (t && idx < v.orden.length - 1) {
       html += '<li class="tramo'+(t.ripio < 30 ? ' asfalto' : '')+'"><div class="km"></div><div class="eje"></div><div class="cuerpo">'
         + '<h4>Tramo '+esc(v.sentido === 1 ? t.a : t.b)+' a '+esc(v.sentido === 1 ? t.b : t.a)+'</h4>'
-        + '<div class="t-datos"><span><b>'+t.km+' km</b></span><span class="ripio"><i><span style="width:'+t.ripio+'%"></span></i><b>'+t.ripio+'%</b> ripio</span><span>Dificultad <b>'+t.dif.toLowerCase()+'</b></span><span>Mejor de '+t.temp+'</span></div>'
+        + '<div class="t-datos"><span><b>'+t.km+' km</b></span><span class="ripio"><i><span style="width:'+t.ripio+'%"></span></i>cerca de <b>'+t.ripio+'%</b> ripio</span><span>Dificultad <b>'+t.dif.toLowerCase()+'</b></span><span>Mejor de '+t.temp+'</span></div>'
         + '<ul>'+t.ojo.map(o => '<li>'+esc(o)+'</li>').join('')+'</ul></div></li>';
     }
     anterior = p;
@@ -621,8 +641,11 @@ document.getElementById('listaHoja').addEventListener('click', e => {
   if (!window.L) return;
   mapa = L.map('mapa', {scrollWheelZoom:false, zoomControl:true});
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:14, attribution:'© OpenStreetMap'}).addTo(mapa);
-  const ruta = L.polyline(PUEBLOS.map(p => [p.lat, p.lng]), {color:'#1E2124', weight:4}).addTo(mapa);
-  mapa.fitBounds(ruta.getBounds(), {padding:[16, 16]});
+  mapa.fitBounds(L.latLngBounds(PUEBLOS.map(p => [p.lat, p.lng])), {padding:[16, 16]});
+  // Trazado real de la carretera (scripts/trazar-ruta.mjs), no líneas rectas entre pueblos
+  fetch('data/ruta.json', {cache:'no-cache'}).then(r => r.json())
+    .then(R => L.polyline(R.linea, {color:'#1E2124', weight:4}).addTo(mapa).bringToBack())
+    .catch(() => {});
   PUEBLOS.forEach(p => {
     marcasPueblo[p.n] = L.circleMarker([p.lat, p.lng], {radius:p.bencina?7:5, color:'#1E2124', weight:3, fillColor:p.bencina?'#1E2124':'#ffffff', fillOpacity:1})
       .addTo(mapa).bindPopup('<b>'+esc(p.n)+'</b><br>km '+p.km+(p.bencina?'<br>Hay bencina':p.diesel?'<br>Solo diésel':''));
@@ -635,7 +658,7 @@ function cargarMapa(lugares){
   lugares.forEach(l => {
     const g = capas[l.cat] || (capas[l.cat] = L.layerGroup());
     const mk = L.circleMarker([l.lat, l.lng], {radius:4, color:'#fff', weight:1, fillColor:COLOR[l.cat], fillOpacity:1});
-    mk.bindPopup((l.foto ? '<img src="'+esc(chica(l.foto.url))+'" alt="">' : '') + '<b>'+esc(l.n)+'</b><br>'+esc(l.sub || NOMBRE[l.cat])+(l.loc ? ', '+esc(l.loc) : '')+(l.tel ? '<br>'+esc(l.tel) : ''));
+    mk.bindPopup((l.foto ? '<img src="'+esc(chica(l.foto.url))+'" alt="" onerror="this.remove()">' : '') + '<b>'+esc(l.n)+'</b><br>'+esc(l.sub || NOMBRE[l.cat])+(l.loc ? ', '+esc(l.loc) : '')+(l.tel ? '<br>'+esc(l.tel) : ''));
     mk.addTo(g); marcadores[l.id] = mk;
   });
 }
@@ -652,7 +675,8 @@ const obs = 'IntersectionObserver' in window ? new IntersectionObserver(entradas
 }, {rootMargin:'-45% 0px -50% 0px'}) : null;
 function observarCasillas(){ if (obs && innerWidth > 1000) { obs.disconnect(); document.querySelectorAll('.casilla').forEach(c => obs.observe(c)); } }
 function verEnMapa(id){
-  const mk = marcadores[id]; if (!mk || !mapa) return;
+  const fp = Object.values(FOTO_PUEBLO).find(f => f.id === id);
+  const mk = marcadores[id] || (fp && marcasPueblo[fp.n]); if (!mk || !mapa) return;
   if (!mapa.hasLayer(mk)) mk.addTo(mapa);
   if (innerWidth <= 1000) document.getElementById('mapa').scrollIntoView({block:'center'});
   siguiendo = null;
@@ -674,8 +698,8 @@ function mostrarVisor(){
   const img = document.getElementById('vFoto');
   img.classList.add('cargando');
   img.onload = () => img.classList.remove('cargando');
-  img.onerror = () => { img.onerror = null; img.src = a.foto.url; };
-  img.src = a.foto.url.replace(/\/\d+px-/, '/1280px-');
+  img.onerror = () => { img.onerror = null; img.src = chica(a.foto.url); };
+  img.src = grande(a.foto.url);
   img.alt = a.n;
   document.getElementById('vTitulo').textContent = a.n;
   document.getElementById('vDonde').textContent = (a.desc || a.sub || '') + (a.loc ? ', cerca de ' + a.loc : '');
@@ -757,7 +781,6 @@ Promise.all([
   const ya = new Set();
   TODOS.forEach(l => { if (!l.foto) return; const u = l.foto.url.split('?')[0]; if (ya.has(u)) delete l.foto; else ya.add(u); });
   // Fotos de los pueblos mismos (no son atracciones, pero sirven como foto de la zona)
-  const FOTO_PUEBLO = {};
   PUEBLOS.forEach(p => { if (p.foto && p.foto.startsWith('p-') && FOTOS[p.foto]) FOTO_PUEBLO[p.n] = {id:p.foto, n:p.n, lat:p.lat, lng:p.lng, foto:FOTOS[p.foto], sub:'Pueblo'}; });
   CON_FOTO = TODOS.filter(l => l.foto && l.lat != null).concat(Object.values(FOTO_PUEBLO));
   VER = CON_FOTO.filter(l => l.cat === 'atractivo');
@@ -777,7 +800,15 @@ Promise.all([
     // La foto principal tiene que ser del pueblo: la propia, o un lugar a 8 km o menos
     const propia = FOTO_PUEBLO[p.n] || (p.foto && CON_FOTO.find(l => l.id === p.foto));
     P.foto = propia || P.cerca.find(l => l.desvio <= 8) || null;
-    P.cerca = P.cerca.filter(l => !P.foto || l.id !== P.foto.id);
+    // Sin repetir: fuera lo que tiene el mismo nombre o uno contiene al otro ("Cerro Castillo" y "Mirador Cerro Castillo")
+    const raiz = t => norm(t).replace(/^(mirador( de(l)?)?|vista a|reserva nacional|parque nacional|zona tipica de) /, '');
+    const vistos = P.foto ? [raiz(P.foto.n)] : [];
+    P.cerca = P.cerca.filter(l => {
+      if (P.foto && l.id === P.foto.id) return false;
+      const k = raiz(l.n);
+      if (vistos.some(v => v === k || v.includes(k) || k.includes(v))) return false;
+      vistos.push(k); return true;
+    });
     Object.values(P.serv).forEach(arr => arr.sort((a, b) => a.n.localeCompare(b.n, 'es')));
   });
 
@@ -786,6 +817,7 @@ Promise.all([
   document.getElementById('dirSub').textContent = fmt(TODOS.length) + ' lugares de Aysén, también fuera de la Ruta 7: bencineras, talleres, alojamientos, balsas y lugares para ver. Datos de OpenStreetMap.';
   if (d.generado) document.getElementById('actualizado').textContent = 'Directorio actualizado el '+d.generado.split('-').reverse().join('-')+'.';
   cargarMapa(TODOS.filter(l => l.cat !== 'alojamiento'));
+  CARGADO = true;
   pintarHoja(); pintarDir();
 }).catch(err => {
   console.error('[ruta7] datos', err);
@@ -813,7 +845,7 @@ checks.forEach(c => c.addEventListener('change', contar)); contar();
 /* ---------- WhatsApp ---------- */
 document.getElementById('waReporte').href = wa('Hola, les cuento cómo está el camino: ');
 document.getElementById('waNegocio').href = wa('Hola, tengo un negocio en la Carretera Austral y quiero aparecer (o corregir mis datos) en Ruta 7 Moto.');
-document.getElementById('waTour').href = wa('Hola, me interesa un tour o arrendar una moto para la Carretera Austral. Mis fechas son: ');
+document.getElementById('waTour').href = wa('Hola, me interesan los tours guiados por la Carretera Austral. Avísenme cuando estén listos.');
 
 /* ---------- Menú móvil ---------- */
 const mb = document.getElementById('menuBtn'), nav = document.getElementById('nav');

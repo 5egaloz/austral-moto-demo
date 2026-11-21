@@ -112,5 +112,34 @@
   "nota": "La foto encontrada no muestra este lugar (revisado 2026-11-19)",
   "nombre": "Bienvenida a Caleta Tortel",
   "sinFoto": true
+ },
+ {
+  "nota": "Foto no muestra el lugar: es una cocinería, no un mirador (revisado 2026-11-20)",
+  "nombre": "Mirador Chaitén",
+  "sinFoto": true
+ },
+ {
+  "nota": "Foto no muestra el museo: es un sendero de plaza (revisado 2026-11-20)",
+  "nombre": "Museo de Cochrane",
+  "sinFoto": true
+ },
+ {
+  "nota": "Foto no muestra el museo: es una plaza con un basurero (revisado 2026-11-20)",
+  "nombre": "Museo Puerto Río Tranquilo",
+  "sinFoto": true
+ },
+ {
+  "nota": "En Google Maps (20-11-2026) no hay bencinera en ese punto, hay una vulcanización; en Cochrane solo aparece el Copec 24 h",
+  "cat": "bencina",
+  "loc": "Cochrane",
+  "nombre": "Petrobras",
+  "quitar": true
+ },
+ {
+  "nota": "Duplicado de Petrobras (a 4 m) y tampoco aparece en Google Maps (20-11-2026)",
+  "cat": "bencina",
+  "loc": "Cochrane",
+  "nombre": "Bencinera",
+  "quitar": true
  }
 ]

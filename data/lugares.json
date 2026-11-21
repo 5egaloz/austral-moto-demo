@@ -131,6 +131,26 @@
    "n": "Reserva Natural Privada Los Caiquenes",
    "lat": -46.9456,
    "lng": -72.83
+  },
+  {
+   "n": "Villa Santa Lucía",
+   "lat": -43.413,
+   "lng": -72.364
+  },
+  {
+   "n": "Villa Amengual",
+   "lat": -44.746,
+   "lng": -72.208
+  },
+  {
+   "n": "Puerto Bertrand",
+   "lat": -46.995,
+   "lng": -72.823
+  },
+  {
+   "n": "Puerto Yungay",
+   "lat": -47.962,
+   "lng": -73.383
   }
  ],
  "lugares": [
@@ -141,8 +161,8 @@
    "n": "Puerto Edén",
    "lat": -49.13007,
    "lng": -74.40824,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 154
+   "loc": "Puerto Yungay",
+   "kmLoc": 150
   },
   {
    "id": "n11885339800",
@@ -171,8 +191,8 @@
    "n": "Sector El Pascua",
    "lat": -48.22867,
    "lng": -73.29013,
-   "loc": "Caleta Tortel",
-   "kmLoc": 51
+   "loc": "Puerto Yungay",
+   "kmLoc": 30
   },
   {
    "id": "n7517231536",
@@ -201,8 +221,8 @@
    "n": "Puerto Langrend",
    "lat": -48.12148,
    "lng": -73.75179,
-   "loc": "Caleta Tortel",
-   "kmLoc": 39
+   "loc": "Puerto Yungay",
+   "kmLoc": 33
   },
   {
    "id": "n11885338730",
@@ -211,8 +231,8 @@
    "n": "Puerto Llay Llay",
    "lat": -48.05558,
    "lng": -73.70488,
-   "loc": "Caleta Tortel",
-   "kmLoc": 31
+   "loc": "Puerto Yungay",
+   "kmLoc": 26
   },
   {
    "id": "n11883361043",
@@ -221,8 +241,8 @@
    "n": "Estero Ventisquero",
    "lat": -48.19736,
    "lng": -73.55228,
-   "loc": "Caleta Tortel",
-   "kmLoc": 44
+   "loc": "Puerto Yungay",
+   "kmLoc": 29
   },
   {
    "id": "n1746306381",
@@ -231,8 +251,8 @@
    "n": "Sector Jorge Montt",
    "lat": -48.19431,
    "lng": -73.46536,
-   "loc": "Caleta Tortel",
-   "kmLoc": 44
+   "loc": "Puerto Yungay",
+   "kmLoc": 27
   },
   {
    "id": "n11885341929",
@@ -241,8 +261,8 @@
    "n": "Isla Francisco",
    "lat": -48.06748,
    "lng": -73.5802,
-   "loc": "Caleta Tortel",
-   "kmLoc": 30
+   "loc": "Puerto Yungay",
+   "kmLoc": 19
   },
   {
    "id": "n6320161301",
@@ -271,8 +291,8 @@
    "n": "Fiordo Steell",
    "lat": -48.14711,
    "lng": -73.22788,
-   "loc": "Caleta Tortel",
-   "kmLoc": 45
+   "loc": "Puerto Yungay",
+   "kmLoc": 24
   },
   {
    "id": "n280914750",
@@ -281,8 +301,8 @@
    "n": "Puerto Yungay",
    "lat": -47.93517,
    "lng": -73.32342,
-   "loc": "Caleta Tortel",
-   "kmLoc": 22,
+   "loc": "Puerto Yungay",
+   "kmLoc": 5,
    "horario": "24/7",
    "desc": "From Puerto Yungay to Río Bravo, high season (summer months), ferries depart at 10:00, 12:00, 15:00, and 18:00 (free)."
   },
@@ -293,8 +313,8 @@
    "n": "Río Bravo",
    "lat": -47.96783,
    "lng": -73.22355,
-   "loc": "Caleta Tortel",
-   "kmLoc": 30,
+   "loc": "Puerto Yungay",
+   "kmLoc": 12,
    "desc": "From Río Bravo to Puerto Yungay, high season (summer months), ferries depart at 11:00, 13:00, 16:00, and 19:00 (free). free boat"
   },
   {
@@ -360,17 +380,6 @@
    "loc": "Cochrane",
    "kmLoc": 1,
    "horario": "Mo-Su 09:00-18:00"
-  },
-  {
-   "id": "n484834771",
-   "cat": "bencina",
-   "sub": "Bencinera",
-   "n": "Petrobras",
-   "lat": -47.24573,
-   "lng": -72.59463,
-   "loc": "Cochrane",
-   "kmLoc": 2,
-   "marca": "Petrobras"
   },
   {
    "id": "n280910811",
@@ -1288,16 +1297,6 @@
    "kmLoc": 14
   },
   {
-   "id": "w1347398815",
-   "cat": "bencina",
-   "sub": "Bencinera",
-   "n": "Bencinera",
-   "lat": -47.24576,
-   "lng": -72.59467,
-   "loc": "Cochrane",
-   "kmLoc": 2
-  },
-  {
    "id": "w173767702",
    "cat": "balsa",
    "sub": "Terminal de balsa",
@@ -1360,8 +1359,8 @@
    "n": "Hospedería Yekchal",
    "lat": -49.12942,
    "lng": -74.40867,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 154
+   "loc": "Puerto Yungay",
+   "kmLoc": 150
   },
   {
    "id": "n5531027527",
@@ -1689,8 +1688,8 @@
    "n": "Camping Maria",
    "lat": -48.0105,
    "lng": -73.08592,
-   "loc": "Caleta Tortel",
-   "kmLoc": 41
+   "loc": "Puerto Yungay",
+   "kmLoc": 23
   },
   {
    "id": "n1652960137",
@@ -2261,8 +2260,8 @@
    "n": "Acampamento Rio baker",
    "lat": -47.0951,
    "lng": -72.7755,
-   "loc": "Cochrane",
-   "kmLoc": 23
+   "loc": "Puerto Bertrand",
+   "kmLoc": 12
   },
   {
    "id": "n8547114317",
@@ -2271,8 +2270,8 @@
    "n": "Sector de camping gratis",
    "lat": -47.01934,
    "lng": -72.83106,
-   "loc": "Puerto Guadal",
-   "kmLoc": 22
+   "loc": "Puerto Bertrand",
+   "kmLoc": 3
   },
   {
    "id": "n5189628624",
@@ -2281,8 +2280,8 @@
    "n": "Mirella",
    "lat": -47.01581,
    "lng": -72.83049,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n1571971998",
@@ -2291,8 +2290,8 @@
    "n": "Hosteria Puerto Bertrand",
    "lat": -47.01721,
    "lng": -72.82902,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 3
   },
   {
    "id": "n1571972011",
@@ -2301,8 +2300,8 @@
    "n": "Los Coigues",
    "lat": -47.01584,
    "lng": -72.82786,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n1571972013",
@@ -2311,8 +2310,8 @@
    "n": "Campo Hielo Norte",
    "lat": -47.01542,
    "lng": -72.82871,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n3297920165",
@@ -2321,8 +2320,8 @@
    "n": "Doña Ester",
    "lat": -47.01616,
    "lng": -72.82722,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n5331156341",
@@ -2331,8 +2330,8 @@
    "n": "Buena Vista",
    "lat": -47.01565,
    "lng": -72.82882,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n482808654",
@@ -2341,8 +2340,8 @@
    "n": "Konaiken",
    "lat": -47.06332,
    "lng": -72.79946,
-   "loc": "Puerto Guadal",
-   "kmLoc": 25,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 8,
    "tel": "+56987432622",
    "horario": "Mo-Su 08:00-21:00"
   },
@@ -2353,8 +2352,8 @@
    "n": "camping libre",
    "lat": -47.05996,
    "lng": -72.8039,
-   "loc": "Puerto Guadal",
-   "kmLoc": 25
+   "loc": "Puerto Bertrand",
+   "kmLoc": 7
   },
   {
    "id": "n1571972006",
@@ -2363,8 +2362,8 @@
    "n": "Patagonia Australis",
    "lat": -47.05225,
    "lng": -72.80915,
-   "loc": "Puerto Guadal",
-   "kmLoc": 24
+   "loc": "Puerto Bertrand",
+   "kmLoc": 6
   },
   {
    "id": "n1571971997",
@@ -2373,8 +2372,8 @@
    "n": "Patagonia Baker Lodge",
    "lat": -47.03944,
    "lng": -72.82093,
-   "loc": "Puerto Guadal",
-   "kmLoc": 23
+   "loc": "Puerto Bertrand",
+   "kmLoc": 5
   },
   {
    "id": "n1571972009",
@@ -2383,8 +2382,8 @@
    "n": "Green Baker Lodge",
    "lat": -47.0424,
    "lng": -72.81895,
-   "loc": "Puerto Guadal",
-   "kmLoc": 24
+   "loc": "Puerto Bertrand",
+   "kmLoc": 5
   },
   {
    "id": "n1571971995",
@@ -2393,8 +2392,8 @@
    "n": "Rapidos Del Rio Baker",
    "lat": -47.04424,
    "lng": -72.81658,
-   "loc": "Puerto Guadal",
-   "kmLoc": 24
+   "loc": "Puerto Bertrand",
+   "kmLoc": 5
   },
   {
    "id": "n1652909821",
@@ -2403,8 +2402,8 @@
    "n": "Patagoniaventura",
    "lat": -46.99722,
    "lng": -72.79597,
-   "loc": "Puerto Guadal",
-   "kmLoc": 18
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n6178638789",
@@ -2597,8 +2596,8 @@
    "n": "Camping Cerro Color",
    "lat": -46.92452,
    "lng": -72.79369,
-   "loc": "Puerto Guadal",
-   "kmLoc": 11,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 8,
    "tel": "+56 9 5663 1830",
    "web": "https://www.cerrocolor.cl"
   },
@@ -2609,8 +2608,8 @@
    "n": "Cabañas Cerro Color",
    "lat": -46.92452,
    "lng": -72.79379,
-   "loc": "Puerto Guadal",
-   "kmLoc": 11,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 8,
    "tel": "+56 9 5663 1830",
    "web": "https://www.cerrocolor.cl"
   },
@@ -4784,8 +4783,8 @@
    "n": "Wild Camping",
    "lat": -44.92583,
    "lng": -72.16864,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 28
+   "loc": "Villa Amengual",
+   "kmLoc": 20
   },
   {
    "id": "n13469246377",
@@ -4794,8 +4793,8 @@
    "n": "Camping Magia Patagonica",
    "lat": -44.8648,
    "lng": -72.20877,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 35
+   "loc": "Villa Amengual",
+   "kmLoc": 13
   },
   {
    "id": "n10266501910",
@@ -5039,8 +5038,8 @@
    "n": "El Carmen",
    "lat": -44.66578,
    "lng": -72.28163,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 32
+   "loc": "Villa Amengual",
+   "kmLoc": 11
   },
   {
    "id": "n5667600227",
@@ -5049,8 +5048,8 @@
    "n": "Wild camp",
    "lat": -44.75261,
    "lng": -72.20203,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 38
+   "loc": "Villa Amengual",
+   "kmLoc": 1
   },
   {
    "id": "n10574351190",
@@ -5059,8 +5058,8 @@
    "n": "wild camp (free camping site)",
    "lat": -44.64059,
    "lng": -72.37794,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 26
+   "loc": "Villa Amengual",
+   "kmLoc": 18
   },
   {
    "id": "n396630528",
@@ -5081,8 +5080,8 @@
    "n": "El Chucao",
    "lat": -44.64422,
    "lng": -72.33493,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 29
+   "loc": "Villa Amengual",
+   "kmLoc": 15
   },
   {
    "id": "n13464754826",
@@ -5091,8 +5090,8 @@
    "n": "El chucao SPA",
    "lat": -44.64505,
    "lng": -72.33471,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 29,
+   "loc": "Villa Amengual",
+   "kmLoc": 15,
    "tel": "+56 9 9828 1869"
   },
   {
@@ -6647,8 +6646,8 @@
    "n": "camping Laguna del toro",
    "lat": -44.839,
    "lng": -71.69358,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 51
+   "loc": "Villa Amengual",
+   "kmLoc": 42
   },
   {
    "id": "n1963890156",
@@ -6657,8 +6656,8 @@
    "n": "Huente Co",
    "lat": -44.85746,
    "lng": -71.66886,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 51
+   "loc": "Villa Amengual",
+   "kmLoc": 44
   },
   {
    "id": "n10935415663",
@@ -7036,8 +7035,8 @@
    "n": "Señora Nayara",
    "lat": -43.66363,
    "lng": -72.33114,
-   "loc": "La Junta",
-   "kmLoc": 35
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 28
   },
   {
    "id": "n11136037403",
@@ -7046,8 +7045,8 @@
    "n": "Camping Parque Los Ríos",
    "lat": -43.43569,
    "lng": -72.36547,
-   "loc": "Futaleufú",
-   "kmLoc": 49,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 3,
    "tel": "+56 9 9935 4570",
    "desc": "No fee, but donations are welcome to keep the place running."
   },
@@ -7058,8 +7057,8 @@
    "n": "Refugio",
    "lat": -43.43424,
    "lng": -72.3647,
-   "loc": "Futaleufú",
-   "kmLoc": 49
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 2
   },
   {
    "id": "n5246306193",
@@ -7068,8 +7067,8 @@
    "n": "El Mañío",
    "lat": -43.41463,
    "lng": -72.36641,
-   "loc": "Futaleufú",
-   "kmLoc": 48
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0
   },
   {
    "id": "n6077983185",
@@ -7078,8 +7077,8 @@
    "n": "Cabaña de Clara",
    "lat": -43.41473,
    "lng": -72.36682,
-   "loc": "Futaleufú",
-   "kmLoc": 48
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0
   },
   {
    "id": "n6364762888",
@@ -7088,8 +7087,8 @@
    "n": "Hospedaje",
    "lat": -43.41513,
    "lng": -72.36585,
-   "loc": "Futaleufú",
-   "kmLoc": 48
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0
   },
   {
    "id": "n7228773805",
@@ -7098,8 +7097,8 @@
    "n": "Hospedaje",
    "lat": -43.41491,
    "lng": -72.36645,
-   "loc": "Futaleufú",
-   "kmLoc": 48
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0
   },
   {
    "id": "n3796320002",
@@ -7108,8 +7107,8 @@
    "n": "Hospedaje Fundo Violeta",
    "lat": -43.60252,
    "lng": -72.33984,
-   "loc": "La Junta",
-   "kmLoc": 41
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 21
   },
   {
    "id": "n13543277001",
@@ -7118,8 +7117,8 @@
    "n": "Cabañas Refugio Río Roberto",
    "lat": -43.39534,
    "lng": -72.3181,
-   "loc": "Futaleufú",
-   "kmLoc": 43,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 4,
    "tel": "+56 9 9872 9578"
   },
   {
@@ -7129,8 +7128,8 @@
    "n": "Hostal",
    "lat": -43.39972,
    "lng": -72.26327,
-   "loc": "Futaleufú",
-   "kmLoc": 40
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 8
   },
   {
    "id": "n5344060621",
@@ -7139,8 +7138,8 @@
    "n": "El Oso del Yecho",
    "lat": -43.41386,
    "lng": -72.2439,
-   "loc": "Futaleufú",
-   "kmLoc": 40,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 10,
    "tel": "+56947493917",
    "web": "https://www.facebook.com/ElOsodelYelcho/",
    "horario": "24/7"
@@ -7152,8 +7151,8 @@
    "n": "Yelcho En La Patagonia",
    "lat": -43.22018,
    "lng": -72.4368,
-   "loc": "Chaitén",
-   "kmLoc": 40,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22,
    "web": "https://www.yelcho.cl/camping"
   },
   {
@@ -7163,8 +7162,8 @@
    "n": "Yelcho en la Patagonia",
    "lat": -43.21994,
    "lng": -72.43458,
-   "loc": "Chaitén",
-   "kmLoc": 40,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22,
    "tel": "+56 9 8833 7355",
    "web": "https://www.yelcho.cl/"
   },
@@ -7660,8 +7659,8 @@
    "n": "Chimalfe Patagonia",
    "lat": -43.17493,
    "lng": -72.43045,
-   "loc": "Chaitén",
-   "kmLoc": 37
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 27
   },
   {
    "id": "n4277609489",
@@ -7670,8 +7669,8 @@
    "n": "Chucao Lodge Yelcho",
    "lat": -43.17664,
    "lng": -72.43028,
-   "loc": "Chaitén",
-   "kmLoc": 37,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 27,
    "web": "www.chucaolodge.com"
   },
   {
@@ -7681,8 +7680,8 @@
    "n": "Villa Gesell Cabañas",
    "lat": -43.17454,
    "lng": -72.42982,
-   "loc": "Chaitén",
-   "kmLoc": 37
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 27
   },
   {
    "id": "n5359754017",
@@ -7835,8 +7834,8 @@
    "n": "Puerto Ramirez",
    "lat": -43.48812,
    "lng": -72.11791,
-   "loc": "Palena",
-   "kmLoc": 29
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22
   },
   {
    "id": "n5246306192",
@@ -7845,8 +7844,8 @@
    "n": "Hospedaje Puerto Ramirez",
    "lat": -43.48874,
    "lng": -72.11643,
-   "loc": "Palena",
-   "kmLoc": 29
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22
   },
   {
    "id": "n6150709644",
@@ -7855,8 +7854,8 @@
    "n": "Puerto Ramirez Hospedaje",
    "lat": -43.48079,
    "lng": -72.12872,
-   "loc": "Palena",
-   "kmLoc": 30,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 20,
    "desc": "17.12.18 Hospedaje\nNice simple place, good wifi, with a small shop 20 000 pesos for two"
   },
   {
@@ -7866,8 +7865,8 @@
    "n": "Hostería Veronica",
    "lat": -43.48572,
    "lng": -72.10757,
-   "loc": "Palena",
-   "kmLoc": 29
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22
   },
   {
    "id": "n5292496261",
@@ -7876,8 +7875,8 @@
    "n": "Hotel Raudal",
    "lat": -43.43503,
    "lng": -72.09628,
-   "loc": "Palena",
-   "kmLoc": 31
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22
   },
   {
    "id": "n1407114866",
@@ -7886,8 +7885,8 @@
    "n": "Cara del Indio",
    "lat": -43.37121,
    "lng": -72.07693,
-   "loc": "Futaleufú",
-   "kmLoc": 27
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 24
   },
   {
    "id": "n11418691377",
@@ -8321,8 +8320,8 @@
    "n": "Hostal Puerto Edén \"José Navero\"",
    "lat": -49.12584,
    "lng": -74.4129,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 154,
+   "loc": "Puerto Yungay",
+   "kmLoc": 150,
    "tel": "+56966264663"
   },
   {
@@ -8509,8 +8508,8 @@
    "n": "Camping Centro Las Lengas",
    "lat": -47.01895,
    "lng": -72.82583,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 3,
    "tel": "+56 9 3220 7603",
    "web": "https://www.centrolaslengas.cl"
   },
@@ -8949,8 +8948,8 @@
    "n": "Camping Granja Río Grande",
    "lat": -44.66553,
    "lng": -72.26691,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 33
+   "loc": "Villa Amengual",
+   "kmLoc": 10
   },
   {
    "id": "w1456471085",
@@ -8959,8 +8958,8 @@
    "n": "El Encanto",
    "lat": -44.74827,
    "lng": -72.21121,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 37
+   "loc": "Villa Amengual",
+   "kmLoc": 0
   },
   {
    "id": "w1456471103",
@@ -8969,8 +8968,8 @@
    "n": "El Indio",
    "lat": -44.74888,
    "lng": -72.21076,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 37
+   "loc": "Villa Amengual",
+   "kmLoc": 0
   },
   {
    "id": "w1456680112",
@@ -8979,8 +8978,8 @@
    "n": "Refugio para Ciclistas",
    "lat": -44.74696,
    "lng": -72.21359,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 37
+   "loc": "Villa Amengual",
+   "kmLoc": 0
   },
   {
    "id": "w1456680159",
@@ -8989,8 +8988,8 @@
    "n": "El Paso",
    "lat": -44.74836,
    "lng": -72.21196,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 37
+   "loc": "Villa Amengual",
+   "kmLoc": 0
   },
   {
    "id": "w1456680160",
@@ -8999,8 +8998,8 @@
    "n": "El Michay",
    "lat": -44.74849,
    "lng": -72.21171,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 37
+   "loc": "Villa Amengual",
+   "kmLoc": 0
   },
   {
    "id": "w1461889518",
@@ -9009,8 +9008,8 @@
    "n": "Cabañas \"El Chucao\"",
    "lat": -44.74617,
    "lng": -72.21187,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 37
+   "loc": "Villa Amengual",
+   "kmLoc": 0
   },
   {
    "id": "w1456471116",
@@ -9019,8 +9018,8 @@
    "n": "Hostería Casona del Bosque",
    "lat": -44.75055,
    "lng": -72.20517,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 38,
+   "loc": "Villa Amengual",
+   "kmLoc": 1,
    "web": "http://www.hosteriacasonadelbosque.cl"
   },
   {
@@ -9030,8 +9029,8 @@
    "n": "Las Lumas",
    "lat": -44.70323,
    "lng": -72.23331,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 35
+   "loc": "Villa Amengual",
+   "kmLoc": 5
   },
   {
    "id": "w1458469254",
@@ -9040,8 +9039,8 @@
    "n": "Refugio Río Cisnes",
    "lat": -44.70303,
    "lng": -72.23061,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 36,
+   "loc": "Villa Amengual",
+   "kmLoc": 5,
    "tel": "+56 9 7154 8068",
    "web": "https://www.refugioriocisnes.com"
   },
@@ -9199,8 +9198,8 @@
    "n": "Camping El Mañio",
    "lat": -43.41432,
    "lng": -72.36644,
-   "loc": "Futaleufú",
-   "kmLoc": 48,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0,
    "tel": "+56 9 7402 1766"
   },
   {
@@ -9210,8 +9209,8 @@
    "n": "Cabañas Illampu",
    "lat": -43.41354,
    "lng": -72.36585,
-   "loc": "Futaleufú",
-   "kmLoc": 48
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0
   },
   {
    "id": "w312871283",
@@ -9437,8 +9436,8 @@
    "n": "Mirador Edén",
    "lat": -49.12632,
    "lng": -74.40981,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 154
+   "loc": "Puerto Yungay",
+   "kmLoc": 150
   },
   {
    "id": "n12404466601",
@@ -9447,8 +9446,8 @@
    "n": "Virgin de los Mares",
    "lat": -48.96615,
    "lng": -74.41029,
-   "loc": "Caleta Tortel",
-   "kmLoc": 144
+   "loc": "Puerto Yungay",
+   "kmLoc": 135
   },
   {
    "id": "n1458297056",
@@ -9889,8 +9888,8 @@
    "n": "Mirador Entrerios",
    "lat": -48.11751,
    "lng": -72.89376,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 46
+   "loc": "Puerto Yungay",
+   "kmLoc": 40
   },
   {
    "id": "n8409187017",
@@ -9909,8 +9908,8 @@
    "n": "Mirador El Encuentro",
    "lat": -48.11854,
    "lng": -72.87548,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 45
+   "loc": "Puerto Yungay",
+   "kmLoc": 42
   },
   {
    "id": "n6260854933",
@@ -10096,8 +10095,8 @@
    "n": "Confluencia Ríos Baker y Neff",
    "lat": -47.12082,
    "lng": -72.77543,
-   "loc": "Cochrane",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 14
   },
   {
    "id": "n8547114417",
@@ -10106,8 +10105,8 @@
    "n": "Cascada canelo 2",
    "lat": -46.96946,
    "lng": -72.89703,
-   "loc": "Puerto Guadal",
-   "kmLoc": 20
+   "loc": "Puerto Bertrand",
+   "kmLoc": 6
   },
   {
    "id": "n4680332394",
@@ -10116,8 +10115,8 @@
    "n": "Kayak y Rafting",
    "lat": -47.01673,
    "lng": -72.83034,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "n10739885606",
@@ -10126,8 +10125,8 @@
    "n": "Mirador Bertand Baker",
    "lat": -47.0072,
    "lng": -72.82918,
-   "loc": "Puerto Guadal",
-   "kmLoc": 20
+   "loc": "Puerto Bertrand",
+   "kmLoc": 1
   },
   {
    "id": "n13396096940",
@@ -10136,8 +10135,8 @@
    "n": "Confluencia",
    "lat": -47.11909,
    "lng": -72.76937,
-   "loc": "Cochrane",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 14
   },
   {
    "id": "n2718208909",
@@ -10232,8 +10231,8 @@
    "n": "Mirador Lago Bertrand",
    "lat": -46.94333,
    "lng": -72.78662,
-   "loc": "Puerto Guadal",
-   "kmLoc": 13,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 6,
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Lago_Bertrand_1.jpg/960px-Lago_Bertrand_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "autor": "Manxuc",
@@ -10248,8 +10247,8 @@
    "n": "mirador lago colores",
    "lat": -46.93194,
    "lng": -72.79035,
-   "loc": "Puerto Guadal",
-   "kmLoc": 12
+   "loc": "Puerto Bertrand",
+   "kmLoc": 7
   },
   {
    "id": "n4661292090",
@@ -11593,8 +11592,8 @@
    "n": "Mirador Lago Las Torres",
    "lat": -44.79058,
    "lng": -72.20674,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 38
+   "loc": "Villa Amengual",
+   "kmLoc": 5
   },
   {
    "id": "n4967327226",
@@ -11603,8 +11602,8 @@
    "n": "Valle Perdido",
    "lat": -44.68404,
    "lng": -72.24731,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 35
+   "loc": "Villa Amengual",
+   "kmLoc": 8
   },
   {
    "id": "n1405102544",
@@ -11613,8 +11612,8 @@
    "n": "Mirador Río Cisnes",
    "lat": -44.70595,
    "lng": -72.22847,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 36
+   "loc": "Villa Amengual",
+   "kmLoc": 5
   },
   {
    "id": "n6223902488",
@@ -11623,8 +11622,8 @@
    "n": "Mirador El Lobo",
    "lat": -44.68182,
    "lng": -72.24681,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 35
+   "loc": "Villa Amengual",
+   "kmLoc": 8
   },
   {
    "id": "n5351563821",
@@ -11659,8 +11658,8 @@
    "n": "Mirador Piedra el Gato",
    "lat": -44.64856,
    "lng": -72.38685,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 25
+   "loc": "Villa Amengual",
+   "kmLoc": 18
   },
   {
    "id": "n4967327258",
@@ -11669,8 +11668,8 @@
    "n": "Mirador El Lobo",
    "lat": -44.64128,
    "lng": -72.35287,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 28
+   "loc": "Villa Amengual",
+   "kmLoc": 16
   },
   {
    "id": "n3314590491",
@@ -11679,8 +11678,8 @@
    "n": "Cascada",
    "lat": -44.57794,
    "lng": -72.41018,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 27
+   "loc": "Villa Amengual",
+   "kmLoc": 25
   },
   {
    "id": "n5427458467",
@@ -11689,8 +11688,8 @@
    "n": "Salto Padre García",
    "lat": -44.57823,
    "lng": -72.40993,
-   "loc": "Puerto Cisnes",
-   "kmLoc": 27
+   "loc": "Villa Amengual",
+   "kmLoc": 25
   },
   {
    "id": "n10695301869",
@@ -12025,8 +12024,8 @@
    "n": "falso satarai",
    "lat": -44.83279,
    "lng": -71.77766,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 48
+   "loc": "Villa Amengual",
+   "kmLoc": 35
   },
   {
    "id": "n8602223074",
@@ -12215,8 +12214,8 @@
    "n": "Río",
    "lat": -43.45358,
    "lng": -72.35834,
-   "loc": "Futaleufú",
-   "kmLoc": 50
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 5
   },
   {
    "id": "n6217493869",
@@ -12225,8 +12224,8 @@
    "n": "El Chucao",
    "lat": -43.44048,
    "lng": -72.35975,
-   "loc": "Futaleufú",
-   "kmLoc": 49
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 3
   },
   {
    "id": "n7228803892",
@@ -12235,8 +12234,8 @@
    "n": "Museo Testimonial 'La Casa de la Bandera'",
    "lat": -43.41227,
    "lng": -72.36596,
-   "loc": "Futaleufú",
-   "kmLoc": 48,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 0,
    "horario": "Mo-Su 09:00-13:00, 14:30-18:30",
    "wiki": "es:Aluvión de Villa Santa Lucía"
   },
@@ -12247,8 +12246,8 @@
    "n": "El Picaflor",
    "lat": -43.55007,
    "lng": -72.34804,
-   "loc": "Palena",
-   "kmLoc": 44
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 15
   },
   {
    "id": "n6217493858",
@@ -12257,8 +12256,8 @@
    "n": "El Condor",
    "lat": -43.50057,
    "lng": -72.34635,
-   "loc": "Palena",
-   "kmLoc": 46
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 10
   },
   {
    "id": "n2714566554",
@@ -12267,8 +12266,8 @@
    "n": "Valle El Frío",
    "lat": -43.38143,
    "lng": -72.37323,
-   "loc": "Futaleufú",
-   "kmLoc": 46
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 4
   },
   {
    "id": "n6219545214",
@@ -12277,8 +12276,8 @@
    "n": "Mirador Cuesta Moraga",
    "lat": -43.32196,
    "lng": -72.41,
-   "loc": "Futaleufú",
-   "kmLoc": 47
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 11
   },
   {
    "id": "n4946077422",
@@ -12287,8 +12286,8 @@
    "n": "Mirador Ventisquero Yelcho",
    "lat": -43.28091,
    "lng": -72.45285,
-   "loc": "Chaitén",
-   "kmLoc": 46,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 16,
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Glaciar_Yelcho_Chico_Parque_Nacional_Corcovado.jpg/960px-Glaciar_Yelcho_Chico_Parque_Nacional_Corcovado.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "autor": "Natalia Reyes Escobar",
@@ -12303,8 +12302,8 @@
    "n": "Mirador La Playa",
    "lat": -43.27594,
    "lng": -72.425,
-   "loc": "Chaitén",
-   "kmLoc": 46
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 16
   },
   {
    "id": "n13337728111",
@@ -12313,8 +12312,8 @@
    "n": "Mirador Vista Hermosa",
    "lat": -43.27563,
    "lng": -72.42675,
-   "loc": "Chaitén",
-   "kmLoc": 46
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 16
   },
   {
    "id": "n4637899191",
@@ -12323,8 +12322,8 @@
    "n": "Mirador Ventisquero Yelcho",
    "lat": -43.27245,
    "lng": -72.42078,
-   "loc": "Futaleufú",
-   "kmLoc": 46,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 16,
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Mirtha_y_Eduardo_ventisquero_sobre_rio_yelcho_-_panoramio.jpg/960px-Mirtha_y_Eduardo_ventisquero_sobre_rio_yelcho_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "autor": "elgatoboca",
@@ -12339,8 +12338,8 @@
    "n": "Mirador Lago Yelcho",
    "lat": -43.21672,
    "lng": -72.44266,
-   "loc": "Chaitén",
-   "kmLoc": 40
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 23
   },
   {
    "id": "n1354355194",
@@ -12366,13 +12365,7 @@
    "lat": -42.91087,
    "lng": -72.70928,
    "loc": "Chaitén",
-   "kmLoc": 1,
-   "foto": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Chaiten_-_panoramio.jpg/960px-Chaiten_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "autor": "Elvis Boaventura",
-    "licencia": "CC BY 3.0",
-    "fuente": "https://commons.wikimedia.org/wiki/File:Chaiten_-_panoramio.jpg"
-   }
+   "kmLoc": 1
   },
   {
    "id": "n13411350240",
@@ -12417,8 +12410,8 @@
    "n": "Puente Yelcho",
    "lat": -43.17611,
    "lng": -72.43971,
-   "loc": "Chaitén",
-   "kmLoc": 36,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 27,
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Ponte_sobre_o_Rio_Yelcho_-_panoramio.jpg/960px-Ponte_sobre_o_Rio_Yelcho_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "autor": "Elvis Boaventura",
@@ -12692,8 +12685,8 @@
    "n": "Puente Rio Malito",
    "lat": -43.48165,
    "lng": -72.12841,
-   "loc": "Palena",
-   "kmLoc": 30
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 20
   },
   {
    "id": "n1357166697",
@@ -12702,8 +12695,8 @@
    "n": "Puente Rio Futaleufu",
    "lat": -43.39956,
    "lng": -72.09286,
-   "loc": "Futaleufú",
-   "kmLoc": 30,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 22,
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Mirtha_y_Eduardo%2C_puente_sobre_rio_Futaleufu_-_panoramio.jpg/960px-Mirtha_y_Eduardo%2C_puente_sobre_rio_Futaleufu_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "autor": "elgatoboca",
@@ -12992,8 +12985,8 @@
    "n": "Glaciar Arco",
    "lat": -47.28843,
    "lng": -73.32327,
-   "loc": "Cochrane",
-   "kmLoc": 57
+   "loc": "Puerto Bertrand",
+   "kmLoc": 50
   },
   {
    "id": "w1369373632",
@@ -13005,13 +12998,7 @@
    "loc": "Cochrane",
    "kmLoc": 0,
    "tel": "+56 672522225",
-   "horario": "Mo-Th 09:00-13:00,14:00-17:00; Fr 09:00 - 13:00,14:00-16:00",
-   "foto": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Plaza_de_Cochrane.jpg/960px-Plaza_de_Cochrane.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "autor": "Manxuc",
-    "licencia": "CC BY-SA 4.0",
-    "fuente": "https://commons.wikimedia.org/wiki/File:Plaza_de_Cochrane.jpg"
-   }
+   "horario": "Mo-Th 09:00-13:00,14:00-17:00; Fr 09:00 - 13:00,14:00-16:00"
   },
   {
    "id": "w335772194",
@@ -13039,13 +13026,7 @@
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 0,
    "web": "https://www.redmuseosaysen.cl/museopuertotranquilo",
-   "horario": "Tu-Su 11:00-19:00",
-   "foto": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Puerto_Rio_Tranquilo_Plaza.jpg/960px-Puerto_Rio_Tranquilo_Plaza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "autor": "Ivotoledo45",
-    "licencia": "CC BY 4.0",
-    "fuente": "https://commons.wikimedia.org/wiki/File:Puerto_Rio_Tranquilo_Plaza.jpg"
-   }
+   "horario": "Tu-Su 11:00-19:00"
   },
   {
    "id": "w1242124083",
@@ -13214,8 +13195,8 @@
    "n": "Campo de Hielo Patagónico Norte",
    "lat": -46.98591,
    "lng": -73.61365,
-   "loc": "Puerto Guadal",
-   "kmLoc": 71,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 60,
    "wiki": "es:Campo de hielo patagónico norte",
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Campo_de_Hielo_Norte.jpg/960px-Campo_de_Hielo_Norte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -13281,8 +13262,8 @@
    "n": "Glaciar San Quintín",
    "lat": -46.92484,
    "lng": -73.69949,
-   "loc": "Puerto Guadal",
-   "kmLoc": 76,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 67,
    "wiki": "es:Glaciar San Quintín",
    "foto": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/San_Quintin_Glacier_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -13298,8 +13279,8 @@
    "n": "Glaciar San Rafael",
    "lat": -46.72062,
    "lng": -73.56665,
-   "loc": "Puerto Guadal",
-   "kmLoc": 67,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 64,
    "wiki": "es:Glaciar San Rafael",
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Laguna_San_Rafael.jpg/960px-Laguna_San_Rafael.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -13315,8 +13296,8 @@
    "n": "Glaciar Benito",
    "lat": -47.05587,
    "lng": -73.73555,
-   "loc": "Puerto Guadal",
-   "kmLoc": 82
+   "loc": "Puerto Bertrand",
+   "kmLoc": 70
   },
   {
    "id": "r5599458",
@@ -13393,8 +13374,8 @@
    "n": "Glaciar Jorge Montt",
    "lat": -48.48739,
    "lng": -73.4702,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 67,
+   "loc": "Puerto Yungay",
+   "kmLoc": 59,
    "wiki": "es:Glaciar Jorge Montt",
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Jorge_Montt_Glaciar_%28ISS016-E-12263%29.jpg/960px-Jorge_Montt_Glaciar_%28ISS016-E-12263%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -13410,8 +13391,8 @@
    "n": "Glaciar Lucía",
    "lat": -48.4457,
    "lng": -73.30136,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 55
+   "loc": "Puerto Yungay",
+   "kmLoc": 54
   },
   {
    "id": "r21046835",
@@ -13440,8 +13421,8 @@
    "n": "Glaciar Ofhidrio",
    "lat": -48.4799,
    "lng": -73.70785,
-   "loc": "Caleta Tortel",
-   "kmLoc": 76
+   "loc": "Puerto Yungay",
+   "kmLoc": 62
   },
   {
    "id": "r21046838",
@@ -13530,8 +13511,8 @@
    "n": "Glaciar Nef",
    "lat": -46.9746,
    "lng": -73.31683,
-   "loc": "Puerto Guadal",
-   "kmLoc": 49
+   "loc": "Puerto Bertrand",
+   "kmLoc": 38
   },
   {
    "id": "r17620789",
@@ -13540,8 +13521,8 @@
    "n": "Glaciar Colonia",
    "lat": -47.1686,
    "lng": -73.40932,
-   "loc": "Cochrane",
-   "kmLoc": 64
+   "loc": "Puerto Bertrand",
+   "kmLoc": 48
   },
   {
    "id": "r21050265",
@@ -13560,8 +13541,8 @@
    "n": "Glaciar Fraenkel",
    "lat": -46.97565,
    "lng": -73.68866,
-   "loc": "Puerto Guadal",
-   "kmLoc": 76
+   "loc": "Puerto Bertrand",
+   "kmLoc": 66
   },
   {
    "id": "r21050506",
@@ -13570,8 +13551,8 @@
    "n": "Glaciar Cachet",
    "lat": -47.09264,
    "lng": -73.39651,
-   "loc": "Puerto Guadal",
-   "kmLoc": 59
+   "loc": "Puerto Bertrand",
+   "kmLoc": 45
   },
   {
    "id": "r21050505",
@@ -13580,8 +13561,8 @@
    "n": "Glaciar Cachet Norte",
    "lat": -47.06853,
    "lng": -73.36176,
-   "loc": "Puerto Guadal",
-   "kmLoc": 56
+   "loc": "Puerto Bertrand",
+   "kmLoc": 42
   },
   {
    "id": "r21050507",
@@ -13590,8 +13571,8 @@
    "n": "Glaciar Andrée",
    "lat": -46.89762,
    "lng": -73.71145,
-   "loc": "Puerto Guadal",
-   "kmLoc": 77
+   "loc": "Puerto Bertrand",
+   "kmLoc": 68
   },
   {
    "id": "r21050508",
@@ -13600,8 +13581,8 @@
    "n": "Glaciar Strindberg",
    "lat": -46.92889,
    "lng": -73.67953,
-   "loc": "Puerto Guadal",
-   "kmLoc": 75
+   "loc": "Puerto Bertrand",
+   "kmLoc": 65
   },
   {
    "id": "r21050266",
@@ -13620,8 +13601,8 @@
    "n": "Glaciar Soler",
    "lat": -46.87234,
    "lng": -73.24041,
-   "loc": "Puerto Guadal",
-   "kmLoc": 41
+   "loc": "Puerto Bertrand",
+   "kmLoc": 35
   },
   {
    "id": "r21050515",
@@ -13630,8 +13611,8 @@
    "n": "Glaciar Hyades",
    "lat": -46.8437,
    "lng": -73.21622,
-   "loc": "Puerto Guadal",
-   "kmLoc": 39
+   "loc": "Puerto Bertrand",
+   "kmLoc": 34
   },
   {
    "id": "r21050516",
@@ -13640,8 +13621,8 @@
    "n": "Glaciar Leones",
    "lat": -46.79952,
    "lng": -73.2581,
-   "loc": "Puerto Guadal",
-   "kmLoc": 42
+   "loc": "Puerto Bertrand",
+   "kmLoc": 40
   },
   {
    "id": "r21050503",
@@ -13650,8 +13631,8 @@
    "n": "Glaciar Cristal",
    "lat": -46.73639,
    "lng": -73.26948,
-   "loc": "Puerto Guadal",
-   "kmLoc": 45
+   "loc": "Puerto Bertrand",
+   "kmLoc": 44
   },
   {
    "id": "r21050517",
@@ -13710,8 +13691,8 @@
    "n": "Ventisquero Yelcho Chico",
    "lat": -43.29591,
    "lng": -72.49977,
-   "loc": "Chaitén",
-   "kmLoc": 45
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 17
   },
   {
    "id": "n3308775697",
@@ -13720,8 +13701,8 @@
    "n": "Cerro Jenkins",
    "lat": -49.11265,
    "lng": -74.42602,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 154
+   "loc": "Puerto Yungay",
+   "kmLoc": 149
   },
   {
    "id": "n2876647065",
@@ -13730,8 +13711,8 @@
    "n": "Monte Jervis",
    "lat": -49.14349,
    "lng": -74.31776,
-   "loc": "Villa O'Higgins",
-   "kmLoc": 149
+   "loc": "Puerto Yungay",
+   "kmLoc": 148
   },
   {
    "id": "n5319070236",
@@ -13760,8 +13741,8 @@
    "n": "Monte Paladión",
    "lat": -46.73339,
    "lng": -74.66506,
-   "loc": "Caleta Tortel",
-   "kmLoc": 146
+   "loc": "Puerto Bertrand",
+   "kmLoc": 143
   },
   {
    "id": "n5319070264",
@@ -13770,8 +13751,8 @@
    "n": "Cerro Redondo",
    "lat": -46.71156,
    "lng": -74.68291,
-   "loc": "Caleta Tortel",
-   "kmLoc": 149
+   "loc": "Puerto Bertrand",
+   "kmLoc": 145
   },
   {
    "id": "n5319070261",
@@ -13780,8 +13761,8 @@
    "n": "Cerro Elena",
    "lat": -46.64991,
    "lng": -74.74225,
-   "loc": "Puerto Guadal",
-   "kmLoc": 157
+   "loc": "Puerto Bertrand",
+   "kmLoc": 151
   },
   {
    "id": "n5319070262",
@@ -13790,8 +13771,8 @@
    "n": "Cerro Raby",
    "lat": -46.64189,
    "lng": -74.69557,
-   "loc": "Puerto Guadal",
-   "kmLoc": 153
+   "loc": "Puerto Bertrand",
+   "kmLoc": 148
   },
   {
    "id": "n5319070269",
@@ -13810,7 +13791,7 @@
    "n": "Cerro Pérez",
    "lat": -46.79483,
    "lng": -74.64176,
-   "loc": "Caleta Tortel",
+   "loc": "Puerto Bertrand",
    "kmLoc": 140
   },
   {
@@ -13830,7 +13811,7 @@
    "n": "Cerro Esmeralda",
    "lat": -46.82963,
    "lng": -74.52623,
-   "loc": "Caleta Tortel",
+   "loc": "Puerto Bertrand",
    "kmLoc": 131
   },
   {
@@ -13840,8 +13821,8 @@
    "n": "Cerro Angamos",
    "lat": -46.76729,
    "lng": -74.55056,
-   "loc": "Caleta Tortel",
-   "kmLoc": 138
+   "loc": "Puerto Bertrand",
+   "kmLoc": 134
   },
   {
    "id": "n5319070263",
@@ -13850,8 +13831,8 @@
    "n": "Cerro Boscoso",
    "lat": -46.70462,
    "lng": -74.57601,
-   "loc": "Puerto Guadal",
-   "kmLoc": 143
+   "loc": "Puerto Bertrand",
+   "kmLoc": 137
   },
   {
    "id": "n5319070258",
@@ -13860,8 +13841,8 @@
    "n": "Cerro Christie",
    "lat": -46.58677,
    "lng": -74.53348,
-   "loc": "Puerto Río Tranquilo",
-   "kmLoc": 142
+   "loc": "Puerto Bertrand",
+   "kmLoc": 138
   },
   {
    "id": "n5319070257",
@@ -13870,8 +13851,8 @@
    "n": "Cerro Circular",
    "lat": -46.57494,
    "lng": -74.50031,
-   "loc": "Puerto Río Tranquilo",
-   "kmLoc": 139
+   "loc": "Puerto Bertrand",
+   "kmLoc": 136
   },
   {
    "id": "n5319070256",
@@ -13880,8 +13861,8 @@
    "n": "Cerro Camello",
    "lat": -46.64737,
    "lng": -74.42988,
-   "loc": "Puerto Guadal",
-   "kmLoc": 133
+   "loc": "Puerto Bertrand",
+   "kmLoc": 128
   },
   {
    "id": "n2919354547",
@@ -13890,8 +13871,8 @@
    "n": "Cerro Mañihues",
    "lat": -46.72679,
    "lng": -74.30705,
-   "loc": "Puerto Guadal",
-   "kmLoc": 123
+   "loc": "Puerto Bertrand",
+   "kmLoc": 117
   },
   {
    "id": "n5319070250",
@@ -13989,8 +13970,8 @@
    "n": "Cerro Arenales",
    "lat": -47.19546,
    "lng": -73.46973,
-   "loc": "Cochrane",
-   "kmLoc": 68,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 54,
    "wiki": "es:Cerro Arenales",
    "foto": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cerro_Arenales.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -14006,8 +13987,8 @@
    "n": "Cerro Cachet",
    "lat": -47.05334,
    "lng": -73.38591,
-   "loc": "Puerto Guadal",
-   "kmLoc": 57
+   "loc": "Puerto Bertrand",
+   "kmLoc": 43
   },
   {
    "id": "n1515999728",
@@ -14416,8 +14397,8 @@
    "n": "Cerro Dedo",
    "lat": -44.80934,
    "lng": -71.8568,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 46
+   "loc": "Villa Amengual",
+   "kmLoc": 29
   },
   {
    "id": "n4434446994",
@@ -14466,8 +14447,8 @@
    "n": "Volcán Yanteles",
    "lat": -43.50325,
    "lng": -72.81382,
-   "loc": "La Junta",
-   "kmLoc": 62,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 38,
    "wiki": "es:Yanteles",
    "foto": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Yanteles_volcano_summit_aerial_chile_x_region.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -14611,8 +14592,8 @@
    "n": "Bien Nacional Protegido Laguna Caiquenes",
    "lat": -47.84184,
    "lng": -73.31192,
-   "loc": "Caleta Tortel",
-   "kmLoc": 17,
+   "loc": "Puerto Yungay",
+   "kmLoc": 14,
    "web": "https://patrimonio.bienes.cl/patrimonio/laguna-caiquenes/",
    "desc": "8510.08 hectáreas protegidas de bosque caducifolio templado andino de lenga, Bosque siempreverde templado interior de coigüe de magallanes y Matorral caducifolio templado andino de haya antártica (ñirre). Además de ecosi"
   },
@@ -14652,8 +14633,8 @@
    "n": "Reserva Arrieros del Nef",
    "lat": -47.13888,
    "lng": -72.82465,
-   "loc": "Cochrane",
-   "kmLoc": 23
+   "loc": "Puerto Bertrand",
+   "kmLoc": 16
   },
   {
    "id": "w788081486",
@@ -14662,8 +14643,8 @@
    "n": "Reserva El Macal",
    "lat": -47.01235,
    "lng": -72.8341,
-   "loc": "Puerto Guadal",
-   "kmLoc": 21
+   "loc": "Puerto Bertrand",
+   "kmLoc": 2
   },
   {
    "id": "w831596412",
@@ -14848,8 +14829,8 @@
    "n": "Parque Kaikén",
    "lat": -44.66058,
    "lng": -71.89131,
-   "loc": "Lago Verde",
-   "kmLoc": 47,
+   "loc": "Villa Amengual",
+   "kmLoc": 27,
    "tel": "+56992996475",
    "web": "https://www.somosnativos.cl/parque-escuela-kaiken",
    "desc": "3414 hectáreas protegidas de bosques de lengas y lagunas ubicado a 180 km. al norte de Coyhaique en la comuna de Lago Verde"
@@ -14872,8 +14853,8 @@
    "n": "Parque Nacional Laguna San Rafael",
    "lat": -46.97413,
    "lng": -74.1867,
-   "loc": "Caleta Tortel",
-   "kmLoc": 104,
+   "loc": "Puerto Bertrand",
+   "kmLoc": 103,
    "wiki": "es:Parque nacional Laguna San Rafael"
   },
   {
@@ -14960,8 +14941,8 @@
    "n": "Bien Nacional Protegido Ventisquero Montt",
    "lat": -48.29453,
    "lng": -73.37396,
-   "loc": "Caleta Tortel",
-   "kmLoc": 56
+   "loc": "Puerto Yungay",
+   "kmLoc": 37
   },
   {
    "id": "r21847812",
@@ -15067,8 +15048,8 @@
    "n": "Reserva Nacional Lago Las Torres",
    "lat": -44.79209,
    "lng": -72.09028,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 43,
+   "loc": "Villa Amengual",
+   "kmLoc": 11,
    "wiki": "en:Lago Las Torres National Reserve",
    "foto": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Lago_Las_Torres_-_Chile.jpg/960px-Lago_Las_Torres_-_Chile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -15223,8 +15204,8 @@
    "n": "Parque Nacional Corcovado",
    "lat": -43.50771,
    "lng": -72.71693,
-   "loc": "La Junta",
-   "kmLoc": 57,
+   "loc": "Villa Santa Lucía",
+   "kmLoc": 30,
    "wiki": "es:Parque nacional Corcovado (Chile)",
    "foto": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Corcovado_volcano_aerial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
