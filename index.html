@@ -96,7 +96,22 @@ section{padding:var(--space-3xl) 0;scroll-margin-top:var(--nav-h)}
 
 /* Portada: foto a sangre con el titular encima */
 .portada{position:relative;min-height:max(560px,min(88vh,760px));display:flex;align-items:flex-end;color:var(--color-blanco);padding:0;background:var(--color-asfalto);overflow:hidden}
-.portada > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portada-fotos{position:absolute;inset:0}
+.portada-fotos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity 1.6s var(--ease-in-out)}
+.portada-fotos img.visible{opacity:1;animation:acercar 9s linear forwards}
+@keyframes acercar{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+/* Letrero de lugar, como los verdes de la ruta */
+.letrero{position:absolute;right:20px;bottom:34px;z-index:1;background:var(--color-lenga);color:var(--color-blanco);border:2px solid var(--color-blanco);border-radius:5px;padding:8px 14px 9px;font-family:var(--font-cond);min-width:170px;max-width:calc(100% - 32px);margin:0;transition:opacity var(--dur) var(--ease-out)}
+.letrero b{display:block;font-size:1.35rem;font-weight:700;line-height:1.05}
+.letrero span{font-size:1rem;font-weight:600;color:oklch(88% 0.02 155)}
+.letrero.cambiando{opacity:0}
+.portada-puntos{display:flex;gap:6px;margin-top:22px}
+.portada-puntos button{width:34px;height:5px;padding:0;border:0;background:oklch(100% 0 0 / .38);cursor:pointer;position:relative;overflow:hidden}
+.portada-puntos button::after{content:"";position:absolute;inset:0;background:var(--color-senal);transform:scaleX(0);transform-origin:left}
+.portada-puntos button[aria-current="true"]::after{animation:llenar 7s linear forwards}
+@keyframes llenar{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.portada-puntos button[aria-current="true"]::after{transform:scaleX(1)}}
+@media (max-width:700px){.letrero{left:16px;right:auto;top:16px;bottom:auto;min-width:0}}
 .portada::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--color-velo) 0%,var(--color-velo-2) 45%,transparent 85%),linear-gradient(to right,var(--color-velo-2) 0%,transparent 65%)}
 .portada .wrap{position:relative;z-index:1;width:100%;padding-top:var(--space-2xl);padding-bottom:var(--space-2xl)}
 .portada h1{font-size:clamp(2.5rem,min(7vw,10.5vh),6rem);text-shadow:0 2px 18px var(--color-velo);font-weight:800;max-width:13ch}
@@ -110,7 +125,8 @@ section{padding:var(--space-3xl) 0;scroll-margin-top:var(--nav-h)}
 .ruta-arriba{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);min-height:0}
 .ruta-foto{position:relative;min-height:0;background:var(--color-asfalto-2)}
 .ruta-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity var(--dur-slow) var(--ease-in-out)}
-.ruta-foto img.visible{opacity:1}
+.ruta-foto img{transform:scale(1.04);transition:opacity var(--dur-slow) var(--ease-in-out),transform 6s var(--ease-out)}
+.ruta-foto img.visible{opacity:1;transform:scale(1)}
 .ruta-foto .credito{position:absolute;left:12px;bottom:8px;z-index:2;color:var(--color-tinta-clara);text-shadow:0 1px 2px var(--color-asfalto)}
 .ruta-info{padding:var(--space-xl) var(--space-xl) var(--space-lg);display:flex;flex-direction:column;justify-content:center;min-height:0}
 .odometro{font:800 clamp(3rem,7vw,5.6rem)/1 var(--font-cond);font-variant-numeric:tabular-nums;color:var(--color-senal)}
@@ -269,7 +285,10 @@ fieldset.campo{border:0;margin:0;padding:0;min-width:0;max-width:100%}
 .visor::backdrop{background:var(--color-asfalto)}
 .visor{overflow:hidden}
 .visor-img{position:relative;min-height:0;touch-action:pan-y}
-.visor-img img{position:absolute;top:60px;left:72px;width:calc(100% - 144px);height:calc(100% - 60px);object-fit:contain}
+.visor-img img{position:absolute;top:60px;left:72px;width:calc(100% - 144px);height:calc(100% - 60px);object-fit:contain;transition:opacity var(--dur) var(--ease-out),transform var(--dur-slow) var(--ease-out)}
+.visor-img img.cargando{opacity:0;transform:scale(.985)}
+.visor[open]{animation:visorEntra var(--dur) var(--ease-out)}
+@keyframes visorEntra{from{opacity:0}}
 .visor-pie{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end;justify-content:space-between;padding:var(--space-md) 72px var(--space-lg)}
 .visor-pie h3{font-size:1.8rem}
 .visor-pie p{margin:2px 0 0;color:var(--color-tinta-clara)}
@@ -293,17 +312,28 @@ fieldset.campo{border:0;margin:0;padding:0;min-width:0;max-width:100%}
 .buscar{font:400 1rem var(--font-body);padding:9px 12px;border:2px solid var(--color-tinta);border-radius:3px;min-width:0;flex:1 1 200px;max-width:320px}
 @media (max-width:640px){.filtros select,.buscar{width:100%;max-width:none}}
 .cuenta{font:600 1.05rem var(--font-cond);color:var(--color-tinta-2);margin:-8px 0 8px}
-.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:0 36px}
-.d-item{padding:16px 0;border-bottom:1px solid var(--color-linea);display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;align-content:start}
-.d-item > :not(.d-ico){grid-column:2}
-.d-ico{grid-row:1/span 4;width:40px;height:40px;border-radius:3px;display:grid;place-items:center;font:800 1.1rem var(--font-cond)}
+.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(460px,100%),1fr));gap:0 40px}
+.d-item{padding:18px 0;border-bottom:1px solid var(--color-linea);display:grid;grid-template-columns:168px minmax(0,1fr);gap:0 18px;align-items:start}
+.d-foto{position:relative;margin:0;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;background:var(--color-papel-2)}
+.d-foto img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity var(--dur-slow) var(--ease-out)}
+.d-foto img.lista{opacity:1}
+.d-foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 8px 5px;font-size:.75rem;line-height:1.2;color:var(--color-blanco);background:linear-gradient(to top,var(--color-velo),transparent)}
+.d-foto.vacia{display:grid;place-items:end center;color:var(--color-tinta-2);font:600 .9rem/1.15 var(--font-cond);text-align:center;padding:48px 8px 10px}
+.d-ico{position:absolute;left:8px;top:8px;width:34px;height:34px;border-radius:3px;display:grid;place-items:center;font:800 1.05rem var(--font-cond);border:2px solid var(--color-blanco)}
+.d-foto.vacia .d-ico{border-color:transparent}
 .ico-bencina{background:var(--color-senal);color:var(--color-tinta)}
 .ico-taller{background:var(--color-tinta);color:var(--color-blanco)}
 .ico-alojamiento{background:var(--color-lenga);color:var(--color-blanco)}
 .ico-balsa{background:var(--color-glaciar);color:var(--color-blanco)}
-.d-item h3{font-size:1.25rem}
-.d-item p{margin:0;font-size:.95rem;color:var(--color-tinta-2)}
-.d-item .link{justify-self:start;font-size:.95rem}
+.d-cuerpo{min-width:0}
+.d-item h3{font-size:1.3rem}
+.d-item p{margin:3px 0 0;font-size:.95rem;color:var(--color-tinta-2)}
+.d-item .d-desc{color:var(--color-tinta)}
+.d-acc{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px}
+.d-acc a,.d-acc .link{font:700 .98rem var(--font-cond);color:var(--color-lenga);text-decoration:underline;text-underline-offset:3px}
+.d-item .d-tuya{font-size:.85rem;margin-top:6px}
+.d-tuya a{color:var(--color-tinta-2)}
+@media (max-width:520px){.d-item{grid-template-columns:116px minmax(0,1fr);gap:0 14px}.d-ico{width:28px;height:28px;font-size:.9rem;left:6px;top:6px}}
 
 /* Antes de venir */
 .check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:30px 40px;margin-top:34px}
@@ -390,7 +420,10 @@ footer .marca{color:var(--color-blanco)}
 
 <main>
 <section class="portada" id="inicio">
-  <img data-foto="ruta.portada" alt="Carretera Austral de ripio con la cordillera nevada al fondo" fetchpriority="high">
+  <div class="portada-fotos" id="portadaFotos">
+    <img data-foto="ruta.portada" class="visible" alt="Carretera Austral de ripio con la cordillera nevada al fondo" fetchpriority="high">
+  </div>
+  <p class="letrero" id="letrero"><b>Carretera Austral</b><span>Ruta 7, Aysén</span></p>
   <div class="wrap">
     <h1>Carretera Austral en moto, sin quedarte seco</h1>
     <p class="bajada">Cerca de mil kilómetros de Chaitén a Villa O'Higgins, buena parte en ripio. Mira cuánto te rinde el estanque en cada tramo, arma tu viaje y encuentra dónde cargar.</p>
@@ -398,8 +431,9 @@ footer .marca{color:var(--color-blanco)}
       <a class="btn btn-senal" href="#ruta">Recorrer la ruta</a>
       <a class="btn btn-borde" href="#planificar">Armar mi viaje</a>
     </div>
+    <div class="portada-puntos" id="portadaPuntos" role="group" aria-label="Fotos de la portada"></div>
   </div>
-  <p class="credito" data-credito="ruta.portada"></p>
+  <p class="credito" id="portadaCredito" data-credito="ruta.portada"></p>
 </section>
 
 <section class="ruta" id="ruta" aria-label="La ruta de Chaitén a Villa O'Higgins">
@@ -721,6 +755,8 @@ let FOTOS = {};        // id -> {url, autor, licencia, fuente}
 let DESTACADOS = [];   // lugares con foto elegidos a mano
 let mapa = null, marcadores = {};
 
+// Miniatura de Wikimedia (500 px) para tarjetas; si falla, la original
+const chica = u => u.replace(/\/\d+px-/, '/500px-');
 function credito(f){
   return f ? 'Foto: <a href="'+esc(f.fuente)+'" target="_blank" rel="noopener">'+esc(f.autor)+'</a>, '+esc(f.licencia) : '';
 }
@@ -932,7 +968,7 @@ let VER = [], verSub = 'todos', verMostrados = PASO, visibles = [], enVisor = []
 function pintarVer(){
   visibles = VER.filter(a => a.foto && (verSub === 'todos' || a.sub === verSub));
   document.getElementById('galeria').innerHTML = visibles.slice(0, verMostrados).map((a, i) =>
-    '<figure class="foto'+(i % 7 === 0 ? ' ancha' : '')+'"><button class="abrir" data-visor="'+a.id+'" aria-label="Ver '+esc(a.n)+' en grande"><img src="'+esc(a.foto.url)+'" alt="'+esc(a.n)+'" loading="lazy"></button>'
+    '<figure class="foto'+(i % 7 === 0 ? ' ancha' : '')+'"><button class="abrir" data-visor="'+a.id+'" aria-label="Ver '+esc(a.n)+' en grande"><img src="'+esc(i % 7 === 0 ? a.foto.url : chica(a.foto.url))+'" alt="'+esc(a.n)+'" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\''+esc(a.foto.url)+'\'"></button>'
     + '<h3>'+esc(a.n)+'</h3><p class="donde">'+esc(a.desc || a.sub)+(a.loc ? ', cerca de '+esc(a.loc) : '')+'</p>'
     + '<p class="credito">'+credito(a.foto)+'</p>'
     + '<button class="link" data-ver="'+a.id+'">Ver en el mapa</button></figure>').join('')
@@ -961,6 +997,8 @@ function abrirVisor(id){
 function mostrarVisor(){
   const a = enVisor[iVisor]; if (!a) return;
   const img = document.getElementById('visorFoto');
+  img.classList.add('cargando');
+  img.onload = () => img.classList.remove('cargando');
   img.onerror = () => { img.onerror = null; img.src = a.foto.url; };
   img.src = a.foto.url.replace(/\/\d+px-/, '/1280px-');
   img.alt = a.n;
@@ -1000,6 +1038,33 @@ function irALocalidad(nombre){
   dirMostrados = PASO; pintarDir();
   document.getElementById('servicios').scrollIntoView();
 }
+// Foto real más cercana (a 30 km o menos): muestra la zona, no el negocio
+let CON_FOTO = [];
+function fotoZona(s){
+  if (s._zona !== undefined) return s._zona;
+  let mejor = null, dist = 30;
+  CON_FOTO.forEach(f => { const k = kmEntre(s, f); if (k < dist) { dist = k; mejor = f; } });
+  return s._zona = mejor;
+}
+const NOMBRE_CAT = {bencina:'Bencinera', taller:'Taller', alojamiento:'Alojamiento', balsa:'Balsa'};
+function fichaServicio(s){
+  const z = fotoZona(s);
+  const foto = z
+    ? '<figure class="d-foto"><span class="d-ico ico-'+s.cat+'" aria-hidden="true">'+ICO[s.cat]+'</span>'
+      + '<img src="'+esc(chica(z.foto.url))+'" alt="" loading="lazy" decoding="async" onload="this.classList.add(\'lista\')" onerror="this.onerror=null;this.src=\''+esc(z.foto.url)+'\'">'
+      + '<figcaption>La zona: '+esc(z.n)+'</figcaption></figure>'
+    : '<figure class="d-foto vacia"><span class="d-ico ico-'+s.cat+'" aria-hidden="true">'+ICO[s.cat]+'</span>Sin foto de la zona</figure>';
+  return '<article class="d-item">' + foto + '<div class="d-cuerpo">'
+    + '<h3>'+esc(s.n)+'</h3>'
+    + '<p><b>'+esc(s.sub || NOMBRE_CAT[s.cat])+'</b>'+(s.loc ? ' en '+esc(s.loc)+(s.kmLoc > 2 ? ' (a '+s.kmLoc+' km)' : '') : '')+'</p>'
+    + (s.desc ? '<p class="d-desc">'+esc(s.desc)+'</p>' : '')
+    + (s.aviso ? '<p class="aviso">'+esc(s.aviso)+'</p>' : '')
+    + ((s.tel || s.horario) ? '<p>'+(s.tel ? '<a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a> ' : '')+(s.horario ? esc(s.horario) : '')+'</p>' : '')
+    + '<div class="d-acc"><a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">Cómo llegar</a>'
+    + '<button class="link" data-ver="'+s.id+'">Ver en el mapa</button></div>'
+    + '<p class="d-tuya">¿Es tu negocio? <a href="#anuncia">Sube tu propia foto</a></p>'
+    + '</div></article>';
+}
 function pintarDir(){
   const q = norm(filtro.q);
   const lista = SERV.filter(s => (filtro.tipo === 'todos' || s.cat === filtro.tipo)
@@ -1009,13 +1074,9 @@ function pintarDir(){
   document.getElementById('dir').innerHTML = !SERV.length
     ? '<p class="vacio">Estamos cargando el directorio de la región. Vuelve pronto.</p>'
     : lista.length
-    ? lista.slice(0, dirMostrados).map(s => '<div class="d-item"><span class="d-ico ico-'+s.cat+'" aria-hidden="true">'+ICO[s.cat]+'</span>'
-      + '<h3>'+esc(s.n)+'</h3>'
-      + '<p><b>'+esc(s.sub)+'</b>'+(s.loc ? ' en '+esc(s.loc)+(s.kmLoc > 2 ? ' (a '+s.kmLoc+' km)' : '') : '')+'</p>'
-      + (s.aviso ? '<p class="aviso">'+esc(s.aviso)+'</p>' : '')
-      + ((s.tel || s.horario) ? '<p>'+(s.tel ? '<a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a> ' : '')+(s.horario ? esc(s.horario) : '')+'</p>' : '')
-      + '<button class="link" data-ver="'+s.id+'">Ver en el mapa</button></div>').join('')
+    ? lista.slice(0, dirMostrados).map(fichaServicio).join('')
     : '<p class="vacio">No hay lugares que coincidan'+(filtro.loc ? ' en '+esc(filtro.loc) : '')+'. Prueba con otra localidad o borra la búsqueda.</p>';
+  document.querySelectorAll('#dir img').forEach(img => { if (img.complete && img.naturalWidth) img.classList.add('lista'); });
   const mas = document.getElementById('masDir');
   mas.hidden = lista.length <= dirMostrados;
   mas.textContent = 'Mostrar más (quedan '+(lista.length - dirMostrados)+')';
@@ -1027,6 +1088,44 @@ document.querySelectorAll('#servicios .chip').forEach(c => c.addEventListener('c
 }));
 sel.addEventListener('change', () => { filtro.loc = sel.value; dirMostrados = PASO; pintarDir(); });
 document.getElementById('buscar').addEventListener('input', e => { filtro.q = e.target.value; dirMostrados = PASO; pintarDir(); });
+
+/* ---------- Portada: fotos que rotan con fundido ---------- */
+const PORTADA = [
+  {id:'ruta.portada', n:'Carretera Austral', d:'Ruta 7, Aysén'},
+  {id:'c-castillo', n:'Villa Cerro Castillo', d:'Km 515 de la ruta'},
+  {id:'c-capillas', n:'Capillas de Mármol', d:'Puerto Río Tranquilo, km 640'},
+  {id:'c-queulat', n:'Parque Queulat', d:'Cerca del km 225'},
+  {id:'c-bertrand', n:'Lago Bertrand', d:'Km 700 de la ruta'},
+];
+const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let iPortada = 0, relojPortada = null;
+function armarPortada(){
+  const caja = document.getElementById('portadaFotos'), puntos = document.getElementById('portadaPuntos');
+  const lista = PORTADA.filter(p => FOTOS[p.id]);
+  if (lista.length < 2) return;
+  caja.innerHTML = lista.map((p, i) => '<img'+(i === 0 ? ' class="visible" fetchpriority="high"' : '')+' src="'+esc(FOTOS[p.id].url)+'" alt="'+esc(p.n)+'">').join('');
+  puntos.innerHTML = lista.map((p, i) => '<button aria-label="Ver foto de '+esc(p.n)+'"'+(i === 0 ? ' aria-current="true"' : '')+'></button>').join('');
+  const fotos = [...caja.children], botones = [...puntos.children];
+  const letrero = document.getElementById('letrero');
+  const ir = (i, auto) => {
+    iPortada = (i + lista.length) % lista.length;
+    fotos.forEach((f, k) => f.classList.toggle('visible', k === iPortada));
+    botones.forEach((b, k) => { b.removeAttribute('aria-current'); if (k === iPortada) { void b.offsetWidth; b.setAttribute('aria-current', 'true'); } });
+    letrero.classList.add('cambiando');
+    setTimeout(() => { letrero.innerHTML = '<b>'+esc(lista[iPortada].n)+'</b><span>'+esc(lista[iPortada].d)+'</span>'; letrero.classList.remove('cambiando'); }, 260);
+    document.getElementById('portadaCredito').innerHTML = credito(FOTOS[lista[iPortada].id]);
+    if (!auto) programar();
+  };
+  // Con animaciones desactivadas igual cambia, más lento y sin zoom
+  const programar = () => { clearInterval(relojPortada); relojPortada = setInterval(() => { if (!pausada) ir(iPortada + 1, true); }, quieto ? 9000 : 7000); };
+  let pausada = false;
+  const portada = document.getElementById('inicio');
+  portada.addEventListener('pointerenter', () => pausada = true);
+  portada.addEventListener('pointerleave', () => pausada = false);
+  botones.forEach((b, i) => b.addEventListener('click', () => ir(i)));
+  // Sin rotar cuando la portada no está a la vista
+  new IntersectionObserver(([e]) => e.isIntersecting ? programar() : clearInterval(relojPortada)).observe(document.getElementById('inicio'));
+}
 
 /* ---------- Carga de datos ---------- */
 Promise.all([
@@ -1056,6 +1155,8 @@ Promise.all([
   const subs = ORDEN.filter(s => VER.some(a => a.sub === s && a.foto));
   document.getElementById('filtrosVer').innerHTML = '<button class="chip" data-sub="todos" aria-pressed="true">Todo</button>'
     + subs.map(s => '<button class="chip" data-sub="'+s+'" aria-pressed="false">'+s+'</button>').join('');
+  CON_FOTO = lugares.filter(l => l.foto && l.lat != null);
+  armarPortada();
   SERV = lugares.filter(l => l.cat !== 'atractivo').sort((a, b) => a.n.localeCompare(b.n, 'es'));
   [...new Set(SERV.map(s => s.loc).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'))
     .forEach(l => sel.add(new Option(l, l)));
