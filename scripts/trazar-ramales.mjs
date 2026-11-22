@@ -8,7 +8,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 const archivo = new URL('../data/ramales.json', import.meta.url);
 const R = JSON.parse(await readFile(archivo, 'utf8'));
 const TODO = process.argv.includes('--todo');
-const UA = {'User-Agent': 'Ruta7Moto/1.0 (github.com/5egaloz/austral-moto-demo) trazar-ramales.mjs'};
+const UA = {'User-Agent': 'Ruta7Moto/1.0 (github.com/5egaloz/ruta7moto) trazar-ramales.mjs'};
 const OVERPASS = process.argv.includes('--solo-camino') ? [] : ['https://overpass-api.de/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
   'https://overpass.private.coffee/api/interpreter', 'https://lz4.overpass-api.de/api/interpreter'];
 const AUSTRAL = JSON.parse(await readFile(new URL('../data/ruta.json', import.meta.url), 'utf8')).linea;

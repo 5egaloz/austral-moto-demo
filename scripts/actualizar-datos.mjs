@@ -7,7 +7,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { aplicarCorrecciones } from './aplicar-correcciones.mjs';
 
-const UA = 'Ruta7Moto/0.1 (demo web Carretera Austral; github.com/5egaloz/austral-moto-demo)';
+const UA = 'Ruta7Moto/0.1 (github.com/5egaloz/ruta7moto)';
 const OVERPASS = [
   'https://lz4.overpass-api.de/api/interpreter',
   'https://maps.mail.ru/osm/tools/overpass/api/interpreter',

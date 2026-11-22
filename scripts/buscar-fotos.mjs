@@ -3,7 +3,7 @@
 // Uso: node scripts/buscar-fotos.mjs
 import { writeFile, mkdir } from 'node:fs/promises';
 
-const UA = 'Ruta7Moto/0.1 (demo web Carretera Austral; github.com/5egaloz/austral-moto-demo)';
+const UA = 'Ruta7Moto/0.1 (github.com/5egaloz/ruta7moto)';
 const COMMONS = 'https://commons.wikimedia.org/w/api.php';
 
 export const LUGARES = [

@@ -25,7 +25,7 @@ const urls = new Set([
 
 await mkdir(new URL('fotos/', raiz), { recursive: true });
 // Wikimedia pide identificarse con una forma de contacto y no hacer ráfagas
-const UA = 'Ruta7Moto/1.0 (https://github.com/5egaloz/austral-moto-demo) bajar-fotos.mjs';
+const UA = 'Ruta7Moto/1.0 (https://github.com/5egaloz/ruta7moto) bajar-fotos.mjs';
 const espera = ms => new Promise(r => setTimeout(r, ms));
 let nuevas = 0, fallas = [];
 for (const u of urls) {
