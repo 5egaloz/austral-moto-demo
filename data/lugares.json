@@ -836,7 +836,8 @@
    "tel": "74685316",
    "web": "https://www.copec.cl/",
    "horario": "Mo-Su 08:00-23:00",
-   "marca": "Copec"
+   "marca": "Copec",
+   "tarjeta": true
   },
   {
    "id": "n10236758949",
@@ -911,6 +912,7 @@
    "tel": "84011432",
    "horario": "Mo-Su 08:00-23:00",
    "marca": "Copec",
+   "tarjeta": true,
    "aviso": "Solo diésel: los motoqueros cargan en La Junta"
   },
   {
@@ -954,7 +956,8 @@
    "lat": -45.57833,
    "lng": -72.06636,
    "loc": "Coyhaique",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "tarjeta": true
   },
   {
    "id": "n1092394076",
@@ -1284,7 +1287,8 @@
    "lat": -43.18897,
    "lng": -71.85453,
    "loc": "Futaleufú",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "tarjeta": true
   },
   {
    "id": "n4810745035",
@@ -1329,7 +1333,8 @@
    "kmLoc": 0,
    "tel": "91382588",
    "horario": "Mo-Su 08:00-23:00",
-   "marca": "Copec"
+   "marca": "Copec",
+   "tarjeta": true
   },
   {
    "id": "w1446267320",
@@ -2955,7 +2960,8 @@
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 1,
    "tel": "+56 9 4457 7259",
-   "web": "https://www.campingriochirifo.cl"
+   "web": "https://www.campingriochirifo.cl",
+   "tarjeta": true
   },
   {
    "id": "n5401296799",
@@ -4743,7 +4749,8 @@
    "loc": "Villa Mañihuales",
    "kmLoc": 0,
    "tel": "+56976255670",
-   "web": "http://hostelmañihuales.cl"
+   "web": "http://hostelmañihuales.cl",
+   "tarjeta": true
   },
   {
    "id": "n6219737413",
@@ -5175,7 +5182,8 @@
    "lat": -44.32563,
    "lng": -72.56276,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n9264356218",
@@ -5205,7 +5213,8 @@
    "lat": -44.32623,
    "lng": -72.56363,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n13472418901",
@@ -5335,7 +5344,8 @@
    "kmLoc": 0,
    "tel": "09-77661984",
    "web": "http://www.comuy-huapi.cl",
-   "horario": "Mo-Su 08:00-22:30"
+   "horario": "Mo-Su 08:00-22:30",
+   "tarjeta": true
   },
   {
    "id": "n2774219878",
@@ -5616,7 +5626,8 @@
    "lat": -44.32444,
    "lng": -72.55663,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n6214674073",
@@ -5708,7 +5719,8 @@
    "loc": "Puyuhuapi",
    "kmLoc": 16,
    "tel": "+56 67 2526906",
-   "web": "http://www.elpangue.com"
+   "web": "http://www.elpangue.com",
+   "tarjeta": true
   },
   {
    "id": "n4075953340",
@@ -6081,7 +6093,8 @@
    "lat": -45.57379,
    "lng": -72.07199,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n6227560584",
@@ -6821,7 +6834,8 @@
    "lat": -43.97319,
    "lng": -72.40522,
    "loc": "La Junta",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n5164062627",
@@ -7068,7 +7082,8 @@
    "lat": -43.41463,
    "lng": -72.36641,
    "loc": "Villa Santa Lucía",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n6077983185",
@@ -7153,7 +7168,8 @@
    "lng": -72.4368,
    "loc": "Villa Santa Lucía",
    "kmLoc": 22,
-   "web": "https://www.yelcho.cl/camping"
+   "web": "https://www.yelcho.cl/camping",
+   "tarjeta": true
   },
   {
    "id": "n1281555101",
@@ -9042,7 +9058,8 @@
    "loc": "Villa Amengual",
    "kmLoc": 5,
    "tel": "+56 9 7154 8068",
-   "web": "https://www.refugioriocisnes.com"
+   "web": "https://www.refugioriocisnes.com",
+   "tarjeta": true
   },
   {
    "id": "w33904519",
@@ -9052,7 +9069,8 @@
    "lat": -44.46964,
    "lng": -72.54645,
    "loc": "Puyuhuapi",
-   "kmLoc": 16
+   "kmLoc": 16,
+   "tarjeta": true
   },
   {
    "id": "w498005944",
@@ -9147,7 +9165,8 @@
    "lat": -43.97096,
    "lng": -72.40014,
    "loc": "La Junta",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "w663772567",
@@ -9179,7 +9198,8 @@
    "lng": -72.39507,
    "loc": "La Junta",
    "kmLoc": 2,
-   "tel": "+56 9 6495 9393"
+   "tel": "+56 9 6495 9393",
+   "tarjeta": true
   },
   {
    "id": "w198104703",
@@ -9200,7 +9220,8 @@
    "lng": -72.36644,
    "loc": "Villa Santa Lucía",
    "kmLoc": 0,
-   "tel": "+56 9 7402 1766"
+   "tel": "+56 9 7402 1766",
+   "tarjeta": true
   },
   {
    "id": "w547682080",
@@ -15324,7 +15345,12 @@
    "lng": -72.56029,
    "loc": "Villa O'Higgins",
    "kmLoc": 1,
-   "tel": "67431810"
+   "tel": "67431810",
+   "cocina": [
+    "Desayunos",
+    "Comida regional"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n1580310471",
@@ -15374,7 +15400,11 @@
    "lat": -48.46686,
    "lng": -72.56126,
    "loc": "Villa O'Higgins",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Desayunos",
+    "Café"
+   ]
   },
   {
    "id": "n8678285254",
@@ -15406,7 +15436,10 @@
    "lat": -48.46158,
    "lng": -72.56022,
    "loc": "Villa O'Higgins",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n12475576001",
@@ -15541,7 +15574,10 @@
    "lat": -47.79545,
    "lng": -73.53232,
    "loc": "Caleta Tortel",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Sándwiches"
+   ]
   },
   {
    "id": "n12404908301",
@@ -15592,7 +15628,8 @@
    "lat": -47.70463,
    "lng": -73.0777,
    "loc": "Caleta Tortel",
-   "kmLoc": 36
+   "kmLoc": 36,
+   "tarjeta": true
   },
   {
    "id": "n13519231191",
@@ -15654,7 +15691,10 @@
    "lat": -47.2486,
    "lng": -72.58477,
    "loc": "Cochrane",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Chilena"
+   ]
   },
   {
    "id": "n1568447591",
@@ -15685,7 +15725,10 @@
    "lat": -47.25248,
    "lng": -72.57869,
    "loc": "Cochrane",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n1649493669",
@@ -15717,7 +15760,11 @@
    "lng": -72.57593,
    "loc": "Cochrane",
    "kmLoc": 0,
-   "horario": "Mo-Sa 12:00-00:30"
+   "horario": "Mo-Sa 12:00-00:30",
+   "cocina": [
+    "Sándwiches",
+    "Pizza"
+   ]
   },
   {
    "id": "n5401285780",
@@ -15779,7 +15826,10 @@
    "lng": -72.57582,
    "loc": "Cochrane",
    "kmLoc": 0,
-   "web": "www.canva.com/design/DAFz_MGXKQE/jUBGdPNXhxJkGLJf5sd_FA/edit"
+   "web": "www.canva.com/design/DAFz_MGXKQE/jUBGdPNXhxJkGLJf5sd_FA/edit",
+   "cocina": [
+    "Americana"
+   ]
   },
   {
    "id": "n1038357777",
@@ -15803,7 +15853,11 @@
    "kmLoc": 0,
    "tel": "+56988365045",
    "horario": "Mo-Sa 08:30-21:30",
-   "desc": "Café, chocolate, chai latte, postres, comida casera, sándwiches y más"
+   "desc": "Café, chocolate, chai latte, postres, comida casera, sándwiches y más",
+   "cocina": [
+    "Café",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n1568447618",
@@ -15814,7 +15868,8 @@
    "lng": -72.57416,
    "loc": "Cochrane",
    "kmLoc": 0,
-   "horario": "Mo-Sa 10:00-13:00, 15:00-20:00"
+   "horario": "Mo-Sa 10:00-13:00, 15:00-20:00",
+   "tarjeta": true
   },
   {
    "id": "n1568447635",
@@ -15847,7 +15902,12 @@
    "lat": -47.25109,
    "lng": -72.5727,
    "loc": "Cochrane",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional",
+    "Desayunos",
+    "Picada"
+   ]
   },
   {
    "id": "n6267108992",
@@ -15942,7 +16002,12 @@
    "lng": -72.5686,
    "loc": "Cochrane",
    "kmLoc": 1,
-   "horario": "Mo-Sa 12:00-16:00"
+   "horario": "Mo-Sa 12:00-16:00",
+   "cocina": [
+    "Casera",
+    "Pizza",
+    "Empanadas"
+   ]
   },
   {
    "id": "n6267108915",
@@ -16033,7 +16098,11 @@
    "lat": -47.01827,
    "lng": -72.82683,
    "loc": "Puerto Bertrand",
-   "kmLoc": 3
+   "kmLoc": 3,
+   "cocina": [
+    "Pizza"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n4690975391",
@@ -16044,7 +16113,12 @@
    "lng": -72.827,
    "loc": "Puerto Bertrand",
    "kmLoc": 2,
-   "web": "http://www.montecampamento.cl"
+   "web": "http://www.montecampamento.cl",
+   "cocina": [
+    "Pastas",
+    "Comida regional",
+    "Desayunos"
+   ]
   },
   {
    "id": "n13463779757",
@@ -16136,7 +16210,10 @@
    "lng": -72.70654,
    "loc": "Puerto Guadal",
    "kmLoc": 0,
-   "horario": "Mo-Su 09:00-19:30"
+   "horario": "Mo-Su 09:00-19:30",
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n1554752891",
@@ -16176,7 +16253,12 @@
    "lat": -46.84342,
    "lng": -72.70339,
    "loc": "Puerto Guadal",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Sándwiches",
+    "Picada",
+    "Té"
+   ]
   },
   {
    "id": "n2731194473",
@@ -16206,7 +16288,12 @@
    "lat": -46.84543,
    "lng": -72.70354,
    "loc": "Puerto Guadal",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Parrilla",
+    "Fideos",
+    "Pastas"
+   ]
   },
   {
    "id": "n12077676362",
@@ -16247,7 +16334,12 @@
    "lng": -72.87291,
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 15,
-   "tel": "+56 9 8528 4127"
+   "tel": "+56 9 8528 4127",
+   "cocina": [
+    "Hamburguesas",
+    "Desayunos",
+    "Té"
+   ]
   },
   {
    "id": "n1568420113",
@@ -16278,7 +16370,8 @@
    "lng": -72.67522,
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 0,
-   "horario": "Mo-Su 13:00-23:00"
+   "horario": "Mo-Su 13:00-23:00",
+   "tarjeta": true
   },
   {
    "id": "n13460470205",
@@ -16341,7 +16434,8 @@
    "lng": -72.67403,
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 0,
-   "horario": "Mo-Fr 09:00-22:00; Sa 09:00-13:30, 15:00-22:00, Su 10:00-13:00"
+   "horario": "Mo-Fr 09:00-22:00; Sa 09:00-13:30, 15:00-22:00, Su 10:00-13:00",
+   "tarjeta": true
   },
   {
    "id": "n4441398892",
@@ -16351,7 +16445,8 @@
    "lat": -46.62383,
    "lng": -72.67363,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n4441398893",
@@ -16371,7 +16466,11 @@
    "lat": -46.62332,
    "lng": -72.67424,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n4735159935",
@@ -16394,7 +16493,11 @@
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 0,
    "tel": "+56954119053",
-   "web": "http://cocinalaprovencale@gmail.com"
+   "web": "http://cocinalaprovencale@gmail.com",
+   "cocina": [
+    "Café",
+    "Francesa"
+   ]
   },
   {
    "id": "n5373297522",
@@ -16404,7 +16507,10 @@
    "lat": -46.62434,
    "lng": -72.67432,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Sándwiches"
+   ]
   },
   {
    "id": "n5373315922",
@@ -16434,7 +16540,12 @@
    "lat": -46.62392,
    "lng": -72.67394,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Desayunos",
+    "Pizza",
+    "Helados"
+   ]
   },
   {
    "id": "n6238853669",
@@ -16444,7 +16555,12 @@
    "lat": -46.62257,
    "lng": -72.67565,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional",
+    "Pizza"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n6238854187",
@@ -16454,7 +16570,8 @@
    "lat": -46.62502,
    "lng": -72.67695,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n6281887086",
@@ -16475,7 +16592,10 @@
    "lat": -46.62254,
    "lng": -72.67556,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas"
+   ]
   },
   {
    "id": "n7173055628",
@@ -16578,7 +16698,10 @@
    "lat": -46.65834,
    "lng": -72.3719,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 24
+   "kmLoc": 24,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n12605989901",
@@ -16588,7 +16711,12 @@
    "lat": -46.46675,
    "lng": -72.72112,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 18
+   "kmLoc": 18,
+   "cocina": [
+    "Hamburguesas",
+    "Café",
+    "Completos"
+   ]
   },
   {
    "id": "n12646911401",
@@ -16599,7 +16727,10 @@
    "lng": -72.72126,
    "loc": "Puerto Río Tranquilo",
    "kmLoc": 18,
-   "tel": "056932237416"
+   "tel": "056932237416",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n5186432522",
@@ -16629,7 +16760,10 @@
    "lat": -46.45519,
    "lng": -72.67343,
    "loc": "Puerto Río Tranquilo",
-   "kmLoc": 19
+   "kmLoc": 19,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n13411795165",
@@ -16821,7 +16955,10 @@
    "lng": -72.16115,
    "loc": "Villa Cerro Castillo",
    "kmLoc": 1,
-   "web": "www.puestohuemul.com"
+   "web": "www.puestohuemul.com",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n4724769490",
@@ -16881,7 +17018,10 @@
    "lat": -46.54061,
    "lng": -71.72834,
    "loc": "Chile Chico",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Sándwiches"
+   ]
   },
   {
    "id": "n4892256480",
@@ -16903,7 +17043,10 @@
    "loc": "Chile Chico",
    "kmLoc": 1,
    "tel": "056998020280",
-   "web": "https://www.patagoniaxpress.com/"
+   "web": "https://www.patagoniaxpress.com/",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n6175224444",
@@ -16946,7 +17089,11 @@
    "kmLoc": 1,
    "tel": "+56 9 6519 9448",
    "web": "https://www.facebook.com/CostaneraResto/",
-   "horario": "Mo-Su 11:00-23:30"
+   "horario": "Mo-Su 11:00-23:30",
+   "cocina": [
+    "Sudamericana",
+    "Internacional"
+   ]
   },
   {
    "id": "n12079249627",
@@ -17006,7 +17153,10 @@
    "lat": -46.53884,
    "lng": -71.72791,
    "loc": "Chile Chico",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n2731459454",
@@ -17016,7 +17166,10 @@
    "lat": -46.53773,
    "lng": -71.72819,
    "loc": "Chile Chico",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Árabe"
+   ]
   },
   {
    "id": "n2731459540",
@@ -17046,7 +17199,12 @@
    "lat": -46.53706,
    "lng": -71.72783,
    "loc": "Chile Chico",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pescados",
+    "Pollo",
+    "Mariscos"
+   ]
   },
   {
    "id": "n6272342087",
@@ -17229,7 +17387,12 @@
    "lat": -45.16477,
    "lng": -73.52206,
    "loc": "Puerto Aguirre",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches",
+    "Comida regional"
+   ]
   },
   {
    "id": "n4192058638",
@@ -17310,7 +17473,12 @@
    "lng": -72.81588,
    "loc": "Puerto Chacabuco",
    "kmLoc": 0,
-   "tel": "+56 67 2351 333"
+   "tel": "+56 67 2351 333",
+   "cocina": [
+    "Desayunos",
+    "Café",
+    "Picada"
+   ]
   },
   {
    "id": "n5276282721",
@@ -17524,7 +17692,11 @@
    "loc": "Puerto Aysén",
    "kmLoc": 0,
    "tel": "+56985961502",
-   "horario": "Mo 18:00-23:55; Tu-Fr 12:00-23:55; Sa 18:00-23:55"
+   "horario": "Mo 18:00-23:55; Tu-Fr 12:00-23:55; Sa 18:00-23:55",
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n4388512793",
@@ -17534,7 +17706,12 @@
    "lat": -45.40716,
    "lng": -72.69686,
    "loc": "Puerto Aysén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pollo",
+    "Pescados",
+    "Comida regional"
+   ]
   },
   {
    "id": "n5483792421",
@@ -17545,7 +17722,10 @@
    "lng": -72.69854,
    "loc": "Puerto Aysén",
    "kmLoc": 0,
-   "horario": "Mo-Sa 12:00-00:00"
+   "horario": "Mo-Sa 12:00-00:00",
+   "cocina": [
+    "Picada"
+   ]
   },
   {
    "id": "n13525138493",
@@ -17577,7 +17757,13 @@
    "loc": "Puerto Aysén",
    "kmLoc": 0,
    "tel": "+56 67 233 2115",
-   "horario": "Mo-Fr 13:00-15:00, Fr-Sa 22:00-04:30"
+   "horario": "Mo-Fr 13:00-15:00, Fr-Sa 22:00-04:30",
+   "cocina": [
+    "Hamburguesas",
+    "Internacional",
+    "Parrilla"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n4207980390",
@@ -17599,7 +17785,12 @@
    "loc": "Puerto Aysén",
    "kmLoc": 0,
    "tel": "+56 9 5333 7377",
-   "horario": "Mo-Sa 09:00-20:30"
+   "horario": "Mo-Sa 09:00-20:30",
+   "cocina": [
+    "Té",
+    "Crepes",
+    "Tortas y pasteles"
+   ]
   },
   {
    "id": "n4192095208",
@@ -17609,7 +17800,12 @@
    "lat": -45.40658,
    "lng": -72.69687,
    "loc": "Puerto Aysén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Completos",
+    "Desayunos",
+    "Pizza"
+   ]
   },
   {
    "id": "n4603787789",
@@ -17621,7 +17817,10 @@
    "loc": "Puerto Aysén",
    "kmLoc": 0,
    "tel": "+56672524039",
-   "horario": "Mo-Su 12:00-00:00"
+   "horario": "Mo-Su 12:00-00:00",
+   "cocina": [
+    "Japonesa"
+   ]
   },
   {
    "id": "n4679361589",
@@ -17631,7 +17830,12 @@
    "lat": -45.40389,
    "lng": -72.6962,
    "loc": "Puerto Aysén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pescados",
+    "Japonesa",
+    "Pastas"
+   ]
   },
   {
    "id": "n5008423675",
@@ -17652,7 +17856,8 @@
    "lng": -72.69561,
    "loc": "Puerto Aysén",
    "kmLoc": 0,
-   "desc": "alcohol, cigarrillos, cerveza retornable, minimarquet"
+   "desc": "alcohol, cigarrillos, cerveza retornable, minimarquet",
+   "tarjeta": true
   },
   {
    "id": "n9882513292",
@@ -17797,7 +18002,11 @@
    "loc": "Puerto Aysén",
    "kmLoc": 1,
    "tel": "+56 67 233 3728",
-   "horario": "Mo-Sa 10:45-17:30"
+   "horario": "Mo-Sa 10:45-17:30",
+   "cocina": [
+    "Pescados",
+    "Mariscos"
+   ]
   },
   {
    "id": "n4679355292",
@@ -17808,7 +18017,12 @@
    "lng": -72.69188,
    "loc": "Puerto Aysén",
    "kmLoc": 1,
-   "horario": "Mo-Sa 20:00-01:00"
+   "horario": "Mo-Sa 20:00-01:00",
+   "cocina": [
+    "Picada",
+    "Frituras",
+    "Parrilla"
+   ]
   },
   {
    "id": "n4753738832",
@@ -17841,7 +18055,12 @@
    "kmLoc": 1,
    "tel": "+56 9 7977 8371",
    "web": "https://elmesondelapatiko.cl/",
-   "horario": "Mo-Su 13:00-16:30,19:00-22:30"
+   "horario": "Mo-Su 13:00-16:30,19:00-22:30",
+   "cocina": [
+    "Pescados",
+    "Comida regional",
+    "Mariscos"
+   ]
   },
   {
    "id": "n7147307285",
@@ -17851,7 +18070,12 @@
    "lat": -45.40343,
    "lng": -72.69192,
    "loc": "Puerto Aysén",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Pollo",
+    "Pescados",
+    "Comida regional"
+   ]
   },
   {
    "id": "n10983341831",
@@ -17951,7 +18175,12 @@
    "lat": -45.39968,
    "lng": -72.68103,
    "loc": "Puerto Aysén",
-   "kmLoc": 2
+   "kmLoc": 2,
+   "cocina": [
+    "Sándwiches",
+    "Donas",
+    "Completos"
+   ]
   },
   {
    "id": "n9248794117",
@@ -17991,7 +18220,11 @@
    "lat": -45.42268,
    "lng": -72.41795,
    "loc": "Puerto Aysén",
-   "kmLoc": 22
+   "kmLoc": 22,
+   "cocina": [
+    "Comida regional"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n6222175334",
@@ -18091,7 +18324,11 @@
    "lat": -45.17139,
    "lng": -72.14638,
    "loc": "Villa Mañihuales",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n3796314263",
@@ -18111,7 +18348,8 @@
    "lat": -45.16859,
    "lng": -72.14368,
    "loc": "Villa Mañihuales",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "tarjeta": true
   },
   {
    "id": "n5448087326",
@@ -18121,7 +18359,11 @@
    "lat": -45.16717,
    "lng": -72.14229,
    "loc": "Villa Mañihuales",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Sándwiches",
+    "Comida regional"
+   ]
   },
   {
    "id": "n6219545727",
@@ -18141,7 +18383,12 @@
    "lat": -45.16893,
    "lng": -72.14402,
    "loc": "Villa Mañihuales",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n6219545744",
@@ -18151,7 +18398,12 @@
    "lat": -45.16929,
    "lng": -72.14434,
    "loc": "Villa Mañihuales",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional",
+    "Hamburguesas",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n13451703959",
@@ -18263,7 +18515,12 @@
    "lng": -72.68096,
    "loc": "Puerto Cisnes",
    "kmLoc": 0,
-   "tel": "+56 9 7741 4117"
+   "tel": "+56 9 7741 4117",
+   "cocina": [
+    "Crepes",
+    "Tortas y pasteles",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n13309827330",
@@ -18447,7 +18704,13 @@
    "loc": "Villa Amengual",
    "kmLoc": 1,
    "tel": "+56971651085",
-   "horario": "Su-Th 09:00-18:00; Fr-Sa 10:00-17:00"
+   "horario": "Su-Th 09:00-18:00; Fr-Sa 10:00-17:00",
+   "cocina": [
+    "Café",
+    "Sándwiches",
+    "Desayunos"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n1347489990",
@@ -18458,7 +18721,10 @@
    "lng": -72.56395,
    "loc": "Puyuhuapi",
    "kmLoc": 0,
-   "tel": "+56 9 76000083"
+   "tel": "+56 9 76000083",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n6211814934",
@@ -18468,7 +18734,10 @@
    "lat": -44.32527,
    "lng": -72.56269,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n6214674050",
@@ -18488,7 +18757,10 @@
    "lat": -44.3255,
    "lng": -72.5643,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n13409786632",
@@ -18498,7 +18770,10 @@
    "lat": -44.32531,
    "lng": -72.56409,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas"
+   ]
   },
   {
    "id": "n13515658189",
@@ -18528,7 +18803,10 @@
    "lat": -44.32491,
    "lng": -72.56309,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n6293410885",
@@ -18560,7 +18838,10 @@
    "loc": "Puyuhuapi",
    "kmLoc": 0,
    "tel": "(56 9) 88834038 – (56 9) 76543598",
-   "web": "http://www.elmuellecafe.surweb.cl/"
+   "web": "http://www.elmuellecafe.surweb.cl/",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n2710151618",
@@ -18642,7 +18923,8 @@
    "lat": -44.32387,
    "lng": -72.55737,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n2710151614",
@@ -18654,7 +18936,8 @@
    "loc": "Puyuhuapi",
    "kmLoc": 0,
    "tel": "(67) 325107",
-   "horario": "Mo-Sa 09:00-13:00, 15:00-21:00"
+   "horario": "Mo-Sa 09:00-13:00, 15:00-21:00",
+   "tarjeta": true
   },
   {
    "id": "n2710151615",
@@ -18664,7 +18947,8 @@
    "lat": -44.32494,
    "lng": -72.55875,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n2710151617",
@@ -18695,7 +18979,8 @@
    "lat": -44.32447,
    "lng": -72.55653,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n5250295993",
@@ -18705,7 +18990,11 @@
    "lat": -44.3248,
    "lng": -72.55847,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n5250296414",
@@ -18725,7 +19014,8 @@
    "lat": -44.32502,
    "lng": -72.56051,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n5377111722",
@@ -18735,7 +19025,12 @@
    "lat": -44.32415,
    "lng": -72.55899,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Picada",
+    "Tortas y pasteles",
+    "Café"
+   ]
   },
   {
    "id": "n6214674045",
@@ -18776,7 +19071,10 @@
    "lat": -44.32497,
    "lng": -72.55965,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n13409786629",
@@ -18786,7 +19084,10 @@
    "lat": -44.32487,
    "lng": -72.55687,
    "loc": "Puyuhuapi",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n13515763819",
@@ -18806,7 +19107,8 @@
    "lat": -44.19305,
    "lng": -72.49094,
    "loc": "Puyuhuapi",
-   "kmLoc": 16
+   "kmLoc": 16,
+   "tarjeta": true
   },
   {
    "id": "n1572069437",
@@ -18827,7 +19129,10 @@
    "lng": -72.08996,
    "loc": "Coyhaique",
    "kmLoc": 3,
-   "tel": "+56 9 9690 3584"
+   "tel": "+56 9 9690 3584",
+   "cocina": [
+    "Parrilla"
+   ]
   },
   {
    "id": "n6300890785",
@@ -18857,7 +19162,11 @@
    "lat": -45.57695,
    "lng": -72.0821,
    "loc": "Coyhaique",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n4874620163",
@@ -18868,7 +19177,10 @@
    "lng": -72.07669,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "desc": "Casa de Eventos, Servicios de Coffe Break y Delivery."
+   "desc": "Casa de Eventos, Servicios de Coffe Break y Delivery.",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n1572069439",
@@ -18889,7 +19201,12 @@
    "lng": -72.07512,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "horario": "Mo-Sa"
+   "horario": "Mo-Sa",
+   "cocina": [
+    "Pollo",
+    "Completos",
+    "Hamburguesas"
+   ]
   },
   {
    "id": "n5337800525",
@@ -18900,7 +19217,10 @@
    "lng": -72.07452,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "tel": "67 2 211307"
+   "tel": "67 2 211307",
+   "cocina": [
+    "Pollo"
+   ]
   },
   {
    "id": "n6230075495",
@@ -18922,7 +19242,12 @@
    "loc": "Coyhaique",
    "kmLoc": 1,
    "tel": "672394231",
-   "horario": "Mo-Sa 11:00-00:50; Su 13:00-21:00"
+   "horario": "Mo-Sa 11:00-00:50; Su 13:00-21:00",
+   "cocina": [
+    "Picada",
+    "Hamburguesas",
+    "Comida regional"
+   ]
   },
   {
    "id": "n13959665261",
@@ -18963,7 +19288,12 @@
    "lng": -72.06968,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "tel": "984912101"
+   "tel": "984912101",
+   "cocina": [
+    "Desayunos",
+    "Café",
+    "Picada"
+   ]
   },
   {
    "id": "n1209498374",
@@ -19043,7 +19373,10 @@
    "lat": -45.57408,
    "lng": -72.07221,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Parrilla"
+   ]
   },
   {
    "id": "n2732021707",
@@ -19053,7 +19386,12 @@
    "lat": -45.57469,
    "lng": -72.07458,
    "loc": "Coyhaique",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Mariscos",
+    "Frituras",
+    "Pescados"
+   ]
   },
   {
    "id": "n3283262336",
@@ -19064,7 +19402,8 @@
    "lng": -72.07067,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Mo-Sa 10:00-13:30,15:00-19:30"
+   "horario": "Mo-Sa 10:00-13:30,15:00-19:30",
+   "tarjeta": true
   },
   {
    "id": "n3383609493",
@@ -19095,7 +19434,10 @@
    "lng": -72.07032,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Tu-Su 09:00-18:00"
+   "horario": "Tu-Su 09:00-18:00",
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n4596872393",
@@ -19105,7 +19447,10 @@
    "lat": -45.57085,
    "lng": -72.0705,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n4597017789",
@@ -19116,7 +19461,12 @@
    "lng": -72.07562,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "horario": "Mo-Fr 09:00-18:00"
+   "horario": "Mo-Fr 09:00-18:00",
+   "cocina": [
+    "Panqueques",
+    "Donas",
+    "Desayunos"
+   ]
   },
   {
    "id": "n4679361689",
@@ -19126,7 +19476,8 @@
    "lat": -45.57601,
    "lng": -72.07286,
    "loc": "Coyhaique",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "tarjeta": true
   },
   {
    "id": "n4679361789",
@@ -19157,7 +19508,8 @@
    "lng": -72.07384,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "horario": "Mo-Sa 10:00-22:00"
+   "horario": "Mo-Sa 10:00-22:00",
+   "tarjeta": true
   },
   {
    "id": "n4794407723",
@@ -19179,7 +19531,12 @@
    "lng": -72.07181,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Mo-Sa 09:00-18:00"
+   "horario": "Mo-Sa 09:00-18:00",
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches",
+    "Completos"
+   ]
   },
   {
    "id": "n5447896525",
@@ -19191,7 +19548,10 @@
    "loc": "Coyhaique",
    "kmLoc": 0,
    "tel": "+56672392140",
-   "web": "http://www.fogonpuestoviejo.cl"
+   "web": "http://www.fogonpuestoviejo.cl",
+   "cocina": [
+    "Parrilla"
+   ]
   },
   {
    "id": "n5650641821",
@@ -19201,7 +19561,12 @@
    "lat": -45.57426,
    "lng": -72.07182,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches",
+    "Completos"
+   ]
   },
   {
    "id": "n6186329695",
@@ -19251,7 +19616,8 @@
    "lat": -45.57238,
    "lng": -72.07271,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n6227560574",
@@ -19312,7 +19678,10 @@
    "lat": -45.57174,
    "lng": -72.06942,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Parrilla"
+   ]
   },
   {
    "id": "n2687629681",
@@ -19334,7 +19703,10 @@
    "lat": -45.57073,
    "lng": -72.06606,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n4456542889",
@@ -19356,7 +19728,10 @@
    "loc": "Coyhaique",
    "kmLoc": 0,
    "web": "http://www.correos.cl/",
-   "horario": "Mo-Fr 09:30-17:00; Sa 09:30-13:00"
+   "horario": "Mo-Fr 09:30-17:00; Sa 09:30-13:00",
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n4591876090",
@@ -19367,7 +19742,10 @@
    "lng": -72.06451,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Mo-Sa 11:30-16:30"
+   "horario": "Mo-Sa 11:30-16:30",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n4672159089",
@@ -19428,7 +19806,10 @@
    "lng": -72.06436,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "tel": "82674776"
+   "tel": "82674776",
+   "cocina": [
+    "Gourmet"
+   ]
   },
   {
    "id": "n7217042768",
@@ -19652,7 +20033,10 @@
    "lng": -72.07145,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Mo-Su 09:00-21:00"
+   "horario": "Mo-Su 09:00-21:00",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n10222420217",
@@ -19664,7 +20048,11 @@
    "loc": "Coyhaique",
    "kmLoc": 0,
    "web": "https://www.instagram.com/tierraindomitacafe/",
-   "horario": "Su-Th 10:00-21:00; Sa 14:00-21:00"
+   "horario": "Su-Th 10:00-21:00; Sa 14:00-21:00",
+   "cocina": [
+    "Café",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n12247136603",
@@ -19674,7 +20062,10 @@
    "lat": -45.56726,
    "lng": -72.07121,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas"
+   ]
   },
   {
    "id": "n2687514217",
@@ -19725,7 +20116,11 @@
    "lat": -45.56952,
    "lng": -72.06585,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Sándwiches",
+    "Pizza"
+   ]
   },
   {
    "id": "n2688409310",
@@ -19735,7 +20130,8 @@
    "lat": -45.56471,
    "lng": -72.06572,
    "loc": "Coyhaique",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "tarjeta": true
   },
   {
    "id": "n2688409819",
@@ -19786,7 +20182,10 @@
    "lat": -45.56964,
    "lng": -72.06499,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n4591843791",
@@ -19796,7 +20195,11 @@
    "lat": -45.56883,
    "lng": -72.06544,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n4596950189",
@@ -19807,7 +20210,10 @@
    "lng": -72.06608,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Mo-Sa 10:00-20:00"
+   "horario": "Mo-Sa 10:00-20:00",
+   "cocina": [
+    "Café"
+   ]
   },
   {
    "id": "n4794409528",
@@ -19818,7 +20224,12 @@
    "lng": -72.06601,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "horario": "Mo-Sa 12:00-01:30"
+   "horario": "Mo-Sa 12:00-01:30",
+   "cocina": [
+    "Pescados",
+    "Hamburguesas",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n4794409529",
@@ -19862,7 +20273,11 @@
    "tel": "+569 3250 4693",
    "web": "https://tropera.cl/restaurantes/la-esquina-tropera/",
    "horario": "Mo-Sa 12:00-23:59",
-   "desc": "Restaurante de hamburguesas"
+   "desc": "Restaurante de hamburguesas",
+   "cocina": [
+    "Hamburguesas"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n6227560569",
@@ -19872,7 +20287,8 @@
    "lat": -45.57017,
    "lng": -72.06637,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n7068386385",
@@ -19885,7 +20301,10 @@
    "kmLoc": 0,
    "tel": "+56976790534",
    "web": "http://facebook.com/lafabrikatrattoria",
-   "horario": "Mo-Sa 12:00-00:00; Su 12:00-15:00"
+   "horario": "Mo-Sa 12:00-00:00; Su 12:00-15:00",
+   "cocina": [
+    "Italiana"
+   ]
   },
   {
    "id": "n12246900901",
@@ -19905,7 +20324,10 @@
    "lat": -45.56866,
    "lng": -72.06433,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n6222175306",
@@ -20028,7 +20450,10 @@
    "lat": -43.89026,
    "lng": -73.74055,
    "loc": "Melinka",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n2796569838",
@@ -20078,7 +20503,8 @@
    "lat": -43.97352,
    "lng": -72.40654,
    "loc": "La Junta",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n3829554478",
@@ -20108,7 +20534,13 @@
    "lat": -43.97371,
    "lng": -72.40613,
    "loc": "La Junta",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza",
+    "Kebab",
+    "Sándwiches"
+   ],
+   "tarjeta": true
   },
   {
    "id": "n5164062626",
@@ -20179,7 +20611,10 @@
    "lat": -43.97188,
    "lng": -72.40251,
    "loc": "La Junta",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n13515745891",
@@ -20269,7 +20704,12 @@
    "lat": -43.46842,
    "lng": -72.35203,
    "loc": "Villa Santa Lucía",
-   "kmLoc": 6
+   "kmLoc": 6,
+   "cocina": [
+    "Rotisería",
+    "Té",
+    "Frituras"
+   ]
   },
   {
    "id": "n5832104785",
@@ -20280,7 +20720,12 @@
    "lng": -72.36732,
    "loc": "Villa Santa Lucía",
    "kmLoc": 0,
-   "tel": "+56977730960"
+   "tel": "+56977730960",
+   "cocina": [
+    "Comida regional",
+    "Sándwiches",
+    "Desayunos"
+   ]
   },
   {
    "id": "n7228792132",
@@ -20323,7 +20768,12 @@
    "kmLoc": 1,
    "tel": "+56992272101",
    "web": "https://www.instagram.com/cafe.laforastera",
-   "horario": "Su-Sa 07:30-21:00"
+   "horario": "Su-Sa 07:30-21:00",
+   "cocina": [
+    "Desayunos",
+    "Tortas y pasteles",
+    "Café"
+   ]
   },
   {
    "id": "n3796319879",
@@ -20344,7 +20794,12 @@
    "lng": -72.24428,
    "loc": "Villa Santa Lucía",
    "kmLoc": 10,
-   "tel": "+56967634987"
+   "tel": "+56967634987",
+   "cocina": [
+    "Desayunos",
+    "Panqueques",
+    "Tortas y pasteles"
+   ]
   },
   {
    "id": "n13458744555",
@@ -20354,7 +20809,10 @@
    "lat": -43.30946,
    "lng": -72.4184,
    "loc": "Villa Santa Lucía",
-   "kmLoc": 12
+   "kmLoc": 12,
+   "cocina": [
+    "Chilena"
+   ]
   },
   {
    "id": "n11401483663",
@@ -20367,7 +20825,12 @@
    "kmLoc": 10,
    "tel": "+56942342799",
    "web": "https://www.tripadvisor.es/Restaurant_Review-g317796-d7814007-Reviews-Natour_Food_Truck-Chaiten_Los_Lagos_Region.html",
-   "horario": "24/7"
+   "horario": "24/7",
+   "cocina": [
+    "Café",
+    "Postres",
+    "Completos"
+   ]
   },
   {
    "id": "n3190517861",
@@ -20547,7 +21010,10 @@
    "lat": -42.91793,
    "lng": -72.70971,
    "loc": "Chaitén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n13457060053",
@@ -20588,7 +21054,10 @@
    "lng": -72.71084,
    "loc": "Chaitén",
    "kmLoc": 0,
-   "horario": "Mo-Su 12:00-24:00"
+   "horario": "Mo-Su 12:00-24:00",
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n1650497338",
@@ -20598,7 +21067,10 @@
    "lat": -42.91549,
    "lng": -72.71158,
    "loc": "Chaitén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n1650497344",
@@ -20608,7 +21080,10 @@
    "lat": -42.91485,
    "lng": -72.71076,
    "loc": "Chaitén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n1650497348",
@@ -20649,7 +21124,10 @@
    "lng": -72.71028,
    "loc": "Chaitén",
    "kmLoc": 0,
-   "tel": "+56 9 81708983"
+   "tel": "+56 9 81708983",
+   "cocina": [
+    "Mariscos"
+   ]
   },
   {
    "id": "n3803765524",
@@ -20659,7 +21137,12 @@
    "lat": -42.91586,
    "lng": -72.70981,
    "loc": "Chaitén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Completos",
+    "Desayunos",
+    "Helados"
+   ]
   },
   {
    "id": "n5203337923",
@@ -20680,7 +21163,10 @@
    "lng": -72.70952,
    "loc": "Chaitén",
    "kmLoc": 0,
-   "tel": "+56 9 8186 9558"
+   "tel": "+56 9 8186 9558",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n10617118406",
@@ -20700,7 +21186,12 @@
    "lat": -42.91478,
    "lng": -72.71096,
    "loc": "Chaitén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pescados",
+    "Comida regional",
+    "Mariscos"
+   ]
   },
   {
    "id": "n13451265714",
@@ -20742,7 +21233,12 @@
    "loc": "Chaitén",
    "kmLoc": 1,
    "tel": "+56981717697",
-   "horario": "18:00-04:30"
+   "horario": "18:00-04:30",
+   "cocina": [
+    "Sushi",
+    "Pizza",
+    "Bar"
+   ]
   },
   {
    "id": "n13621153501",
@@ -20772,7 +21268,8 @@
    "lat": -43.01067,
    "lng": -72.48817,
    "loc": "Chaitén",
-   "kmLoc": 21
+   "kmLoc": 21,
+   "tarjeta": true
   },
   {
    "id": "n3422003114",
@@ -20873,7 +21370,8 @@
    "lat": -43.18569,
    "lng": -71.86768,
    "loc": "Futaleufú",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "n2070884084",
@@ -20913,7 +21411,10 @@
    "lat": -43.18637,
    "lng": -71.86931,
    "loc": "Futaleufú",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n5349191922",
@@ -20923,7 +21424,11 @@
    "lat": -43.18508,
    "lng": -71.86863,
    "loc": "Futaleufú",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Desayunos",
+    "Café"
+   ]
   },
   {
    "id": "n6204559153",
@@ -20933,7 +21438,10 @@
    "lat": -43.18529,
    "lng": -71.87204,
    "loc": "Futaleufú",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "n11774637917",
@@ -20986,7 +21494,10 @@
    "lng": -71.86344,
    "loc": "Futaleufú",
    "kmLoc": 0,
-   "horario": "Mo-Sa 00:00-24:00"
+   "horario": "Mo-Sa 00:00-24:00",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "n9284054517",
@@ -21026,7 +21537,10 @@
    "lat": -43.18378,
    "lng": -71.86811,
    "loc": "Futaleufú",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Helados"
+   ]
   },
   {
    "id": "n6202199274",
@@ -21088,7 +21602,12 @@
    "loc": "Futaleufú",
    "kmLoc": 0,
    "tel": "+56993282485",
-   "horario": "Tu-Su 18:00-23:00"
+   "horario": "Tu-Su 18:00-23:00",
+   "cocina": [
+    "Hamburguesas",
+    "Frituras",
+    "Sándwiches"
+   ]
   },
   {
    "id": "n10218728118",
@@ -21108,7 +21627,10 @@
    "lat": -48.46172,
    "lng": -72.56315,
    "loc": "Villa O'Higgins",
-   "kmLoc": 1
+   "kmLoc": 1,
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "w445135715",
@@ -21179,7 +21701,10 @@
    "lng": -73.53591,
    "loc": "Caleta Tortel",
    "kmLoc": 0,
-   "tel": "990873064"
+   "tel": "990873064",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "w874856980",
@@ -21231,7 +21756,10 @@
    "loc": "Cochrane",
    "kmLoc": 0,
    "web": "www.adas-restaurant.ueniweb.com/",
-   "horario": "Mo-Su 12:30-22:30"
+   "horario": "Mo-Su 12:30-22:30",
+   "cocina": [
+    "Chilena"
+   ]
   },
   {
    "id": "w1369373633",
@@ -21241,7 +21769,12 @@
    "lat": -47.25221,
    "lng": -72.57216,
    "loc": "Cochrane",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Café",
+    "Sándwiches",
+    "Sushi"
+   ]
   },
   {
    "id": "w1446356357",
@@ -21352,7 +21885,8 @@
    "lat": -45.80763,
    "lng": -71.92002,
    "loc": "Valle Simpson",
-   "kmLoc": 16
+   "kmLoc": 16,
+   "tarjeta": true
   },
   {
    "id": "w562590943",
@@ -21392,7 +21926,8 @@
    "lat": -45.80828,
    "lng": -71.91907,
    "loc": "Valle Simpson",
-   "kmLoc": 16
+   "kmLoc": 16,
+   "tarjeta": true
   },
   {
    "id": "w1574339283",
@@ -21486,6 +22021,7 @@
    "kmLoc": 1,
    "web": "https://www.unimarc.cl",
    "horario": "Mo-Su 08:30-21:30",
+   "tarjeta": true,
    "wiki": "es:Unimarc"
   },
   {
@@ -21506,7 +22042,8 @@
    "lat": -45.17292,
    "lng": -72.1458,
    "loc": "Villa Mañihuales",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "tarjeta": true
   },
   {
    "id": "w1445734650",
@@ -21588,7 +22125,10 @@
    "lng": -72.68228,
    "loc": "Puerto Cisnes",
    "kmLoc": 0,
-   "tel": "+56 9 3871 6910"
+   "tel": "+56 9 3871 6910",
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "w1459519115",
@@ -21620,7 +22160,12 @@
    "lat": -44.726,
    "lng": -72.68364,
    "loc": "Puerto Cisnes",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Picada",
+    "Pescados",
+    "Mariscos"
+   ]
   },
   {
    "id": "w1459807914",
@@ -21672,7 +22217,8 @@
    "lng": -72.07493,
    "loc": "Coyhaique",
    "kmLoc": 1,
-   "horario": "24/7"
+   "horario": "24/7",
+   "tarjeta": true
   },
   {
    "id": "w393517566",
@@ -21684,7 +22230,10 @@
    "loc": "Coyhaique",
    "kmLoc": 0,
    "web": "https://tropera.cl/restaurantes/mamma-gaucha/",
-   "horario": "Mo-Sa 12:00-02:00"
+   "horario": "Mo-Sa 12:00-02:00",
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "w1469105536",
@@ -21708,6 +22257,7 @@
    "tel": "+566006000025",
    "web": "https://www.unimarc.cl",
    "horario": "Mo-Su 08:30-21:30",
+   "tarjeta": true,
    "wiki": "es:Unimarc"
   },
   {
@@ -21718,7 +22268,11 @@
    "lat": -45.57208,
    "lng": -72.07355,
    "loc": "Coyhaique",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Italiana",
+    "Comida regional"
+   ]
   },
   {
    "id": "w1434018361",
@@ -21732,7 +22286,8 @@
    "tel": "+56946550709",
    "web": "https://www.instagram.com/pasteleriacampoyhielo",
    "horario": "Mo-Sa 08:00-20:00",
-   "desc": "Local bakery"
+   "desc": "Local bakery",
+   "tarjeta": true
   },
   {
    "id": "w660755037",
@@ -21757,7 +22312,11 @@
    "kmLoc": 2,
    "tel": "+56 9 7381 2369",
    "web": "http://dolbek.cl/lataberna.html",
-   "horario": "Mo-Sa 12:00-00:30"
+   "horario": "Mo-Sa 12:00-00:30",
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches"
+   ]
   },
   {
    "id": "w1557586923",
@@ -21768,7 +22327,8 @@
    "lng": -72.04958,
    "loc": "Coyhaique",
    "kmLoc": 2,
-   "horario": "24/7"
+   "horario": "24/7",
+   "tarjeta": true
   },
   {
    "id": "w695452096",
@@ -21779,7 +22339,10 @@
    "lng": -72.06784,
    "loc": "Coyhaique",
    "kmLoc": 0,
-   "horario": "Mo-Sa 12:30-23:59"
+   "horario": "Mo-Sa 12:30-23:59",
+   "cocina": [
+    "Mexicana"
+   ]
   },
   {
    "id": "w1435280152",
@@ -21792,7 +22355,10 @@
    "kmLoc": 0,
    "web": "https://bajomarquesina.cl/",
    "horario": "Mo-Su 15:00-22:00",
-   "desc": "Es un bar/restaurante dedicado al fútbol, con un Museo muy hermoso dedicado a la materia. Único en su tipo."
+   "desc": "Es un bar/restaurante dedicado al fútbol, con un Museo muy hermoso dedicado a la materia. Único en su tipo.",
+   "cocina": [
+    "Pizza"
+   ]
   },
   {
    "id": "w1489301513",
@@ -21804,7 +22370,10 @@
    "loc": "Coyhaique",
    "kmLoc": 0,
    "web": "https://www.instagram.com/lamiserable.cl/reels/",
-   "horario": "Mo-Su 09:00-23:59"
+   "horario": "Mo-Su 09:00-23:59",
+   "cocina": [
+    "Mexicana"
+   ]
   },
   {
    "id": "w1270859306",
@@ -21849,7 +22418,10 @@
    "kmLoc": 49,
    "tel": "+569966089536, +569966089538",
    "horario": "Mo-Sa 08:00-22:00",
-   "desc": "Para hacer más cómoda la visita al Paraíso litoral de la Patagonia ofrecemos la reserva de los servicios de alojamiento, restaurante, cabañas y paquetes turísticos por medio del teléfono +569966089536, +569966089538.  e-"
+   "desc": "Para hacer más cómoda la visita al Paraíso litoral de la Patagonia ofrecemos la reserva de los servicios de alojamiento, restaurante, cabañas y paquetes turísticos por medio del teléfono +569966089536, +569966089538.  e-",
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "w663359500",
@@ -21859,7 +22431,12 @@
    "lat": -43.97056,
    "lng": -72.40383,
    "loc": "La Junta",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional",
+    "Parrilla"
+   ],
+   "tarjeta": true
   },
   {
    "id": "w547464521",
@@ -21899,7 +22476,12 @@
    "lat": -42.91566,
    "lng": -72.70712,
    "loc": "Chaitén",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Hamburguesas",
+    "Sándwiches",
+    "Pizza"
+   ]
   },
   {
    "id": "w312869561",
@@ -21929,7 +22511,10 @@
    "lat": -43.33123,
    "lng": -72.02207,
    "loc": "Futaleufú",
-   "kmLoc": 20
+   "kmLoc": 20,
+   "cocina": [
+    "Comida regional"
+   ]
   },
   {
    "id": "w504845433",
@@ -21959,7 +22544,10 @@
    "lat": -43.18632,
    "lng": -71.86517,
    "loc": "Futaleufú",
-   "kmLoc": 0
+   "kmLoc": 0,
+   "cocina": [
+    "Comida regional"
+   ]
   }
  ]
 }

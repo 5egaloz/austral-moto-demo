@@ -484,6 +484,24 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .aqui-sub{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
 .aqui-sub button{background:var(--sup);border:1px solid var(--regla);border-radius:20px;padding:4px 11px;font-size:.88rem;cursor:pointer}
 .aqui-sub button[aria-pressed="true"]{background:#F2C230;border-color:#F2C230;color:#141D18;font-weight:700}
+.aqui-sub.cocinas{margin-top:6px;align-items:center}
+.aqui-sub.cocinas span{font-size:.85rem;color:var(--tinta-3);margin-right:2px}
+.ets{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.et-c{font-size:.76rem;font-weight:600;padding:1px 7px;border-radius:10px;background:var(--regla-suave);color:var(--tinta-2)}
+.et-c.tarjeta{background:var(--lago-claro);color:var(--lago)}
+.precio{margin:5px 0 0;font-size:.92rem;color:var(--tinta-2)}
+.precio b{color:#F2C230;font-size:1rem;font-variant-numeric:tabular-nums}
+.precio span{font-size:.8rem;color:var(--tinta-3)}
+.precio.sin{font-size:.82rem;color:var(--tinta-3)}
+.precio-ficha{margin-top:8px;padding-top:8px;border-top:1px solid #E6E8E9}
+.precio-ficha .rango{margin:0;font-size:.92rem}
+.precio-ficha .rango b{font-size:1.15rem;color:#1E2124;font-variant-numeric:tabular-nums}
+.precio-ficha .rango.sin{color:#575C61;font-weight:600}
+.precio-ficha .de{margin:1px 0 0;font-size:.8rem;color:#575C61}
+.precio-ficha .de a{color:#0F7F8C}
+.aqui-mapa .aporta{display:flex;flex-direction:column;gap:4px;margin:8px 0 0;padding-top:6px;border-top:1px solid #E6E8E9;font-size:.82rem}
+.aqui-mapa .aporta a{color:#0B6B3A;font-weight:600}
+.aqui-mapa .leaflet-popup-content .tj{display:block;color:#0F7F8C;font-size:.82rem;font-weight:600}
 .aqui-rutas{list-style:none;margin:0;padding:0}
 .aqui-rutas li{padding:10px 0;border-bottom:1px solid var(--regla-suave)}
 .aqui-rutas b{font-stretch:87%}
@@ -868,6 +886,42 @@ const gmaps = l => 'https://www.google.com/maps/dir/?api=1&amp;destination=' + l
 const gmapsFicha = s => 'https://www.google.com/maps/search/?api=1&amp;query=' + encodeURIComponent(s.n + (s.loc ? ', ' + s.loc : '') + ', Aysén, Chile');
 const gmapsLinks = s => '<a class="gm" href="' + gmapsFicha(s) + '" target="_blank" rel="noopener">' + t('Ver en Google Maps') + '</a>'
   + '<a class="gm" href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>';
+/* Precios de comida: solo reales (data/precios.json, se cargan con scripts/precio.mjs).
+   Del local vale el último que informó; de viajeros, el rango de lo que pagaron en el último año. */
+const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const mesTxt = f => { const [a, m] = f.split('-'); return t(MESES[+m - 1]) + '-' + a; };
+const plata = n => '$' + fmt(n);
+function precioDe(s){
+  const e = PRECIOS[s.id]; if (!e || !e.reportes || !e.reportes.length) return null;
+  const local = e.reportes.filter(r => r.fuente === 'local').at(-1);
+  if (local) return {min:local.min, max:local.max, que:local.que, txt:t('informado por el local, {0}', mesTxt(local.fecha))};
+  const hace = new Date(); hace.setFullYear(hace.getFullYear() - 1);
+  const v = e.reportes.filter(r => new Date(r.fecha + '-01') >= hace); if (!v.length) return null;
+  const ult = v.map(r => r.fecha).sort().at(-1);
+  return {min:Math.min(...v.map(r => r.min)), max:Math.max(...v.map(r => r.max)), que:v.at(-1).que,
+    txt:t(v.length === 1 ? 'según 1 viajero, {1}' : 'según {0} viajeros, el último en {1}', v.length, mesTxt(ult))};
+}
+const etiquetasComida = s => (s.cocina || []).map(c => '<span class="et-c">' + esc(t(c)) + '</span>').join('') + (s.tarjeta ? '<span class="et-c tarjeta">' + t('Acepta tarjeta') + '</span>' : '');
+// Corto, para la lista
+function precioCorto(s){
+  if (s.cat !== 'comida') return '';
+  const p = precioDe(s);
+  return '<p class="precio' + (p ? '' : ' sin') + '">' + (p ? '<b>' + (p.min === p.max ? plata(p.min) : plata(p.min) + ' – ' + plata(p.max)) + '</b> ' + esc(t(p.que)) + ' <span>' + p.txt + '</span>' : t('Sin precio todavía')) + '</p>';
+}
+// Completo, al tocar el local: precio, o dónde verlo y cómo aportar el tuyo
+function precioFicha(s){
+  if (s.cat !== 'comida') return '';
+  const p = precioDe(s);
+  return '<div class="precio-ficha">'
+    + (p ? '<p class="rango"><b>' + (p.min === p.max ? plata(p.min) : plata(p.min) + ' – ' + plata(p.max)) + '</b> ' + esc(t(p.que)) + '</p><p class="de">' + p.txt + '</p>'
+         : '<p class="rango sin">' + t('Sin precio todavía') + '</p><p class="de">' + t('En Google Maps puede salir el rango de precios.') + '</p>')
+    + '</div>';
+}
+function aportaPrecio(s){
+  if (s.cat !== 'comida') return '';
+  return '<p class="aporta"><a href="' + wa(t('Hola, comí en {0} ({1}) y pagué $___ por persona. Fue el ___ (fecha).', s.n, s.loc || '')) + '" target="_blank" rel="noopener">' + t('¿Comiste aquí? Cuéntanos cuánto pagaste') + '</a>'
+    + '<a href="' + wa(t('Hola, tengo {0} en {1} y quiero publicar mis precios en Ruta 7 Moto.', s.n, s.loc || '')) + '" target="_blank" rel="noopener">' + t('¿Es tu local? Publica tus precios') + '</a></p>';
+}
 // Copia local de 500 px (scripts/bajar-fotos.mjs); si falta, la de Wikimedia
 const archivoLocal = u => decodeURIComponent(u.split('?')[0].split('/').pop().replace(/^\d+px-/, ''))
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9._-]+/g, '_').slice(-120);
@@ -885,7 +939,7 @@ function credito(f){
 const imgCon = (u, alt, cls) => '<img src="'+esc(chica(u))+'" alt="'+esc(alt)+'"'+(cls ? ' class="'+cls+'"' : '')+' loading="lazy" decoding="async" onload="this.classList.add(\'lista\')" onerror="this.onerror=null;this.src=\''+esc(a500(u))+'\'">';
 
 let FOTOS = {}, TODOS = [], CON_FOTO = [], SERV = [], VER = [], FOTO_PUEBLO = {}, CARGADO = false;
-let BENCINA = [], BENCINA_FECHA = '', DESVIOS = [], RAMALES = [], RAMAL_PUEBLOS = [];
+let PRECIOS = {}, BENCINA = [], BENCINA_FECHA = '', DESVIOS = [], RAMALES = [], RAMAL_PUEBLOS = [];
 const POR_PUEBLO = {};   // nombre -> {serv:{cat:[...]}, cerca:[...], foto}
 let mapa = null, marcadores = {}, marcasPueblo = {}, RUTA_LINEA = null;
 
@@ -1250,6 +1304,7 @@ document.getElementById('listaHoja').addEventListener('click', e => {
   const TOPE = 25;
   caja.innerHTML = '<ul class="lista-serv">' + items.slice(0, TOPE).map(s =>
     '<li><b>'+esc(s.n)+'</b><p>'+esc(t(s.sub) || NOMBRE[s.cat])+(s.desc ? '. '+esc(s.desc) : '')+'</p>'
+    + (s.cat === 'comida' ? '<div class="ets">'+etiquetasComida(s)+'</div>'+precioCorto(s) : '')
     + '<div class="acc">'+(s.tel ? '<a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a>' : '')+(s.horario ? '<span>'+esc(s.horario)+'</span>' : '')
     + gmapsLinks(s)
     + '<button class="lnk" type="button" data-ver="'+s.id+'">'+t('Ver en el mapa')+'</button></div></li>').join('')
@@ -1454,7 +1509,7 @@ document.getElementById('dMas').addEventListener('click', () => { dMostrados += 
 const aqui = document.getElementById('aqui'), aquiPueblo = document.getElementById('aquiPueblo');
 const AQUI_TABS = [{id:'comida', n:'Comer'}, {id:'alojamiento', n:'Dormir'}, {id:'bencina', n:'Bencina y taller'}, {id:'rutas', n:'Rutas'}, {id:'ver', n:'Qué ver'}];
 let aquiYo = null, aquiP = null, aquiModo = '', aquiTab = 'comida', aquiSub = '', marcaYo = null;
-let aquiPrec = 0, aquiVigia = null, siguiendome = false, aquiPintadoEn = null;
+let aquiCocina = '', aquiPrec = 0, aquiVigia = null, siguiendome = false, aquiPintadoEn = null;
 const pueblosAqui = () => PUEBLOS.concat(RAMAL_PUEBLOS.filter(pb => !PUEBLOS.some(p => p.n === pb.n)));
 const distTxt = k => k < 1 ? t('{0} m', fmt(Math.max(10, Math.round(k * 100) * 10))) : t('{0} km', fmt(k < 10 ? Math.round(k * 10) / 10 : Math.round(k)));
 // Las distancias se miden desde ti si estás en el pueblo; si no, desde el centro del pueblo
@@ -1535,8 +1590,9 @@ function armarMapaAqui(){
 function popupLugar(s){
   const o = aquiOrigen();
   return (s.foto ? '<img src="' + esc(chica(s.foto.url)) + '" alt="" onerror="this.remove()">' : '')
-    + '<b>' + esc(t(s.n)) + '</b><span class="t">' + esc(t(s.sub) || NOMBRE[s.cat] || '') + (o ? ' · ' + t('a {0}', distTxt(kmEntre(o, s))) : '') + '</span>'
-    + '<div class="acc">' + (s.cat !== 'pueblo' ? gmapsLinks(s) : '<a class="gm" href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>') + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + '</div>';
+    + '<b>' + esc(t(s.n)) + '</b><span class="t">' + esc(t(s.sub) || NOMBRE[s.cat] || '') + (s.cocina ? ' · ' + esc(s.cocina.map(c => t(c)).join(', ')) : '') + (o ? ' · ' + t('a {0}', distTxt(kmEntre(o, s))) : '') + '</span>'
+    + (s.tarjeta ? '<span class="t tj">' + t('Acepta tarjeta') + '</span>' : '') + precioFicha(s)
+    + '<div class="acc">' + (s.cat !== 'pueblo' ? gmapsLinks(s) : '<a class="gm" href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>') + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + '</div>' + aportaPrecio(s);
 }
 function pintarPines(lugares, lineas){
   if (!mapaAqui) return;
@@ -1544,7 +1600,7 @@ function pintarPines(lugares, lineas){
   if (RUTA_LINEA) L.polyline(RUTA_LINEA, {color:'#1E2124', weight:4, opacity:.7, interactive:false}).addTo(capaPines);
   (lineas || []).forEach(r => { L.polyline(r.linea, {color:'#1E2124', weight:7, opacity:.6, interactive:false}).addTo(capaPines); L.polyline(r.linea, {color:'#F2C230', weight:4, interactive:false}).addTo(capaPines); });
   lugares.forEach(s => {
-    const mk = L.marker([s.lat, s.lng], {icon:iconoPin(s.cat), title:s.n, riseOnHover:true, keyboard:true}).addTo(capaPines).bindPopup(() => popupLugar(s), {maxWidth:260, autoPanPadding:[20, 20]});
+    const mk = L.marker([s.lat, s.lng], {icon:iconoPin(s.cat), title:s.n, riseOnHover:true, keyboard:true}).addTo(capaPines).bindPopup(() => popupLugar(s), {maxWidth:260, maxHeight:Math.max(160, document.getElementById('aquiMapa').offsetHeight - 50), autoPanPadding:[10, 10]});
     mk._idLugar = s.id; mk._cat = s.cat;
     pinesAqui[s.id] = mk;
   });
@@ -1591,7 +1647,7 @@ function vigilarGps(){
     if (siguiendome && mapaAqui) mapaAqui.panTo([aquiYo.lat, aquiYo.lng], {animate:!quieto});
     let mejor = null, d = Infinity;
     pueblosAqui().forEach(p => { const k = kmEntre(aquiYo, p); if (k < d) { d = k; mejor = p; } });
-    if (d <= 25 && mejor !== aquiP && aquiModo !== 'elegido') { aquiP = mejor; aquiModo = 'gps'; aquiSub = ''; pintarAqui(); return; }
+    if (d <= 25 && mejor !== aquiP && aquiModo !== 'elegido') { aquiP = mejor; aquiModo = 'gps'; aquiSub = ''; aquiCocina = ''; pintarAqui(); return; }
     // Las distancias de la lista se recalculan cada 300 m
     if (aquiPintadoEn && kmEntre(aquiPintadoEn, aquiYo) > .3 && aquiModo === 'gps') pintarAqui();
   }, () => {}, {enableHighAccuracy:true, maximumAge:10000, timeout:30000});
@@ -1654,6 +1710,7 @@ function pintarAqui(msg){
     pines = pines.concat(orden.slice(0, tope).map(x => x.s));
     return '<ul class="lista-serv">' + orden.slice(0, tope).map(({s, k}) =>
       '<li data-li="' + esc(s.id) + '"><span class="lejos">' + distTxt(k) + '</span><b>' + esc(s.n) + '</b><p>' + esc(t(s.sub) || NOMBRE[s.cat]) + (s.desc ? '. ' + esc(s.desc) : '') + '</p>'
+      + (s.cat === 'comida' ? '<div class="ets">' + etiquetasComida(s) + '</div>' + precioCorto(s) : '')
       + '<div class="acc">' + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + (s.horario ? '<span>' + esc(s.horario) + '</span>' : '')
       + gmapsLinks(s)
       + '<button class="lnk" type="button" data-pin="' + esc(s.id) + '">' + t('En el mapa') + '</button></div></li>').join('') + '</ul>';
@@ -1667,7 +1724,10 @@ function pintarAqui(msg){
     const items = P.serv[aquiTab] || [];
     const subs = [...new Set(items.map(s => s.sub))];
     if (subs.length > 1) html += '<div class="aqui-sub">' + ['', ...subs].map(s => '<button type="button" data-sub="' + esc(s) + '" aria-pressed="' + (s === aquiSub) + '">' + (s ? esc(t(s)) : t('Todo')) + '</button>').join('') + '</div>';
-    const filtrados = items.filter(s => !aquiSub || s.sub === aquiSub);
+    // Tipo de comida (de OSM), si hay al menos dos distintos en el pueblo
+    const cocinas = aquiTab === 'comida' ? [...new Set(items.flatMap(s => s.cocina || []))].sort((a, b) => a.localeCompare(b, 'es')) : [];
+    if (cocinas.length > 1) html += '<div class="aqui-sub cocinas"><span>' + t('Comida:') + '</span>' + cocinas.map(c => '<button type="button" data-cocina="' + esc(c) + '" aria-pressed="' + (c === aquiCocina) + '">' + esc(t(c)) + '</button>').join('') + '</div>';
+    const filtrados = items.filter(s => (!aquiSub || s.sub === aquiSub) && (!aquiCocina || (s.cocina || []).includes(aquiCocina)));
     const TOPE = 40;
     html += filtrados.length ? lista(filtrados, TOPE) + '<p class="nota">' + pie + '</p><div class="aqui-acc">' + masGoogle(aquiTab) + '</div>' : '<p class="vacio">' + (aquiTab === 'comida' ? t('No tenemos lugares para comer registrados en {0}.', esc(t(aquiP.n))) : t('No tenemos alojamientos registrados en {0}.', esc(t(aquiP.n)))) + '</p><div class="aqui-acc">' + masGoogle(aquiTab) + '</div>';
     if (filtrados.length > TOPE) html += '<div class="aqui-acc"><a href="#directorio" data-ir-dir="' + esc(aquiP.n) + '" data-cat="' + aquiTab + '">' + t('Ver los {0} en el directorio', filtrados.length) + '</a></div>';
@@ -1741,8 +1801,9 @@ aqui.addEventListener('close', dejarDeVigilar);
 document.getElementById('aquiGps').addEventListener('click', buscarmeGps);
 aqui.addEventListener('click', e => {
   if (e.target === aqui) { aqui.close(); return; }
-  const tb = e.target.closest('[data-tab]'); if (tb) { aquiTab = tb.dataset.tab; aquiSub = ''; pintarAqui(); document.getElementById('aquiCuerpo').scrollTop = 0; return; }
+  const tb = e.target.closest('[data-tab]'); if (tb) { aquiTab = tb.dataset.tab; aquiSub = ''; aquiCocina = ''; pintarAqui(); document.getElementById('aquiCuerpo').scrollTop = 0; return; }
   const sb = e.target.closest('[data-sub]'); if (sb) { aquiSub = sb.dataset.sub; pintarAqui(); return; }
+  const cz = e.target.closest('[data-cocina]'); if (cz) { aquiCocina = aquiCocina === cz.dataset.cocina ? '' : cz.dataset.cocina; pintarAqui(); return; }
   const pn = e.target.closest('[data-pin]'); if (pn) { irAPin(pn.dataset.pin); return; }
   if (e.target.closest('#aquiSeguir')) { siguiendome = !siguiendome; botonSeguir(); if (siguiendome && aquiYo) { mapaAqui.setView([aquiYo.lat, aquiYo.lng], Math.max(mapaAqui.getZoom(), 15)); vigilarGps(); } return; }
   // Tocar la fila (no un enlace) también la muestra en el mapa
@@ -1754,7 +1815,7 @@ aqui.addEventListener('click', e => {
 });
 aquiPueblo.addEventListener('change', () => {
   const p = pueblosAqui().find(x => x.n === aquiPueblo.value); if (!p) return;
-  aquiP = p; aquiModo = aquiYo && kmEntre(aquiYo, p) <= 25 ? 'gps' : 'elegido'; aquiSub = '';
+  aquiP = p; aquiModo = aquiYo && kmEntre(aquiYo, p) <= 25 ? 'gps' : 'elegido'; aquiSub = ''; aquiCocina = '';
   siguiendome = aquiModo === 'gps' && siguiendome;
   pintarAqui();
 });
@@ -1766,7 +1827,9 @@ Promise.all([
   fetch('data/bencina.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({estaciones:[]})),
   fetch('data/desvios.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({desvios:[]})),
   fetch('data/ramales.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({ramales:[]})),
-]).then(([F, d, B, D, RR]) => {
+  fetch('data/precios.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({precios:{}})),
+]).then(([F, d, B, D, RR, PR]) => {
+  PRECIOS = PR.precios || {};
   BENCINA = B.estaciones || []; BENCINA_FECHA = B.generado || ''; DESVIOS = D.desvios || [];
   RAMALES = (RR.ramales || []).filter(r => r.linea);
   // Pueblos de las rutas laterales (sin repetir: Puerto Ramírez está en dos)

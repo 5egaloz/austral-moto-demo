@@ -131,6 +131,22 @@ function clasificar(t) {
   return [null];
 }
 
+// Tipo de comida (etiqueta cuisine de OSM) en español; lo que no está en la lista se deja como viene
+const COCINA = {
+  regional:'Comida regional', local:'Comida regional', chilean:'Chilena', 'comidas caseras':'Casera', coffee_shop:'Café', tea:'Té', sandwich:'Sándwiches',
+  pizza:'Pizza', italian_pizza:'Pizza', _pizzas:'Pizza', breakfast:'Desayunos', burger:'Hamburguesas', diner:'Picada', fish:'Pescados', seafood:'Mariscos',
+  fish_and_chips:'Pescados', cake:'Tortas y pasteles', dessert:'Postres', reposteria_casera_al_paso:'Repostería', ice_cream:'Helados', hot_dog:'Completos',
+  hotdog:'Completos', sausage:'Completos', chicken:'Pollo', friture:'Frituras', international:'Internacional', steak_house:'Parrilla', grill:'Parrilla',
+  barbecue:'Parrilla', deli:'Rotisería', pasta:'Pastas', italian:'Italiana', donut:'Donas', pancake:'Panqueques', crepe:'Crepes', savory_pancakes:'Panqueques',
+  mexican:'Mexicana', fine_dining:'Gourmet', japanese:'Japonesa', sushi:'Sushi', _sushi:'Sushi', american:'Americana', empanadas:'Empanadas',
+  'pan amasado':'Pan amasado', 'panes de pascua':'Pan de pascua', marmeladas:'Mermeladas', noodles:'Fideos', french:'Francesa',
+  south_american:'Sudamericana', arab:'Árabe', kebab:'Kebab', _pub:'Bar',
+};
+const cocinas = v => [...new Set(v.split(/[;,]/).map(x => x.trim().toLowerCase()).filter(Boolean)
+  .map(x => COCINA[x] || (x[0].toUpperCase() + x.slice(1)).replace(/_/g, ' ')))].slice(0, 3);
+const TARJETAS = ['visa', 'mastercard', 'credit_cards', 'debit_cards', 'american_express', 'maestro', 'visa_debit', 'visa_electron', 'diners_club', 'contactless'];
+const aceptaTarjeta = t => TARJETAS.some(k => t['payment:' + k] === 'yes');
+
 // --- Fotos ---------------------------------------------------------------
 const limpiarHtml = s => (s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 const LIBRE = /^(cc0|cc[ -]by|public domain|pd|attribution|gfdl|fal)/i;
@@ -267,6 +283,8 @@ for (const e of els) {
   if (t.opening_hours) l.horario = t.opening_hours;
   if (t.brand && cat === 'bencina') l.marca = t.brand;
   if (t.description) l.desc = t.description.slice(0, 220);
+  if (cat === 'comida' && t.cuisine) { const c = cocinas(t.cuisine); if (c.length) l.cocina = c; }
+  if (aceptaTarjeta(t)) l.tarjeta = true;
   if (t.wikipedia) l.wiki = t.wikipedia;
   if (cat === 'atractivo') {
     l._wd = t.wikidata; l._commons = t.wikimedia_commons; l._image = t.image;
