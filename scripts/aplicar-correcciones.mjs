@@ -10,6 +10,7 @@ export function aplicarCorrecciones(lugares, correcciones) {
   let n = 0;
   for (const c of correcciones) {
     for (const l of lugares) {
+      if (c.id && l.id !== c.id) continue;
       if (c.cat && l.cat !== c.cat) continue;
       if (c.loc && norm(l.loc) !== norm(c.loc)) continue;
       if (c.nombre && norm(l.n) !== norm(c.nombre)) continue;

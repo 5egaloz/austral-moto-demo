@@ -5451,6 +5451,7 @@
     }
    ],
    "desvio": "tortel",
+      "sinBalsas": true,
    "fuentes": [
     {
      "t": "Wikipedia: Caleta Tortel",

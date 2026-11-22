@@ -141,5 +141,259 @@
   "loc": "Cochrane",
   "nombre": "Bencinera",
   "quitar": true
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n280914750",
+  "cambios": {
+   "desc": "De Puerto Yungay a Río Bravo. En temporada alta (verano) sale a las 10:00, 12:00, 15:00 y 18:00. Gratis."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n1089035908",
+  "cambios": {
+   "desc": "De Río Bravo a Puerto Yungay. En temporada alta (verano) sale a las 11:00, 13:00, 16:00 y 19:00. Gratis."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n3991531564",
+  "cambios": {
+   "desc": "Refugio sin camas, con espacio para 20 personas."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n6267108644",
+  "cambios": {
+   "n": "Camping al aire libre"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n1571730643",
+  "cambios": {
+   "desc": "Terreno de pasto rodeado de árboles y arbustos, junto al lago. Bien cuidado y limpio. Los autos no pueden entrar al pasto: se dejan en el estacionamiento junto al terreno."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192841",
+  "cambios": {
+   "n": "Camping gratis autorizado"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192830",
+  "cambios": {
+   "n": "Camping gratis autorizado"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192845",
+  "cambios": {
+   "n": "Camping gratis autorizado"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192837",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192843",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192836",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192844",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192846",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192847",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192848",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7178192850",
+  "cambios": {
+   "n": "Camping libre (no oficial)"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n6174807247",
+  "cambios": {
+   "n": "Camping Pared Sur"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n10543499833",
+  "cambios": {
+   "n": "Camping libre"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n5667600227",
+  "cambios": {
+   "n": "Camping libre"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n10574351190",
+  "cambios": {
+   "n": "Camping libre"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n4734731311",
+  "cambios": {
+   "n": "Camping libre"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n10935415663",
+  "cambios": {
+   "n": "Camping gratis"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n3962509113",
+  "cambios": {
+   "desc": "Gratis, a la orilla del río."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n11136037403",
+  "cambios": {
+   "desc": "Sin cobro, pero se agradecen aportes para mantener el lugar."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n6150709644",
+  "cambios": {
+   "desc": "Hospedaje sencillo, con buen wifi y un almacén chico. Dato de un viajero de diciembre de 2018: 20.000 pesos por dos personas."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "w497940670",
+  "cambios": {
+   "n": "Río Mármol",
+   "desc": "Lo principal son los paseos en bote al río Mármol y el arriendo de kayaks, pero también tiene camping. Acceso empinado."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "w498005944",
+  "cambios": {
+   "desc": "Espacio para 2 vehículos. Sala común con cocina y estufa a leña. Los vehículos grandes se quedan en el estacionamiento del frente."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n12407364701",
+  "cambios": {
+   "n": "Fin del sendero"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n6260854933",
+  "cambios": {
+   "n": "Agua cristalina",
+   "desc": "Agua cristalina que baja del glaciar."
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n4742231323",
+  "cambios": {
+   "n": "Yacimiento de fósiles"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n1274190633",
+  "cambios": {
+   "n": "Pretil de piedra para cruzar el estero"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n10695301869",
+  "cambios": {
+   "n": "Pequeña termal en el agua de mar"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n7104576148",
+  "cambios": {
+   "n": "Mirador Glaciar Chico"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n12424833402",
+  "cambios": {
+   "n": "Mirador del glaciar"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n10109272392",
+  "cambios": {
+   "n": "Mirador de la cascada"
+  }
+ },
+ {
+  "nota": "Texto de OpenStreetMap en inglés, traducido (2026-11-22)",
+  "id": "n4216600690",
+  "cambios": {
+   "n": "Ventisquero Colgante"
+  }
  }
 ]

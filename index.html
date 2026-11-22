@@ -6,6 +6,10 @@
 <title>Ruta 7 Moto: la Carretera Austral en moto</title>
 <meta name="description" content="Hoja de ruta de la Carretera Austral en moto: dónde cargar bencina, cuánto rinde tu estanque en cada tramo, talleres, alojamiento y qué ver, kilómetro a kilómetro.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'%3E%3Cpath d='M3 3H37V20C37 33 28 40 20 44C12 40 3 33 3 20Z' fill='%23fff' stroke='%231E2124' stroke-width='3'/%3E%3Ctext x='20' y='33' font-family='Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%231E2124'%3E7%3C/text%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="https://5egaloz.github.io/ruta7moto/?lang=es">
+<link rel="alternate" hreflang="en" href="https://5egaloz.github.io/ruta7moto/?lang=en">
+<link rel="alternate" hreflang="pt" href="https://5egaloz.github.io/ruta7moto/?lang=pt">
+<link rel="alternate" hreflang="x-default" href="https://5egaloz.github.io/ruta7moto/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -286,6 +290,16 @@ button{font:inherit;color:inherit}
 .chequeo input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--tinta)}
 .chequeo input:checked + span{color:var(--tinta-3);text-decoration:line-through}
 .contador{margin-top:16px;font-weight:700;font-stretch:87%}
+.guia{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 40px;align-items:end;margin-top:40px;padding-top:24px;border-top:2px solid var(--tinta)}
+@media (max-width:860px){.guia{grid-template-columns:minmax(0,1fr)}}
+.guia h3{font-size:1.3rem;font-stretch:80%;margin-bottom:8px}
+.guia p{color:var(--tinta-2);margin:0;max-width:62ch}
+.guia-compra{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.guia-compra b{font-size:1.3rem;font-stretch:87%}
+.btn-guia{display:inline-block;background:var(--senal);color:var(--blanco);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:3px}
+.btn-guia:hover{background:var(--tinta)}
+.anuncio{margin-top:32px;min-height:90px}
+.reservar{font-weight:700}
 
 /* Contacto */
 #contacto{background:var(--tinta);color:var(--blanco);border-top:0}
@@ -412,6 +426,9 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .r-cuerpo .fu a{color:inherit}
 .r-cuerpo .fu .lnk{font-size:.85rem;color:var(--lago)}
 .ley-ramal{color:#F2C230}
+.idiomas{display:inline-flex;gap:2px;margin-left:6px}
+.idiomas a{padding:4px 6px;font-size:.85rem;font-weight:700;letter-spacing:.04em;opacity:.7}
+.idiomas a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}
 @media (max-width:700px){.lnk,a.wa{min-height:32px;display:inline-flex;align-items:center}.r-pueblo{grid-template-columns:minmax(0,1fr);gap:4px}}
 </style>
 </head>
@@ -431,6 +448,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
       <a href="#directorio">Directorio</a>
       <a href="#antes">Antes de salir</a>
       <a href="#contacto">Contacto</a>
+      <span class="idiomas"><a href="?lang=es" hreflang="es" lang="es" data-lang="es">ES</a><a href="?lang=en" hreflang="en" lang="en" data-lang="en">EN</a><a href="?lang=pt" hreflang="pt" lang="pt" data-lang="pt">PT</a></span>
     </nav>
   </div>
 </header>
@@ -588,6 +606,14 @@ html #mapa{filter:brightness(.88) saturate(.9)}
       </div>
     </div>
     <p class="contador" id="contador" aria-live="polite"></p>
+    <div class="guia">
+      <div>
+        <h3>Guía offline: GPX y PDF</h3>
+        <p>La ruta y sus rutas laterales en GPX para OsmAnd, Organic Maps o tu GPS, con cada bencinera, taller y balsa marcados. Y un PDF con los tramos, el precio de la bencina, talleres y alojamientos con teléfono, para cuando no hay señal.</p>
+      </div>
+      <div class="guia-compra"><b id="guiaPrecio" hidden></b><a class="btn-guia" id="btnGuia" href="#" target="_blank" rel="noopener">Pedir la guía por WhatsApp</a></div>
+    </div>
+    <div class="anuncio" data-slot="antes" hidden></div>
   </div>
 </section>
 
@@ -626,8 +652,51 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="i18n.js"></script>
 <script>
-// Número de WhatsApp del negocio (falta el real)
+/* ---------- Idioma: español (base), inglés y portugués ----------
+   Los textos se escriben en español; i18n.js trae su traducción, con el español como clave.
+   Lo que no tenga traducción se muestra en español. */
+const LANGS = ['es', 'en', 'pt'];
+const LANG = (() => {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) { try { localStorage.setItem('ruta7-lang', q); } catch {} return q; }
+  try { const g = localStorage.getItem('ruta7-lang'); if (LANGS.includes(g)) return g; } catch {}
+  const n = (navigator.language || 'es').slice(0, 2);
+  return n === 'pt' || n === 'en' ? n : 'es';
+})();
+const TR = (window.I18N && I18N[LANG]) || {};
+const FALTAN = new Set();
+const t = (txt, ...a) => {
+  if (txt == null || txt === '') return txt;
+  let r = TR[txt];
+  if (r === undefined) { r = txt; if (LANG !== 'es') FALTAN.add(txt); }
+  return a.length ? r.replace(/\{(\d)\}/g, (_, i) => a[i]) : r;
+};
+const tx = t;   // para usarla donde una variable local se llama t
+// HTML fijo: se traduce cada bloque cuyo contenido completo esté en el diccionario; si no, sus partes
+function traducirPagina(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-lang]').forEach(a => { if (a.dataset.lang === LANG) a.setAttribute('aria-current', 'true'); });
+  if (LANG === 'es') return;
+  document.title = t(document.title);
+  const md = document.querySelector('meta[name="description"]'); md.content = t(md.content);
+  const limpio = h => h.replace(/\s+/g, ' ').trim();
+  const recorrer = el => {
+    ['aria-label', 'placeholder', 'title', 'alt'].forEach(at => { if (el.hasAttribute && el.hasAttribute(at)) el.setAttribute(at, t(el.getAttribute(at))); });
+    for (const c of [...el.childNodes]) {
+      if (c.nodeType === 3) { const k = limpio(c.textContent); if (/[a-záéíóúñ]/i.test(k)) c.textContent = c.textContent.replace(k, t(k)); continue; }
+      if (c.nodeType !== 1 || c.tagName === 'SCRIPT' || c.tagName === 'svg') continue;
+      const k = limpio(c.innerHTML);
+      if (TR[k] !== undefined && /[a-záéíóúñ]/i.test(k)) { c.innerHTML = TR[k]; ['aria-label', 'placeholder', 'title', 'alt'].forEach(at => { if (c.hasAttribute(at)) c.setAttribute(at, t(c.getAttribute(at))); }); }
+      else recorrer(c);
+    }
+  };
+  recorrer(document.body);
+}
+traducirPagina();
+
+// Número de WhatsApp del negocio
 const WHATSAPP = '56953910713';
 // Visitas con GoatCounter (sin cookies). Queda apagado mientras esté vacío: poner el código de la
 // cuenta (el 'xxx' de xxx.goatcounter.com) para que cuente las visitas y cuántas veces se abre cada ficha.
@@ -638,6 +707,24 @@ function contarVisita(ruta, titulo){
 if (GOATCOUNTER) {
   const sc = document.createElement('script'); sc.async = true; sc.src = 'https://gc.zgo.at/count.js';
   sc.dataset.goatcounter = 'https://' + GOATCOUNTER + '.goatcounter.com/count'; document.head.append(sc);
+}
+
+// Guía offline (scripts/guia-offline.mjs). Sin link de pago, el botón pide la guía por WhatsApp.
+const GUIA = {pago:'', precio:''};   // pago: link de Flow, Mercado Pago o similar; precio: texto, ej. '$9.990'
+// Afiliados: quedan apagados mientras estén vacíos
+const AFILIADOS = {
+  booking:'',   // aid de Booking.com: suma "Reservar" a los alojamientos del directorio
+};
+// Google AdSense: apagado mientras esté vacío. cliente = 'ca-pub-...', slot = id del bloque de anuncio
+const ADSENSE = {cliente:'', slot:''};
+if (ADSENSE.cliente && ADSENSE.slot) {
+  const sc = document.createElement('script'); sc.async = true; sc.crossOrigin = 'anonymous';
+  sc.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE.cliente; document.head.append(sc);
+  document.querySelectorAll('.anuncio').forEach(d => {
+    d.hidden = false;
+    d.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="'+ADSENSE.cliente+'" data-ad-slot="'+ADSENSE.slot+'" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  });
 }
 
 // Pueblos sobre la Ruta 7, km por camino desde Chaitén (OSRM sobre OpenStreetMap, scripts/trazar-ruta.mjs).
@@ -666,15 +753,15 @@ const TRAMOS = [
   {a:'La Junta', b:'Coyhaique', ripio:7, dif:'Media', temp:'noviembre a abril', ojo:['Carga lleno en La Junta: el Copec de Puyuhuapi es solo diésel','Cuesta del Queulat: ripio, curvas cerradas y máquinas trabajando']},
   {a:'Coyhaique', b:'Puerto Río Tranquilo', ripio:45, dif:'Media', temp:'diciembre a marzo', ojo:['Hay Copec en Villa Cerro Castillo: buen punto para cargar antes del ripio','Cuesta del Diablo: puede haber nieve fuera de temporada','Pavimento hasta pasado Cerro Castillo, después ripio (por confirmar)','Variante: balsa de Puerto Ibáñez a Chile Chico por el Lago General Carrera; revisa duración y reserva antes, en verano se llena']},
   {a:'Puerto Río Tranquilo', b:'Cochrane', ripio:95, dif:'Media', temp:'diciembre a marzo', ojo:['Calamina fuerte en varios tramos','Viento lateral en la orilla del lago']},
-  {a:'Cochrane', b:"Villa O'Higgins", ripio:100, dif:'Exigente', temp:'diciembre a febrero', ojo:['No hay bencina en la ruta hasta Villa O\'Higgins; la única, desviándote a Caleta Tortel','Balsa de Puerto Yungay a Río Bravo, con pocos cruces al día: revisa horarios y tarifa antes','Camino angosto y con barro después de lluvia']},
+  {a:'Cochrane', b:"Villa O'Higgins", ripio:100, dif:'Exigente', temp:'diciembre a febrero', ojo:['Carga en Caleta Tortel: es la única bencina entre Cochrane y Villa O\'Higgins. Es ir a cargar y volver, sin balsa: el cruce está 103 km al sur de Cochrane y son 23 km hasta el pueblo','Balsa de Puerto Yungay a Río Bravo, con pocos cruces al día: revisa horarios y tarifa antes','Camino angosto y con barro después de lluvia']},
 ];
 TRAMOS.forEach(t => t.km = kmDe(t.b) - kmDe(t.a));
 
-const NOMBRE = {bencina:'Bencinera', taller:'Taller', alojamiento:'Alojamiento', balsa:'Balsa', atractivo:'Qué ver'};
-const PLURAL = {bencina:['bencinera','bencineras'], taller:['taller','talleres'], alojamiento:['alojamiento','alojamientos'], balsa:['balsa','balsas']};
+const NOMBRE = {bencina:t('Bencinera'), taller:t('Taller'), alojamiento:t('Alojamiento'), balsa:t('Balsa'), atractivo:t('Qué ver')};
+const PLURAL = {bencina:[t('bencinera'),t('bencineras')], taller:[t('taller'),t('talleres')], alojamiento:[t('alojamiento'),t('alojamientos')], balsa:[t('balsa'),t('balsas')]};
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = t => String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-const fmt = n => n.toLocaleString('es-CL');
+const fmt = n => n.toLocaleString(LANG === 'es' ? 'es-CL' : LANG);
 const wa = txt => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt);
 // Copia local de 500 px (scripts/bajar-fotos.mjs); si falta, la de Wikimedia
 const archivoLocal = u => decodeURIComponent(u.split('?')[0].split('/').pop().replace(/^\d+px-/, ''))
@@ -688,7 +775,7 @@ function kmEntre(a, b){
   return 2*6371*Math.asin(Math.sqrt(x));
 }
 function credito(f){
-  return f ? 'Foto: <a href="'+esc(f.fuente)+'" target="_blank" rel="noopener">'+esc(f.autor)+'</a>, '+esc(f.licencia) : '';
+  return f ? t('Foto:') + ' <a href="'+esc(f.fuente)+'" target="_blank" rel="noopener">'+esc(f.autor)+'</a>, '+esc(f.licencia) : '';
 }
 const imgCon = (u, alt, cls) => '<img src="'+esc(chica(u))+'" alt="'+esc(alt)+'"'+(cls ? ' class="'+cls+'"' : '')+' loading="lazy" decoding="async" onload="this.classList.add(\'lista\')" onerror="this.onerror=null;this.src=\''+esc(a500(u))+'\'">';
 
@@ -699,17 +786,17 @@ let mapa = null, marcadores = {}, marcasPueblo = {};
 
 /* ---------- Tira de fotos de la tapa ---------- */
 const TIRA = [
-  {id:'ruta.portada', n:'Carretera Austral', d:'Ruta 7, Región de Aysén'},
-  {id:'c-castillo', n:'Villa Cerro Castillo', d:'Km ' + kmDe('Villa Cerro Castillo')},
-  {id:'c-capillas', n:'Capillas de Mármol', d:'Puerto Río Tranquilo, km ' + kmDe('Puerto Río Tranquilo')},
-  {id:'c-queulat', n:'Parque Queulat', d:'Cerca de Puyuhuapi, km ' + kmDe('Puyuhuapi')},
-  {id:'ruta.ruta2', n:'Carretera Austral', d:'Ruta 7, tramo de ripio'},
-  {id:'c-bertrand', n:'Lago Bertrand', d:'Km ' + kmDe('Puerto Bertrand')},
-  {id:'c-carrera', n:'Lago General Carrera', d:'Entre Puerto Río Tranquilo y Puerto Bertrand'},
-  {id:'c-exploradores', n:'Glaciar Exploradores', d:'Desvío desde Puerto Río Tranquilo'},
-  {id:'ruta.ruta3', n:'Carretera Austral', d:'Ruta 7, Región de Aysén'},
-  {id:'c-chacabuco', n:'Valle Chacabuco', d:'Cerca de Cochrane, km ' + kmDe('Cochrane')},
-  {id:'c-ohiggins', n:"Villa O'Higgins", d:'Fin de la ruta, km ' + kmDe("Villa O'Higgins")},
+  {id:'ruta.portada', n:'Carretera Austral', d:t('Ruta 7, Región de Aysén')},
+  {id:'c-castillo', n:'Villa Cerro Castillo', d:t('Km {0}', kmDe('Villa Cerro Castillo'))},
+  {id:'c-capillas', n:t('Capillas de Mármol'), d:t('Puerto Río Tranquilo, km {0}', kmDe('Puerto Río Tranquilo'))},
+  {id:'c-queulat', n:t('Parque Queulat'), d:t('Cerca de {0}, km {1}', 'Puyuhuapi', kmDe('Puyuhuapi'))},
+  {id:'ruta.ruta2', n:'Carretera Austral', d:t('Ruta 7, tramo de ripio')},
+  {id:'c-bertrand', n:t('Lago Bertrand'), d:t('Km {0}', kmDe('Puerto Bertrand'))},
+  {id:'c-carrera', n:t('Lago General Carrera'), d:t('Entre Puerto Río Tranquilo y Puerto Bertrand')},
+  {id:'c-exploradores', n:t('Glaciar Exploradores'), d:t('Desvío desde Puerto Río Tranquilo')},
+  {id:'ruta.ruta3', n:'Carretera Austral', d:t('Ruta 7, Región de Aysén')},
+  {id:'c-chacabuco', n:t('Valle Chacabuco'), d:t('Cerca de {0}, km {1}', 'Cochrane', kmDe('Cochrane'))},
+  {id:'c-ohiggins', n:"Villa O'Higgins", d:t('Fin de la ruta, km {0}', kmDe("Villa O'Higgins"))},
 ];
 function armarTira(){
   const lista = TIRA.filter(p => FOTOS[p.id]);
@@ -718,7 +805,7 @@ function armarTira(){
   // Solo la primera se baja de entrada; las demás justo antes de mostrarse
   caja.innerHTML = lista.map((p, i) => '<img'+(i === 0 ? ' class="visible" src' : ' data-src')+'="'+esc(grande(FOTOS[p.id].url))+'" alt="'+esc(p.n)+'">').join('');
   const cargar = img => { if (img && img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
-  pasos.innerHTML = lista.map((p, i) => '<button aria-label="Ver '+esc(p.n)+'"'+(i === 0 ? ' aria-current="true"' : '')+'></button>').join('');
+  pasos.innerHTML = lista.map((p, i) => '<button aria-label="'+esc(t('Ver {0}', p.n))+'"'+(i === 0 ? ' aria-current="true"' : '')+'></button>').join('');
   const fotos = [...caja.children], btns = [...pasos.children];
   let i = 0, reloj = null, pausa = false;
   const ir = k => {
@@ -801,7 +888,7 @@ addEventListener('resize', moverMoto);
 
 
 /* ---------- Lo que sabe alguien de la zona: precios de la CNE y desvíos ---------- */
-const CNE = '<a href="https://bencinaenlinea.cl" target="_blank" rel="noopener" title="Comisión Nacional de Energía, Bencina en Línea: precios que informan las bencineras">CNE</a>';
+const CNE = '<a href="https://bencinaenlinea.cl" target="_blank" rel="noopener" title="'+esc(t('Comisión Nacional de Energía, Bencina en Línea: precios que informan las bencineras'))+'">CNE</a>';
 const fmtFecha = f => f ? f.slice(8, 10) + '-' + f.slice(5, 7) : '';
 // Precio más bajo de cada combustible en las bencineras a menos de 4 km
 function preciosDe(lat, lng){
@@ -810,12 +897,12 @@ function preciosDe(lat, lng){
   const por = {}; let fecha = '';
   est.forEach(e => e.comb.forEach(c => { if (!por[c.t] || c.precio < por[c.t]) por[c.t] = c.precio; if (c.fecha > fecha) fecha = c.fecha; }));
   const orden = ['93', '95', '97', 'Diésel'].filter(t => por[t]);
-  return {txt: orden.map(t => (t === 'Diésel' ? 'Diésel' : t) + ' <b>$' + fmt(por[t]) + '</b>').join(' · '), fecha, gasolina: orden.some(t => t !== 'Diésel')};
+  return {txt: orden.map(t => (t === 'Diésel' ? tx('Diésel') : t) + ' <b>$' + fmt(por[t]) + '</b>').join(' · '), fecha, gasolina: orden.some(t => t !== 'Diésel')};
 }
 function preciosHtml(p){
   if (!BENCINA.length || !(p.bencina || p.diesel)) return '';
   const pr = preciosDe(p.lat, p.lng);
-  if (!pr) return '<p class="precios">Esta bencinera no informa precios a la CNE.</p>';
+  if (!pr) return '<p class="precios">'+t('Esta bencinera no informa precios a la CNE.')+'</p>';
   return '<p class="precios">' + pr.txt + ' <span>· ' + CNE + ', ' + fmtFecha(pr.fecha) + '</span></p>';
 }
 // Un desvío visto en el sentido del viaje: dónde doblas, cuánto hasta el lugar y cuánto de vuelta a la ruta
@@ -838,14 +925,14 @@ function cargaEnDesvio(P1, P2, v){
 function desviosHtml(p, v){
   return DESVIOS.filter(d => enSentido(d, v).entra === p.n && !RAMALES.some(r => r.desvio === d.id)).map(d => {
     const pr = d.bencina ? preciosDe(d.lat, d.lng) : null;
-    const k = d.desde === d.hasta ? 'Ida y vuelta: <b>' + (d.a + d.b) + ' km</b> desde aquí' : 'Desvío: <b>' + extraDe(d) + ' km</b> más que ir directo a ' + esc(enSentido(d, v).sale);
+    const k = d.desde === d.hasta ? t('Ida y vuelta: <b>{0} km</b> desde aquí', d.a + d.b) : t('Desvío: <b>{0} km</b> más que ir directo a {1}', extraDe(d), esc(enSentido(d, v).sale));
     const fs = d.fotos || [];
-    return '<aside class="local' + (fs.length ? ' con-fotos' : '') + '"><div><span class="et">Dato de local</span><h5>' + esc(d.n) + '</h5>'
-      + '<p class="k">' + k + (pr && pr.gasolina ? ' · Bencina: ' + pr.txt : d.bencina ? '' : ' · <b>sin bencina</b>') + '</p>'
-      + '<p>' + esc(d.texto) + '</p>'
-      + '<div class="fu"><span>Fuentes:</span>' + (pr ? '<span>bencina y precios, ' + CNE + ' (' + fmtFecha(pr.fecha) + ')</span>' : '') + '<span>km, OpenStreetMap</span>' + d.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
-      + '<button class="lnk" type="button" data-ver="d-' + d.id + '">Ver en el mapa</button></div></div>'
-      + (fs.length ? '<div class="fotos-local">' + fs.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
+    return '<aside class="local' + (fs.length ? ' con-fotos' : '') + '"><div><span class="et">' + t('Dato de local') + '</span><h5>' + esc(d.n) + '</h5>'
+      + '<p class="k">' + k + (pr && pr.gasolina ? ' · ' + t('Bencina:') + ' ' + pr.txt : d.bencina ? '' : ' · <b>' + t('sin bencina') + '</b>') + '</p>'
+      + '<p>' + esc(t(d.texto)) + '</p>'
+      + '<div class="fu"><span>' + t('Fuentes:') + '</span>' + (pr ? '<span>' + t('bencina y precios') + ', ' + CNE + ' (' + fmtFecha(pr.fecha) + ')</span>' : '') + '<span>' + t('km, OpenStreetMap') + '</span>' + d.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
+      + '<button class="lnk" type="button" data-ver="d-' + d.id + '">' + t('Ver en el mapa') + '</button></div></div>'
+      + (fs.length ? '<div class="fotos-local">' + fs.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="' + esc(t('Ver foto: {0}', t(f.pie))) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
       + '</aside>';
   }).join('');
 }
@@ -854,38 +941,38 @@ function desviosHtml(p, v){
 function ramalesHtml(p){
   return RAMALES.filter(r => r.desde === p.n).map(r => {
     const d = r.desvio && DESVIOS.find(x => x.id === r.desvio);
-    const texto = r.texto || (d && d.texto) || '', fotos = r.fotos || (d && d.fotos) || [];
+    const texto = t(r.texto || (d && d.texto) || ''), fotos = r.fotos || (d && d.fotos) || [];
     const conB = r.pueblos.filter(pb => pb.bencina).map(pb => pb.n);
-    const datos = '<b>' + r.km + ' km</b> desde ' + esc(r.desde)
-      + (r.ripio == null ? ' · ripio por confirmar' : r.ripio <= 5 ? ' · <b>pavimentada</b>' : ' · cerca de <b>' + r.ripio + '%</b> ripio')
-      + (conB.length ? ' · bencina en ' + esc(conB.join(' y ')) : ' · <b>sin bencina</b>')
-      + (r.balsa ? ' · con balsa' : '');
+    const datos = t('<b>{0} km</b> desde {1}', r.km, esc(r.desde))
+      + ' · ' + (r.ripio == null ? t('ripio por confirmar') : r.ripio <= 5 ? '<b>' + t('pavimentada') + '</b>' : t('cerca de <b>{0}%</b> ripio', r.ripio))
+      + ' · ' + (conB.length ? t('bencina en {0}', esc(conB.map(x => t(x)).join(t(' y ')))) : '<b>' + t('sin bencina') + '</b>')
+      + (r.balsa ? ' · ' + t('con balsa') : '');
     const pueblos = r.pueblos.map(pb => {
       const P = POR_PUEBLO[pb.n] || {serv:{}, cerca:[]};
-      const serv = ['bencina','taller','alojamiento','balsa'].filter(c => (P.serv[c] || []).length)
+      const serv = ['bencina','taller','alojamiento','balsa'].filter(c => (P.serv[c] || []).length && !(c === 'balsa' && r.sinBalsas))
         .map(c => { const n = P.serv[c].length; return '<button type="button" aria-expanded="false" data-pueblo="'+esc(pb.n)+'" data-cat="'+c+'"><b>'+n+'</b> '+PLURAL[c][n === 1 ? 0 : 1]+'</button>'; }).join('');
-      const tag = pb.bencina ? '<span class="comb si">Bencina</span>' : pb.balsa ? '<span class="comb no">Balsa, sin bencina</span>' : '<span class="comb no">Sin bencina</span>';
+      const tag = pb.bencina ? '<span class="comb si">'+t('Bencina')+'</span>' : pb.balsa ? '<span class="comb no">'+t('Balsa, sin bencina')+'</span>' : '<span class="comb no">'+t('Sin bencina')+'</span>';
       const fotosP = [P.foto, ...P.cerca].filter(Boolean).slice(0, 4);
       return '<li class="r-pueblo"><div class="r-km">km ' + pb.km + '</div><div class="r-p">'
-        + '<div class="enc"><h5>' + esc(pb.n) + '</h5>' + tag + '</div>' + preciosHtml(pb)
+        + '<div class="enc"><h5>' + esc(t(pb.n)) + '</h5>' + tag + '</div>' + preciosHtml(pb)
         + (serv ? '<div class="serv-p">' + serv + '</div>' : '') + '<div class="serv-abierto"></div>'
         + (fotosP.length ? '<div class="cerca">' + fotosP.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(pb.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('') + '</div>' : '')
         + '</div></li>';
     }).join('');
     // Ramal que comparte un trozo con la Austral: dónde se deja la ruta
     // Dónde deja la Austral (y si queda antes o después del pueblo) y, si vuelve a ella, dónde
-    const P0 = PUEBLOS.find(x => x.n === r.desde), lado = c => P0 && c.lat > P0.lat ? 'norte' : 'sur';
+    const P0 = PUEBLOS.find(x => x.n === r.desde), lado = c => P0 && c.lat > P0.lat ? t('norte') : t('sur');
     const tramoR = (r.vuelta ? r.vuelta.km : r.km) - (r.cruce ? r.cruce.km : 0);
-    const cruce = r.cruce && r.cruce.km > 2 ? '<li class="r-pueblo r-cruce"><div class="r-km">km ' + r.cruce.km + '</div><div class="r-p"><h5>Dejas la Austral</h5><p>' + r.cruce.km + ' km al ' + lado(r.cruce) + ' de ' + esc(r.desde) + '. Sigues ' + tramoR + ' km por la ' + esc(r.ruta.replace(/^Rutas? /, 'ruta ')) + '.' + (r.ripio > 5 ? ' Desde aquí cuenta el ripio.' : '') + '</p></div></li>' : '';
-    const vuelta = r.vuelta ? '<li class="r-pueblo r-cruce"><div class="r-km">km ' + r.vuelta.km + '</div><div class="r-p"><h5>Vuelves a la Austral</h5><p>Quedan ' + (r.km - r.vuelta.km) + ' km por la ruta principal hasta ' + esc(r.hasta) + '.</p></div></li>' : '';
-    return '<details class="ramal" data-ramal="' + r.id + '"><summary><span class="et">Ruta lateral · ' + esc(r.ruta) + '</span>'
-      + '<span class="r-n">' + esc(r.n) + '</span><span class="r-datos">' + datos + '</span></summary>'
+    const cruce = r.cruce && r.cruce.km > 2 ? '<li class="r-pueblo r-cruce"><div class="r-km">km ' + r.cruce.km + '</div><div class="r-p"><h5>' + t('Dejas la Austral') + '</h5><p>' + t('{0} km al {1} de {2}. Sigues {3} km por la {4}.', r.cruce.km, lado(r.cruce), esc(r.desde), tramoR, esc(t(r.ruta).replace(/^(Rutas?|Routes?|Rodovias?) /, (m, w) => w.toLowerCase() + ' '))) + (r.ripio > 5 ? ' ' + t('Desde aquí cuenta el ripio.') : '') + '</p></div></li>' : '';
+    const vuelta = r.vuelta ? '<li class="r-pueblo r-cruce"><div class="r-km">km ' + r.vuelta.km + '</div><div class="r-p"><h5>' + t('Vuelves a la Austral') + '</h5><p>' + t('Quedan {0} km por la ruta principal hasta {1}.', r.km - r.vuelta.km, esc(r.hasta)) + '</p></div></li>' : '';
+    return '<details class="ramal" data-ramal="' + r.id + '"><summary><span class="et">' + t('Ruta lateral') + ' · ' + esc(t(r.ruta)) + '</span>'
+      + '<span class="r-n">' + esc(t(r.n)) + '</span><span class="r-datos">' + datos + '</span></summary>'
       + '<div class="r-cuerpo">' + (texto ? '<p>' + esc(texto) + '</p>' : '')
-      + (fotos.length ? '<div class="fotos-local">' + fotos.map((f, i) => '<button type="button" data-visor="r-' + r.id + '-' + i + '" data-grupo="r-' + r.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
+      + (fotos.length ? '<div class="fotos-local">' + fotos.map((f, i) => '<button type="button" data-visor="r-' + r.id + '-' + i + '" data-grupo="r-' + r.id + '" aria-label="' + esc(t('Ver foto: {0}', t(f.pie))) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
       + '<ol class="r-pueblos">' + cruce + pueblos + vuelta + '</ol>'
-      + '<div class="fu"><span>Fuentes:</span><span>camino y km, OpenStreetMap</span>' + (conB.length ? '<span>bencina, ' + CNE + '</span>' : '')
-      + r.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
-      + '<button class="lnk" type="button" data-ver="r-' + r.id + '">Ver en el mapa</button></div>'
+      + '<div class="fu"><span>' + t('Fuentes:') + '</span><span>' + t('camino y km, OpenStreetMap') + '</span>' + (conB.length ? '<span>' + t('bencina') + ', ' + CNE + '</span>' : '')
+      + r.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(t(x.t)) + '</a>').join('')
+      + '<button class="lnk" type="button" data-ver="r-' + r.id + '">' + t('Ver en el mapa') + '</button></div>'
       + '</div></details>';
   }).join('');
 }
@@ -900,7 +987,7 @@ vDesde.value = 'Chaitén'; vHasta.value = "Villa O'Higgins";
   conB.forEach((p, i) => { if (i && p.km - conB[i-1].km > max) { max = p.km - conB[i-1].km; de = [conB[i-1], p]; } });
   document.getElementById('fPueblosB').textContent = conB.length;
   document.getElementById('fKm').textContent = fmt(KM_MAX) + ' km';
-  document.getElementById('fMax').textContent = max + ' km, ' + de[0].n + ' a ' + de[1].n;
+  document.getElementById('fMax').textContent = t('{0} km, {1} a {2}', max, de[0].n, de[1].n);
 }
 
 function planViaje(){
@@ -959,19 +1046,21 @@ function notaBencina(p, v){
   // Si la próxima bencina queda más allá del destino, solo importa lo que falta para llegar
   if (!v.dentro(prox.p)) {
     const falta = Math.abs(v.b.km - p.km);
-    return p.bencina && falta > v.aut * 0.8 ? '<p class="mano">Carga lleno: son '+falta+' km hasta '+esc(v.b.n)+' y no hay bencina antes.</p>' : '';
+    return p.bencina && falta > v.aut * 0.8 ? '<p class="mano">'+t('Carga lleno: son {0} km hasta {1} y no hay bencina antes.', falta, esc(v.b.n))+'</p>' : '';
   }
   if (p.bencina) {
     const alt = cargaEnDesvio(p, prox.p, v);
     const larga = Math.max(alt ? alt.l1 : 0, alt ? alt.l2 : 0);
-    if (alt && k > v.aut && larga <= v.aut) return '<p class="mano">Por la ruta no llegas a '+esc(hasta)+' ('+k+' km), pero sí cargando en '+esc(alt.d.n)+': '+alt.l1+' km desde aquí, con un desvío de '+alt.extra+' km.</p>';
-    const otra = alt && larga < k ? '<p class="mano gris">O carga en '+esc(alt.d.n)+', a '+alt.l1+' km: desvío de '+alt.extra+' km y desde ahí '+alt.l2+' km a '+esc(hasta)+'. Mira las rutas laterales de la hoja.</p>' : '';
-    if (k > v.aut) return '<p class="mano">¡Ojo! '+k+' km hasta la bencina de '+esc(hasta)+' y tu moto rinde '+v.aut+'. No llegas: carga lleno y lleva bidón.</p>';
-    if (k > v.aut * 0.8) return '<p class="mano">Llena el estanque y lleva bidón de reserva: son '+k+' km hasta '+esc(hasta)+' y llegas justo.</p>' + otra;
-    if (k >= 120) return '<p class="mano gris">Siguiente bencina en la ruta: '+esc(hasta)+', a '+k+' km.</p>' + otra;
+    if (alt && k > v.aut && larga <= v.aut) return '<p class="mano">'+t('Por la ruta no llegas a {0} ({1} km), pero sí cargando en {2}: {3} km desde aquí, con un desvío de {4} km.', esc(hasta), k, esc(alt.d.n), alt.l1, alt.extra)+'</p>';
+    // Tramo largo (llegas justo o no llegas) con bencina a un costado: se recomienda cargar ahí, no solo llenar aquí
+    if (alt && larga < k && k > v.aut * 0.8 && larga <= v.aut) return '<p class="mano">'+t('Llena aquí y <b>vuelve a cargar en {0}</b>: por la ruta son {1} km sin bencina hasta {2}, {3}. Es ir a cargar y volver, sin balsa: {4} km desde aquí, {5} km extra, y lo más largo baja a {6} km. Mira su ruta lateral en la hoja.', esc(alt.d.n), k, esc(hasta), k > v.aut ? t('más de lo que rinde tu moto') : t('y llegas justo'), alt.l1, alt.extra, larga)+'</p>';
+    const otra = alt && larga < k ? '<p class="mano gris">'+t('O carga en {0}, a {1} km: desvío de {2} km y desde ahí {3} km a {4}. Mira las rutas laterales de la hoja.', esc(alt.d.n), alt.l1, alt.extra, alt.l2, esc(hasta))+'</p>' : '';
+    if (k > v.aut) return '<p class="mano">'+t('¡Ojo! {0} km hasta la bencina de {1} y tu moto rinde {2}. No llegas: carga lleno y lleva bidón.', k, esc(hasta), v.aut)+'</p>';
+    if (k > v.aut * 0.8) return '<p class="mano">'+t('Llena el estanque y lleva bidón de reserva: son {0} km hasta {1} y llegas justo.', k, esc(hasta))+'</p>' + otra;
+    if (k >= 120) return '<p class="mano gris">'+t('Siguiente bencina en la ruta: {0}, a {1} km.', esc(hasta), k)+'</p>' + otra;
     return '';
   }
-  if (p === v.a) return '<p class="mano">Aquí no hay bencina: sal con el estanque lleno. La primera está en '+esc(hasta)+', a '+k+' km'+(k > v.aut ? '; con '+v.aut+' km no te alcanza, lleva bidón.' : '.')+'</p>';
+  if (p === v.a) return '<p class="mano">'+t('Aquí no hay bencina: sal con el estanque lleno. La primera está en {0}, a {1} km', esc(hasta), k)+(k > v.aut ? t('; con {0} km no te alcanza, lleva bidón.', v.aut) : '.')+'</p>';
   return '';
 }
 
@@ -982,8 +1071,8 @@ function pintarHoja(){
   v.orden.forEach((p, idx) => {
     const datos = POR_PUEBLO[p.n] || {serv:{}, cerca:[]};
     const tipo = p.bencina ? 'bencina' : p.diesel ? 'diesel' : p.balsa ? 'balsa' : 'sin';
-    const comb = p.bencina ? '<span class="comb si">Bencina</span>' : p.diesel ? '<span class="comb diesel">Solo diésel</span>' : p.balsa ? '<span class="comb no">Balsa, sin bencina</span>' : '<span class="comb no">Sin bencina</span>';
-    const parcial = anterior ? '+' + Math.abs(p.km - anterior.km) + ' km' : 'inicio';
+    const comb = p.bencina ? '<span class="comb si">'+t('Bencina')+'</span>' : p.diesel ? '<span class="comb diesel">'+t('Solo diésel')+'</span>' : p.balsa ? '<span class="comb no">'+t('Balsa, sin bencina')+'</span>' : '<span class="comb no">'+t('Sin bencina')+'</span>';
+    const parcial = anterior ? '+' + Math.abs(p.km - anterior.km) + ' km' : t('inicio');
     const servHtml = ['bencina','taller','alojamiento','balsa'].filter(c => (datos.serv[c] || []).length)
       .map(c => { const n = datos.serv[c].length; return '<button type="button" aria-expanded="false" data-pueblo="'+esc(p.n)+'" data-cat="'+c+'"><b>'+n+'</b> '+PLURAL[c][n === 1 ? 0 : 1]+'</button>'; }).join('');
     const f = datos.foto;
@@ -995,25 +1084,25 @@ function pintarHoja(){
       + '<div class="km"><b>'+p.km+'</b><span>'+parcial+'</span></div><div class="eje"><i></i></div>'
       + '<div class="cuerpo"><div class="enc"><h3>'+esc(p.n)+'</h3>'+comb+'</div>' + preciosHtml(p)
       + notaBencina(p, v)
-      + (p.t ? '<p class="texto">'+esc(p.t)+(p.tf ? ' <span class="fuente-dato">'+esc(p.tf)+'</span>' : '')+'</p>' : '')
+      + (p.t ? '<p class="texto">'+esc(t(p.t))+(p.tf ? ' <span class="fuente-dato">'+esc(t(p.tf))+'</span>' : '')+'</p>' : '')
       + desviosHtml(p, v)
       + ramalesHtml(p)
       + (servHtml ? '<div class="serv-p">'+servHtml+'</div><div class="serv-abierto"></div>' : '')
-      + (cerca.length ? '<div class="cerca">'+cerca.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+(l.desvio > 15 ? '<small>a '+l.desvio+' km en línea recta</small>' : '')+'</span></button>').join('')+'</div>' : '')
+      + (cerca.length ? '<div class="cerca">'+cerca.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+(l.desvio > 15 ? '<small>'+t('a {0} km en línea recta', l.desvio)+'</small>' : '')+'</span></button>').join('')+'</div>' : '')
       + '</div>'
-      + (f ? '<figure class="foto-p"><button type="button" data-visor="'+f.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(f.n)+' en grande">'+imgCon(f.foto.url, f.n)+'</button><figcaption class="credito">'+(f.n !== p.n ? esc(f.n)+'. ' : '')+credito(f.foto)+'</figcaption>'
-        + (junto.length ? '<div class="mas">'+junto.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'" aria-label="Ver foto de '+esc(l.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('')+'</div>' : '')
+      + (f ? '<figure class="foto-p"><button type="button" data-visor="'+f.id+'" data-grupo="'+esc(p.n)+'" aria-label="'+esc(t('Ver foto de {0} en grande', f.n))+'">'+imgCon(f.foto.url, f.n)+'</button><figcaption class="credito">'+(f.n !== p.n ? esc(f.n)+'. ' : '')+credito(f.foto)+'</figcaption>'
+        + (junto.length ? '<div class="mas">'+junto.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(p.n)+'" aria-label="'+esc(t('Ver foto de {0}', l.n))+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('')+'</div>' : '')
         + '</figure>' : '')
       + '</li>';
     const dia = v.duerme.get(p.n);
-    if (dia) html += '<li class="dia" '+c+'><div class="km">día '+dia+'</div><div class="eje"></div><div class="cuerpo">Día '+dia+' listo. Esta noche duermes en '+esc(p.n)+'</div></li>';
+    if (dia) html += '<li class="dia" '+c+'><div class="km">'+t('día {0}', dia)+'</div><div class="eje"></div><div class="cuerpo">'+t('Día {0} listo. Esta noche duermes en {1}', dia, esc(p.n))+'</div></li>';
     // Tramo que empieza aquí, en el sentido del viaje
-    const t = TRAMOS.find(t => (v.sentido === 1 ? t.a : t.b) === p.n);
-    if (t && idx < v.orden.length - 1) {
-      html += '<li class="tramo'+(t.ripio < 30 ? ' asfalto' : '')+(VISTOS.has('t'+TRAMOS.indexOf(t)) ? ' visto' : '')+'" data-tramo="'+TRAMOS.indexOf(t)+'" style="--c:var(--t'+(TRAMOS.indexOf(t) + 1)+')"><div class="km"></div><div class="eje"></div><div class="cuerpo">'
-        + '<h4>Tramo '+esc(v.sentido === 1 ? t.a : t.b)+' a '+esc(v.sentido === 1 ? t.b : t.a)+'</h4>'
-        + '<div class="t-datos"><span><b>'+t.km+' km</b></span><span class="ripio"><i><span style="width:'+t.ripio+'%"></span></i>cerca de <b>'+t.ripio+'%</b> ripio</span><span>Dificultad <b>'+t.dif.toLowerCase()+'</b></span><span>Mejor de '+t.temp+'</span></div>'
-        + '<ul>'+t.ojo.map(o => '<li>'+esc(o)+'</li>').join('')+'</ul></div></li>';
+    const tm = TRAMOS.find(tm => (v.sentido === 1 ? tm.a : tm.b) === p.n);
+    if (tm && idx < v.orden.length - 1) {
+      html += '<li class="tramo'+(tm.ripio < 30 ? ' asfalto' : '')+(VISTOS.has('t'+TRAMOS.indexOf(tm)) ? ' visto' : '')+'" data-tramo="'+TRAMOS.indexOf(tm)+'" style="--c:var(--t'+(TRAMOS.indexOf(tm) + 1)+')"><div class="km"></div><div class="eje"></div><div class="cuerpo">'
+        + '<h4>'+tx('Tramo {0} a {1}', esc(v.sentido === 1 ? tm.a : tm.b), esc(v.sentido === 1 ? tm.b : tm.a))+'</h4>'
+        + '<div class="t-datos"><span><b>'+tm.km+' km</b></span><span class="ripio"><i><span style="width:'+tm.ripio+'%"></span></i>'+tx('cerca de <b>{0}%</b> ripio', tm.ripio)+'</span><span>'+tx('Dificultad <b>{0}</b>', tx(tm.dif).toLowerCase())+'</span><span>'+tx('Mejor de {0}', tx(tm.temp))+'</span></div>'
+        + '<ul>'+tm.ojo.map(o => '<li>'+esc(tx(o))+'</li>').join('')+'</ul></div></li>';
     }
     anterior = p;
   });
@@ -1023,14 +1112,15 @@ function pintarHoja(){
   // Resumen en la barra
   const res = document.getElementById('resumen'), btn = document.getElementById('waPlan');
   document.getElementById('vAutOut').textContent = v.aut + ' km';
-  if (v.a === v.b) { res.textContent = 'Elige un destino distinto del punto de partida.'; btn.hidden = true; observarCasillas(); return; }
+  if (v.a === v.b) { res.textContent = t('Elige un destino distinto del punto de partida.'); btn.hidden = true; observarCasillas(); return; }
   btn.hidden = false;
   const alcanza = v.max <= v.aut;
-  res.innerHTML = '<b>'+fmt(v.total)+' km en '+v.dias+(v.dias === 1 ? ' día' : ' días')+'.</b> '
-    + (v.max ? 'Lo más largo sin bencina: '+v.max+' km, de '+esc(v.maxA.n)+' a '+esc(v.maxB.n)+'. '
-      + (v.max <= v.aut * 0.8 ? 'Te alcanza.' : alcanza ? 'Llegas justo: lleva bidón de reserva.' : v.alt && v.alt.max <= v.aut ? '<span class="mal">Por la ruta no te alcanza</span>, pero cargando en '+v.alt.donde.map(d => esc(d.n)).join(' y ')+' lo más largo baja a '+v.alt.max+' km.' : '<span class="mal">No te alcanza: lleva bidón.</span>') : '');
-  if (v.largo) res.innerHTML += ' <span class="mal">Un día sale de '+v.largo.km+' km</span> ('+esc(v.largo.a.n)+' a '+esc(v.largo.b.n)+'): no hay alojamiento en el camino.';
-  btn.href = wa('Hola, quiero hacer la Carretera Austral en moto: de '+v.a.n+' a '+v.b.n+' ('+v.total+' km, '+v.dias+' días a '+v.ritmo+' km por día, mi moto rinde '+v.aut+' km). ¿Me ayudan a armarlo?');
+  const cMax = v.maxA && cargaEnDesvio(v.maxA, v.maxB, v);
+  res.innerHTML = '<b>'+t(v.dias === 1 ? '{0} km en {1} día.' : '{0} km en {1} días.', fmt(v.total), v.dias)+'</b> '
+    + (v.max ? t('Lo más largo sin bencina: {0} km, de {1} a {2}.', v.max, esc(v.maxA.n), esc(v.maxB.n))+' '
+      + (v.max <= v.aut * 0.8 ? t('Te alcanza.') : alcanza && cMax ? t('Llegas justo: <b>carga en {0}</b> y ese tramo baja a {1} km.', esc(cMax.d.n), Math.max(cMax.l1, cMax.l2)) : alcanza ? t('Llegas justo: lleva bidón de reserva.') : v.alt && v.alt.max <= v.aut ? t('<span class="mal">Por la ruta no te alcanza</span>, pero cargando en {0} lo más largo baja a {1} km.', v.alt.donde.map(d => esc(d.n)).join(t(' y ')), v.alt.max) : '<span class="mal">'+t('No te alcanza: lleva bidón.')+'</span>') : '');
+  if (v.largo) res.innerHTML += ' ' + t('<span class="mal">Un día sale de {0} km</span> ({1} a {2}): no hay alojamiento en el camino.', v.largo.km, esc(v.largo.a.n), esc(v.largo.b.n));
+  btn.href = wa(t('Hola, quiero hacer la Carretera Austral en moto: de {0} a {1} ({2} km, {3} días a {4} km por día, mi moto rinde {5} km). ¿Me ayudan a armarlo?', v.a.n, v.b.n, v.total, v.dias, v.ritmo, v.aut));
   observarCasillas();
 }
 document.getElementById('formViaje').addEventListener('change', e => { if (e.target !== vAut) repintar(); });
@@ -1054,11 +1144,11 @@ document.getElementById('listaHoja').addEventListener('click', e => {
   const items = POR_PUEBLO[b.dataset.pueblo].serv[b.dataset.cat];
   const TOPE = 25;
   caja.innerHTML = '<ul class="lista-serv">' + items.slice(0, TOPE).map(s =>
-    '<li><b>'+esc(s.n)+'</b><p>'+esc(s.sub || NOMBRE[s.cat])+(s.desc ? '. '+esc(s.desc) : '')+'</p>'
+    '<li><b>'+esc(s.n)+'</b><p>'+esc(t(s.sub) || NOMBRE[s.cat])+(s.desc ? '. '+esc(s.desc) : '')+'</p>'
     + '<div class="acc">'+(s.tel ? '<a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a>' : '')+(s.horario ? '<span>'+esc(s.horario)+'</span>' : '')
-    + '<a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">Cómo llegar</a>'
-    + '<button class="lnk" type="button" data-ver="'+s.id+'">Ver en el mapa</button></div></li>').join('')
-    + (items.length > TOPE ? '<li class="mas-dir"><a href="#directorio" data-ir-dir="'+esc(b.dataset.pueblo)+'" data-cat="'+b.dataset.cat+'">Ver los '+items.length+' en el directorio</a></li>' : '')
+    + '<a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">'+t('Cómo llegar')+'</a>'
+    + '<button class="lnk" type="button" data-ver="'+s.id+'">'+t('Ver en el mapa')+'</button></div></li>').join('')
+    + (items.length > TOPE ? '<li class="mas-dir"><a href="#directorio" data-ir-dir="'+esc(b.dataset.pueblo)+'" data-cat="'+b.dataset.cat+'">'+t('Ver los {0} en el directorio', items.length)+'</a></li>' : '')
     + '</ul>';
 });
 
@@ -1074,7 +1164,7 @@ document.getElementById('listaHoja').addEventListener('click', e => {
     .catch(() => {});
   PUEBLOS.forEach(p => {
     marcasPueblo[p.n] = L.circleMarker([p.lat, p.lng], {radius:p.bencina?7:5, color:'#1E2124', weight:3, fillColor:p.bencina?'#1E2124':'#ffffff', fillOpacity:1})
-      .addTo(mapa).bindPopup('<b>'+esc(p.n)+'</b><br>km '+p.km+(p.bencina?'<br>Hay bencina':p.diesel?'<br>Solo diésel':''));
+      .addTo(mapa).bindPopup('<b>'+esc(p.n)+'</b><br>km '+p.km+(p.bencina?'<br>'+t('Hay bencina'):p.diesel?'<br>'+t('Solo diésel'):''));
   });
 })();
 const COLOR = {bencina:'#0F7F8C', taller:'#1E2124', alojamiento:'#8A8F94', balsa:'#0F7F8C', atractivo:'#D11A1A'};
@@ -1084,12 +1174,12 @@ function cargarRamales(){
     // Borde oscuro debajo para que el amarillo se lea sobre el mapa claro
     L.polyline(r.linea, {color:'#1E2124', weight:7, opacity:.8}).addTo(mapa);
     const l = L.polyline(r.linea, {color:'#F2C230', weight:4}).addTo(mapa)
-      .bindPopup('<b>' + esc(r.n) + '</b><br>' + esc(r.ruta) + ', ' + r.km + ' km' + (r.ripio != null ? ', ' + r.ripio + '% ripio' : '') + '<br><button class="lnk" type="button" data-abrir-ramal="' + r.id + '">Ver en la hoja</button>');
+      .bindPopup('<b>' + esc(t(r.n)) + '</b><br>' + esc(t(r.ruta)) + ', ' + r.km + ' km' + (r.ripio != null ? ', ' + t('{0}% ripio', r.ripio) : '') + '<br><button class="lnk" type="button" data-abrir-ramal="' + r.id + '">' + t('Ver en la hoja') + '</button>');
     marcadores['r-' + r.id] = l;
   });
   RAMAL_PUEBLOS.forEach(pb => {
     marcasPueblo[pb.n] = L.circleMarker([pb.lat, pb.lng], {radius:pb.bencina ? 7 : 5, color:'#1E2124', weight:3, fillColor:pb.bencina ? '#F2C230' : '#ffffff', fillOpacity:1})
-      .addTo(mapa).bindPopup('<b>' + esc(pb.n) + '</b><br>Ruta lateral' + (pb.bencina ? '<br>Hay bencina' : '<br>Sin bencina'));
+      .addTo(mapa).bindPopup('<b>' + esc(t(pb.n)) + '</b><br>' + t('Ruta lateral') + '<br>' + (pb.bencina ? t('Hay bencina') : t('Sin bencina')));
   });
 }
 function abrirRamal(id){
@@ -1101,7 +1191,7 @@ function cargarDesvios(){
   if (!mapa) return;
   DESVIOS.filter(d => !RAMALES.some(r => r.desvio === d.id)).forEach(d => {
     marcadores['d-' + d.id] = L.circleMarker([d.lat, d.lng], {radius:7, color:'#1E2124', weight:2, fillColor:d.bencina ? '#F2C230' : '#ffffff', fillOpacity:1})
-      .addTo(mapa).bindPopup('<b>'+esc(d.n)+'</b><br>Desvío desde '+esc(d.desde)+(d.bencina ? '<br>Hay bencina' : '<br>Sin bencina'));
+      .addTo(mapa).bindPopup('<b>'+esc(d.n)+'</b><br>'+t('Desvío desde {0}', esc(d.desde))+'<br>'+(d.bencina ? t('Hay bencina') : t('Sin bencina')));
   });
 }
 function cargarMapa(lugares){
@@ -1114,7 +1204,7 @@ function cargarMapa(lugares){
 }
 function marcador(l){
   const mk = L.circleMarker([l.lat, l.lng], {radius:4, color:'#fff', weight:1, fillColor:COLOR[l.cat], fillOpacity:1});
-  mk.bindPopup((l.foto ? '<img src="'+esc(chica(l.foto.url))+'" alt="" onerror="this.remove()">' : '') + '<b>'+esc(l.n)+'</b><br>'+esc(l.sub || NOMBRE[l.cat])+(l.loc ? ', '+esc(l.loc) : '')+(l.tel ? '<br>'+esc(l.tel) : ''));
+  mk.bindPopup((l.foto ? '<img src="'+esc(chica(l.foto.url))+'" alt="" onerror="this.remove()">' : '') + '<b>'+esc(l.n)+'</b><br>'+esc(t(l.sub) || NOMBRE[l.cat])+(l.loc ? ', '+esc(l.loc) : '')+(l.tel ? '<br>'+esc(l.tel) : ''));
   return marcadores[l.id] = mk;
 }
 let siguiendo = null;
@@ -1153,9 +1243,9 @@ function pintarGaleria(){
   // Una foto grande cada cinco, para que el mosaico tenga ritmo
   document.getElementById('galeriaFotos').innerHTML = GALERIA.map((l, i) => {
     const g = i % 5 === 0;
-    return '<button type="button" class="'+(g ? 'g' : '')+'" data-visor="'+l.id+'" data-grupo="galeria" aria-label="Ver foto de '+esc(l.n)+'">'
+    return '<button type="button" class="'+(g ? 'g' : '')+'" data-visor="'+l.id+'" data-grupo="galeria" aria-label="'+esc(t('Ver foto de {0}', l.n))+'">'
       + (g ? '<img src="'+esc(grande(l.foto.url))+'" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\''+esc(chica(l.foto.url))+'\'">' : imgCon(l.foto.url, ''))
-      + '<span>'+esc(l.n)+'<small>Cerca de '+esc(l.cerca.n)+', km '+l.cerca.km+'</small></span></button>';
+      + '<span>'+esc(l.n)+'<small>'+t('Cerca de {0}, km {1}', esc(l.cerca.n), l.cerca.km)+'</small></span></button>';
   }).join('');
 }
 function pintarFranjas(){
@@ -1163,7 +1253,7 @@ function pintarFranjas(){
     const f = FOTOS[fig.dataset.foto], l = CON_FOTO.find(x => x.id === fig.dataset.foto);
     if (!f) { fig.remove(); return; }
     fig.innerHTML = '<img src="'+esc(grande(f.url))+'" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\''+esc(chica(f.url))+'\'">'
-      + '<figcaption><div class="wrap"><b>'+esc(l ? l.n : '')+'</b><span>'+esc(fig.dataset.donde || '')+'</span><p class="credito">'+credito(f)+'</p></div></figcaption>';
+      + '<figcaption><div class="wrap"><b>'+esc(l ? l.n : '')+'</b><span>'+esc(t(fig.dataset.donde || ''))+'</span><p class="credito">'+credito(f)+'</p></div></figcaption>';
   });
 }
 
@@ -1171,9 +1261,9 @@ function abrirVisor(id, grupo){
   // Fotos de una ruta lateral (las suyas o las del dato de local que reemplaza) o de un dato de local
   const rm = grupo && grupo.startsWith('r-') && RAMALES.find(r => 'r-' + r.id === grupo);
   if (rm) { const fs = rm.fotos || (DESVIOS.find(d => d.id === rm.desvio) || {}).fotos || [];
-    enVisor = fs.map((f, i) => ({id:'r-' + rm.id + '-' + i, mapa:'r-' + rm.id, n:f.pie, desc:'Ruta lateral: ' + rm.n, foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
+    enVisor = fs.map((f, i) => ({id:'r-' + rm.id + '-' + i, mapa:'r-' + rm.id, n:t(f.pie), desc:t('Ruta lateral') + ': ' + t(rm.n), foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   const dv = grupo && grupo.startsWith('d-') && DESVIOS.find(d => 'd-' + d.id === grupo);
-  if (dv) { enVisor = dv.fotos.map((f, i) => ({id:'d-' + dv.id + '-' + i, mapa:'d-' + dv.id, n:f.pie, desc:'Dato de local: ' + dv.n, foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
+  if (dv) { enVisor = dv.fotos.map((f, i) => ({id:'d-' + dv.id + '-' + i, mapa:'d-' + dv.id, n:t(f.pie), desc:t('Dato de local') + ': ' + dv.n, foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   if (grupo === 'galeria') { enVisor = GALERIA; iVisor = Math.max(0, GALERIA.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   const g = grupo && POR_PUEBLO[grupo] ? [POR_PUEBLO[grupo].foto, ...POR_PUEBLO[grupo].cerca].filter(Boolean) : [];
   enVisor = g.some(l => l.id === id) ? g.filter((l, i, arr) => arr.findIndex(x => x.id === l.id) === i) : VER;
@@ -1191,9 +1281,9 @@ function mostrarVisor(){
   img.src = grande(a.foto.url);
   img.alt = a.n;
   document.getElementById('vTitulo').textContent = a.n;
-  document.getElementById('vDonde').textContent = (a.desc || a.sub || '') + (a.loc ? ', cerca de ' + a.loc : '');
+  document.getElementById('vDonde').textContent = (a.desc || t(a.sub) || '') + (a.loc ? ', ' + t('cerca de {0}', a.loc) : '');
   document.getElementById('vCredito').innerHTML = credito(a.foto);
-  document.getElementById('vNum').textContent = (iVisor + 1) + ' de ' + enVisor.length;
+  document.getElementById('vNum').textContent = t('{0} de {1}', iVisor + 1, enVisor.length);
   document.getElementById('vMapa').dataset.destino = a.mapa || a.id;
 }
 const mover = d => { iVisor = (iVisor + d + enVisor.length) % enVisor.length; mostrarVisor(); };
@@ -1229,19 +1319,20 @@ function fotoZona(s){
 function pintarDir(){
   const q = norm(dBuscar.value);
   const lista = TODOS.filter(s => (!dTipo.value || s.cat === dTipo.value) && (!dLoc.value || s.loc === dLoc.value) && (!q || norm(s.n + ' ' + (s.sub || '') + ' ' + (s.loc || '')).includes(q)));
-  document.getElementById('dCuenta').textContent = fmt(lista.length) + (lista.length === 1 ? ' lugar' : ' lugares');
+  document.getElementById('dCuenta').textContent = t(lista.length === 1 ? '{0} lugar' : '{0} lugares', fmt(lista.length));
   document.getElementById('dLista').innerHTML = lista.slice(0, dMostrados).map(s => {
     const z = fotoZona(s);
-    const fig = z ? '<figure>'+imgCon(z.foto.url, '')+(z !== s ? '<figcaption>Zona: '+esc(z.n)+'</figcaption>' : '')+'</figure>' : '<figure></figure>';
+    const fig = z ? '<figure>'+imgCon(z.foto.url, '')+(z !== s ? '<figcaption>'+t('Zona: {0}', esc(z.n))+'</figcaption>' : '')+'</figure>' : '<figure></figure>';
     return '<li class="fila">'+fig+'<div><b>'+esc(s.n)+'</b>'+(s.desc && s.cat !== 'atractivo' ? '<div class="t">'+esc(s.desc)+'</div>' : '')+'</div>'
-      + '<div class="t">'+esc(s.sub || NOMBRE[s.cat])+'</div>'
-      + '<div class="t">'+esc(s.loc || '')+(s.kmLoc > 2 ? ', a '+s.kmLoc+' km' : '')+(s.tel ? '<br><a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a>' : '')+'</div>'
-      + '<div class="acc"><a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">Cómo llegar</a><button class="lnk" type="button" data-ver="'+s.id+'">Mapa</button>'
-      + (s.foto ? '<button class="lnk" type="button" data-visor="'+s.id+'">Foto</button>' : '')+'</div></li>';
-  }).join('') || '<li class="cuenta" style="padding:16px 0">No hay lugares con esos filtros. Prueba con otra localidad o borra la búsqueda.</li>';
+      + '<div class="t">'+esc(t(s.sub) || NOMBRE[s.cat])+'</div>'
+      + '<div class="t">'+esc(s.loc || '')+(s.kmLoc > 2 ? ', '+t('a {0} km', s.kmLoc) : '')+(s.tel ? '<br><a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a>' : '')+'</div>'
+      + '<div class="acc"><a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">'+t('Cómo llegar')+'</a><button class="lnk" type="button" data-ver="'+s.id+'">'+t('Mapa')+'</button>'
+      + (s.foto ? '<button class="lnk" type="button" data-visor="'+s.id+'">'+t('Foto')+'</button>' : '')
+      + (AFILIADOS.booking && s.cat === 'alojamiento' ? '<a class="reservar" href="https://www.booking.com/searchresults.html?ss='+encodeURIComponent(s.loc || s.n)+'&amp;aid='+encodeURIComponent(AFILIADOS.booking)+'" target="_blank" rel="noopener sponsored">'+t('Reservar en {0}', esc(s.loc || s.n))+'</a>' : '')+'</div></li>';
+  }).join('') || '<li class="cuenta" style="padding:16px 0">'+t('No hay lugares con esos filtros. Prueba con otra localidad o borra la búsqueda.')+'</li>';
   const mas = document.getElementById('dMas');
   mas.hidden = lista.length <= dMostrados;
-  mas.textContent = 'Mostrar más (quedan '+fmt(lista.length - dMostrados)+')';
+  mas.textContent = t('Mostrar más (quedan {0})', fmt(lista.length - dMostrados));
 }
 function irADirectorio(pueblo, cat){
   const items = POR_PUEBLO[pueblo] && POR_PUEBLO[pueblo].serv[cat] || [];
@@ -1313,18 +1404,19 @@ Promise.all([
 
   TODOS.sort((a, b) => a.n.localeCompare(b.n, 'es'));
   [...new Set(TODOS.map(s => s.loc).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).forEach(l => dLoc.add(new Option(l, l)));
-  document.getElementById('dirSub').textContent = fmt(TODOS.length) + ' lugares de Aysén, también fuera de la Ruta 7: bencineras, talleres, alojamientos, balsas y lugares para ver. Datos de OpenStreetMap.';
-  if (d.generado) document.getElementById('actualizado').textContent = 'Directorio actualizado el '+d.generado.split('-').reverse().join('-')+'.';
+  document.getElementById('dirSub').textContent = t('{0} lugares de Aysén, también fuera de la Ruta 7: bencineras, talleres, alojamientos, balsas y lugares para ver. Datos de OpenStreetMap.', fmt(TODOS.length)) + (LANG === 'es' ? '' : ' ' + t('Los nombres y descripciones de los lugares están en español.'));
+  if (d.generado) document.getElementById('actualizado').textContent = t('Directorio actualizado el {0}.', d.generado.split('-').reverse().join('-'));
   cargarMapa(TODOS.filter(l => l.cat !== 'alojamiento'));
   cargarDesvios(); cargarRamales();
   // La ficha de la portada también cuenta la bencina fuera de la ruta
-  { const v = planViaje(); if (v.alt) document.getElementById('fMax').innerHTML = esc(document.getElementById('fMax').textContent) + '<small>'+v.alt.max+' km si cargas en '+v.alt.donde.map(d => esc(d.n)).join(' y ')+'</small>'; }
+  { const v = planViaje(), c = v.maxA && cargaEnDesvio(v.maxA, v.maxB, v);
+    if (c) document.getElementById('fMax').innerHTML = esc(document.getElementById('fMax').textContent) + '<small>'+t('Baja a {0} km si cargas en {1}', Math.max(c.l1, c.l2), esc(c.d.n))+'</small>'; }
   CARGADO = true;
   pintarHoja(); pintarDir(); pintarGaleria(); pintarFranjas();
 }).catch(err => {
   console.error('[ruta7] datos', err);
   pintarHoja();
-  document.getElementById('dLista').innerHTML = '<li class="cuenta">No se pudo cargar el directorio. Recarga la página.</li>';
+  document.getElementById('dLista').innerHTML = '<li class="cuenta">'+t('No se pudo cargar el directorio. Recarga la página.')+'</li>';
 });
 pintarHoja();
 
@@ -1339,15 +1431,20 @@ try { marcados = JSON.parse(localStorage.getItem('ruta7-check') || '[]'); } catc
 checks.forEach((c, i) => { c.checked = !!marcados[i]; });
 function contar(){
   const n = checks.filter(c => c.checked).length;
-  document.getElementById('contador').textContent = n === checks.length ? 'Todo listo. Buen viaje, y que el ripio te trate bien.' : n + ' de ' + checks.length + ' listos';
+  document.getElementById('contador').textContent = n === checks.length ? t('Todo listo. Buen viaje, y que el ripio te trate bien.') : t('{0} de {1} listos', n, checks.length);
   try { localStorage.setItem('ruta7-check', JSON.stringify(checks.map(c => c.checked))); } catch {}
 }
 checks.forEach(c => c.addEventListener('change', contar)); contar();
 
 /* ---------- WhatsApp ---------- */
-document.getElementById('waReporte').href = wa('Hola, les cuento cómo está el camino: ');
-document.getElementById('waNegocio').href = wa('Hola, tengo un negocio en la Carretera Austral y quiero aparecer (o corregir mis datos) en Ruta 7 Moto.');
-document.getElementById('waTour').href = wa('Hola, me interesan los tours guiados por la Carretera Austral. Avísenme cuando estén listos.');
+document.getElementById('waReporte').href = wa(t('Hola, les cuento cómo está el camino: '));
+document.getElementById('waNegocio').href = wa(t('Hola, tengo un negocio en la Carretera Austral y quiero aparecer (o corregir mis datos) en Ruta 7 Moto.'));
+const btnGuia = document.getElementById('btnGuia');
+if (GUIA.pago) { btnGuia.href = GUIA.pago; btnGuia.textContent = t('Comprar la guía'); }
+else btnGuia.href = wa(t('Hola, quiero la guía offline de la Carretera Austral (GPX y PDF). ¿Cómo la pago?'));
+btnGuia.addEventListener('click', () => contarVisita('guia', 'Guía offline'));
+if (GUIA.precio) { const gp = document.getElementById('guiaPrecio'); gp.textContent = GUIA.precio; gp.hidden = false; }
+document.getElementById('waTour').href = wa(t('Hola, me interesan los tours guiados por la Carretera Austral. Avísenme cuando estén listos.'));
 
 /* ---------- Menú móvil ---------- */
 const mb = document.getElementById('menuBtn'), nav = document.getElementById('nav');
