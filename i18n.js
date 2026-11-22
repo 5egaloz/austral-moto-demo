@@ -339,6 +339,11 @@ en: {
   "Lugares: © colaboradores de <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, con su autor y licencia junto a cada una. <span id=\"actualizado\"></span>": "Places: © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors (ODbL). Photos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, with author and license next to each one. <span id=\"actualizado\"></span>",
 
   // Estoy aquí y dónde comer (2026-11-22)
+  "Seguirme": "Follow me",
+  "Siguiéndote": "Following you",
+  "En el mapa": "On the map",
+  "Mapa de lo que hay cerca": "Map of what's nearby",
+  "Ubicación aproximada (± {0}). En el computador sale del Wi-Fi; en el celular, del GPS.": "Approximate location (± {0}). On a computer it comes from Wi-Fi; on a phone, from GPS.",
   "Ver en Google Maps": "View in Google Maps",
   "Buscar más en Google Maps": "Find more in Google Maps",
   "Estoy aquí": "I'm here",
@@ -745,6 +750,11 @@ pt: {
   "Lugares: © colaboradores de <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, con su autor y licencia junto a cada una. <span id=\"actualizado\"></span>": "Lugares: © colaboradores do <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, com autor e licença junto a cada uma. <span id=\"actualizado\"></span>",
 
   // Estoy aquí y dónde comer (2026-11-22)
+  "Seguirme": "Seguir-me",
+  "Siguiéndote": "Seguindo você",
+  "En el mapa": "No mapa",
+  "Mapa de lo que hay cerca": "Mapa do que há por perto",
+  "Ubicación aproximada (± {0}). En el computador sale del Wi-Fi; en el celular, del GPS.": "Localização aproximada (± {0}). No computador vem do Wi-Fi; no celular, do GPS.",
   "Ver en Google Maps": "Ver no Google Maps",
   "Buscar más en Google Maps": "Buscar mais no Google Maps",
   "Estoy aquí": "Estou aqui",

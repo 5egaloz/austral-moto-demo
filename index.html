@@ -436,7 +436,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .aqui-tapa b{color:#F2C230;margin-right:4px}
 .aqui-tapa:hover{background:rgb(16 18 20 / .9)}
 .aqui{border:0;padding:0;margin:0 0 0 auto;width:min(480px,100vw);height:100dvh;max-height:none;max-width:none;background:var(--papel);color:var(--tinta);box-shadow:-12px 0 40px rgb(0 0 0 / .45);overflow:hidden}
-.aqui[open]{display:grid;grid-template-rows:auto auto auto minmax(0,1fr);animation:entraLado .25s var(--ease)}
+.aqui[open]{display:grid;grid-template-rows:auto auto auto auto minmax(0,1fr);animation:entraLado .25s var(--ease)}
 @keyframes entraLado{from{transform:translateX(30px);opacity:0}}
 .aqui::backdrop{background:rgb(8 12 10 / .6)}
 .aqui-enc{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px 10px}
@@ -447,6 +447,30 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .aqui-cerrar{background:none;border:2px solid var(--regla);border-radius:3px;padding:4px 10px;font-weight:700;cursor:pointer}
 .aqui-cambiar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:0 18px 12px;font-size:.9rem;color:var(--tinta-2)}
 .aqui-cambiar select{background:var(--sup);color:var(--tinta);border:1px solid var(--regla);border-radius:3px;padding:5px 8px;font:inherit;max-width:220px}
+.aqui-mapa-caja{position:relative;border-top:1px solid var(--regla)}
+.aqui-mapa{height:min(34vh,280px);background:#2A2E32}
+.aqui-mapa .leaflet-tile-pane{filter:brightness(.92) saturate(.9)}
+.aqui-mapa .leaflet-popup-content{margin:10px 12px;color:#1E2124;font:500 .9rem/1.35 var(--f);min-width:190px}
+.aqui-mapa .leaflet-popup-content b{display:block;font-size:1rem;font-stretch:87%}
+.aqui-mapa .leaflet-popup-content .t{color:#575C61}
+.aqui-mapa .leaflet-popup-content img{display:block;width:100%;height:100px;object-fit:cover;margin-bottom:6px}
+.aqui-mapa .leaflet-popup-content .acc{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.aqui-mapa .leaflet-popup-content a.gm{color:#1E2124;border-color:#CDD1D4;min-height:32px;padding:3px 9px;font-size:.88rem}
+.aqui-mapa .leaflet-popup-content a.gm:first-child{border-color:#F2C230;background:#F2C230}
+.aqui-mapa .leaflet-popup-content a[href^="tel"]{color:#0F7F8C;align-self:center}
+.pin{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--pc);border:2px solid #fff;box-shadow:0 1px 4px rgb(0 0 0 / .45);transition:transform .15s}
+.pin svg{width:17px;height:17px}
+.pin.activo{transform:scale(1.3);border-color:#F2C230;border-width:3px}
+.pin-pueblo{width:20px;height:20px}
+.yo{display:block;position:relative;width:20px;height:20px;border-radius:50%;background:#2F80ED;border:3px solid #fff;box-shadow:0 0 0 1px rgb(0 0 0 / .25)}
+.yo::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid #2F80ED;opacity:0;animation:latido 2s ease-out infinite}
+@keyframes latido{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.4);opacity:0}}
+.seguir{position:absolute;right:10px;bottom:10px;z-index:500;background:#fff;color:#1E2124;border:2px solid #1E2124;border-radius:3px;padding:5px 10px;font-weight:700;font-stretch:87%;cursor:pointer;box-shadow:0 1px 4px rgb(0 0 0 / .3)}
+.seguir[aria-pressed="true"]{background:#2F80ED;border-color:#2F80ED;color:#fff}
+.aprox{position:absolute;left:10px;bottom:10px;right:110px;z-index:500;margin:0;padding:4px 8px;background:rgb(255 255 255 / .92);color:#1E2124;font-size:.78rem;line-height:1.3;border-radius:3px}
+.aqui-cuerpo .lista-serv li{cursor:pointer;transition:background .2s}
+.aqui-cuerpo .lista-serv li.activa{background:color-mix(in srgb,#F2C230 14%,transparent);box-shadow:-18px 0 0 color-mix(in srgb,#F2C230 14%,transparent),18px 0 0 color-mix(in srgb,#F2C230 14%,transparent)}
+@media (max-width:820px){.aqui-mapa{height:30dvh}.aqui-enc{padding-top:12px}.aqui h2{font-size:1.6rem}}
 .aqui-tabs{display:flex;overflow-x:auto;border-top:1px solid var(--regla);border-bottom:2px solid var(--regla);scrollbar-width:none}
 .aqui-tabs button{flex:1 0 auto;background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:10px 12px 8px;cursor:pointer;font-weight:700;font-stretch:87%;color:var(--tinta-2);white-space:nowrap}
 .aqui-tabs button b{display:block;font-size:.78rem;font-weight:600;color:var(--tinta-3)}
@@ -629,6 +653,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
     <button class="aqui-cerrar" id="aquiCerrar" type="button">Cerrar</button>
   </div>
   <div class="aqui-cambiar"><label for="aquiPueblo">Otro pueblo</label><select id="aquiPueblo"></select><button class="lnk" id="aquiGps" type="button">Usar mi ubicación</button></div>
+  <div class="aqui-mapa-caja"><div id="aquiMapa" class="aqui-mapa" role="region" aria-label="Mapa de lo que hay cerca"></div><button class="seguir" id="aquiSeguir" type="button" aria-pressed="false" hidden>Seguirme</button><p class="aprox" id="aquiAprox" hidden></p></div>
   <div class="aqui-tabs" id="aquiTabs" role="tablist" aria-label="Qué buscas"></div>
   <div class="aqui-cuerpo" id="aquiCuerpo" role="tabpanel" aria-live="polite"></div>
 </dialog>
@@ -862,7 +887,7 @@ const imgCon = (u, alt, cls) => '<img src="'+esc(chica(u))+'" alt="'+esc(alt)+'"
 let FOTOS = {}, TODOS = [], CON_FOTO = [], SERV = [], VER = [], FOTO_PUEBLO = {}, CARGADO = false;
 let BENCINA = [], BENCINA_FECHA = '', DESVIOS = [], RAMALES = [], RAMAL_PUEBLOS = [];
 const POR_PUEBLO = {};   // nombre -> {serv:{cat:[...]}, cerca:[...], foto}
-let mapa = null, marcadores = {}, marcasPueblo = {};
+let mapa = null, marcadores = {}, marcasPueblo = {}, RUTA_LINEA = null;
 
 /* ---------- Tira de fotos de la tapa ---------- */
 const TIRA = [
@@ -1240,7 +1265,7 @@ document.getElementById('listaHoja').addEventListener('click', e => {
   mapa.fitBounds(L.latLngBounds(PUEBLOS.map(p => [p.lat, p.lng])), {padding:[16, 16]});
   // Trazado real de la carretera (scripts/trazar-ruta.mjs), no líneas rectas entre pueblos
   fetch('data/ruta.json', {cache:'no-cache'}).then(r => r.json())
-    .then(R => L.polyline(R.linea, {color:'#1E2124', weight:4}).addTo(mapa).bringToBack())
+    .then(R => { RUTA_LINEA = R.linea; L.polyline(R.linea, {color:'#1E2124', weight:4}).addTo(mapa).bringToBack(); })
     .catch(() => {});
   PUEBLOS.forEach(p => {
     marcasPueblo[p.n] = L.circleMarker([p.lat, p.lng], {radius:p.bencina?7:5, color:'#1E2124', weight:3, fillColor:p.bencina?'#1E2124':'#ffffff', fillOpacity:1})
@@ -1429,10 +1454,12 @@ document.getElementById('dMas').addEventListener('click', () => { dMostrados += 
 const aqui = document.getElementById('aqui'), aquiPueblo = document.getElementById('aquiPueblo');
 const AQUI_TABS = [{id:'comida', n:'Comer'}, {id:'alojamiento', n:'Dormir'}, {id:'bencina', n:'Bencina y taller'}, {id:'rutas', n:'Rutas'}, {id:'ver', n:'Qué ver'}];
 let aquiYo = null, aquiP = null, aquiModo = '', aquiTab = 'comida', aquiSub = '', marcaYo = null;
+let aquiPrec = 0, aquiVigia = null, siguiendome = false, aquiPintadoEn = null;
 const pueblosAqui = () => PUEBLOS.concat(RAMAL_PUEBLOS.filter(pb => !PUEBLOS.some(p => p.n === pb.n)));
 const distTxt = k => k < 1 ? t('{0} m', fmt(Math.max(10, Math.round(k * 100) * 10))) : t('{0} km', fmt(k < 10 ? Math.round(k * 10) / 10 : Math.round(k)));
 // Las distancias se miden desde ti si estás en el pueblo; si no, desde el centro del pueblo
-const aquiOrigen = () => aquiYo && aquiP && kmEntre(aquiYo, aquiP) <= 25 ? aquiYo : aquiP;
+// (si la ubicación es aproximada, como la del Wi-Fi en un computador, también desde el centro)
+const aquiOrigen = () => aquiYo && aquiP && kmEntre(aquiYo, aquiP) <= 25 && aquiPrec <= 1000 ? aquiYo : aquiP;
 
 function llenarPueblos(){
   if (aquiPueblo.options.length > 1 && aquiPueblo.dataset.ramales == RAMAL_PUEBLOS.length) return;
@@ -1449,25 +1476,28 @@ function llenarPueblos(){
 function abrirAqui(){
   llenarPueblos();
   if (!aqui.open) aqui.showModal();
+  armarMapaAqui();
   buscarmeGps();
 }
 function buscarmeGps(){
   if (!navigator.geolocation) { aquiError(t('Este navegador no entrega la ubicación.')); return; }
   aquiModo = 'buscando'; pintarAqui();
   navigator.geolocation.getCurrentPosition(pos => {
-    aquiYo = {lat:pos.coords.latitude, lng:pos.coords.longitude};
+    aquiYo = {lat:pos.coords.latitude, lng:pos.coords.longitude}; aquiPrec = pos.coords.accuracy || 0;
     let mejor = null, d = Infinity;
     pueblosAqui().forEach(p => { const k = kmEntre(aquiYo, p); if (k < d) { d = k; mejor = p; } });
     aquiP = mejor; aquiModo = d <= 25 ? 'gps' : d <= 80 ? 'cerca' : 'lejos';
     aquiTab = 'comida'; aquiSub = '';
     marcarYo();
+    siguiendome = aquiModo === 'gps';
     pintarAqui();
+    vigilarGps();
   }, err => {
     aquiError(err.code === 1 ? t('No diste permiso para ver tu ubicación. Puedes activarlo en el navegador o elegir el pueblo aquí arriba.') : t('No se pudo ver tu ubicación (puede ser falta de señal). Elige el pueblo aquí arriba.'));
   }, {enableHighAccuracy:false, timeout:15000, maximumAge:300000});
 }
 function aquiError(msg){
-  aquiModo = 'error'; aquiYo = null;
+  aquiModo = 'error'; aquiYo = null; siguiendome = false;
   if (!aquiP) { try { const g = localStorage.getItem('ruta7-aqui'); aquiP = pueblosAqui().find(p => p.n === g) || null; } catch {} }
   pintarAqui(msg);
 }
@@ -1476,6 +1506,110 @@ function marcarYo(){
   if (marcaYo) marcaYo.setLatLng([aquiYo.lat, aquiYo.lng]);
   else marcaYo = L.circleMarker([aquiYo.lat, aquiYo.lng], {radius:8, color:'#fff', weight:3, fillColor:'#2F80ED', fillOpacity:1}).addTo(mapa).bindPopup(t('Estás aquí'));
   marcadores.yo = marcaYo;
+}
+
+/* Mapa del panel: tú, y los lugares de la pestaña con su ícono */
+let mapaAqui = null, capaPines = null, capaYo = null, pinesAqui = {};
+const COLOR_PIN = {comida:'#E8590C', alojamiento:'#7048E8', bencina:'#0F7F8C', taller:'#1E2124', atractivo:'#2F9E44', pueblo:'#1E2124', balsa:'#0F7F8C'};
+const ICONO = {
+  comida:'<path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 0-3.5 2.5-3.5 6v4H17"/>',
+  alojamiento:'<path d="M3 19V6M3 14h18v5M21 14a3.5 3.5 0 0 0-3.5-3.5H11V14"/><circle cx="7" cy="11" r="1.8"/>',
+  bencina:'<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h12M6 9h6M14 11h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V8l-3-3"/>',
+  taller:'<path d="M14.7 6.3a4 4 0 0 0-5.3 5.3L3 18l3 3 6.4-6.4a4 4 0 0 0 5.3-5.3l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+  atractivo:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+  balsa:'<path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/>',
+};
+const iconoPin = (cat, activo) => L.divIcon({className:'', iconSize:cat === 'pueblo' ? [20, 20] : [30, 30],
+  html:'<span class="pin' + (cat === 'pueblo' ? ' pin-pueblo' : '') + (activo ? ' activo' : '') + '" style="--pc:' + COLOR_PIN[cat] + '">' + (ICONO[cat] ? '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ICONO[cat] + '</svg>' : '') + '</span>'});
+
+function armarMapaAqui(){
+  if (!window.L) return;
+  if (mapaAqui) { mapaAqui.invalidateSize(); return; }
+  mapaAqui = L.map('aquiMapa', {zoomControl:true, attributionControl:true}).setView([-46.5, -72.5], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:'© OpenStreetMap'}).addTo(mapaAqui);
+  capaPines = L.layerGroup().addTo(mapaAqui); capaYo = L.layerGroup().addTo(mapaAqui);
+  // Si mueves el mapa con el dedo, deja de seguirte hasta que toques "Seguirme"
+  mapaAqui.on('dragstart', () => { if (siguiendome) { siguiendome = false; botonSeguir(); } });
+  mapaAqui.on('popupopen', e => { const id = e.popup._source && e.popup._source._idLugar; if (id) marcarFila(id, true); });
+}
+function popupLugar(s){
+  const o = aquiOrigen();
+  return (s.foto ? '<img src="' + esc(chica(s.foto.url)) + '" alt="" onerror="this.remove()">' : '')
+    + '<b>' + esc(t(s.n)) + '</b><span class="t">' + esc(t(s.sub) || NOMBRE[s.cat] || '') + (o ? ' · ' + t('a {0}', distTxt(kmEntre(o, s))) : '') + '</span>'
+    + '<div class="acc">' + (s.cat !== 'pueblo' ? gmapsLinks(s) : '<a class="gm" href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>') + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + '</div>';
+}
+function pintarPines(lugares, lineas){
+  if (!mapaAqui) return;
+  capaPines.clearLayers(); pinesAqui = {};
+  if (RUTA_LINEA) L.polyline(RUTA_LINEA, {color:'#1E2124', weight:4, opacity:.7, interactive:false}).addTo(capaPines);
+  (lineas || []).forEach(r => { L.polyline(r.linea, {color:'#1E2124', weight:7, opacity:.6, interactive:false}).addTo(capaPines); L.polyline(r.linea, {color:'#F2C230', weight:4, interactive:false}).addTo(capaPines); });
+  lugares.forEach(s => {
+    const mk = L.marker([s.lat, s.lng], {icon:iconoPin(s.cat), title:s.n, riseOnHover:true, keyboard:true}).addTo(capaPines).bindPopup(() => popupLugar(s), {maxWidth:260, autoPanPadding:[20, 20]});
+    mk._idLugar = s.id; mk._cat = s.cat;
+    pinesAqui[s.id] = mk;
+  });
+  // En Rutas se ve todo (pueblos vecinos y rutas laterales); en el resto, lo más cercano
+  if (lineas && lineas.length || lugares.every(l => l.cat === 'pueblo')) {
+    const b = L.latLngBounds(lugares.map(l => [l.lat, l.lng]));
+    (lineas || []).forEach(r => b.extend(L.polyline(r.linea).getBounds()));
+    if (b.isValid()) { mapaAqui.fitBounds(b, {padding:[24, 24], maxZoom:12}); return; }
+  }
+  encuadrar(lugares);
+}
+// Encuadre: tú y lo más cercano si estás en el pueblo; si no, el pueblo y sus lugares
+function encuadrar(lugares){
+  if (!mapaAqui) return;
+  const o = aquiOrigen(); if (!o) return;
+  const cerca = lugares.slice().sort((a, b) => kmEntre(o, a) - kmEntre(o, b)).slice(0, 8).filter(l => kmEntre(o, l) < 30);
+  const pts = cerca.map(l => [l.lat, l.lng]).concat([[o.lat, o.lng]]);
+  if (siguiendome && aquiYo) pts.push([aquiYo.lat, aquiYo.lng]);
+  if (pts.length === 1) mapaAqui.setView(pts[0], 14);
+  else mapaAqui.fitBounds(L.latLngBounds(pts), {padding:[30, 30], maxZoom:16});
+}
+function pintarYo(){
+  if (!mapaAqui || !capaYo) return;
+  capaYo.clearLayers();
+  if (!aquiYo) return;
+  if (aquiPrec > 60 && aquiPrec < 20000) L.circle([aquiYo.lat, aquiYo.lng], {radius:aquiPrec, color:'#2F80ED', weight:1, fillOpacity:.1, interactive:false}).addTo(capaYo);
+  L.marker([aquiYo.lat, aquiYo.lng], {icon:L.divIcon({className:'', html:'<span class="yo"></span>', iconSize:[20, 20]}), zIndexOffset:1000, keyboard:false}).addTo(capaYo).bindPopup(t('Estás aquí'));
+  const ap = document.getElementById('aquiAprox');
+  ap.hidden = !(aquiPrec > 1000 && aquiModo !== 'lejos');
+  if (!ap.hidden) ap.textContent = t('Ubicación aproximada (± {0}). En el computador sale del Wi-Fi; en el celular, del GPS.', distTxt(aquiPrec / 1000));
+}
+function botonSeguir(){
+  const b = document.getElementById('aquiSeguir');
+  b.hidden = !aquiYo || aquiModo === 'lejos';
+  b.setAttribute('aria-pressed', siguiendome);
+  b.textContent = siguiendome ? t('Siguiéndote') : t('Seguirme');
+}
+// Seguir mientras avanzas: el punto azul se mueve; al llegar a otro pueblo, el panel cambia solo
+function vigilarGps(){
+  if (aquiVigia != null || !navigator.geolocation || !aqui.open) return;
+  aquiVigia = navigator.geolocation.watchPosition(pos => {
+    aquiYo = {lat:pos.coords.latitude, lng:pos.coords.longitude}; aquiPrec = pos.coords.accuracy || 0;
+    marcarYo(); pintarYo();
+    if (siguiendome && mapaAqui) mapaAqui.panTo([aquiYo.lat, aquiYo.lng], {animate:!quieto});
+    let mejor = null, d = Infinity;
+    pueblosAqui().forEach(p => { const k = kmEntre(aquiYo, p); if (k < d) { d = k; mejor = p; } });
+    if (d <= 25 && mejor !== aquiP && aquiModo !== 'elegido') { aquiP = mejor; aquiModo = 'gps'; aquiSub = ''; pintarAqui(); return; }
+    // Las distancias de la lista se recalculan cada 300 m
+    if (aquiPintadoEn && kmEntre(aquiPintadoEn, aquiYo) > .3 && aquiModo === 'gps') pintarAqui();
+  }, () => {}, {enableHighAccuracy:true, maximumAge:10000, timeout:30000});
+}
+function dejarDeVigilar(){ if (aquiVigia != null) { navigator.geolocation.clearWatch(aquiVigia); aquiVigia = null; } }
+// Lista y mapa juntos: tocar un lugar lo muestra en el mapa; tocar un pin marca el lugar en la lista
+function marcarFila(id, desdeMapa){
+  document.querySelectorAll('#aquiCuerpo [data-li]').forEach(li => li.classList.toggle('activa', li.dataset.li === id));
+  Object.values(pinesAqui).forEach(mk => mk.setIcon(iconoPin(mk._cat, mk._idLugar === id)));
+  const li = document.querySelector('#aquiCuerpo [data-li="' + CSS.escape(id) + '"]');
+  if (desdeMapa && li) li.scrollIntoView({block:'nearest', behavior:quieto ? 'auto' : 'smooth'});
+}
+function irAPin(id){
+  const mk = pinesAqui[id]; if (!mk || !mapaAqui) return;
+  siguiendome = false; botonSeguir();
+  mapaAqui.setView(mk.getLatLng(), Math.max(mapaAqui.getZoom(), 16), {animate:!quieto});
+  mk.openPopup();
+  marcarFila(id, false);
 }
 
 function pintarAqui(msg){
@@ -1513,13 +1647,16 @@ function pintarAqui(msg){
 
   if (!CARGADO && aquiTab !== 'rutas') { cuerpo.innerHTML = '<p class="nota">' + t('Cargando los lugares…') + '</p>'; return; }
   const o = aquiOrigen(), desdeTi = o === aquiYo;
+  aquiPintadoEn = aquiYo; pintarYo(); botonSeguir();
+  let pines = [], lineas = [];
   const lista = (items, tope) => {
     const orden = items.map(s => ({s, k:kmEntre(o, s)})).sort((a, b) => a.k - b.k);
+    pines = pines.concat(orden.slice(0, tope).map(x => x.s));
     return '<ul class="lista-serv">' + orden.slice(0, tope).map(({s, k}) =>
-      '<li><span class="lejos">' + distTxt(k) + '</span><b>' + esc(s.n) + '</b><p>' + esc(t(s.sub) || NOMBRE[s.cat]) + (s.desc ? '. ' + esc(s.desc) : '') + '</p>'
+      '<li data-li="' + esc(s.id) + '"><span class="lejos">' + distTxt(k) + '</span><b>' + esc(s.n) + '</b><p>' + esc(t(s.sub) || NOMBRE[s.cat]) + (s.desc ? '. ' + esc(s.desc) : '') + '</p>'
       + '<div class="acc">' + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + (s.horario ? '<span>' + esc(s.horario) + '</span>' : '')
       + gmapsLinks(s)
-      + '<button class="lnk" type="button" data-ver="' + s.id + '">' + t('Ver en el mapa') + '</button></div></li>').join('') + '</ul>';
+      + '<button class="lnk" type="button" data-pin="' + esc(s.id) + '">' + t('En el mapa') + '</button></div></li>').join('') + '</ul>';
   };
   const BUSCA = {comida:'restaurantes', alojamiento:'alojamiento', bencina:'bencinera', taller:'taller mecánico'};
   const masGoogle = c => '<a class="gm" href="https://www.google.com/maps/search/?api=1&amp;query=' + encodeURIComponent(BUSCA[c] + ' en ' + aquiP.n + ', Aysén, Chile') + '" target="_blank" rel="noopener">' + t('Buscar más en Google Maps') + '</a>';
@@ -1542,11 +1679,18 @@ function pintarAqui(msg){
     html += '<p class="nota">' + pie + '</p><div class="aqui-acc">' + masGoogle('taller') + '</div>';
   } else if (aquiTab === 'rutas') {
     html += enRuta ? rutasDesde(aquiP) : ramal ? rutaLateral(aquiP, ramal) : '';
+    // En el mapa: este pueblo, los vecinos por la Austral y las rutas laterales que salen de aquí
+    const i = PUEBLOS.indexOf(aquiP);
+    pines = [aquiP, PUEBLOS[i - 1], PUEBLOS[i + 1]].filter(x => x && i >= 0).map(x => ({...x, id:'p-' + x.n, cat:'pueblo', sub:x.bencina ? t('Hay bencina') : t('Sin bencina')}));
+    lineas = enRuta ? RAMALES.filter(r => r.desde === aquiP.n) : ramal ? [ramal] : [];
+    if (!pines.length) pines = [{...aquiP, id:'p-' + aquiP.n, cat:'pueblo', sub:''}];
   } else if (aquiTab === 'ver') {
+    pines = ver.filter(l => l.lat != null).map(l => ({...l, cat:'atractivo'}));
     html += ver.length ? '<div class="aqui-ver">' + ver.map(l => '<button type="button" data-visor="' + l.id + '" data-grupo="' + esc(aquiP.n) + '">' + imgCon(l.foto.url, '') + '<span>' + esc(l.n) + '<small>' + t('a {0}', distTxt(kmEntre(o, l))) + '</small></span></button>').join('') + '</div><p class="nota">' + pie + '</p>'
       : '<p class="vacio">' + t('No tenemos fotos de lugares para ver cerca de {0}.', esc(t(aquiP.n))) + '</p>';
   }
   cuerpo.innerHTML = html;
+  pintarPines(pines, lineas);
 }
 
 // Siguiente bencina hacia el norte y hacia el sur, por la ruta
@@ -1593,11 +1737,16 @@ function rutaLateral(p, r){
 
 document.addEventListener('click', e => { if (e.target.closest('[data-aqui]')) abrirAqui(); });
 document.getElementById('aquiCerrar').addEventListener('click', () => aqui.close());
+aqui.addEventListener('close', dejarDeVigilar);
 document.getElementById('aquiGps').addEventListener('click', buscarmeGps);
 aqui.addEventListener('click', e => {
   if (e.target === aqui) { aqui.close(); return; }
   const tb = e.target.closest('[data-tab]'); if (tb) { aquiTab = tb.dataset.tab; aquiSub = ''; pintarAqui(); document.getElementById('aquiCuerpo').scrollTop = 0; return; }
   const sb = e.target.closest('[data-sub]'); if (sb) { aquiSub = sb.dataset.sub; pintarAqui(); return; }
+  const pn = e.target.closest('[data-pin]'); if (pn) { irAPin(pn.dataset.pin); return; }
+  if (e.target.closest('#aquiSeguir')) { siguiendome = !siguiendome; botonSeguir(); if (siguiendome && aquiYo) { mapaAqui.setView([aquiYo.lat, aquiYo.lng], Math.max(mapaAqui.getZoom(), 15)); vigilarGps(); } return; }
+  // Tocar la fila (no un enlace) también la muestra en el mapa
+  const li = e.target.closest('[data-li]'); if (li && !e.target.closest('a, button')) { irAPin(li.dataset.li); return; }
   const pl = e.target.closest('[data-planear]');
   if (pl) { aqui.close(); vDesde.value = pl.dataset.planear; if (vHasta.value === vDesde.value) vHasta.value = vDesde.value === "Villa O'Higgins" ? 'Chaitén' : "Villa O'Higgins"; repintar(); const c = document.querySelector('.casilla[data-pueblo="' + pl.dataset.planear + '"]'); (c || document.getElementById('hoja')).scrollIntoView({block:'center'}); return; }
   // Lo que lleva a otra parte de la página cierra el panel; el visor de fotos se abre encima
@@ -1606,6 +1755,7 @@ aqui.addEventListener('click', e => {
 aquiPueblo.addEventListener('change', () => {
   const p = pueblosAqui().find(x => x.n === aquiPueblo.value); if (!p) return;
   aquiP = p; aquiModo = aquiYo && kmEntre(aquiYo, p) <= 25 ? 'gps' : 'elegido'; aquiSub = '';
+  siguiendome = aquiModo === 'gps' && siguiendome;
   pintarAqui();
 });
 
