@@ -426,6 +426,62 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .r-cuerpo .fu a{color:inherit}
 .r-cuerpo .fu .lnk{font-size:.85rem;color:var(--lago)}
 .ley-ramal{color:#F2C230}
+/* Estoy aquí: lo que hay en el pueblo donde estás */
+.aqui-btn{display:inline-flex;align-items:center;gap:6px;margin-left:auto;background:#F2C230;color:#141D18;border:0;border-radius:3px;padding:6px 12px 6px 9px;font-weight:700;font-stretch:87%;cursor:pointer;white-space:nowrap}
+.aqui-btn svg,.aqui-tapa svg{width:18px;height:18px;flex:none;--pin-in:#F2C230}
+.aqui-btn svg{color:#141D18}
+.aqui-btn:hover{background:#FFD44D}
+.aqui-tapa{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:rgb(16 18 20 / .74);color:var(--blanco);border:2px solid #F2C230;border-radius:3px;padding:10px 16px 10px 12px;text-align:left;cursor:pointer;font-size:1.02rem;animation:sube .9s var(--ease) .7s both}
+.aqui-tapa svg{color:#F2C230;width:22px;height:22px;--pin-in:#141D18}
+.aqui-tapa b{color:#F2C230;margin-right:4px}
+.aqui-tapa:hover{background:rgb(16 18 20 / .9)}
+.aqui{border:0;padding:0;margin:0 0 0 auto;width:min(480px,100vw);height:100dvh;max-height:none;max-width:none;background:var(--papel);color:var(--tinta);box-shadow:-12px 0 40px rgb(0 0 0 / .45);overflow:hidden}
+.aqui[open]{display:grid;grid-template-rows:auto auto auto minmax(0,1fr);animation:entraLado .25s var(--ease)}
+@keyframes entraLado{from{transform:translateX(30px);opacity:0}}
+.aqui::backdrop{background:rgb(8 12 10 / .6)}
+.aqui-enc{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px 10px}
+.aqui-et{margin:0;font:400 1.2rem/1 var(--mano);color:#F2C230}
+.aqui h2{margin:2px 0 0;font-size:1.9rem;font-weight:800;font-stretch:80%;line-height:1}
+.aqui-dato{margin:6px 0 0;font-size:.92rem;color:var(--tinta-2)}
+.aqui-dato .comb{margin-left:4px}
+.aqui-cerrar{background:none;border:2px solid var(--regla);border-radius:3px;padding:4px 10px;font-weight:700;cursor:pointer}
+.aqui-cambiar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:0 18px 12px;font-size:.9rem;color:var(--tinta-2)}
+.aqui-cambiar select{background:var(--sup);color:var(--tinta);border:1px solid var(--regla);border-radius:3px;padding:5px 8px;font:inherit;max-width:220px}
+.aqui-tabs{display:flex;overflow-x:auto;border-top:1px solid var(--regla);border-bottom:2px solid var(--regla);scrollbar-width:none}
+.aqui-tabs button{flex:1 0 auto;background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:10px 12px 8px;cursor:pointer;font-weight:700;font-stretch:87%;color:var(--tinta-2);white-space:nowrap}
+.aqui-tabs button b{display:block;font-size:.78rem;font-weight:600;color:var(--tinta-3)}
+.aqui-tabs button[aria-selected="true"]{color:var(--tinta);border-bottom-color:#F2C230}
+.aqui-cuerpo{overflow-y:auto;padding:4px 18px 28px;overscroll-behavior:contain}
+.aqui-cuerpo .lista-serv{border-left:0;max-height:none;margin:0}
+.aqui-cuerpo .lista-serv li{padding:11px 0}
+.aqui-cuerpo .lejos{float:right;font-size:.85rem;color:var(--tinta-3);font-variant-numeric:tabular-nums;margin-left:8px}
+.aqui-cuerpo h3{font-size:1.05rem;margin:18px 0 6px;font-stretch:87%}
+.aqui-cuerpo .vacio,.aqui-cuerpo .nota{color:var(--tinta-2);font-size:.95rem;margin:14px 0}
+.aqui-sub{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
+.aqui-sub button{background:var(--sup);border:1px solid var(--regla);border-radius:20px;padding:4px 11px;font-size:.88rem;cursor:pointer}
+.aqui-sub button[aria-pressed="true"]{background:#F2C230;border-color:#F2C230;color:#141D18;font-weight:700}
+.aqui-rutas{list-style:none;margin:0;padding:0}
+.aqui-rutas li{padding:10px 0;border-bottom:1px solid var(--regla-suave)}
+.aqui-rutas b{font-stretch:87%}
+.aqui-rutas p{margin:2px 0 0;font-size:.92rem;color:var(--tinta-2)}
+.aqui-rutas .acc{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.92rem;margin-top:4px}
+.aqui-cuerpo .acc{align-items:center}
+.aqui-cuerpo .acc .lnk{font-size:inherit}
+.aqui-ver{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.aqui-ver button{background:none;border:0;padding:0;text-align:left;cursor:pointer}
+.aqui-ver img{width:100%;height:120px;object-fit:cover;display:block;background:var(--sup)}
+.aqui-ver span{display:block;font-weight:700;font-stretch:87%;font-size:.92rem;margin-top:4px;line-height:1.2}
+.aqui-ver small{display:block;font-weight:400;color:var(--tinta-3)}
+.aqui-acc{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.aqui-acc a,.aqui-acc button{display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;border:2px solid var(--regla);border-radius:3px;background:none;font-weight:700;font-stretch:87%;color:var(--tinta);text-decoration:none;cursor:pointer}
+.aqui-acc .fuerte{background:#F2C230;border-color:#F2C230;color:#141D18}
+@media (max-width:820px){
+  .aqui-btn{padding:6px 10px 6px 8px}
+  .aqui{width:100vw;height:88dvh;margin:auto 0 0;border-radius:12px 12px 0 0}
+  .aqui[open]{animation:entraAbajo .25s var(--ease)}
+}
+@keyframes entraAbajo{from{transform:translateY(40px);opacity:0}}
+@media (max-width:420px){.aqui-btn span{display:none}.aqui-btn{padding:7px}.marca{padding-right:10px}}
 .idiomas{display:inline-flex;gap:2px;margin-left:6px}
 .idiomas a{padding:4px 6px;font-size:.85rem;font-weight:700;letter-spacing:.04em;opacity:.7}
 .idiomas a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}
@@ -440,6 +496,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
       <svg viewBox="0 0 40 46" aria-hidden="true"><path d="M3 3H37V20C37 33 28 40 20 44C12 40 3 33 3 20Z" fill="#fff" stroke="#1E2124" stroke-width="2.5"/><text x="20" y="13" text-anchor="middle" font-family="Bricolage Grotesque, Arial, sans-serif" font-weight="800" font-size="7.5" fill="#1E2124" letter-spacing=".6">RUTA</text><text x="20" y="35" text-anchor="middle" font-family="Bricolage Grotesque, Arial, sans-serif" font-weight="800" font-size="23" fill="#1E2124">7</text></svg>
       <span><b>Ruta 7 Moto</b><small>Carretera Austral, Aysén</small></span>
     </a>
+    <button class="aqui-btn" id="aquiBtn" type="button" data-aqui><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-4-3-7-7-7Z" fill="currentColor"/><circle cx="12" cy="9" r="2.6" fill="var(--pin-in, #141D18)"/></svg><span>Estoy aquí</span></button>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
     <nav id="nav">
       <a href="#llegar">Cómo llegar</a>
@@ -462,6 +519,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
         <div>
           <h1 id="titulo">La Carretera Austral en moto, kilómetro a kilómetro</h1>
           <p class="bajada">Dónde cargar, cuánto aguanta tu estanque entre bencinas, dónde dormir y qué no te puedes perder, de Chaitén a Villa O'Higgins.</p>
+          <button class="aqui-tapa" type="button" data-aqui><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-4-3-7-7-7Z" fill="currentColor"/><circle cx="12" cy="9" r="2.6" fill="var(--pin-in, #141D18)"/></svg><span><b>¿Ya estás en la ruta?</b> Ve dónde comer, dormir y cargar donde estás</span></button>
         </div>
         <dl class="ficha-ruta" aria-label="Datos de la ruta">
           <div><dt>Recorrido</dt><dd>Chaitén a Villa O'Higgins</dd></div>
@@ -558,12 +616,26 @@ html #mapa{filter:brightness(.88) saturate(.9)}
   </div>
 </dialog>
 
+<dialog class="aqui" id="aqui" aria-labelledby="aquiTitulo">
+  <div class="aqui-enc">
+    <div>
+      <p class="aqui-et" id="aquiEt">Estás en</p>
+      <h2 id="aquiTitulo">Buscando dónde estás…</h2>
+      <p class="aqui-dato" id="aquiDato"></p>
+    </div>
+    <button class="aqui-cerrar" id="aquiCerrar" type="button">Cerrar</button>
+  </div>
+  <div class="aqui-cambiar"><label for="aquiPueblo">Otro pueblo</label><select id="aquiPueblo"></select><button class="lnk" id="aquiGps" type="button">Usar mi ubicación</button></div>
+  <div class="aqui-tabs" id="aquiTabs" role="tablist" aria-label="Qué buscas"></div>
+  <div class="aqui-cuerpo" id="aquiCuerpo" role="tabpanel" aria-live="polite"></div>
+</dialog>
+
 <section class="sec" id="directorio">
   <div class="wrap">
     <h2>Directorio de la región</h2>
-    <p class="sub" id="dirSub">Bencineras, talleres, alojamientos, balsas y lugares para ver, también fuera de la Ruta 7. Datos de OpenStreetMap.</p>
+    <p class="sub" id="dirSub">Bencineras, talleres, dónde comer, alojamientos, balsas y lugares para ver, también fuera de la Ruta 7. Datos de OpenStreetMap.</p>
     <div class="dir-filtros">
-      <select id="dTipo" aria-label="Tipo"><option value="">Todo</option><option value="bencina">Bencina</option><option value="taller">Talleres y gomerías</option><option value="alojamiento">Alojamiento</option><option value="balsa">Balsas</option><option value="atractivo">Qué ver</option></select>
+      <select id="dTipo" aria-label="Tipo"><option value="">Todo</option><option value="bencina">Bencina</option><option value="taller">Talleres y gomerías</option><option value="comida">Dónde comer</option><option value="alojamiento">Alojamiento</option><option value="balsa">Balsas</option><option value="atractivo">Qué ver</option></select>
       <select id="dLoc" aria-label="Localidad"><option value="">Todas las localidades</option></select>
       <input id="dBuscar" type="search" placeholder="Buscar por nombre" aria-label="Buscar por nombre">
     </div>
@@ -757,8 +829,8 @@ const TRAMOS = [
 ];
 TRAMOS.forEach(t => t.km = kmDe(t.b) - kmDe(t.a));
 
-const NOMBRE = {bencina:t('Bencinera'), taller:t('Taller'), alojamiento:t('Alojamiento'), balsa:t('Balsa'), atractivo:t('Qué ver')};
-const PLURAL = {bencina:[t('bencinera'),t('bencineras')], taller:[t('taller'),t('talleres')], alojamiento:[t('alojamiento'),t('alojamientos')], balsa:[t('balsa'),t('balsas')]};
+const NOMBRE = {bencina:t('Bencinera'), taller:t('Taller'), comida:t('Dónde comer'), alojamiento:t('Alojamiento'), balsa:t('Balsa'), atractivo:t('Qué ver')};
+const PLURAL = {bencina:[t('bencinera'),t('bencineras')], taller:[t('taller'),t('talleres')], comida:[t('lugar para comer'),t('lugares para comer')], alojamiento:[t('alojamiento'),t('alojamientos')], balsa:[t('balsa'),t('balsas')]};
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = t => String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const fmt = n => n.toLocaleString(LANG === 'es' ? 'es-CL' : LANG);
@@ -949,7 +1021,7 @@ function ramalesHtml(p){
       + (r.balsa ? ' · ' + t('con balsa') : '');
     const pueblos = r.pueblos.map(pb => {
       const P = POR_PUEBLO[pb.n] || {serv:{}, cerca:[]};
-      const serv = ['bencina','taller','alojamiento','balsa'].filter(c => (P.serv[c] || []).length && !(c === 'balsa' && r.sinBalsas))
+      const serv = ['bencina','taller','comida','alojamiento','balsa'].filter(c => (P.serv[c] || []).length && !(c === 'balsa' && r.sinBalsas))
         .map(c => { const n = P.serv[c].length; return '<button type="button" aria-expanded="false" data-pueblo="'+esc(pb.n)+'" data-cat="'+c+'"><b>'+n+'</b> '+PLURAL[c][n === 1 ? 0 : 1]+'</button>'; }).join('');
       const tag = pb.bencina ? '<span class="comb si">'+t('Bencina')+'</span>' : pb.balsa ? '<span class="comb no">'+t('Balsa, sin bencina')+'</span>' : '<span class="comb no">'+t('Sin bencina')+'</span>';
       const fotosP = [P.foto, ...P.cerca].filter(Boolean).slice(0, 4);
@@ -1073,7 +1145,7 @@ function pintarHoja(){
     const tipo = p.bencina ? 'bencina' : p.diesel ? 'diesel' : p.balsa ? 'balsa' : 'sin';
     const comb = p.bencina ? '<span class="comb si">'+t('Bencina')+'</span>' : p.diesel ? '<span class="comb diesel">'+t('Solo diésel')+'</span>' : p.balsa ? '<span class="comb no">'+t('Balsa, sin bencina')+'</span>' : '<span class="comb no">'+t('Sin bencina')+'</span>';
     const parcial = anterior ? '+' + Math.abs(p.km - anterior.km) + ' km' : t('inicio');
-    const servHtml = ['bencina','taller','alojamiento','balsa'].filter(c => (datos.serv[c] || []).length)
+    const servHtml = ['bencina','taller','comida','alojamiento','balsa'].filter(c => (datos.serv[c] || []).length)
       .map(c => { const n = datos.serv[c].length; return '<button type="button" aria-expanded="false" data-pueblo="'+esc(p.n)+'" data-cat="'+c+'"><b>'+n+'</b> '+PLURAL[c][n === 1 ? 0 : 1]+'</button>'; }).join('');
     const f = datos.foto;
     // Dos fotos de la zona van junto a la foto del pueblo; el resto, en la fila de "cerca"
@@ -1167,7 +1239,7 @@ document.getElementById('listaHoja').addEventListener('click', e => {
       .addTo(mapa).bindPopup('<b>'+esc(p.n)+'</b><br>km '+p.km+(p.bencina?'<br>'+t('Hay bencina'):p.diesel?'<br>'+t('Solo diésel'):''));
   });
 })();
-const COLOR = {bencina:'#0F7F8C', taller:'#1E2124', alojamiento:'#8A8F94', balsa:'#0F7F8C', atractivo:'#D11A1A'};
+const COLOR = {bencina:'#0F7F8C', taller:'#1E2124', comida:'#B3A27E', alojamiento:'#8A8F94', balsa:'#0F7F8C', atractivo:'#D11A1A'};
 function cargarRamales(){
   if (!mapa) return;
   RAMALES.forEach(r => {
@@ -1221,7 +1293,7 @@ const obs = 'IntersectionObserver' in window ? new IntersectionObserver(entradas
 function observarCasillas(){ if (obs && innerWidth > 1000) { obs.disconnect(); document.querySelectorAll('.casilla').forEach(c => obs.observe(c)); } }
 function verEnMapa(id){
   const fp = Object.values(FOTO_PUEBLO).find(f => f.id === id);
-  // Los alojamientos no van al mapa de entrada (son cientos): su marcador se crea al pedirlo
+  // Los alojamientos y lugares para comer no van al mapa de entrada (son cientos): su marcador se crea al pedirlo
   const l = mapa && !marcadores[id] && TODOS.find(x => x.id === id); if (l) marcador(l);
   const mk = marcadores[id] || (fp && marcasPueblo[fp.n]); if (!mk || !mapa) return;
   if (!mapa.hasLayer(mk)) mk.addTo(mapa);
@@ -1345,6 +1417,189 @@ function irADirectorio(pueblo, cat){
 dBuscar.addEventListener('input', () => { dMostrados = PASO; pintarDir(); });
 document.getElementById('dMas').addEventListener('click', () => { dMostrados += PASO; pintarDir(); });
 
+/* ---------- Estoy aquí: el GPS del celular ubica el pueblo y muestra lo que hay en él ---------- */
+const aqui = document.getElementById('aqui'), aquiPueblo = document.getElementById('aquiPueblo');
+const AQUI_TABS = [{id:'comida', n:'Comer'}, {id:'alojamiento', n:'Dormir'}, {id:'bencina', n:'Bencina y taller'}, {id:'rutas', n:'Rutas'}, {id:'ver', n:'Qué ver'}];
+let aquiYo = null, aquiP = null, aquiModo = '', aquiTab = 'comida', aquiSub = '', marcaYo = null;
+const pueblosAqui = () => PUEBLOS.concat(RAMAL_PUEBLOS.filter(pb => !PUEBLOS.some(p => p.n === pb.n)));
+const distTxt = k => k < 1 ? t('{0} m', fmt(Math.max(10, Math.round(k * 100) * 10))) : t('{0} km', fmt(k < 10 ? Math.round(k * 10) / 10 : Math.round(k)));
+const gmaps = l => 'https://www.google.com/maps/dir/?api=1&amp;destination=' + l.lat + ',' + l.lng;
+// Las distancias se miden desde ti si estás en el pueblo; si no, desde el centro del pueblo
+const aquiOrigen = () => aquiYo && aquiP && kmEntre(aquiYo, aquiP) <= 25 ? aquiYo : aquiP;
+
+function llenarPueblos(){
+  if (aquiPueblo.options.length > 1 && aquiPueblo.dataset.ramales == RAMAL_PUEBLOS.length) return;
+  aquiPueblo.innerHTML = '<option value="">' + t('Elige un pueblo') + '</option>';
+  const g1 = document.createElement('optgroup'); g1.label = 'Carretera Austral';
+  PUEBLOS.forEach(p => g1.append(new Option(p.n, p.n)));
+  aquiPueblo.append(g1);
+  const extra = pueblosAqui().slice(PUEBLOS.length).sort((a, b) => a.n.localeCompare(b.n, 'es'));
+  if (extra.length) { const g2 = document.createElement('optgroup'); g2.label = t('Rutas laterales'); extra.forEach(p => g2.append(new Option(t(p.n), p.n))); aquiPueblo.append(g2); }
+  aquiPueblo.dataset.ramales = RAMAL_PUEBLOS.length;
+  if (aquiP) aquiPueblo.value = aquiP.n;
+}
+
+function abrirAqui(){
+  llenarPueblos();
+  if (!aqui.open) aqui.showModal();
+  buscarmeGps();
+}
+function buscarmeGps(){
+  if (!navigator.geolocation) { aquiError(t('Este navegador no entrega la ubicación.')); return; }
+  aquiModo = 'buscando'; pintarAqui();
+  navigator.geolocation.getCurrentPosition(pos => {
+    aquiYo = {lat:pos.coords.latitude, lng:pos.coords.longitude};
+    let mejor = null, d = Infinity;
+    pueblosAqui().forEach(p => { const k = kmEntre(aquiYo, p); if (k < d) { d = k; mejor = p; } });
+    aquiP = mejor; aquiModo = d <= 25 ? 'gps' : d <= 80 ? 'cerca' : 'lejos';
+    aquiTab = 'comida'; aquiSub = '';
+    marcarYo();
+    pintarAqui();
+  }, err => {
+    aquiError(err.code === 1 ? t('No diste permiso para ver tu ubicación. Puedes activarlo en el navegador o elegir el pueblo aquí arriba.') : t('No se pudo ver tu ubicación (puede ser falta de señal). Elige el pueblo aquí arriba.'));
+  }, {enableHighAccuracy:false, timeout:15000, maximumAge:300000});
+}
+function aquiError(msg){
+  aquiModo = 'error'; aquiYo = null;
+  if (!aquiP) { try { const g = localStorage.getItem('ruta7-aqui'); aquiP = pueblosAqui().find(p => p.n === g) || null; } catch {} }
+  pintarAqui(msg);
+}
+function marcarYo(){
+  if (!mapa || !aquiYo) return;
+  if (marcaYo) marcaYo.setLatLng([aquiYo.lat, aquiYo.lng]);
+  else marcaYo = L.circleMarker([aquiYo.lat, aquiYo.lng], {radius:8, color:'#fff', weight:3, fillColor:'#2F80ED', fillOpacity:1}).addTo(mapa).bindPopup(t('Estás aquí'));
+  marcadores.yo = marcaYo;
+}
+
+function pintarAqui(msg){
+  const et = document.getElementById('aquiEt'), h = document.getElementById('aquiTitulo'), dato = document.getElementById('aquiDato');
+  const tabs = document.getElementById('aquiTabs'), cuerpo = document.getElementById('aquiCuerpo');
+  if (aquiModo === 'buscando') {
+    et.textContent = t('Un momento'); h.textContent = t('Buscando dónde estás…'); dato.textContent = '';
+    tabs.innerHTML = ''; cuerpo.innerHTML = '<p class="nota">' + t('Si el navegador te pregunta, acepta compartir tu ubicación. No la guardamos ni la enviamos a nadie.') + '</p>';
+    return;
+  }
+  if (!aquiP) {
+    et.textContent = ''; h.textContent = t('Elige tu pueblo'); dato.textContent = '';
+    tabs.innerHTML = ''; cuerpo.innerHTML = '<p class="nota">' + (msg || '') + '</p>';
+    return;
+  }
+  try { localStorage.setItem('ruta7-aqui', aquiP.n); } catch {}
+  contarVisita('aqui/' + aquiP.n, 'Estoy aquí: ' + aquiP.n);
+  aquiPueblo.value = aquiP.n;
+  const k = aquiYo ? kmEntre(aquiYo, aquiP) : 0;
+  et.textContent = aquiModo === 'gps' ? t('Estás en') : aquiModo === 'cerca' ? t('Estás cerca de') : aquiModo === 'lejos' ? t('Todavía no estás en la ruta. Lo más cercano es') : t('Viendo');
+  h.textContent = t(aquiP.n);
+  const enRuta = PUEBLOS.includes(aquiP), ramal = !enRuta && RAMALES.find(r => r.pueblos.some(pb => pb.n === aquiP.n));
+  const comb = aquiP.bencina ? '<span class="comb si">' + t('Bencina') + '</span>' : aquiP.diesel ? '<span class="comb diesel">' + t('Solo diésel') + '</span>' : '<span class="comb no">' + t('Sin bencina') + '</span>';
+  dato.innerHTML = (enRuta ? t('Km {0} de la Carretera Austral', aquiP.km) : ramal ? t('Ruta lateral: {0}', esc(t(ramal.n))) : '')
+    + ' ' + comb
+    + (aquiModo === 'cerca' || aquiModo === 'lejos' ? '<br>' + t('A {0} de ti, en línea recta.', distTxt(k)) : '')
+    + (msg ? '<br>' + esc(msg) : '');
+
+  const P = POR_PUEBLO[aquiP.n] || {serv:{}, cerca:[]};
+  const n = c => (P.serv[c] || []).length;
+  const ver = [P.foto, ...P.cerca].filter(Boolean);
+  const rutas = enRuta ? RAMALES.filter(r => r.desde === aquiP.n).length + 2 : 1;
+  const cuenta = {comida:n('comida'), alojamiento:n('alojamiento'), bencina:n('bencina') + n('taller'), rutas, ver:ver.length};
+  tabs.innerHTML = AQUI_TABS.map(tb => '<button type="button" role="tab" data-tab="' + tb.id + '" aria-selected="' + (tb.id === aquiTab) + '">' + t(tb.n) + '<b>' + (CARGADO || tb.id === 'rutas' ? cuenta[tb.id] : '…') + '</b></button>').join('');
+
+  if (!CARGADO && aquiTab !== 'rutas') { cuerpo.innerHTML = '<p class="nota">' + t('Cargando los lugares…') + '</p>'; return; }
+  const o = aquiOrigen(), desdeTi = o === aquiYo;
+  const lista = (items, tope) => {
+    const orden = items.map(s => ({s, k:kmEntre(o, s)})).sort((a, b) => a.k - b.k);
+    return '<ul class="lista-serv">' + orden.slice(0, tope).map(({s, k}) =>
+      '<li><span class="lejos">' + distTxt(k) + '</span><b>' + esc(s.n) + '</b><p>' + esc(t(s.sub) || NOMBRE[s.cat]) + (s.desc ? '. ' + esc(s.desc) : '') + '</p>'
+      + '<div class="acc">' + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + (s.horario ? '<span>' + esc(s.horario) + '</span>' : '')
+      + '<a href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>'
+      + '<button class="lnk" type="button" data-ver="' + s.id + '">' + t('Ver en el mapa') + '</button></div></li>').join('') + '</ul>';
+  };
+  const pie = desdeTi ? t('Distancias en línea recta desde donde estás.') : t('Distancias en línea recta desde el centro de {0}.', esc(t(aquiP.n)));
+  let html = '';
+
+  if (aquiTab === 'comida' || aquiTab === 'alojamiento') {
+    const items = P.serv[aquiTab] || [];
+    const subs = [...new Set(items.map(s => s.sub))];
+    if (subs.length > 1) html += '<div class="aqui-sub">' + ['', ...subs].map(s => '<button type="button" data-sub="' + esc(s) + '" aria-pressed="' + (s === aquiSub) + '">' + (s ? esc(t(s)) : t('Todo')) + '</button>').join('') + '</div>';
+    const filtrados = items.filter(s => !aquiSub || s.sub === aquiSub);
+    const TOPE = 40;
+    html += filtrados.length ? lista(filtrados, TOPE) + '<p class="nota">' + pie + '</p>' : '<p class="vacio">' + (aquiTab === 'comida' ? t('No tenemos lugares para comer registrados en {0}.', esc(t(aquiP.n))) : t('No tenemos alojamientos registrados en {0}.', esc(t(aquiP.n)))) + '</p>';
+    if (filtrados.length > TOPE) html += '<div class="aqui-acc"><a href="#directorio" data-ir-dir="' + esc(aquiP.n) + '" data-cat="' + aquiTab + '">' + t('Ver los {0} en el directorio', filtrados.length) + '</a></div>';
+  } else if (aquiTab === 'bencina') {
+    const pr = aquiP.bencina || aquiP.diesel ? preciosHtml(aquiP) : '';
+    html += '<h3>' + t('Bencina') + '</h3>' + pr + (n('bencina') ? lista(P.serv.bencina, 20) : '<p class="vacio">' + t('No hay bencinera en {0}.', esc(t(aquiP.n))) + '</p>');
+    if (enRuta) html += sigBencina(aquiP);
+    html += '<h3>' + t('Talleres y gomerías') + '</h3>' + (n('taller') ? lista(P.serv.taller, 20) : '<p class="vacio">' + t('No tenemos talleres registrados en {0}.', esc(t(aquiP.n))) + '</p>');
+    html += '<p class="nota">' + pie + '</p>';
+  } else if (aquiTab === 'rutas') {
+    html += enRuta ? rutasDesde(aquiP) : ramal ? rutaLateral(aquiP, ramal) : '';
+  } else if (aquiTab === 'ver') {
+    html += ver.length ? '<div class="aqui-ver">' + ver.map(l => '<button type="button" data-visor="' + l.id + '" data-grupo="' + esc(aquiP.n) + '">' + imgCon(l.foto.url, '') + '<span>' + esc(l.n) + '<small>' + t('a {0}', distTxt(kmEntre(o, l))) + '</small></span></button>').join('') + '</div><p class="nota">' + pie + '</p>'
+      : '<p class="vacio">' + t('No tenemos fotos de lugares para ver cerca de {0}.', esc(t(aquiP.n))) + '</p>';
+  }
+  cuerpo.innerHTML = html;
+}
+
+// Siguiente bencina hacia el norte y hacia el sur, por la ruta
+function sigBencina(p){
+  const i = PUEBLOS.indexOf(p);
+  const norte = PUEBLOS.slice(0, i).reverse().find(x => x.bencina), sur = PUEBLOS.slice(i + 1).find(x => x.bencina);
+  // Si en el camino hay bencina en un desvío (Caleta Tortel, Puerto Cisnes...), también se dice
+  const fila = (x, lado) => {
+    if (!x) return '';
+    const c = cargaEnDesvio(p, x, {sentido: x.km > p.km ? 1 : -1});
+    return '<li><b>' + t('Al {0}: {1}', lado, esc(x.n)) + '</b><p>' + t('{0} km por la ruta', Math.abs(x.km - p.km)) + '</p>'
+      + (c ? '<p>' + t('Antes puedes cargar en {0}, a {1} km contando el desvío.', esc(c.d.n), c.l1) + '</p>' : '') + '</li>';
+  };
+  const html = fila(norte, t('norte')) + fila(sur, t('sur'));
+  return html ? '<h3>' + t('Siguiente bencina') + '</h3><ul class="aqui-rutas">' + html + '</ul>' : '';
+}
+function rutasDesde(p){
+  const i = PUEBLOS.indexOf(p), ant = PUEBLOS[i - 1], sig = PUEBLOS[i + 1];
+  const tramo = (x, lado) => {
+    if (!x) return '<li><b>' + (lado === 'norte' ? t('Aquí empieza la hoja de ruta') : t('Aquí termina la Carretera Austral')) + '</b></li>';
+    const tm = TRAMOS.find(tm => (tm.a === p.n || tm.b === p.n) && (lado === 'norte' ? kmDe(tm.a) < p.km : kmDe(tm.b) > p.km));
+    return '<li><b>' + t('Al {0}: {1}, {2} km', t(lado), esc(x.n), Math.abs(x.km - p.km)) + '</b>'
+      + '<p>' + (x.bencina ? t('Hay bencina') : x.diesel ? t('Solo diésel') : t('Sin bencina')) + (tm ? ' · ' + t('tramo con cerca de {0}% ripio', tm.ripio) : '') + '</p>'
+      + '<div class="acc"><a href="' + gmaps(x) + '" target="_blank" rel="noopener">' + t('Abrir en Google Maps') + '</a><button class="lnk" type="button" data-ir-pueblo="' + esc(x.n) + '">' + t('Ver en la hoja') + '</button></div></li>';
+  };
+  let html = '<h3>' + t('Por la Carretera Austral') + '</h3><ul class="aqui-rutas">' + tramo(ant, 'norte') + tramo(sig, 'sur') + '</ul>';
+  const rs = RAMALES.filter(r => r.desde === p.n);
+  if (rs.length) html += '<h3>' + t('Rutas laterales desde aquí') + '</h3><ul class="aqui-rutas">' + rs.map(r => {
+    const fin = r.pueblos[r.pueblos.length - 1], conB = r.pueblos.filter(pb => pb.bencina).map(pb => t(pb.n));
+    return '<li><b>' + esc(t(r.n)) + '</b><p>' + esc(t(r.ruta)) + ' · ' + r.km + ' km · ' + (r.ripio == null ? t('ripio por confirmar') : r.ripio <= 5 ? t('pavimentada') : t('cerca de {0}% ripio', r.ripio)) + ' · ' + (conB.length ? t('bencina en {0}', esc(conB.join(t(' y ')))) : t('sin bencina')) + '</p>'
+      + '<div class="acc"><a href="' + gmaps(fin) + '" target="_blank" rel="noopener">' + t('Abrir en Google Maps') + '</a><button class="lnk" type="button" data-abrir-ramal="' + r.id + '">' + t('Ver en la hoja') + '</button></div></li>';
+  }).join('') + '</ul>';
+  html += '<div class="aqui-acc"><button type="button" class="fuerte" data-planear="' + esc(p.n) + '">' + t('Planear mi viaje desde aquí') + '</button>'
+    + '<a href="https://www.google.com/maps/search/?api=1&amp;query=' + p.lat + ',' + p.lng + '" target="_blank" rel="noopener">' + t('{0} en Google Maps', esc(p.n)) + '</a></div>';
+  return html;
+}
+function rutaLateral(p, r){
+  const pb = r.pueblos.find(x => x.n === p.n), P0 = PUEBLOS.find(x => x.n === r.desde);
+  return '<h3>' + esc(t(r.n)) + '</h3><ul class="aqui-rutas"><li><b>' + t('Estás a {0} km de {1}, en la Carretera Austral', pb.km, esc(r.desde)) + '</b>'
+    + '<p>' + esc(t(r.ruta)) + ' · ' + (r.ripio == null ? t('ripio por confirmar') : r.ripio <= 5 ? t('pavimentada') : t('cerca de {0}% ripio', r.ripio)) + '</p>'
+    + '<div class="acc">' + (P0 ? '<a href="' + gmaps(P0) + '" target="_blank" rel="noopener">' + t('Volver a {0} en Google Maps', esc(r.desde)) + '</a>' : '') + '<button class="lnk" type="button" data-abrir-ramal="' + r.id + '">' + t('Ver en la hoja') + '</button></div></li></ul>'
+    + '<div class="aqui-acc"><a href="https://www.google.com/maps/search/?api=1&amp;query=' + p.lat + ',' + p.lng + '" target="_blank" rel="noopener">' + t('{0} en Google Maps', esc(t(p.n))) + '</a></div>';
+}
+
+document.addEventListener('click', e => { if (e.target.closest('[data-aqui]')) abrirAqui(); });
+document.getElementById('aquiCerrar').addEventListener('click', () => aqui.close());
+document.getElementById('aquiGps').addEventListener('click', buscarmeGps);
+aqui.addEventListener('click', e => {
+  if (e.target === aqui) { aqui.close(); return; }
+  const tb = e.target.closest('[data-tab]'); if (tb) { aquiTab = tb.dataset.tab; aquiSub = ''; pintarAqui(); document.getElementById('aquiCuerpo').scrollTop = 0; return; }
+  const sb = e.target.closest('[data-sub]'); if (sb) { aquiSub = sb.dataset.sub; pintarAqui(); return; }
+  const pl = e.target.closest('[data-planear]');
+  if (pl) { aqui.close(); vDesde.value = pl.dataset.planear; if (vHasta.value === vDesde.value) vHasta.value = vDesde.value === "Villa O'Higgins" ? 'Chaitén' : "Villa O'Higgins"; repintar(); const c = document.querySelector('.casilla[data-pueblo="' + pl.dataset.planear + '"]'); (c || document.getElementById('hoja')).scrollIntoView({block:'center'}); return; }
+  // Lo que lleva a otra parte de la página cierra el panel; el visor de fotos se abre encima
+  if (e.target.closest('[data-ver], [data-ir-pueblo], [data-ir-dir], [data-abrir-ramal]')) aqui.close();
+});
+aquiPueblo.addEventListener('change', () => {
+  const p = pueblosAqui().find(x => x.n === aquiPueblo.value); if (!p) return;
+  aquiP = p; aquiModo = aquiYo && kmEntre(aquiYo, p) <= 25 ? 'gps' : 'elegido'; aquiSub = '';
+  pintarAqui();
+});
+
 /* ---------- Carga de datos ---------- */
 Promise.all([
   fetch('data/fotos.json', {cache:'no-cache'}).then(r => r.json()).catch(() => ({lugares:[]})),
@@ -1404,15 +1659,16 @@ Promise.all([
 
   TODOS.sort((a, b) => a.n.localeCompare(b.n, 'es'));
   [...new Set(TODOS.map(s => s.loc).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).forEach(l => dLoc.add(new Option(l, l)));
-  document.getElementById('dirSub').textContent = t('{0} lugares de Aysén, también fuera de la Ruta 7: bencineras, talleres, alojamientos, balsas y lugares para ver. Datos de OpenStreetMap.', fmt(TODOS.length)) + (LANG === 'es' ? '' : ' ' + t('Los nombres y descripciones de los lugares están en español.'));
+  document.getElementById('dirSub').textContent = t('{0} lugares de Aysén, también fuera de la Ruta 7: bencineras, talleres, dónde comer, alojamientos, balsas y lugares para ver. Datos de OpenStreetMap.', fmt(TODOS.length)) + (LANG === 'es' ? '' : ' ' + t('Los nombres y descripciones de los lugares están en español.'));
   if (d.generado) document.getElementById('actualizado').textContent = t('Directorio actualizado el {0}.', d.generado.split('-').reverse().join('-'));
-  cargarMapa(TODOS.filter(l => l.cat !== 'alojamiento'));
+  cargarMapa(TODOS.filter(l => l.cat !== 'alojamiento' && l.cat !== 'comida'));
   cargarDesvios(); cargarRamales();
   // La ficha de la portada también cuenta la bencina fuera de la ruta
   { const v = planViaje(), c = v.maxA && cargaEnDesvio(v.maxA, v.maxB, v);
     if (c) document.getElementById('fMax').innerHTML = esc(document.getElementById('fMax').textContent) + '<small>'+t('Baja a {0} km si cargas en {1}', Math.max(c.l1, c.l2), esc(c.d.n))+'</small>'; }
   CARGADO = true;
   pintarHoja(); pintarDir(); pintarGaleria(); pintarFranjas();
+  if (aqui.open) pintarAqui();
 }).catch(err => {
   console.error('[ruta7] datos', err);
   pintarHoja();

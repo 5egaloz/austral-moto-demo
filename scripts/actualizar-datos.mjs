@@ -45,6 +45,7 @@ const PARTES = [
   `nwr["tourism"~"^(hotel|hostel|guest_house|motel|camp_site|chalet|apartment|alpine_hut)$"](poly:"${POLY}");`,
   `nwr["tourism"~"^(viewpoint|attraction|museum)$"]["name"](poly:"${POLY}");nwr["natural"~"^(waterfall|glacier|hot_spring|cave_entrance)$"]["name"](poly:"${POLY}");nwr["waterway"="waterfall"]["name"](poly:"${POLY}");`,
   `nwr["leisure"="nature_reserve"]["name"](poly:"${POLY}");nwr["boundary"~"^(national_park|protected_area)$"]["name"](poly:"${POLY}");nwr["natural"~"^(peak|volcano)$"]["wikidata"](poly:"${POLY}");`,
+  `nwr["amenity"~"^(restaurant|cafe|fast_food|pub|bar|ice_cream)$"]["name"](poly:"${POLY}");nwr["shop"~"^(supermarket|convenience|bakery)$"]["name"](poly:"${POLY}");`,
 ];
 
 const espera = ms => new Promise(r => setTimeout(r, ms));
@@ -113,6 +114,11 @@ function clasificar(t) {
   if (t.shop === 'car_repair' || t.amenity === 'car_repair') return ['taller', 'Taller mecánico'];
   const aloj = { hotel: 'Hotel', hostel: 'Hostal', guest_house: 'Hospedaje', motel: 'Motel', camp_site: 'Camping', chalet: 'Cabañas', apartment: 'Departamento', alpine_hut: 'Refugio' };
   if (aloj[t.tourism]) return ['alojamiento', aloj[t.tourism]];
+  // Después del alojamiento: una hostería con restaurante sigue contando como alojamiento
+  const comida = { restaurant: 'Restaurante', cafe: 'Café', fast_food: 'Comida rápida', pub: 'Bar', bar: 'Bar', ice_cream: 'Heladería' };
+  if (comida[t.amenity]) return ['comida', comida[t.amenity]];
+  const compras = { supermarket: 'Supermercado', convenience: 'Almacén', bakery: 'Panadería' };
+  if (compras[t.shop]) return ['comida', compras[t.shop]];
   if (t.tourism === 'viewpoint') return ['atractivo', 'Mirador'];
   if (t.tourism === 'museum') return ['atractivo', 'Museo'];
   if (t.natural === 'waterfall' || t.waterway === 'waterfall') return ['atractivo', 'Cascada'];
