@@ -339,6 +339,8 @@ en: {
   "Lugares: © colaboradores de <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, con su autor y licencia junto a cada una. <span id=\"actualizado\"></span>": "Places: © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors (ODbL). Photos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, with author and license next to each one. <span id=\"actualizado\"></span>",
 
   // Estoy aquí y dónde comer (2026-11-22)
+  "Ver en Google Maps": "View in Google Maps",
+  "Buscar más en Google Maps": "Find more in Google Maps",
   "Estoy aquí": "I'm here",
   "¿Ya estás en la ruta?": "Already on the road?",
   "Ve dónde comer, dormir y cargar donde estás": "See where to eat, sleep and refuel where you are",
@@ -743,6 +745,8 @@ pt: {
   "Lugares: © colaboradores de <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, con su autor y licencia junto a cada una. <span id=\"actualizado\"></span>": "Lugares: © colaboradores do <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, com autor e licença junto a cada uma. <span id=\"actualizado\"></span>",
 
   // Estoy aquí y dónde comer (2026-11-22)
+  "Ver en Google Maps": "Ver no Google Maps",
+  "Buscar más en Google Maps": "Buscar mais no Google Maps",
   "Estoy aquí": "Estou aqui",
   "¿Ya estás en la ruta?": "Já está na estrada?",
   "Ve dónde comer, dormir y cargar donde estás": "Veja onde comer, dormir e abastecer onde você está",

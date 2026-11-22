@@ -465,7 +465,10 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .aqui-rutas b{font-stretch:87%}
 .aqui-rutas p{margin:2px 0 0;font-size:.92rem;color:var(--tinta-2)}
 .aqui-rutas .acc{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.92rem;margin-top:4px}
-.aqui-cuerpo .acc{align-items:center}
+.aqui-cuerpo .acc{align-items:center;gap:8px 12px}
+.aqui-cuerpo .acc a.gm,.aqui-acc a.gm{display:inline-flex;align-items:center;min-height:36px;padding:5px 11px;border:2px solid var(--regla);border-radius:3px;color:var(--tinta);text-decoration:none;font-weight:700;font-stretch:87%}
+.aqui-cuerpo .acc a.gm:first-child{border-color:#F2C230}
+.aqui-cuerpo .acc a.gm:hover,.aqui-acc a.gm:hover{border-color:var(--tinta)}
 .aqui-cuerpo .acc .lnk{font-size:inherit}
 .aqui-ver{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
 .aqui-ver button{background:none;border:0;padding:0;text-align:left;cursor:pointer}
@@ -835,6 +838,11 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>'
 const norm = t => String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const fmt = n => n.toLocaleString(LANG === 'es' ? 'es-CL' : LANG);
 const wa = txt => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt);
+// Google Maps: "Cómo llegar" navega al punto; la ficha busca el negocio por nombre y pueblo (fotos, opiniones, horario)
+const gmaps = l => 'https://www.google.com/maps/dir/?api=1&amp;destination=' + l.lat + ',' + l.lng + '&amp;travelmode=driving';
+const gmapsFicha = s => 'https://www.google.com/maps/search/?api=1&amp;query=' + encodeURIComponent(s.n + (s.loc ? ', ' + s.loc : '') + ', Aysén, Chile');
+const gmapsLinks = s => '<a class="gm" href="' + gmapsFicha(s) + '" target="_blank" rel="noopener">' + t('Ver en Google Maps') + '</a>'
+  + '<a class="gm" href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>';
 // Copia local de 500 px (scripts/bajar-fotos.mjs); si falta, la de Wikimedia
 const archivoLocal = u => decodeURIComponent(u.split('?')[0].split('/').pop().replace(/^\d+px-/, ''))
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9._-]+/g, '_').slice(-120);
@@ -1218,7 +1226,7 @@ document.getElementById('listaHoja').addEventListener('click', e => {
   caja.innerHTML = '<ul class="lista-serv">' + items.slice(0, TOPE).map(s =>
     '<li><b>'+esc(s.n)+'</b><p>'+esc(t(s.sub) || NOMBRE[s.cat])+(s.desc ? '. '+esc(s.desc) : '')+'</p>'
     + '<div class="acc">'+(s.tel ? '<a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a>' : '')+(s.horario ? '<span>'+esc(s.horario)+'</span>' : '')
-    + '<a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">'+t('Cómo llegar')+'</a>'
+    + gmapsLinks(s)
     + '<button class="lnk" type="button" data-ver="'+s.id+'">'+t('Ver en el mapa')+'</button></div></li>').join('')
     + (items.length > TOPE ? '<li class="mas-dir"><a href="#directorio" data-ir-dir="'+esc(b.dataset.pueblo)+'" data-cat="'+b.dataset.cat+'">'+t('Ver los {0} en el directorio', items.length)+'</a></li>' : '')
     + '</ul>';
@@ -1398,7 +1406,7 @@ function pintarDir(){
     return '<li class="fila">'+fig+'<div><b>'+esc(s.n)+'</b>'+(s.desc && s.cat !== 'atractivo' ? '<div class="t">'+esc(s.desc)+'</div>' : '')+'</div>'
       + '<div class="t">'+esc(t(s.sub) || NOMBRE[s.cat])+'</div>'
       + '<div class="t">'+esc(s.loc || '')+(s.kmLoc > 2 ? ', '+t('a {0} km', s.kmLoc) : '')+(s.tel ? '<br><a href="tel:'+esc(s.tel.replace(/[^+\d]/g,''))+'">'+esc(s.tel)+'</a>' : '')+'</div>'
-      + '<div class="acc"><a href="https://www.google.com/maps/dir/?api=1&amp;destination='+s.lat+','+s.lng+'" target="_blank" rel="noopener">'+t('Cómo llegar')+'</a><button class="lnk" type="button" data-ver="'+s.id+'">'+t('Mapa')+'</button>'
+      + '<div class="acc">'+gmapsLinks(s)+'<button class="lnk" type="button" data-ver="'+s.id+'">'+t('Mapa')+'</button>'
       + (s.foto ? '<button class="lnk" type="button" data-visor="'+s.id+'">'+t('Foto')+'</button>' : '')
       + (AFILIADOS.booking && s.cat === 'alojamiento' ? '<a class="reservar" href="https://www.booking.com/searchresults.html?ss='+encodeURIComponent(s.loc || s.n)+'&amp;aid='+encodeURIComponent(AFILIADOS.booking)+'" target="_blank" rel="noopener sponsored">'+t('Reservar en {0}', esc(s.loc || s.n))+'</a>' : '')+'</div></li>';
   }).join('') || '<li class="cuenta" style="padding:16px 0">'+t('No hay lugares con esos filtros. Prueba con otra localidad o borra la búsqueda.')+'</li>';
@@ -1423,7 +1431,6 @@ const AQUI_TABS = [{id:'comida', n:'Comer'}, {id:'alojamiento', n:'Dormir'}, {id
 let aquiYo = null, aquiP = null, aquiModo = '', aquiTab = 'comida', aquiSub = '', marcaYo = null;
 const pueblosAqui = () => PUEBLOS.concat(RAMAL_PUEBLOS.filter(pb => !PUEBLOS.some(p => p.n === pb.n)));
 const distTxt = k => k < 1 ? t('{0} m', fmt(Math.max(10, Math.round(k * 100) * 10))) : t('{0} km', fmt(k < 10 ? Math.round(k * 10) / 10 : Math.round(k)));
-const gmaps = l => 'https://www.google.com/maps/dir/?api=1&amp;destination=' + l.lat + ',' + l.lng;
 // Las distancias se miden desde ti si estás en el pueblo; si no, desde el centro del pueblo
 const aquiOrigen = () => aquiYo && aquiP && kmEntre(aquiYo, aquiP) <= 25 ? aquiYo : aquiP;
 
@@ -1511,9 +1518,11 @@ function pintarAqui(msg){
     return '<ul class="lista-serv">' + orden.slice(0, tope).map(({s, k}) =>
       '<li><span class="lejos">' + distTxt(k) + '</span><b>' + esc(s.n) + '</b><p>' + esc(t(s.sub) || NOMBRE[s.cat]) + (s.desc ? '. ' + esc(s.desc) : '') + '</p>'
       + '<div class="acc">' + (s.tel ? '<a href="tel:' + esc(s.tel.replace(/[^+\d]/g, '')) + '">' + esc(s.tel) + '</a>' : '') + (s.horario ? '<span>' + esc(s.horario) + '</span>' : '')
-      + '<a href="' + gmaps(s) + '" target="_blank" rel="noopener">' + t('Cómo llegar') + '</a>'
+      + gmapsLinks(s)
       + '<button class="lnk" type="button" data-ver="' + s.id + '">' + t('Ver en el mapa') + '</button></div></li>').join('') + '</ul>';
   };
+  const BUSCA = {comida:'restaurantes', alojamiento:'alojamiento', bencina:'bencinera', taller:'taller mecánico'};
+  const masGoogle = c => '<a class="gm" href="https://www.google.com/maps/search/?api=1&amp;query=' + encodeURIComponent(BUSCA[c] + ' en ' + aquiP.n + ', Aysén, Chile') + '" target="_blank" rel="noopener">' + t('Buscar más en Google Maps') + '</a>';
   const pie = desdeTi ? t('Distancias en línea recta desde donde estás.') : t('Distancias en línea recta desde el centro de {0}.', esc(t(aquiP.n)));
   let html = '';
 
@@ -1523,14 +1532,14 @@ function pintarAqui(msg){
     if (subs.length > 1) html += '<div class="aqui-sub">' + ['', ...subs].map(s => '<button type="button" data-sub="' + esc(s) + '" aria-pressed="' + (s === aquiSub) + '">' + (s ? esc(t(s)) : t('Todo')) + '</button>').join('') + '</div>';
     const filtrados = items.filter(s => !aquiSub || s.sub === aquiSub);
     const TOPE = 40;
-    html += filtrados.length ? lista(filtrados, TOPE) + '<p class="nota">' + pie + '</p>' : '<p class="vacio">' + (aquiTab === 'comida' ? t('No tenemos lugares para comer registrados en {0}.', esc(t(aquiP.n))) : t('No tenemos alojamientos registrados en {0}.', esc(t(aquiP.n)))) + '</p>';
+    html += filtrados.length ? lista(filtrados, TOPE) + '<p class="nota">' + pie + '</p><div class="aqui-acc">' + masGoogle(aquiTab) + '</div>' : '<p class="vacio">' + (aquiTab === 'comida' ? t('No tenemos lugares para comer registrados en {0}.', esc(t(aquiP.n))) : t('No tenemos alojamientos registrados en {0}.', esc(t(aquiP.n)))) + '</p><div class="aqui-acc">' + masGoogle(aquiTab) + '</div>';
     if (filtrados.length > TOPE) html += '<div class="aqui-acc"><a href="#directorio" data-ir-dir="' + esc(aquiP.n) + '" data-cat="' + aquiTab + '">' + t('Ver los {0} en el directorio', filtrados.length) + '</a></div>';
   } else if (aquiTab === 'bencina') {
     const pr = aquiP.bencina || aquiP.diesel ? preciosHtml(aquiP) : '';
     html += '<h3>' + t('Bencina') + '</h3>' + pr + (n('bencina') ? lista(P.serv.bencina, 20) : '<p class="vacio">' + t('No hay bencinera en {0}.', esc(t(aquiP.n))) + '</p>');
     if (enRuta) html += sigBencina(aquiP);
     html += '<h3>' + t('Talleres y gomerías') + '</h3>' + (n('taller') ? lista(P.serv.taller, 20) : '<p class="vacio">' + t('No tenemos talleres registrados en {0}.', esc(t(aquiP.n))) + '</p>');
-    html += '<p class="nota">' + pie + '</p>';
+    html += '<p class="nota">' + pie + '</p><div class="aqui-acc">' + masGoogle('taller') + '</div>';
   } else if (aquiTab === 'rutas') {
     html += enRuta ? rutasDesde(aquiP) : ramal ? rutaLateral(aquiP, ramal) : '';
   } else if (aquiTab === 'ver') {
