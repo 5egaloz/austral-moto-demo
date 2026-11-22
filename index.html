@@ -629,6 +629,16 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 <script>
 // Número de WhatsApp del negocio (falta el real)
 const WHATSAPP = '56953910713';
+// Visitas con GoatCounter (sin cookies). Queda apagado mientras esté vacío: poner el código de la
+// cuenta (el 'xxx' de xxx.goatcounter.com) para que cuente las visitas y cuántas veces se abre cada ficha.
+const GOATCOUNTER = '';
+function contar(ruta, titulo){
+  if (window.goatcounter && goatcounter.count) goatcounter.count({path:ruta, title:titulo, event:true});
+}
+if (GOATCOUNTER) {
+  const sc = document.createElement('script'); sc.async = true; sc.src = 'https://gc.zgo.at/count.js';
+  sc.dataset.goatcounter = 'https://' + GOATCOUNTER + '.goatcounter.com/count'; document.head.append(sc);
+}
 
 // Pueblos sobre la Ruta 7, km por camino desde Chaitén (OSRM sobre OpenStreetMap, scripts/trazar-ruta.mjs).
 // Bencina verificada en OSM y Google Maps (19 y 20-11-2026)
@@ -844,7 +854,7 @@ function desviosHtml(p, v){
 function ramalesHtml(p){
   return RAMALES.filter(r => r.desde === p.n).map(r => {
     const d = r.desvio && DESVIOS.find(x => x.id === r.desvio);
-    const texto = r.texto || (d && d.texto) || '', fotos = (d && d.fotos) || [];
+    const texto = r.texto || (d && d.texto) || '', fotos = r.fotos || (d && d.fotos) || [], g = r.fotos ? r.id : d && d.id;
     const conB = r.pueblos.filter(pb => pb.bencina).map(pb => pb.n);
     const datos = '<b>' + r.km + ' km</b> desde ' + esc(r.desde)
       + (r.ripio == null ? ' · ripio por confirmar' : r.ripio <= 5 ? ' · <b>pavimentada</b>' : ' · cerca de <b>' + r.ripio + '%</b> ripio')
@@ -867,7 +877,7 @@ function ramalesHtml(p){
     return '<details class="ramal" data-ramal="' + r.id + '"><summary><span class="et">Ruta lateral · ' + esc(r.ruta) + '</span>'
       + '<span class="r-n">' + esc(r.n) + '</span><span class="r-datos">' + datos + '</span></summary>'
       + '<div class="r-cuerpo">' + (texto ? '<p>' + esc(texto) + '</p>' : '')
-      + (fotos.length ? '<div class="fotos-local">' + fotos.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
+      + (fotos.length ? '<div class="fotos-local">' + fotos.map((f, i) => '<button type="button" data-visor="d-' + g + '-' + i + '" data-grupo="d-' + g + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
       + '<ol class="r-pueblos">' + cruce + pueblos + '</ol>'
       + '<div class="fu"><span>Fuentes:</span><span>camino y km, OpenStreetMap</span>' + (conB.length ? '<span>bencina, ' + CNE + '</span>' : '')
       + r.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
@@ -1133,8 +1143,9 @@ function pintarFranjas(){
 }
 
 function abrirVisor(id, grupo){
-  const dv = grupo && grupo.startsWith('d-') && DESVIOS.find(d => 'd-' + d.id === grupo);
-  if (dv) { enVisor = dv.fotos.map((f, i) => ({id:'d-' + dv.id + '-' + i, mapa:'d-' + dv.id, n:f.pie, desc:'Dato de local: ' + dv.n, foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
+  // Fotos de un dato de local o de una ruta lateral (los ids no se repiten entre los dos)
+  const dv = grupo && grupo.startsWith('d-') && (DESVIOS.find(d => 'd-' + d.id === grupo) || RAMALES.find(r => r.fotos && 'd-' + r.id === grupo));
+  if (dv) { enVisor = dv.fotos.map((f, i) => ({id:'d-' + dv.id + '-' + i, mapa:(dv.linea ? 'r-' : 'd-') + dv.id, n:f.pie, desc:(dv.linea ? 'Ruta lateral: ' : 'Dato de local: ') + dv.n, foto:f})); iVisor = Math.max(0, enVisor.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   if (grupo === 'galeria') { enVisor = GALERIA; iVisor = Math.max(0, GALERIA.findIndex(a => a.id === id)); mostrarVisor(); if (!visor.open) visor.showModal(); return; }
   const g = grupo && POR_PUEBLO[grupo] ? [POR_PUEBLO[grupo].foto, ...POR_PUEBLO[grupo].cerca].filter(Boolean) : [];
   enVisor = g.some(l => l.id === id) ? g.filter((l, i, arr) => arr.findIndex(x => x.id === l.id) === i) : VER;
@@ -1144,6 +1155,7 @@ function abrirVisor(id, grupo){
 }
 function mostrarVisor(){
   const a = enVisor[iVisor]; if (!a) return;
+  contar('ficha/' + a.id, a.n);
   const img = document.getElementById('vFoto');
   img.classList.add('cargando');
   img.onload = () => img.classList.remove('cargando');

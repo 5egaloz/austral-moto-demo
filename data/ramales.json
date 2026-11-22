@@ -3596,7 +3596,30 @@
    ],
    "ripio": 1,
    "ripioDato": 97,
-   "generado": "2026-11-22"
+   "generado": "2026-11-22",
+   "fotos": [
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Lago_General_Carrera_desde_Puerto_Ib%C3%A1%C3%B1ez.JPG/1280px-Lago_General_Carrera_desde_Puerto_Ib%C3%A1%C3%B1ez.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "El lago General Carrera desde el muelle de Puerto Ibáñez",
+     "autor": "Lin linao",
+     "licencia": "CC BY-SA 3.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Lago_General_Carrera_desde_Puerto_Ib%C3%A1%C3%B1ez.JPG"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Puerto_Ingeniero_Ib%C3%A1%C3%B1ez.jpg/1280px-Puerto_Ingeniero_Ib%C3%A1%C3%B1ez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Puerto Ibáñez visto desde el camino",
+     "autor": "Jorge Morales Piderit",
+     "licencia": "Public domain",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Puerto_Ingeniero_Ib%C3%A1%C3%B1ez.jpg"
+    },
+    {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bodegas_puerto_iba%C3%B1ez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+     "pie": "Las bodegas del puerto",
+     "autor": "Felipe Arbulu",
+     "licencia": "CC BY-SA 3.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Bodegas_puerto_iba%C3%B1ez.jpg"
+    }
+   ]
   },
   {
    "id": "exploradores",
@@ -6092,7 +6115,30 @@
    ],
    "ripio": 85,
    "ripioDato": 98,
-   "generado": "2026-11-22"
+   "generado": "2026-11-22",
+   "fotos": [
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Guanacos_in_Chacabuco_valley_Chilean_Patagonia.jpg/1280px-Guanacos_in_Chacabuco_valley_Chilean_Patagonia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Guanacos en el valle Chacabuco, Parque Nacional Patagonia",
+     "autor": "ZedPlusIxe",
+     "licencia": "CC BY-SA 4.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Guanacos_in_Chacabuco_valley_Chilean_Patagonia.jpg"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/View_from_Chile-Argentina_Border%2C_Paso_Roballos_%286952701190%29.jpg/1280px-View_from_Chile-Argentina_Border%2C_Paso_Roballos_%286952701190%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Vista desde la frontera en Paso Roballos",
+     "autor": "Christoph Strässler from Oberdorf BL, Schweiz",
+     "licencia": "CC BY-SA 2.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:View_from_Chile-Argentina_Border,_Paso_Roballos_(6952701190).jpg"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Flamingos_near_Paso_Roballos_%287098771513%29.jpg/1280px-Flamingos_near_Paso_Roballos_%287098771513%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Flamencos cerca de Paso Roballos",
+     "autor": "Christoph Strässler from Oberdorf BL, Schweiz",
+     "licencia": "CC BY-SA 2.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Flamingos_near_Paso_Roballos_(7098771513).jpg"
+    }
+   ]
   }
  ]
 }

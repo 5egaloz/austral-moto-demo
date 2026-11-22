@@ -6,7 +6,7 @@ import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 
 const raiz = new URL('../', import.meta.url);
 const leer = async f => JSON.parse(await readFile(new URL(f, raiz), 'utf8'));
-const F = await leer('data/fotos.json'), L = await leer('data/lugares.json'), D = await leer('data/desvios.json');
+const F = await leer('data/fotos.json'), L = await leer('data/lugares.json'), D = await leer('data/desvios.json'), RR = await leer('data/ramales.json');
 
 // Mismo nombre que calcula index.html (función archivoLocal)
 export const archivoLocal = u => decodeURIComponent(u.split('?')[0].split('/').pop().replace(/^\d+px-/, ''))
@@ -20,6 +20,7 @@ const urls = new Set([
   ...Object.values(F.pueblos || {}).map(f => f.url),
   ...L.lugares.map(l => l.foto?.url),
   ...D.desvios.flatMap(d => (d.fotos || []).map(f => f.url)),
+  ...RR.ramales.flatMap(r => (r.fotos || []).map(f => f.url)),
 ].filter(Boolean));
 
 await mkdir(new URL('fotos/', raiz), { recursive: true });
