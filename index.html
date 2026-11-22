@@ -404,6 +404,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 .r-pueblo{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--regla)}
 .r-km{font-weight:700;font-stretch:80%;color:#F2C230;font-variant-numeric:tabular-nums;padding-top:3px}
 .r-p h5{margin:0;font-size:1.15rem;font-weight:700}
+.r-cruce .r-p p{margin:2px 0 0;font-size:.92rem;color:var(--tinta-2)}
 .r-p .enc{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
 .r-p .serv-p{margin-top:8px}
 .r-p .cerca{margin-top:10px}
@@ -845,8 +846,8 @@ function ramalesHtml(p){
     const d = r.desvio && DESVIOS.find(x => x.id === r.desvio);
     const texto = r.texto || (d && d.texto) || '', fotos = (d && d.fotos) || [];
     const conB = r.pueblos.filter(pb => pb.bencina).map(pb => pb.n);
-    const datos = '<b>' + r.km + ' km</b>'
-      + (r.ripio != null ? ' · cerca de <b>' + r.ripio + '%</b> ripio' : ' · ripio por confirmar')
+    const datos = '<b>' + r.km + ' km</b> desde ' + esc(r.desde)
+      + (r.ripio == null ? ' · ripio por confirmar' : r.ripio <= 5 ? ' · <b>pavimentada</b>' : ' · cerca de <b>' + r.ripio + '%</b> ripio')
       + (conB.length ? ' · bencina en ' + esc(conB.join(' y ')) : ' · <b>sin bencina</b>')
       + (r.balsa ? ' · con balsa' : '');
     const pueblos = r.pueblos.map(pb => {
@@ -861,11 +862,13 @@ function ramalesHtml(p){
         + (fotosP.length ? '<div class="cerca">' + fotosP.map(l => '<button type="button" data-visor="'+l.id+'" data-grupo="'+esc(pb.n)+'">'+imgCon(l.foto.url, '')+'<span>'+esc(l.n)+'</span></button>').join('') + '</div>' : '')
         + '</div></li>';
     }).join('');
+    // Ramal que comparte un trozo con la Austral: dónde se deja la ruta
+    const cruce = r.cruce && r.cruce.km > 2 ? '<li class="r-pueblo r-cruce"><div class="r-km">km ' + r.cruce.km + '</div><div class="r-p"><h5>Dejas la Austral</h5><p>Sigues ' + (r.km - r.cruce.km) + ' km por la ' + esc(r.ruta.replace(/^Rutas? /, 'ruta ')) + '. Desde aquí cuenta el ripio.</p></div></li>' : '';
     return '<details class="ramal" data-ramal="' + r.id + '"><summary><span class="et">Ruta lateral · ' + esc(r.ruta) + '</span>'
       + '<span class="r-n">' + esc(r.n) + '</span><span class="r-datos">' + datos + '</span></summary>'
       + '<div class="r-cuerpo">' + (texto ? '<p>' + esc(texto) + '</p>' : '')
       + (fotos.length ? '<div class="fotos-local">' + fotos.map((f, i) => '<button type="button" data-visor="d-' + d.id + '-' + i + '" data-grupo="d-' + d.id + '" aria-label="Ver foto: ' + esc(f.pie) + '">' + imgCon(f.url, '') + '</button>').join('') + '</div>' : '')
-      + '<ol class="r-pueblos">' + pueblos + '</ol>'
+      + '<ol class="r-pueblos">' + cruce + pueblos + '</ol>'
       + '<div class="fu"><span>Fuentes:</span><span>camino y km, OpenStreetMap</span>' + (conB.length ? '<span>bencina, ' + CNE + '</span>' : '')
       + r.fuentes.map(x => '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>').join('')
       + '<button class="lnk" type="button" data-ver="r-' + r.id + '">Ver en el mapa</button></div>'

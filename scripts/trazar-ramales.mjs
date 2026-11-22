@@ -11,6 +11,18 @@ const TODO = process.argv.includes('--todo');
 const UA = {'User-Agent': 'Ruta7Moto/1.0 (github.com/5egaloz/austral-moto-demo) trazar-ramales.mjs'};
 const OVERPASS = process.argv.includes('--solo-camino') ? [] : ['https://overpass-api.de/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
   'https://overpass.private.coffee/api/interpreter', 'https://lz4.overpass-api.de/api/interpreter'];
+const AUSTRAL = JSON.parse(await readFile(new URL('../data/ruta.json', import.meta.url), 'utf8')).linea;
+// km de un punto a la línea de la Austral (a cada trazo, no solo a sus vértices: la línea está simplificada)
+function aLaAustral(p){
+  const fx = 111.32 * Math.cos(p[0] * Math.PI / 180), fy = 110.57; let min = Infinity;
+  for (let i = 1; i < AUSTRAL.length; i++) {
+    const [ay, ax] = AUSTRAL[i - 1], [by, bx] = AUSTRAL[i];
+    const x1 = (ax - p[1]) * fx, y1 = (ay - p[0]) * fy, x2 = (bx - p[1]) * fx, y2 = (by - p[0]) * fy;
+    const dx = x2 - x1, dy = y2 - y1, t = Math.max(0, Math.min(1, -(x1 * dx + y1 * dy) / ((dx * dx + dy * dy) || 1)));
+    min = Math.min(min, Math.hypot(x1 + t * dx, y1 + t * dy));
+  }
+  return min;
+}
 const RIPIO = /^(gravel|fine_gravel|unpaved|dirt|ground|pebblestone|compacted|earth|sand|grass|rock)$/;
 const PAV = /^(asphalt|paved|concrete|concrete:plates|paving_stones|chipseal|sett)$/;
 const espera = ms => new Promise(r => setTimeout(r, ms));
@@ -56,25 +68,35 @@ for (const r of R.ramales) {
   // Solo se dibuja desde 'dibujarDesde' (índice de 'puntos' o [lat, lng]) (para no repetir un tramo que ya dibuja otro ramal)
   let ini = 0;
   if (r.dibujarDesde) { let d = Infinity; pts.forEach((p, i) => { const k = km(p, Array.isArray(r.dibujarDesde) ? r.dibujarDesde : r.puntos[r.dibujarDesde]); if (k < d) { d = k; ini = i; } }); }
+  // 'recortar': el ramal sale de un pueblo pero comparte un trozo con la Austral; se dibuja desde
+  // donde se separa de ella (a más de 300 m), y ese punto queda como el cruce
+  if (r.recortar) {
+    ini = pts.findIndex(p => aLaAustral(p) > 0.3);
+    ini = Math.max(0, ini - 1);
+    r.cruce = {lat:+pts[ini][0].toFixed(5), lng:+pts[ini][1].toFixed(5), km:Math.round(kmPunto[ini])};
+  }
   r.linea = simplificar(pts.slice(ini), 0.0004).map(([a, b]) => [+a.toFixed(5), +b.toFixed(5)]);
   await writeFile(archivo, JSON.stringify(R, null, 1));   // camino y km quedan guardados aunque Overpass falle
   // Ripio: superficie de la vía OSM más cercana a cada trozo del camino
   const las = pts.map(p => p[0]), los = pts.map(p => p[1]);
   const w = await overpass(`[out:json][timeout:90];way[highway~"^(trunk|primary|secondary|tertiary|unclassified)$"](${Math.min(...las) - .01},${Math.min(...los) - .01},${Math.max(...las) + .01},${Math.max(...los) + .01});out tags geom;`);
   if (!w) { console.log(r.id, r.km, 'km; sin ripio (Overpass no respondió)'); await writeFile(archivo, JSON.stringify(R, null, 1)); continue; }
-  const vias = w.elements.map(e => ({s: e.tags.surface || '', g: e.geometry.map(n => [n.lat, n.lon])}));
+  const refs = {};
+  const vias = w.elements.map(e => ({ref: e.tags.ref || '', s: e.tags.surface || '', g: e.geometry.map(n => [n.lat, n.lon])}));
   let rip = 0, pav = 0, sin = 0;
   for (let i = 1; i < pts.length; i++) {
     const m = [(pts[i - 1][0] + pts[i][0]) / 2, (pts[i - 1][1] + pts[i][1]) / 2], largo = km(pts[i - 1], pts[i]);
-    let s = '', d = 0.3;
-    vias.forEach(v => v.g.forEach(n => { const k = km(m, n); if (k < d) { d = k; s = v.s; } }));
+    if (r.recortar && i <= ini) continue;   // el trozo compartido con la Austral no cuenta
+    let s = '', d = 0.3, ref = '';
+    vias.forEach(v => v.g.forEach(n => { const k = km(m, n); if (k < d) { d = k; s = v.s; ref = v.ref; } }));
+    refs[ref || 'sin ref'] = (refs[ref || 'sin ref'] || 0) + largo;
     if (RIPIO.test(s)) rip += largo; else if (PAV.test(s)) pav += largo; else sin += largo;
   }
   // Si menos de 2/3 del camino tiene dato de superficie, no se publica un porcentaje
   r.ripio = (rip + pav) / (rip + pav + sin) >= 2 / 3 ? Math.round(100 * rip / (rip + pav)) : null;
   r.ripioDato = Math.round(100 * (rip + pav) / (rip + pav + sin));
   r.generado = new Date().toISOString().slice(0, 10);
-  console.log(r.id, r.km, 'km, ripio', r.ripio, '% (con dato:', r.ripioDato, '%)', r.balsa ? 'con balsa' : '', r.pueblos.map(p => p.n + ' km ' + p.km).join(', '));
+  console.log(r.id, r.km, 'km, ripio', r.ripio, '% (con dato:', r.ripioDato, '%)', r.balsa ? 'con balsa' : '', r.pueblos.map(p => p.n + ' km ' + p.km).join(', '), r.cruce ? '| cruce km ' + r.cruce.km : '', '| rutas OSM:', Object.entries(refs).map(([k, v]) => k + ' ' + Math.round(v)).join(', '));
   await writeFile(archivo, JSON.stringify(R, null, 1));
   await espera(3000);
 }
