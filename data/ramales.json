@@ -2783,16 +2783,476 @@
    "generado": "2026-11-22"
   },
   {
-   "id": "aysen",
+   "id": "ortega",
    "zona": "centro",
-   "n": "Coyhaique a Puerto Aysén y Chacabuco",
-   "ruta": "Ruta 240",
-   "desde": "Coyhaique",
+   "n": "Ruta 7 original por Villa Ortega",
+   "ruta": "Ruta 7 (trazado original)",
+   "desde": "Villa Mañihuales",
+   "hasta": "Coyhaique",
    "recortar": true,
    "puntos": [
     [
+     -45.172,
+     -72.149
+    ],
+    [
+     -45.372,
+     -71.9927
+    ],
+    [
      -45.571,
      -72.068
+    ]
+   ],
+   "pueblos": [
+    {
+     "n": "Villa Ortega",
+     "lat": -45.372,
+     "lng": -71.9927,
+     "km": 42
+    }
+   ],
+   "texto": "El trazado original de la Ruta 7 entre Mañihuales y Coyhaique pasa por Villa Ortega. Es 14 km más corto que el pavimento por el lado de Aysén, pero tiene casi 40 km de ripio, así que casi todos se van por el pavimento. Si te gusta el ripio, es la alternativa. No hay bencina informada a la CNE en Villa Ortega: carga en Mañihuales o en Coyhaique.",
+   "fotos": [
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Villa_Ortega_%28123838359%29.jpeg/1280px-Villa_Ortega_%28123838359%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Camino por Villa Ortega",
+     "autor": "Rosario Nieto Chadwick",
+     "licencia": "CC BY 3.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Villa_Ortega_(123838359).jpeg"
+    }
+   ],
+   "fuentes": [
+    {
+     "t": "OpenStreetMap: Villa Ortega",
+     "u": "https://www.openstreetmap.org/search?query=Villa%20Ortega%2C%20Coyhaique"
+    }
+   ],
+   "km": 74,
+   "balsa": false,
+   "cruce": {
+    "lat": -45.25982,
+    "lng": -72.24337,
+    "km": 13
+   },
+   "vuelta": {
+    "lat": -45.5102,
+    "lng": -72.1057,
+    "km": 64
+   },
+   "linea": [
+    [
+     -45.25982,
+     -72.24337
+    ],
+    [
+     -45.26127,
+     -72.24248
+    ],
+    [
+     -45.26317,
+     -72.23882
+    ],
+    [
+     -45.26355,
+     -72.23667
+    ],
+    [
+     -45.26535,
+     -72.23399
+    ],
+    [
+     -45.26656,
+     -72.23235
+    ],
+    [
+     -45.26733,
+     -72.23234
+    ],
+    [
+     -45.26927,
+     -72.22899
+    ],
+    [
+     -45.27224,
+     -72.22568
+    ],
+    [
+     -45.27572,
+     -72.22429
+    ],
+    [
+     -45.28198,
+     -72.22581
+    ],
+    [
+     -45.28369,
+     -72.22516
+    ],
+    [
+     -45.28366,
+     -72.22418
+    ],
+    [
+     -45.28118,
+     -72.22266
+    ],
+    [
+     -45.27928,
+     -72.2189
+    ],
+    [
+     -45.28238,
+     -72.19773
+    ],
+    [
+     -45.28119,
+     -72.18917
+    ],
+    [
+     -45.28323,
+     -72.17851
+    ],
+    [
+     -45.2854,
+     -72.15913
+    ],
+    [
+     -45.2851,
+     -72.15408
+    ],
+    [
+     -45.28196,
+     -72.14021
+    ],
+    [
+     -45.2835,
+     -72.1347
+    ],
+    [
+     -45.28485,
+     -72.13261
+    ],
+    [
+     -45.28379,
+     -72.12917
+    ],
+    [
+     -45.28392,
+     -72.12749
+    ],
+    [
+     -45.28683,
+     -72.12284
+    ],
+    [
+     -45.28977,
+     -72.11263
+    ],
+    [
+     -45.29034,
+     -72.11202
+    ],
+    [
+     -45.29294,
+     -72.11198
+    ],
+    [
+     -45.29398,
+     -72.11014
+    ],
+    [
+     -45.29195,
+     -72.10621
+    ],
+    [
+     -45.29189,
+     -72.10197
+    ],
+    [
+     -45.29317,
+     -72.09928
+    ],
+    [
+     -45.29591,
+     -72.09634
+    ],
+    [
+     -45.29632,
+     -72.09487
+    ],
+    [
+     -45.29853,
+     -72.09384
+    ],
+    [
+     -45.30154,
+     -72.08631
+    ],
+    [
+     -45.30695,
+     -72.08178
+    ],
+    [
+     -45.30953,
+     -72.07848
+    ],
+    [
+     -45.3103,
+     -72.07485
+    ],
+    [
+     -45.31189,
+     -72.07427
+    ],
+    [
+     -45.31344,
+     -72.06856
+    ],
+    [
+     -45.3159,
+     -72.06498
+    ],
+    [
+     -45.31617,
+     -72.06128
+    ],
+    [
+     -45.31958,
+     -72.05401
+    ],
+    [
+     -45.32009,
+     -72.04879
+    ],
+    [
+     -45.33624,
+     -72.01982
+    ],
+    [
+     -45.33566,
+     -72.00972
+    ],
+    [
+     -45.33846,
+     -72.01073
+    ],
+    [
+     -45.34141,
+     -72.00938
+    ],
+    [
+     -45.34731,
+     -72.00316
+    ],
+    [
+     -45.35107,
+     -71.99562
+    ],
+    [
+     -45.36167,
+     -71.99611
+    ],
+    [
+     -45.36654,
+     -71.99805
+    ],
+    [
+     -45.3722,
+     -71.99616
+    ],
+    [
+     -45.37164,
+     -71.99222
+    ],
+    [
+     -45.37203,
+     -71.99157
+    ],
+    [
+     -45.37362,
+     -71.99567
+    ],
+    [
+     -45.37535,
+     -71.99534
+    ],
+    [
+     -45.37874,
+     -71.99708
+    ],
+    [
+     -45.38617,
+     -71.99734
+    ],
+    [
+     -45.39558,
+     -72.00262
+    ],
+    [
+     -45.39927,
+     -72.00571
+    ],
+    [
+     -45.41519,
+     -72.0075
+    ],
+    [
+     -45.4181,
+     -72.0067
+    ],
+    [
+     -45.4254,
+     -72.00822
+    ],
+    [
+     -45.43039,
+     -72.01131
+    ],
+    [
+     -45.43388,
+     -72.01208
+    ],
+    [
+     -45.43895,
+     -72.00856
+    ],
+    [
+     -45.44165,
+     -72.00801
+    ],
+    [
+     -45.4485,
+     -72.00232
+    ],
+    [
+     -45.45578,
+     -72.00054
+    ],
+    [
+     -45.45755,
+     -71.99762
+    ],
+    [
+     -45.46169,
+     -71.99446
+    ],
+    [
+     -45.46847,
+     -71.99617
+    ],
+    [
+     -45.47031,
+     -71.99609
+    ],
+    [
+     -45.47206,
+     -71.99704
+    ],
+    [
+     -45.47528,
+     -72.00004
+    ],
+    [
+     -45.47764,
+     -72.00439
+    ],
+    [
+     -45.47779,
+     -72.00777
+    ],
+    [
+     -45.47677,
+     -72.01178
+    ],
+    [
+     -45.47728,
+     -72.01787
+    ],
+    [
+     -45.48102,
+     -72.02744
+    ],
+    [
+     -45.48207,
+     -72.03673
+    ],
+    [
+     -45.485,
+     -72.04632
+    ],
+    [
+     -45.48935,
+     -72.05073
+    ],
+    [
+     -45.4944,
+     -72.05921
+    ],
+    [
+     -45.49519,
+     -72.06157
+    ],
+    [
+     -45.49779,
+     -72.06397
+    ],
+    [
+     -45.49848,
+     -72.0674
+    ],
+    [
+     -45.49979,
+     -72.07004
+    ],
+    [
+     -45.50167,
+     -72.07243
+    ],
+    [
+     -45.50395,
+     -72.07398
+    ],
+    [
+     -45.5069,
+     -72.08083
+    ],
+    [
+     -45.50874,
+     -72.08289
+    ],
+    [
+     -45.50952,
+     -72.08647
+    ],
+    [
+     -45.50899,
+     -72.08928
+    ],
+    [
+     -45.51087,
+     -72.09703
+    ],
+    [
+     -45.5102,
+     -72.1057
+    ]
+   ],
+   "ripio": 76,
+   "ripioDato": 100,
+   "generado": "2026-11-22"
+  },
+  {
+   "id": "aysen",
+   "zona": "centro",
+   "n": "Mañihuales a Puerto Aysén y Chacabuco",
+   "ruta": "Rutas X-500 y 240",
+   "desde": "Villa Mañihuales",
+   "recortar": true,
+   "puntos": [
+    [
+     -45.172,
+     -72.149
     ],
     [
      -45.4068,
@@ -2809,18 +3269,18 @@
      "lat": -45.4068,
      "lng": -72.6977,
      "bencina": true,
-     "km": 65
+     "km": 60
     },
     {
      "n": "Puerto Chacabuco",
      "lat": -45.4628,
      "lng": -72.8182,
      "bencina": true,
-     "km": 81
+     "km": 75
     }
    ],
    "desvio": "aysen",
-   "texto": "Puerto Aysén es la segunda ciudad de la región, a orillas del río Aysén. Ahí cruzas el Puente Presidente Ibáñez, de 210 metros, el puente colgante más largo de Chile y Monumento Nacional. Unos 15 km más allá está Puerto Chacabuco, el puerto principal de Aysén, al fondo del fiordo. Hay bencina en los dos.",
+   "texto": "Entre Mañihuales y Coyhaique la ruta pavimentada (X-500 y 240) pasa a 14 km de Puerto Aysén, la segunda ciudad de la región, a orillas del río Aysén. Ahí cruzas el Puente Presidente Ibáñez, de 210 metros, el puente colgante más largo de Chile y Monumento Nacional. Unos 15 km más allá está Puerto Chacabuco, el puerto principal de Aysén, al fondo del fiordo. Hay bencina en los dos.",
    "fuentes": [
     {
      "t": "Wikipedia: Puerto Aysén",
@@ -2835,313 +3295,67 @@
      "u": "https://es.wikipedia.org/wiki/Puente_Presidente_Ib%C3%A1%C3%B1ez"
     }
    ],
-   "km": 81,
    "balsa": false,
+   "ripioDato": 93,
+   "generado": "2026-11-22",
+   "fotos": [
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Puente_Presidente_Ib%C3%A1%C3%B1ez.jpg/1280px-Puente_Presidente_Ib%C3%A1%C3%B1ez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Puente Presidente Ibáñez, Puerto Aysén",
+     "autor": "Davidlohr Bueso from Santiago, Chile",
+     "licencia": "CC BY 2.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Puente_Presidente_Ib%C3%A1%C3%B1ez.jpg"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Puente_Presidente_Ib%C3%A1%C3%B1ez_y_monta%C3%B1as_-_Puerto_Ays%C3%A9n.JPG/1280px-Puente_Presidente_Ib%C3%A1%C3%B1ez_y_monta%C3%B1as_-_Puerto_Ays%C3%A9n.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "El puente y el río Aysén",
+     "autor": "Lin linao",
+     "licencia": "CC BY-SA 3.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Puente_Presidente_Ib%C3%A1%C3%B1ez_y_monta%C3%B1as_-_Puerto_Ays%C3%A9n.JPG"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/R%C3%ADo_Ays%C3%A9n_desde_el_puente.JPG/1280px-R%C3%ADo_Ays%C3%A9n_desde_el_puente.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "El río Aysén desde el Puente Presidente Ibáñez",
+     "autor": "Lin linao",
+     "licencia": "CC BY-SA 3.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Ays%C3%A9n_desde_el_puente.JPG"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/.00_4624_Puerto_Ays%C3%A9n_-_Chile.jpg/1280px-.00_4624_Puerto_Ays%C3%A9n_-_Chile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Puerto Aysén",
+     "autor": "W. Bulach",
+     "licencia": "CC BY-SA 4.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:.00_4624_Puerto_Ays%C3%A9n_-_Chile.jpg"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/.00_3210_Puerto_Chacabuco_-_Chile.jpg/1280px-.00_3210_Puerto_Chacabuco_-_Chile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Puerto Chacabuco, al fondo del fiordo de Aysén",
+     "autor": "W. Bulach",
+     "licencia": "CC BY-SA 4.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:.00_3210_Puerto_Chacabuco_-_Chile.jpg"
+    },
+    {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Calle_en_Puerto_Ays%C3%A9n.JPG/1280px-Calle_en_Puerto_Ays%C3%A9n.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "pie": "Una calle de Puerto Aysén",
+     "autor": "Lin linao",
+     "licencia": "CC BY-SA 3.0",
+     "fuente": "https://commons.wikimedia.org/wiki/File:Calle_en_Puerto_Ays%C3%A9n.JPG"
+    }
+   ],
+   "km": 75,
    "cruce": {
-    "lat": -45.50798,
-    "lng": -72.10889,
-    "km": 10
+    "lat": -45.40021,
+    "lng": -72.4954,
+    "km": 41
    },
    "linea": [
     [
-     -45.50798,
-     -72.10889
+     -45.40021,
+     -72.4954
     ],
     [
-     -45.50632,
-     -72.10965
-    ],
-    [
-     -45.50508,
-     -72.11159
-    ],
-    [
-     -45.50406,
-     -72.11766
-    ],
-    [
-     -45.50123,
-     -72.12453
-    ],
-    [
-     -45.50126,
-     -72.13112
-    ],
-    [
-     -45.4993,
-     -72.13519
-    ],
-    [
-     -45.5001,
-     -72.13801
-    ],
-    [
-     -45.50001,
-     -72.14022
-    ],
-    [
-     -45.49874,
-     -72.14069
-    ],
-    [
-     -45.49772,
-     -72.14502
-    ],
-    [
-     -45.498,
-     -72.15012
-    ],
-    [
-     -45.50112,
-     -72.15479
-    ],
-    [
-     -45.50154,
-     -72.15697
-    ],
-    [
-     -45.49882,
-     -72.17401
-    ],
-    [
-     -45.49863,
-     -72.18086
-    ],
-    [
-     -45.49621,
-     -72.19221
-    ],
-    [
-     -45.49388,
-     -72.19654
-    ],
-    [
-     -45.49322,
-     -72.20642
-    ],
-    [
-     -45.49185,
-     -72.21103
-    ],
-    [
-     -45.49318,
-     -72.21949
-    ],
-    [
-     -45.49588,
-     -72.22431
-    ],
-    [
-     -45.49583,
-     -72.2278
-    ],
-    [
-     -45.49016,
-     -72.24072
-    ],
-    [
-     -45.48956,
-     -72.24343
-    ],
-    [
-     -45.48985,
-     -72.249
-    ],
-    [
-     -45.48818,
-     -72.25339
-    ],
-    [
-     -45.4839,
-     -72.25964
-    ],
-    [
-     -45.48043,
-     -72.26027
-    ],
-    [
-     -45.47967,
-     -72.26093
-    ],
-    [
-     -45.48024,
-     -72.26324
-    ],
-    [
-     -45.47941,
-     -72.26777
-    ],
-    [
-     -45.48097,
-     -72.27442
-    ],
-    [
-     -45.47975,
-     -72.27994
-    ],
-    [
-     -45.4769,
-     -72.28837
-    ],
-    [
-     -45.47329,
-     -72.29309
-    ],
-    [
-     -45.47223,
-     -72.2963
-    ],
-    [
-     -45.47069,
-     -72.29794
-    ],
-    [
-     -45.46975,
-     -72.30469
-    ],
-    [
-     -45.46728,
-     -72.30819
-    ],
-    [
-     -45.46262,
-     -72.31994
-    ],
-    [
-     -45.46055,
-     -72.32934
-    ],
-    [
-     -45.45865,
-     -72.33317
-    ],
-    [
-     -45.45847,
-     -72.33987
-    ],
-    [
-     -45.45962,
-     -72.34282
-    ],
-    [
-     -45.45883,
-     -72.34582
-    ],
-    [
-     -45.45911,
-     -72.35309
-    ],
-    [
-     -45.45845,
-     -72.35727
-    ],
-    [
-     -45.4595,
-     -72.36505
-    ],
-    [
-     -45.4582,
-     -72.37199
-    ],
-    [
-     -45.45805,
-     -72.37873
-    ],
-    [
-     -45.45558,
-     -72.38308
-    ],
-    [
-     -45.45172,
-     -72.38595
-    ],
-    [
-     -45.44927,
-     -72.38909
-    ],
-    [
-     -45.44403,
-     -72.39314
-    ],
-    [
-     -45.44007,
-     -72.39721
-    ],
-    [
-     -45.43466,
-     -72.4
-    ],
-    [
-     -45.42999,
-     -72.40494
-    ],
-    [
-     -45.42959,
-     -72.40928
-    ],
-    [
-     -45.4252,
-     -72.41545
-    ],
-    [
-     -45.42014,
-     -72.42106
-    ],
-    [
-     -45.41968,
-     -72.42402
-    ],
-    [
-     -45.41692,
-     -72.42607
-    ],
-    [
-     -45.41573,
-     -72.42898
-    ],
-    [
-     -45.41419,
-     -72.43742
-    ],
-    [
-     -45.4153,
-     -72.4449
-    ],
-    [
-     -45.41472,
-     -72.44686
-    ],
-    [
-     -45.41216,
-     -72.45076
-    ],
-    [
-     -45.41173,
-     -72.45541
-    ],
-    [
-     -45.41067,
-     -72.45758
-    ],
-    [
-     -45.40939,
-     -72.46435
-    ],
-    [
-     -45.39605,
-     -72.47867
-    ],
-    [
-     -45.39576,
-     -72.48528
-    ],
-    [
-     -45.39942,
-     -72.49396
-    ],
-    [
-     -45.41024,
-     -72.51434
+     -45.41047,
+     -72.51499
     ],
     [
      -45.41057,
@@ -3152,36 +3366,28 @@
      -72.52718
     ],
     [
-     -45.40458,
-     -72.53873
+     -45.40446,
+     -72.53892
     ],
     [
-     -45.3881,
-     -72.55772
-    ],
-    [
-     -45.38701,
-     -72.55964
+     -45.38708,
+     -72.55945
     ],
     [
      -45.38556,
      -72.58279
     ],
     [
-     -45.38234,
-     -72.59574
+     -45.38229,
+     -72.59587
     ],
     [
-     -45.37902,
-     -72.60128
+     -45.3787,
+     -72.6021
     ],
     [
-     -45.37805,
-     -72.60471
-    ],
-    [
-     -45.3781,
-     -72.60932
+     -45.37796,
+     -72.60883
     ],
     [
      -45.38336,
@@ -3304,9 +3510,7 @@
      -72.81797
     ]
    ],
-   "ripio": 3,
-   "ripioDato": 97,
-   "generado": "2026-11-22"
+   "ripio": 5
   },
   {
    "id": "ibanez",

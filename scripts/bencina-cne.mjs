@@ -31,6 +31,8 @@ const estaciones = todas
   .map(e => ({...e, comb: e.comb.filter(c => Date.now() - new Date(c.fecha) < 90 * 864e5)}))
   .filter(e => e.comb.length);
 
+// Si la CNE responde vacío o a medias, no pisar el archivo bueno: la página se quedaría sin precios
+if (estaciones.length < 15) { console.error('La CNE devolvió solo', estaciones.length, 'bencineras: no se guarda nada.'); process.exit(1); }
 await writeFile(new URL('../data/bencina.json', import.meta.url),
   JSON.stringify({fuente:'CNE, Bencina en Línea (bencinaenlinea.cl)', generado:new Date().toISOString().slice(0, 10), estaciones}, null, 1));
 console.log('Bencineras:', estaciones.length, '| con gasolina:', estaciones.filter(e => e.comb.some(c => c.t !== 'Diésel')).length);

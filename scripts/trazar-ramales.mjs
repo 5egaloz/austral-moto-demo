@@ -66,7 +66,7 @@ for (const r of R.ramales) {
   const kmPunto = pts.map((p, i) => (acc += i ? km(pts[i - 1], p) : 0));
   r.pueblos.forEach(pb => { let mejor = 0, d = Infinity; pts.forEach((p, i) => { const k = km(p, [pb.lat, pb.lng]); if (k < d) { d = k; mejor = i; } }); pb.km = Math.round(kmPunto[mejor]); });
   // Solo se dibuja desde 'dibujarDesde' (índice de 'puntos' o [lat, lng]) (para no repetir un tramo que ya dibuja otro ramal)
-  let ini = 0;
+  let ini = 0, fin = pts.length - 1;
   if (r.dibujarDesde) { let d = Infinity; pts.forEach((p, i) => { const k = km(p, Array.isArray(r.dibujarDesde) ? r.dibujarDesde : r.puntos[r.dibujarDesde]); if (k < d) { d = k; ini = i; } }); }
   // 'recortar': el ramal sale de un pueblo pero comparte un trozo con la Austral; se dibuja desde
   // donde se separa de ella (a más de 300 m), y ese punto queda como el cruce
@@ -74,8 +74,14 @@ for (const r of R.ramales) {
     ini = pts.findIndex(p => aLaAustral(p) > 0.3);
     ini = Math.max(0, ini - 1);
     r.cruce = {lat:+pts[ini][0].toFixed(5), lng:+pts[ini][1].toFixed(5), km:Math.round(kmPunto[ini])};
+    // Ramal que vuelve a la Austral ('hasta' es un pueblo de la ruta): tampoco se dibuja el trozo final compartido
+    if (r.hasta) {
+      for (fin = pts.length - 1; fin > ini && aLaAustral(pts[fin]) <= 0.3; fin--);
+      fin = Math.min(pts.length - 1, fin + 1);
+      r.vuelta = {lat:+pts[fin][0].toFixed(5), lng:+pts[fin][1].toFixed(5), km:Math.round(kmPunto[fin])};
+    }
   }
-  r.linea = simplificar(pts.slice(ini), 0.0004).map(([a, b]) => [+a.toFixed(5), +b.toFixed(5)]);
+  r.linea = simplificar(pts.slice(ini, fin + 1), 0.0004).map(([a, b]) => [+a.toFixed(5), +b.toFixed(5)]);
   await writeFile(archivo, JSON.stringify(R, null, 1));   // camino y km quedan guardados aunque Overpass falle
   // Ripio: superficie de la vía OSM más cercana a cada trozo del camino
   const las = pts.map(p => p[0]), los = pts.map(p => p[1]);
@@ -86,7 +92,7 @@ for (const r of R.ramales) {
   let rip = 0, pav = 0, sin = 0;
   for (let i = 1; i < pts.length; i++) {
     const m = [(pts[i - 1][0] + pts[i][0]) / 2, (pts[i - 1][1] + pts[i][1]) / 2], largo = km(pts[i - 1], pts[i]);
-    if (r.recortar && i <= ini) continue;   // el trozo compartido con la Austral no cuenta
+    if (r.recortar && (i <= ini || i > fin)) continue;   // el trozo compartido con la Austral no cuenta
     let s = '', d = 0.3, ref = '';
     vias.forEach(v => v.g.forEach(n => { const k = km(m, n); if (k < d) { d = k; s = v.s; ref = v.ref; } }));
     refs[ref || 'sin ref'] = (refs[ref || 'sin ref'] || 0) + largo;

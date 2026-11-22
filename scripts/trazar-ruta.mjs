@@ -7,7 +7,12 @@ import { readFile, writeFile } from 'node:fs/promises';
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const PUEBLOS = Function('return ' + html.match(/const PUEBLOS = (\[[\s\S]*?\]);/)[1])();
 
-const coords = PUEBLOS.map(p => p.lng + ',' + p.lat).join(';');
+// Pasos obligados entre dos pueblos, para seguir el camino que de verdad usa la gente y no el más corto.
+// Mañihuales → Coyhaique: OSRM va por Villa Ortega (Ruta 7 original, la mitad en ripio); casi todos
+// van por el pavimento: X-500 hasta la Ruta 240, por el lado de Puerto Aysén. Ortega queda como ruta lateral.
+const VIA = {'Villa Mañihuales': [-45.3989, -72.4929]};
+const pts = PUEBLOS.flatMap(p => VIA[p.n] ? [{p}, {via:VIA[p.n]}] : [{p}]);
+const coords = pts.map(x => x.p ? x.p.lng + ',' + x.p.lat : x.via[1] + ',' + x.via[0]).join(';');
 const r = await fetch('https://router.project-osrm.org/route/v1/driving/' + coords + '?overview=full&geometries=geojson');
 const j = await r.json();
 if (j.code !== 'Ok') throw new Error('OSRM: ' + j.code + ' ' + (j.message || ''));
@@ -29,7 +34,7 @@ const linea = simplificar(j.routes[0].geometry.coordinates, 0.0004).map(([lng, l
 
 let acc = 0;
 const km = { [PUEBLOS[0].n]: 0 };
-j.routes[0].legs.forEach((l, i) => { acc += l.distance / 1000; km[PUEBLOS[i + 1].n] = Math.round(acc); });
+j.routes[0].legs.forEach((l, i) => { acc += l.distance / 1000; if (pts[i + 1].p) km[pts[i + 1].p.n] = Math.round(acc); });
 
 await writeFile(new URL('../data/ruta.json', import.meta.url), JSON.stringify({
   generado: new Date().toISOString().slice(0, 10),
