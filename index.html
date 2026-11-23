@@ -151,7 +151,17 @@ button{font:inherit;color:inherit}
 .mapa-col{position:sticky;top:calc(var(--cab-h) + var(--viaje-h,80px) + 16px)}
 #mapa{height:calc(100vh - var(--cab-h) - var(--viaje-h,80px) - 64px);min-height:320px;border:2px solid var(--tinta);background:var(--regla-suave)}
 .mapa-col .credito{margin-top:6px}
-@media (max-width:1000px){.mapa-col{position:static;order:-1}#mapa{height:300px}}
+.mapa-ocultar{display:none}
+/* Celular y tablet: el mapa queda pegado arriba mientras bajas por la hoja */
+@media (max-width:1000px){
+  .mapa-col{order:-1;z-index:1000;isolation:isolate;background:var(--papel);margin:0 -16px;padding:6px 16px 8px;border-bottom:2px solid var(--tinta);top:var(--cab-h)}
+  #mapa{height:clamp(170px,30vh,260px);min-height:0}
+  .mapa-col .credito{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:4px;font-size:.82rem}
+  .mapa-ocultar{display:inline-flex;align-items:center;min-height:32px;flex:none;background:none;border:2px solid var(--regla);border-radius:3px;padding:2px 10px;font:700 .85rem var(--f);font-stretch:87%;color:var(--tinta);cursor:pointer}
+  .mapa-col.chico #mapa{height:0;border-width:0}
+  .mapa-col.chico .credito .txt{visibility:hidden}
+}
+@media (min-width:821px) and (max-width:1000px){.mapa-col{top:calc(var(--cab-h) + var(--viaje-h,80px))}}
 .hoja-nota{color:var(--tinta-2);font-size:.95rem;margin:0 0 14px}
 .hoja{list-style:none;margin:0;padding:0;border-top:2px solid var(--tinta)}
 .casilla,.tramo,.dia{display:grid;grid-template-columns:92px 30px minmax(0,1fr) 230px;grid-template-areas:"km eje cuerpo foto";column-gap:16px}
@@ -633,7 +643,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
     </div>
     <aside class="mapa-col">
       <div id="mapa" role="region" aria-label="Mapa de la ruta"></div>
-      <p class="credito">El mapa sigue la casilla que estás leyendo. <span class="ley-ramal">En amarillo, las rutas laterales.</span></p>
+      <p class="credito"><span class="txt">El mapa sigue la casilla que estás leyendo. <span class="ley-ramal">En amarillo, las rutas laterales.</span></span><button class="mapa-ocultar" id="mapaOcultar" type="button" aria-controls="mapa" aria-expanded="true">Ocultar mapa</button></p>
     </aside>
   </div>
 </section>
@@ -1377,8 +1387,16 @@ const obs = 'IntersectionObserver' in window ? new IntersectionObserver(entradas
     Object.entries(marcasPueblo).forEach(([n, m]) => m.setStyle({color: n === p.n ? '#D11A1A' : '#1E2124'}));
     mapa.flyTo([p.lat, p.lng], 9, {duration: quieto ? 0 : .8});
   });
-}, {rootMargin:'-45% 0px -50% 0px'}) : null;
-function observarCasillas(){ if (obs && innerWidth > 1000) { obs.disconnect(); document.querySelectorAll('.casilla').forEach(c => obs.observe(c)); } }
+// En computador el mapa va al costado: cuenta la casilla del medio de la pantalla.
+// En celular el mapa va pegado arriba: cuenta la casilla que asoma justo debajo del mapa.
+}, {rootMargin: innerWidth > 1000 ? '-45% 0px -50% 0px' : '-48% 0px -40% 0px'}) : null;
+function observarCasillas(){ if (obs) { obs.disconnect(); document.querySelectorAll('.casilla').forEach(c => obs.observe(c)); } }
+document.getElementById('mapaOcultar').addEventListener('click', e => {
+  const col = document.querySelector('.mapa-col'), chico = col.classList.toggle('chico');
+  e.currentTarget.textContent = t(chico ? 'Mostrar mapa' : 'Ocultar mapa');
+  e.currentTarget.setAttribute('aria-expanded', !chico);
+  if (!chico && mapa) setTimeout(() => mapa.invalidateSize(), 50);
+});
 function verEnMapa(id){
   const fp = Object.values(FOTO_PUEBLO).find(f => f.id === id);
   // Los alojamientos y lugares para comer no van al mapa de entrada (son cientos): su marcador se crea al pedirlo
