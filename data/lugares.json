@@ -151,6 +151,21 @@
    "n": "Puerto Yungay",
    "lat": -47.962,
    "lng": -73.383
+  },
+  {
+   "n": "Villa Ortega",
+   "lat": -45.372,
+   "lng": -71.9927
+  },
+  {
+   "n": "Villa Ñirehuao",
+   "lat": -45.2689,
+   "lng": -71.7181
+  },
+  {
+   "n": "Villa La Tapera",
+   "lat": -44.6478,
+   "lng": -71.672
   }
  ],
  "lugares": [
@@ -6618,8 +6633,8 @@
    "n": "Camping Los Cisnes",
    "lat": -45.29193,
    "lng": -72.10645,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 14
+   "loc": "Villa Ortega",
+   "kmLoc": 13
   },
   {
    "id": "n4750928122",
@@ -6628,8 +6643,8 @@
    "n": "Camping los Alerces",
    "lat": -45.29166,
    "lng": -72.10202,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 14
+   "loc": "Villa Ortega",
+   "kmLoc": 12
   },
   {
    "id": "n13515745893",
@@ -6638,8 +6653,8 @@
    "n": "Donde Alicia",
    "lat": -45.37157,
    "lng": -71.99169,
-   "loc": "Coyhaique",
-   "kmLoc": 23,
+   "loc": "Villa Ortega",
+   "kmLoc": 0,
    "tel": "+569 9670 1039"
   },
   {
@@ -6659,8 +6674,8 @@
    "n": "camping Laguna del toro",
    "lat": -44.839,
    "lng": -71.69358,
-   "loc": "Villa Amengual",
-   "kmLoc": 42
+   "loc": "Villa La Tapera",
+   "kmLoc": 21
   },
   {
    "id": "n1963890156",
@@ -6669,8 +6684,8 @@
    "n": "Huente Co",
    "lat": -44.85746,
    "lng": -71.66886,
-   "loc": "Villa Amengual",
-   "kmLoc": 44
+   "loc": "Villa La Tapera",
+   "kmLoc": 23
   },
   {
    "id": "n10935415663",
@@ -12035,8 +12050,8 @@
    "n": "Mirador Valle de la Luna",
    "lat": -45.2782,
    "lng": -71.72772,
-   "loc": "Aldea Beleiro",
-   "kmLoc": 34
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 1
   },
   {
    "id": "n8377256017",
@@ -12045,8 +12060,8 @@
    "n": "falso satarai",
    "lat": -44.83279,
    "lng": -71.77766,
-   "loc": "Villa Amengual",
-   "kmLoc": 35
+   "loc": "Villa La Tapera",
+   "kmLoc": 22
   },
   {
    "id": "n8602223074",
@@ -13149,8 +13164,8 @@
    "n": "Museo Los Colonos de Nuestra Tierra",
    "lat": -45.37246,
    "lng": -71.99297,
-   "loc": "Coyhaique",
-   "kmLoc": 23,
+   "loc": "Villa Ortega",
+   "kmLoc": 0,
    "horario": "Mo-Fr 09:00-17:00"
   },
   {
@@ -13160,8 +13175,8 @@
    "n": "Museo Valle de la Luna",
    "lat": -45.26958,
    "lng": -71.7174,
-   "loc": "Aldea Beleiro",
-   "kmLoc": 35,
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 0,
    "horario": "Mo-Fr 08:00-17:00"
   },
   {
@@ -13171,8 +13186,8 @@
    "n": "Museo Estancia Ñirehuao",
    "lat": -45.27128,
    "lng": -71.70676,
-   "loc": "Aldea Beleiro",
-   "kmLoc": 34,
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 1,
    "horario": "Mo-Fr 09:00-16:00"
   },
   {
@@ -13812,7 +13827,7 @@
    "n": "Cerro Pérez",
    "lat": -46.79483,
    "lng": -74.64176,
-   "loc": "Caleta Tortel",
+   "loc": "Puerto Bertrand",
    "kmLoc": 140
   },
   {
@@ -14398,8 +14413,8 @@
    "n": "Cerro Cono Fontana",
    "lat": -45.02497,
    "lng": -71.43794,
-   "loc": "Villa Mañihuales",
-   "kmLoc": 58
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 35
   },
   {
    "id": "n4434947269",
@@ -14408,8 +14423,8 @@
    "n": "Cerro La Buitrera",
    "lat": -45.0578,
    "lng": -71.35824,
-   "loc": "Aldea Beleiro",
-   "kmLoc": 57
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 37
   },
   {
    "id": "n2368722067",
@@ -14418,8 +14433,8 @@
    "n": "Cerro Dedo",
    "lat": -44.80934,
    "lng": -71.8568,
-   "loc": "Villa Amengual",
-   "kmLoc": 29
+   "loc": "Villa La Tapera",
+   "kmLoc": 23
   },
   {
    "id": "n4434446994",
@@ -14791,8 +14806,8 @@
    "n": "Bien Nacional Protegido Cerro Rosado",
    "lat": -45.37313,
    "lng": -72.14855,
-   "loc": "Coyhaique",
-   "kmLoc": 23
+   "loc": "Villa Ortega",
+   "kmLoc": 12
   },
   {
    "id": "w1563343404",
@@ -14840,8 +14855,8 @@
    "n": "Reserva Nacional Trapananda",
    "lat": -45.3477,
    "lng": -71.7965,
-   "loc": "Coyhaique",
-   "kmLoc": 33
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 11
   },
   {
    "id": "w1211720108",
@@ -14850,8 +14865,8 @@
    "n": "Parque Kaikén",
    "lat": -44.66058,
    "lng": -71.89131,
-   "loc": "Villa Amengual",
-   "kmLoc": 27,
+   "loc": "Villa La Tapera",
+   "kmLoc": 17,
    "tel": "+56992996475",
    "web": "https://www.somosnativos.cl/parque-escuela-kaiken",
    "desc": "3414 hectáreas protegidas de bosques de lengas y lagunas ubicado a 180 km. al norte de Coyhaique en la comuna de Lago Verde"
@@ -15213,8 +15228,8 @@
    "n": "Reserva Nacional Lago Carlota",
    "lat": -44.61883,
    "lng": -71.56597,
-   "loc": "Lago Verde",
-   "kmLoc": 48,
+   "loc": "Villa La Tapera",
+   "kmLoc": 9,
    "desc": "18060 hectáreas protegidas insertas en su totalidad en la región del bosque andino patagónico y, dentro de la subregión de las cordilleras patagónicas, con representación de la formación vegetacional denominada bosque ca",
    "wiki": "es:Reserva nacional Lago Carlota"
   },
@@ -20389,8 +20404,8 @@
    "n": "Ruta 7",
    "lat": -45.37124,
    "lng": -71.99517,
-   "loc": "Coyhaique",
-   "kmLoc": 23
+   "loc": "Villa Ortega",
+   "kmLoc": 0
   },
   {
    "id": "n13515658190",
@@ -20399,8 +20414,8 @@
    "n": "Los Baguales",
    "lat": -45.37329,
    "lng": -71.99412,
-   "loc": "Coyhaique",
-   "kmLoc": 23
+   "loc": "Villa Ortega",
+   "kmLoc": 0
   },
   {
    "id": "n13515771411",
@@ -20409,8 +20424,8 @@
    "n": "La Kintrala",
    "lat": -45.37155,
    "lng": -71.99518,
-   "loc": "Coyhaique",
-   "kmLoc": 23
+   "loc": "Villa Ortega",
+   "kmLoc": 0
   },
   {
    "id": "n8296660118",
@@ -21359,7 +21374,7 @@
    "n": "Mamá lita",
    "lat": -43.36077,
    "lng": -72.06536,
-   "loc": "Futaleufú",
+   "loc": "Villa Santa Lucía",
    "kmLoc": 25
   },
   {
@@ -22382,8 +22397,8 @@
    "n": "Amasandería Pan Austral",
    "lat": -45.37199,
    "lng": -71.9959,
-   "loc": "Coyhaique",
-   "kmLoc": 23
+   "loc": "Villa Ortega",
+   "kmLoc": 0
   },
   {
    "id": "w1270968251",
@@ -22392,8 +22407,8 @@
    "n": "Los 3 hermanos",
    "lat": -45.26874,
    "lng": -71.71488,
-   "loc": "Aldea Beleiro",
-   "kmLoc": 35
+   "loc": "Villa Ñirehuao",
+   "kmLoc": 0
   },
   {
    "id": "w323331414",

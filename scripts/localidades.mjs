@@ -1,6 +1,6 @@
 // Pueblos de la Ruta 7 que OpenStreetMap no marca como city/town/village.
 // Sin ellos, los negocios de Villa Santa Lucía quedaban en "Futaleufú", los de Amengual en
-// "Puerto Cisnes" y los de Bertrand en "Puerto Guadal". actualizar-datos.mjs los suma a la lista.
+// "Puerto Cisnes", los de Bertrand en "Puerto Guadal" y los de Ñirehuao en "Aldea Beleiro" (Argentina). actualizar-datos.mjs los suma a la lista.
 // Corrido solo, vuelve a calcular la localidad de data/lugares.json sin bajar nada:
 //   node scripts/localidades.mjs
 import { readFile, writeFile } from 'node:fs/promises';
@@ -11,6 +11,9 @@ export const PUEBLOS_EXTRA = [
   { n: 'Villa Amengual', lat: -44.746, lng: -72.208, peso: 1 },
   { n: 'Puerto Bertrand', lat: -46.995, lng: -72.823, peso: 1 },
   { n: 'Puerto Yungay', lat: -47.962, lng: -73.383, peso: 1 },
+  { n: 'Villa Ortega', lat: -45.372, lng: -71.9927, peso: 1 },
+  { n: 'Villa Ñirehuao', lat: -45.2689, lng: -71.7181, peso: 1 },
+  { n: 'Villa La Tapera', lat: -44.6478, lng: -71.672, peso: 1 },
 ];
 
 const km = (a, b) => {
