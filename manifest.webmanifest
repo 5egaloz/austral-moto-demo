@@ -1,0 +1,24 @@
+{
+ "name": "Ruta 7 Moto: la Carretera Austral en moto",
+ "short_name": "Ruta 7 Moto",
+ "description": "Dónde cargar bencina, comer, dormir y arreglar la moto en la Carretera Austral, kilómetro a kilómetro de Chaitén a Villa O'Higgins. Con GPS: te dice qué hay en el pueblo donde estás.",
+ "lang": "es",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#141D18",
+ "theme_color": "#0B6B3A",
+ "icons": [
+  {
+   "src": "compartir/icono-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "compartir/icono-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

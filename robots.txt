@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /revisiones/
+
+Sitemap: https://5egaloz.github.io/ruta7moto/sitemap.xml

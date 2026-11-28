@@ -6,6 +6,29 @@
 <title>Ruta 7 Moto: la Carretera Austral en moto</title>
 <meta name="description" content="Hoja de ruta de la Carretera Austral en moto: dónde cargar bencina, cuánto rinde tu estanque en cada tramo, talleres, alojamiento y qué ver, kilómetro a kilómetro.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'%3E%3Cpath d='M3 3H37V20C37 33 28 40 20 44C12 40 3 33 3 20Z' fill='%23fff' stroke='%231E2124' stroke-width='3'/%3E%3Ctext x='20' y='33' font-family='Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%231E2124'%3E7%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://5egaloz.github.io/ruta7moto/">
+<meta name="theme-color" content="#0B6B3A">
+<link rel="apple-touch-icon" href="compartir/icono-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<!-- Vista previa al compartir el link (WhatsApp, Facebook, Instagram, X) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ruta 7 Moto">
+<meta property="og:url" content="https://5egaloz.github.io/ruta7moto/">
+<meta property="og:title" content="Ruta 7 Moto: la Carretera Austral en moto, kilómetro a kilómetro">
+<meta property="og:description" content="Dónde cargar bencina, comer, dormir y arreglar la moto en la Carretera Austral, kilómetro a kilómetro de Chaitén a Villa O'Higgins. Con GPS: te dice qué hay en el pueblo donde estás.">
+<meta property="og:image" content="https://5egaloz.github.io/ruta7moto/compartir/tarjeta.jpg">
+<meta property="og:image:secure_url" content="https://5egaloz.github.io/ruta7moto/compartir/tarjeta.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Carretera Austral con la cordillera nevada, y el título Ruta 7 Moto: la Carretera Austral en moto, kilómetro a kilómetro">
+<meta property="og:locale" content="es_CL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ruta 7 Moto: la Carretera Austral en moto">
+<meta name="twitter:description" content="Dónde cargar bencina, comer, dormir y arreglar la moto en la Carretera Austral, kilómetro a kilómetro de Chaitén a Villa O'Higgins. Con GPS: te dice qué hay en el pueblo donde estás.">
+<meta name="twitter:image" content="https://5egaloz.github.io/ruta7moto/compartir/tarjeta.jpg">
 <link rel="alternate" hreflang="es" href="https://5egaloz.github.io/ruta7moto/?lang=es">
 <link rel="alternate" hreflang="en" href="https://5egaloz.github.io/ruta7moto/?lang=en">
 <link rel="alternate" hreflang="pt" href="https://5egaloz.github.io/ruta7moto/?lang=pt">
@@ -73,12 +96,15 @@ button{font:inherit;color:inherit}
 .cab nav a{color:var(--tinta);text-decoration:none;font-weight:600;font-stretch:87%;white-space:nowrap}
 .cab nav a:hover{text-decoration:underline;text-underline-offset:4px}
 .menu-btn{display:none;background:none;border:2px solid var(--tinta);padding:4px 12px;border-radius:3px;font-weight:700}
+/* El menú completo no cabe con "Estoy aquí" y "Compartir" bajo ~1280 px: pasa al botón Menú */
+@media (max-width:1280px){
+  .menu-btn{display:block}
+  .cab nav{display:none;position:absolute;top:var(--cab-h);left:0;right:0;background:var(--papel);border-bottom:2px solid var(--tinta);flex-direction:column;align-items:flex-start;padding:16px;gap:16px}
+  .cab nav.abierto{display:flex}
+}
 @media (max-width:820px){
   .marca small{display:none}
   .marca b{font-size:1.1rem}
-  .menu-btn{display:block}
-  .cab nav{display:none;position:absolute;top:var(--cab-h);left:0;right:0;background:var(--papel);border-bottom:2px solid var(--tinta);flex-direction:column;padding:16px;gap:16px}
-  .cab nav.abierto{display:flex}
 }
 
 /* Tapa: la foto de la ruta a pantalla completa, con los datos encima */
@@ -537,6 +563,20 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 }
 @keyframes entraAbajo{from{transform:translateY(40px);opacity:0}}
 @media (max-width:420px){.aqui-btn span{display:none}.aqui-btn{padding:7px}.marca{padding-right:10px}}
+/* Compartir */
+.compartir-nav{background:none;border:2px solid var(--tinta);border-radius:3px;padding:3px 10px;font-weight:700;font-stretch:87%;cursor:pointer;white-space:nowrap}
+.compartir-sec{background:#0F2A24}
+.compartir-in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px 48px;align-items:center}
+.compartir-in h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;font-stretch:80%;line-height:1}
+.compartir-in p{margin:10px 0 0;color:var(--tinta-2);max-width:52ch}
+.compartir-in .mano-et{margin:0 0 4px;font:400 1.4rem/1 var(--mano);color:#F2C230}
+.compartir-acc{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn-compartir{background:#F2C230;color:#141D18;border:0;border-radius:3px;padding:12px 22px;font-weight:800;font-stretch:87%;font-size:1.1rem;cursor:pointer}
+.btn-compartir:hover{background:#FFD44D}
+.compartir-acc .op{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:2px solid var(--regla);border-radius:3px;background:none;color:var(--tinta);font-weight:700;font-stretch:87%;text-decoration:none;cursor:pointer}
+.compartir-acc .op:hover{border-color:var(--tinta)}
+.copiado{flex-basis:100%;font-size:.9rem;color:#7FC892;min-height:1.2em}
+@media (max-width:860px){.compartir-in{grid-template-columns:minmax(0,1fr)}}
 .idiomas{display:inline-flex;gap:2px;margin-left:6px}
 .idiomas a{padding:4px 6px;font-size:.85rem;font-weight:700;letter-spacing:.04em;opacity:.7}
 .idiomas a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}
@@ -560,6 +600,7 @@ html #mapa{filter:brightness(.88) saturate(.9)}
       <a href="#directorio">Directorio</a>
       <a href="#antes">Antes de salir</a>
       <a href="#contacto">Contacto</a>
+      <button class="compartir-nav" type="button" data-compartir>Compartir</button>
       <span class="idiomas"><a href="?lang=es" hreflang="es" lang="es" data-lang="es">ES</a><a href="?lang=en" hreflang="en" lang="en" data-lang="en">EN</a><a href="?lang=pt" hreflang="pt" lang="pt" data-lang="pt">PT</a></span>
     </nav>
   </div>
@@ -746,6 +787,23 @@ html #mapa{filter:brightness(.88) saturate(.9)}
 </section>
 
 <figure class="franja" data-foto="c-chacabuco" data-donde="Cerca de Cochrane"></figure>
+
+<section class="sec compartir-sec" id="compartir">
+  <div class="wrap compartir-in">
+    <div>
+      <p class="mano-et">¿Vas con amigos?</p>
+      <h2>Pásale esta hoja de ruta a tu grupo</h2>
+      <p>Sirve para planear desde la casa y, ya en la ruta, para ver dónde cargar, comer y dormir en el pueblo donde estás.</p>
+    </div>
+    <div class="compartir-acc">
+      <button class="btn-compartir" type="button" data-compartir>Compartir</button>
+      <a class="op" id="compWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="op" id="compFb" href="#" target="_blank" rel="noopener">Facebook</a>
+      <button class="op" type="button" id="compCopiar">Copiar el link</button>
+      <span class="copiado" id="compOk" aria-live="polite"></span>
+    </div>
+  </div>
+</section>
 
 <section class="sec" id="contacto">
   <div class="wrap">
@@ -1942,10 +2000,31 @@ btnGuia.addEventListener('click', () => contarVisita('guia', 'Guía offline'));
 if (GUIA.precio) { const gp = document.getElementById('guiaPrecio'); gp.textContent = GUIA.precio; gp.hidden = false; }
 document.getElementById('waTour').href = wa(t('Hola, me interesan los tours guiados por la Carretera Austral. Avísenme cuando estén listos.'));
 
+/* ---------- Compartir: el menú del celular (WhatsApp, Instagram...) o, si no hay, enlaces directos ---------- */
+const URL_PAGINA = 'https://5egaloz.github.io/ruta7moto/' + (LANG === 'es' ? '' : '?lang=' + LANG);
+const TXT_COMPARTIR = t('La Carretera Austral en moto, kilómetro a kilómetro: dónde cargar bencina, comer y dormir, con GPS.');
+document.getElementById('compWa').href = 'https://wa.me/?text=' + encodeURIComponent(TXT_COMPARTIR + ' ' + URL_PAGINA);
+document.getElementById('compFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(URL_PAGINA);
+async function copiarLink(){
+  const ok = document.getElementById('compOk');
+  try { await navigator.clipboard.writeText(URL_PAGINA); ok.textContent = t('Link copiado. Pégalo en tu grupo.'); }
+  catch { ok.textContent = URL_PAGINA; }
+  contarVisita('compartir/copiar', 'Compartir: copiar');
+}
+document.getElementById('compCopiar').addEventListener('click', copiarLink);
+['compWa', 'compFb'].forEach(id => document.getElementById(id).addEventListener('click', () => contarVisita('compartir/' + id, 'Compartir: ' + id)));
+document.addEventListener('click', async e => {
+  if (!e.target.closest('[data-compartir]')) return;
+  contarVisita('compartir/boton', 'Compartir');
+  if (navigator.share) { try { await navigator.share({title:'Ruta 7 Moto', text:TXT_COMPARTIR, url:URL_PAGINA}); } catch {} return; }
+  document.getElementById('compartir').scrollIntoView({block:'center'});
+  copiarLink();
+});
+
 /* ---------- Menú móvil ---------- */
 const mb = document.getElementById('menuBtn'), nav = document.getElementById('nav');
 mb.addEventListener('click', () => { const a = nav.classList.toggle('abierto'); mb.setAttribute('aria-expanded', a); });
-nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('abierto'); mb.setAttribute('aria-expanded', false); } });
+nav.addEventListener('click', e => { if (e.target.tagName === 'A' || e.target.closest('[data-compartir]')) { nav.classList.remove('abierto'); mb.setAttribute('aria-expanded', false); } });
 </script>
 </body>
 </html>

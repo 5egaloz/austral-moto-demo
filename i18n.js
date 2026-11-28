@@ -347,6 +347,13 @@ en: {
   "Lugares: © colaboradores de <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, con su autor y licencia junto a cada una. <span id=\"actualizado\"></span>": "Places: © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors (ODbL). Photos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, with author and license next to each one. <span id=\"actualizado\"></span>",
 
   // Estoy aquí y dónde comer (2026-11-22)
+  "Compartir": "Share",
+  "¿Vas con amigos?": "Riding with friends?",
+  "Pásale esta hoja de ruta a tu grupo": "Send this roadbook to your group",
+  "Sirve para planear desde la casa y, ya en la ruta, para ver dónde cargar, comer y dormir en el pueblo donde estás.": "Use it to plan from home and, once on the road, to see where to refuel, eat and sleep in the town you're in.",
+  "Copiar el link": "Copy the link",
+  "Link copiado. Pégalo en tu grupo.": "Link copied. Paste it in your group.",
+  "La Carretera Austral en moto, kilómetro a kilómetro: dónde cargar bencina, comer y dormir, con GPS.": "The Carretera Austral by motorcycle, kilometer by kilometer: where to refuel, eat and sleep, with GPS.",
   "Acepta tarjeta": "Takes cards",
   "Sin precio todavía": "No price yet",
   "En Google Maps puede salir el rango de precios.": "Google Maps may show the price range.",
@@ -826,6 +833,13 @@ pt: {
   "Lugares: © colaboradores de <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, con su autor y licencia junto a cada una. <span id=\"actualizado\"></span>": "Lugares: © colaboradores do <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> (ODbL). Fotos: <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, com autor e licença junto a cada uma. <span id=\"actualizado\"></span>",
 
   // Estoy aquí y dónde comer (2026-11-22)
+  "Compartir": "Compartilhar",
+  "¿Vas con amigos?": "Vai com amigos?",
+  "Pásale esta hoja de ruta a tu grupo": "Mande este roteiro para o seu grupo",
+  "Sirve para planear desde la casa y, ya en la ruta, para ver dónde cargar, comer y dormir en el pueblo donde estás.": "Serve para planejar de casa e, já na estrada, para ver onde abastecer, comer e dormir na cidade onde você está.",
+  "Copiar el link": "Copiar o link",
+  "Link copiado. Pégalo en tu grupo.": "Link copiado. Cole no seu grupo.",
+  "La Carretera Austral en moto, kilómetro a kilómetro: dónde cargar bencina, comer y dormir, con GPS.": "A Carretera Austral de moto, quilômetro a quilômetro: onde abastecer, comer e dormir, com GPS.",
   "Acepta tarjeta": "Aceita cartão",
   "Sin precio todavía": "Ainda sem preço",
   "En Google Maps puede salir el rango de precios.": "O Google Maps pode mostrar a faixa de preços.",
