@@ -14,8 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ruta 7 Moto">
 <meta property="og:url" content="https://5egaloz.github.io/ruta7moto/">
-<meta property="og:title" content="Ruta 7 Moto: la Carretera Austral en moto, kilómetro a kilómetro">
-<meta property="og:description" content="Dónde cargar bencina, comer, dormir y arreglar la moto en la Carretera Austral, kilómetro a kilómetro de Chaitén a Villa O'Higgins. Con GPS: te dice qué hay en el pueblo donde estás.">
+<meta property="og:title" content="Ruta 7 Moto: la Carretera Austral en moto">
+<meta property="og:description" content="Dónde cargar bencina, comer y dormir en moto, de Chaitén a Villa O'Higgins. Gratis y con GPS.">
 <meta property="og:image" content="https://5egaloz.github.io/ruta7moto/compartir/tarjeta.jpg">
 <meta property="og:image:secure_url" content="https://5egaloz.github.io/ruta7moto/compartir/tarjeta.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -27,7 +27,7 @@
 <meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ruta 7 Moto: la Carretera Austral en moto">
-<meta name="twitter:description" content="Dónde cargar bencina, comer, dormir y arreglar la moto en la Carretera Austral, kilómetro a kilómetro de Chaitén a Villa O'Higgins. Con GPS: te dice qué hay en el pueblo donde estás.">
+<meta name="twitter:description" content="Dónde cargar bencina, comer y dormir en moto, de Chaitén a Villa O'Higgins. Gratis y con GPS.">
 <meta name="twitter:image" content="https://5egaloz.github.io/ruta7moto/compartir/tarjeta.jpg">
 <link rel="alternate" hreflang="es" href="https://5egaloz.github.io/ruta7moto/?lang=es">
 <link rel="alternate" hreflang="en" href="https://5egaloz.github.io/ruta7moto/?lang=en">
@@ -2001,7 +2001,7 @@ if (GUIA.precio) { const gp = document.getElementById('guiaPrecio'); gp.textCont
 document.getElementById('waTour').href = wa(t('Hola, me interesan los tours guiados por la Carretera Austral. Avísenme cuando estén listos.'));
 
 /* ---------- Compartir: el menú del celular (WhatsApp, Instagram...) o, si no hay, enlaces directos ---------- */
-const URL_PAGINA = 'https://5egaloz.github.io/ruta7moto/' + (LANG === 'es' ? '' : '?lang=' + LANG);
+const URL_PAGINA = 'https://5egaloz.github.io/ruta7moto/?v=2' + (LANG === 'es' ? '' : '&lang=' + LANG);
 const TXT_COMPARTIR = t('La Carretera Austral en moto, kilómetro a kilómetro: dónde cargar bencina, comer y dormir, con GPS.');
 document.getElementById('compWa').href = 'https://wa.me/?text=' + encodeURIComponent(TXT_COMPARTIR + ' ' + URL_PAGINA);
 document.getElementById('compFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(URL_PAGINA);
